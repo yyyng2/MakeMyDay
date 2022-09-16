@@ -7,23 +7,99 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1814480B28D3246B00BEA60C /* ScheduleWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814480A28D3246B00BEA60C /* ScheduleWriteView.swift */; };
+		1814480D28D3247600BEA60C /* ScheduleWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814480C28D3247600BEA60C /* ScheduleWriteViewController.swift */; };
+		1814480F28D329BB00BEA60C /* ScheduleDatePIckerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814480E28D329BB00BEA60C /* ScheduleDatePIckerViewController.swift */; };
+		1814481128D3309300BEA60C /* ScheduleDatePIckerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814481028D3309300BEA60C /* ScheduleDatePIckerView.swift */; };
 		18B799EB28CCAB9400186AFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B799EA28CCAB9400186AFA /* AppDelegate.swift */; };
 		18B799ED28CCAB9400186AFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B799EC28CCAB9400186AFA /* SceneDelegate.swift */; };
-		18B799EF28CCAB9400186AFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B799EE28CCAB9400186AFA /* ViewController.swift */; };
-		18B799F228CCAB9400186AFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B799F028CCAB9400186AFA /* Main.storyboard */; };
+		18B799EF28CCAB9400186AFA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B799EE28CCAB9400186AFA /* MainViewController.swift */; };
 		18B799F428CCAB9600186AFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B799F328CCAB9600186AFA /* Assets.xcassets */; };
 		18B799F728CCAB9600186AFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B799F528CCAB9600186AFA /* LaunchScreen.storyboard */; };
+		18B79A0228CCB3A900186AFA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A0128CCB3A900186AFA /* BaseViewController.swift */; };
+		18B79A0428CCB3B200186AFA /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A0328CCB3B200186AFA /* BaseView.swift */; };
+		18B79A0628CCB3B900186AFA /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A0528CCB3B900186AFA /* BaseTableViewCell.swift */; };
+		18B79A0928CCB49500186AFA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A0828CCB49500186AFA /* MainView.swift */; };
+		18B79A0F28CCB76100186AFA /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 18B79A0E28CCB76100186AFA /* Realm */; };
+		18B79A1128CCB76100186AFA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18B79A1028CCB76100186AFA /* RealmSwift */; };
+		18B79A1828CCCBEB00186AFA /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A1728CCCBEB00186AFA /* ReusableProtocol.swift */; };
+		18B79A1A28CCCC7100186AFA /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A1928CCCC7100186AFA /* UIViewController+Extension.swift */; };
+		18B79A1C28CCCC8D00186AFA /* Transition+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A1B28CCCC8D00186AFA /* Transition+Extension.swift */; };
+		18B79A1F28CDE81400186AFA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18B79A1E28CDE81400186AFA /* SnapKit */; };
+		18B79A2228CDF66C00186AFA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A2128CDF66B00186AFA /* TabBarController.swift */; };
+		18B79A2428CDF80500186AFA /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A2328CDF80500186AFA /* ScheduleViewController.swift */; };
+		18B79A2628CDF81100186AFA /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A2528CDF81100186AFA /* ScheduleView.swift */; };
+		18B79A2828CDF82300186AFA /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A2728CDF82300186AFA /* ScheduleTableViewCell.swift */; };
+		18B79A2A28CDFB7E00186AFA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A2928CDFB7E00186AFA /* Color.swift */; };
+		18B79A2E28CE0B2200186AFA /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A2D28CE0B2200186AFA /* CustomImageView.swift */; };
+		18B79A3128CE0EF000186AFA /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A3028CE0EF000186AFA /* CustomLabel.swift */; };
+		18B79A3528CE138600186AFA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A3428CE138600186AFA /* SettingView.swift */; };
+		18B79A3728CE139000186AFA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A3628CE139000186AFA /* SettingViewController.swift */; };
+		18B79A3928CE1A8700186AFA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 18B79A3828CE1A8700186AFA /* .gitignore */; };
+		18B79A3B28CE201700186AFA /* DdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A3A28CE201700186AFA /* DdayView.swift */; };
+		18B79A3D28CE202000186AFA /* DdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A3C28CE202000186AFA /* DdayViewController.swift */; };
+		18B79A3F28CE202F00186AFA /* DdayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A3E28CE202F00186AFA /* DdayTableViewCell.swift */; };
+		18B79A4228CE215B00186AFA /* DdayWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A4128CE215B00186AFA /* DdayWriteView.swift */; };
+		18B79A4428CE217000186AFA /* DdayWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A4328CE217000186AFA /* DdayWriteViewController.swift */; };
+		18B79A4628CE27F100186AFA /* NavTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A4528CE27F100186AFA /* NavTitleView.swift */; };
+		18B79A4A28CF41AB00186AFA /* PopupZeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A4928CF41AB00186AFA /* PopupZeroView.swift */; };
+		18B79A4C28CF41B300186AFA /* PopupZeroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A4B28CF41B300186AFA /* PopupZeroViewController.swift */; };
+		18B79A4E28CF4D6600186AFA /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A4D28CF4D6600186AFA /* UserDefaultsHelper.swift */; };
+		18B79A5028D05CEB00186AFA /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A4F28D05CEB00186AFA /* PageViewController.swift */; };
+		18B79A5228D0636E00186AFA /* PopupOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A5128D0636E00186AFA /* PopupOneView.swift */; };
+		18B79A5428D0637900186AFA /* PopupOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A5328D0637900186AFA /* PopupOneViewController.swift */; };
+		18B79A5628D0B03700186AFA /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A5528D0B03700186AFA /* MainTableViewCell.swift */; };
+		18B79A5928D1D64500186AFA /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 18B79A5828D1D64500186AFA /* FSCalendar */; };
+		18B79A5C28D1DFD600186AFA /* BackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A5B28D1DFD600186AFA /* BackgroundImageView.swift */; };
+		18E2AB7128D3BB330010AAB2 /* ScheduleRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2AB7028D3BB330010AAB2 /* ScheduleRealmModel.swift */; };
+		18E2AB7328D3BC0F0010AAB2 /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2AB7228D3BC0F0010AAB2 /* ScheduleRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1814480A28D3246B00BEA60C /* ScheduleWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWriteView.swift; sourceTree = "<group>"; };
+		1814480C28D3247600BEA60C /* ScheduleWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWriteViewController.swift; sourceTree = "<group>"; };
+		1814480E28D329BB00BEA60C /* ScheduleDatePIckerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePIckerViewController.swift; sourceTree = "<group>"; };
+		1814481028D3309300BEA60C /* ScheduleDatePIckerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePIckerView.swift; sourceTree = "<group>"; };
 		18B799E728CCAB9400186AFA /* MakeMyDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakeMyDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B799EA28CCAB9400186AFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B799EC28CCAB9400186AFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		18B799EE28CCAB9400186AFA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		18B799F128CCAB9400186AFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		18B799EE28CCAB9400186AFA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		18B799F328CCAB9600186AFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18B799F628CCAB9600186AFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18B799F828CCAB9600186AFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18B79A0128CCB3A900186AFA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		18B79A0328CCB3B200186AFA /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		18B79A0528CCB3B900186AFA /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		18B79A0828CCB49500186AFA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		18B79A1728CCCBEB00186AFA /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		18B79A1928CCCC7100186AFA /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		18B79A1B28CCCC8D00186AFA /* Transition+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extension.swift"; sourceTree = "<group>"; };
+		18B79A2128CDF66B00186AFA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		18B79A2328CDF80500186AFA /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		18B79A2528CDF81100186AFA /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		18B79A2728CDF82300186AFA /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		18B79A2928CDFB7E00186AFA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		18B79A2D28CE0B2200186AFA /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		18B79A3028CE0EF000186AFA /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		18B79A3428CE138600186AFA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		18B79A3628CE139000186AFA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		18B79A3828CE1A8700186AFA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		18B79A3A28CE201700186AFA /* DdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DdayView.swift; sourceTree = "<group>"; };
+		18B79A3C28CE202000186AFA /* DdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DdayViewController.swift; sourceTree = "<group>"; };
+		18B79A3E28CE202F00186AFA /* DdayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DdayTableViewCell.swift; sourceTree = "<group>"; };
+		18B79A4128CE215B00186AFA /* DdayWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DdayWriteView.swift; sourceTree = "<group>"; };
+		18B79A4328CE217000186AFA /* DdayWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DdayWriteViewController.swift; sourceTree = "<group>"; };
+		18B79A4528CE27F100186AFA /* NavTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavTitleView.swift; sourceTree = "<group>"; };
+		18B79A4928CF41AB00186AFA /* PopupZeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupZeroView.swift; sourceTree = "<group>"; };
+		18B79A4B28CF41B300186AFA /* PopupZeroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupZeroViewController.swift; sourceTree = "<group>"; };
+		18B79A4D28CF4D6600186AFA /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		18B79A4F28D05CEB00186AFA /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		18B79A5128D0636E00186AFA /* PopupOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupOneView.swift; sourceTree = "<group>"; };
+		18B79A5328D0637900186AFA /* PopupOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupOneViewController.swift; sourceTree = "<group>"; };
+		18B79A5528D0B03700186AFA /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		18B79A5B28D1DFD600186AFA /* BackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageView.swift; sourceTree = "<group>"; };
+		18E2AB7028D3BB330010AAB2 /* ScheduleRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRealmModel.swift; sourceTree = "<group>"; };
+		18E2AB7228D3BC0F0010AAB2 /* ScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +107,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B79A1F28CDE81400186AFA /* SnapKit in Frameworks */,
+				18B79A5928D1D64500186AFA /* FSCalendar in Frameworks */,
+				18B79A1128CCB76100186AFA /* RealmSwift in Frameworks */,
+				18B79A0F28CCB76100186AFA /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +120,7 @@
 		18B799DE28CCAB9400186AFA = {
 			isa = PBXGroup;
 			children = (
+				18B79A3828CE1A8700186AFA /* .gitignore */,
 				18B799E928CCAB9400186AFA /* MakeMyDay */,
 				18B799E828CCAB9400186AFA /* Products */,
 			);
@@ -56,15 +137,170 @@
 		18B799E928CCAB9400186AFA /* MakeMyDay */ = {
 			isa = PBXGroup;
 			children = (
+				18E2AB6F28D3BB1C0010AAB2 /* Realm */,
+				18B79A1628CCCBCC00186AFA /* Extension */,
+				18B79A1528CCCBB300186AFA /* Constant */,
+				18B79A0028CCB2EC00186AFA /* Base */,
+				18B799FE28CCB2D700186AFA /* Scene */,
 				18B799EA28CCAB9400186AFA /* AppDelegate.swift */,
 				18B799EC28CCAB9400186AFA /* SceneDelegate.swift */,
-				18B799EE28CCAB9400186AFA /* ViewController.swift */,
-				18B799F028CCAB9400186AFA /* Main.storyboard */,
 				18B799F328CCAB9600186AFA /* Assets.xcassets */,
 				18B799F528CCAB9600186AFA /* LaunchScreen.storyboard */,
 				18B799F828CCAB9600186AFA /* Info.plist */,
 			);
 			path = MakeMyDay;
+			sourceTree = "<group>";
+		};
+		18B799FE28CCB2D700186AFA /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				18B79A3328CE137700186AFA /* Web */,
+				18B79A2028CDF65900186AFA /* Tabbar */,
+				18B799FF28CCB2E000186AFA /* Main */,
+				18B79A1228CCBE4300186AFA /* Schedule */,
+				18B79A1428CCBE6600186AFA /* Dday */,
+				18B79A1328CCBE5B00186AFA /* Setting */,
+				18B79A0728CCB41300186AFA /* Popup */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		18B799FF28CCB2E000186AFA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				18B79A0828CCB49500186AFA /* MainView.swift */,
+				18B79A5528D0B03700186AFA /* MainTableViewCell.swift */,
+				18B799EE28CCAB9400186AFA /* MainViewController.swift */,
+				18B79A4528CE27F100186AFA /* NavTitleView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		18B79A0028CCB2EC00186AFA /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				18B79A0128CCB3A900186AFA /* BaseViewController.swift */,
+				18B79A0328CCB3B200186AFA /* BaseView.swift */,
+				18B79A0528CCB3B900186AFA /* BaseTableViewCell.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		18B79A0728CCB41300186AFA /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				18B79A4928CF41AB00186AFA /* PopupZeroView.swift */,
+				18B79A4B28CF41B300186AFA /* PopupZeroViewController.swift */,
+				18B79A5128D0636E00186AFA /* PopupOneView.swift */,
+				18B79A5328D0637900186AFA /* PopupOneViewController.swift */,
+				18B79A4F28D05CEB00186AFA /* PageViewController.swift */,
+			);
+			path = Popup;
+			sourceTree = "<group>";
+		};
+		18B79A1228CCBE4300186AFA /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				18B79A2528CDF81100186AFA /* ScheduleView.swift */,
+				18B79A2328CDF80500186AFA /* ScheduleViewController.swift */,
+				18B79A2728CDF82300186AFA /* ScheduleTableViewCell.swift */,
+				1814480A28D3246B00BEA60C /* ScheduleWriteView.swift */,
+				1814480C28D3247600BEA60C /* ScheduleWriteViewController.swift */,
+				1814481028D3309300BEA60C /* ScheduleDatePIckerView.swift */,
+				1814480E28D329BB00BEA60C /* ScheduleDatePIckerViewController.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		18B79A1328CCBE5B00186AFA /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				18B79A3428CE138600186AFA /* SettingView.swift */,
+				18B79A3628CE139000186AFA /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		18B79A1428CCBE6600186AFA /* Dday */ = {
+			isa = PBXGroup;
+			children = (
+				18B79A3A28CE201700186AFA /* DdayView.swift */,
+				18B79A3C28CE202000186AFA /* DdayViewController.swift */,
+				18B79A3E28CE202F00186AFA /* DdayTableViewCell.swift */,
+				18B79A4128CE215B00186AFA /* DdayWriteView.swift */,
+				18B79A4328CE217000186AFA /* DdayWriteViewController.swift */,
+			);
+			path = Dday;
+			sourceTree = "<group>";
+		};
+		18B79A1528CCCBB300186AFA /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				18B79A2F28CE0EDF00186AFA /* CutomLabel */,
+				18B79A2C28CE0B0600186AFA /* CustomImageView */,
+				18B79A2B28CE0AFF00186AFA /* Color */,
+				18B79A4D28CF4D6600186AFA /* UserDefaultsHelper.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		18B79A1628CCCBCC00186AFA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				18B79A1728CCCBEB00186AFA /* ReusableProtocol.swift */,
+				18B79A1928CCCC7100186AFA /* UIViewController+Extension.swift */,
+				18B79A1B28CCCC8D00186AFA /* Transition+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		18B79A2028CDF65900186AFA /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				18B79A2128CDF66B00186AFA /* TabBarController.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		18B79A2B28CE0AFF00186AFA /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				18B79A2928CDFB7E00186AFA /* Color.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		18B79A2C28CE0B0600186AFA /* CustomImageView */ = {
+			isa = PBXGroup;
+			children = (
+				18B79A5B28D1DFD600186AFA /* BackgroundImageView.swift */,
+				18B79A2D28CE0B2200186AFA /* CustomImageView.swift */,
+			);
+			path = CustomImageView;
+			sourceTree = "<group>";
+		};
+		18B79A2F28CE0EDF00186AFA /* CutomLabel */ = {
+			isa = PBXGroup;
+			children = (
+				18B79A3028CE0EF000186AFA /* CustomLabel.swift */,
+			);
+			path = CutomLabel;
+			sourceTree = "<group>";
+		};
+		18B79A3328CE137700186AFA /* Web */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
+		18E2AB6F28D3BB1C0010AAB2 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				18E2AB7028D3BB330010AAB2 /* ScheduleRealmModel.swift */,
+				18E2AB7228D3BC0F0010AAB2 /* ScheduleRepository.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +319,12 @@
 			dependencies = (
 			);
 			name = MakeMyDay;
+			packageProductDependencies = (
+				18B79A0E28CCB76100186AFA /* Realm */,
+				18B79A1028CCB76100186AFA /* RealmSwift */,
+				18B79A1E28CDE81400186AFA /* SnapKit */,
+				18B79A5828D1D64500186AFA /* FSCalendar */,
+			);
 			productName = MakeMyDay;
 			productReference = 18B799E728CCAB9400186AFA /* MakeMyDay.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +353,11 @@
 				Base,
 			);
 			mainGroup = 18B799DE28CCAB9400186AFA;
+			packageReferences = (
+				18B79A0D28CCB76100186AFA /* XCRemoteSwiftPackageReference "realm-swift" */,
+				18B79A1D28CDE81400186AFA /* XCRemoteSwiftPackageReference "SnapKit" */,
+				18B79A5728D1D64500186AFA /* XCRemoteSwiftPackageReference "FSCalendar" */,
+			);
 			productRefGroup = 18B799E828CCAB9400186AFA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,8 +373,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				18B799F728CCAB9600186AFA /* LaunchScreen.storyboard in Resources */,
+				18B79A3928CE1A8700186AFA /* .gitignore in Resources */,
 				18B799F428CCAB9600186AFA /* Assets.xcassets in Resources */,
-				18B799F228CCAB9400186AFA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +385,51 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18B799EF28CCAB9400186AFA /* ViewController.swift in Sources */,
+				18B79A4628CE27F100186AFA /* NavTitleView.swift in Sources */,
+				18B79A1A28CCCC7100186AFA /* UIViewController+Extension.swift in Sources */,
+				18B799EF28CCAB9400186AFA /* MainViewController.swift in Sources */,
+				18B79A2228CDF66C00186AFA /* TabBarController.swift in Sources */,
+				18B79A3528CE138600186AFA /* SettingView.swift in Sources */,
+				18B79A2428CDF80500186AFA /* ScheduleViewController.swift in Sources */,
+				18B79A5228D0636E00186AFA /* PopupOneView.swift in Sources */,
+				18B79A0928CCB49500186AFA /* MainView.swift in Sources */,
+				18B79A3128CE0EF000186AFA /* CustomLabel.swift in Sources */,
+				1814480F28D329BB00BEA60C /* ScheduleDatePIckerViewController.swift in Sources */,
+				1814480D28D3247600BEA60C /* ScheduleWriteViewController.swift in Sources */,
+				18B79A0228CCB3A900186AFA /* BaseViewController.swift in Sources */,
+				18B79A4A28CF41AB00186AFA /* PopupZeroView.swift in Sources */,
+				18B79A1C28CCCC8D00186AFA /* Transition+Extension.swift in Sources */,
+				18B79A5428D0637900186AFA /* PopupOneViewController.swift in Sources */,
+				18E2AB7328D3BC0F0010AAB2 /* ScheduleRepository.swift in Sources */,
+				18B79A0428CCB3B200186AFA /* BaseView.swift in Sources */,
+				18B79A3B28CE201700186AFA /* DdayView.swift in Sources */,
+				18B79A2A28CDFB7E00186AFA /* Color.swift in Sources */,
+				18B79A4428CE217000186AFA /* DdayWriteViewController.swift in Sources */,
+				18B79A2E28CE0B2200186AFA /* CustomImageView.swift in Sources */,
+				18B79A3D28CE202000186AFA /* DdayViewController.swift in Sources */,
+				18E2AB7128D3BB330010AAB2 /* ScheduleRealmModel.swift in Sources */,
+				18B79A2828CDF82300186AFA /* ScheduleTableViewCell.swift in Sources */,
 				18B799EB28CCAB9400186AFA /* AppDelegate.swift in Sources */,
+				18B79A0628CCB3B900186AFA /* BaseTableViewCell.swift in Sources */,
+				18B79A5628D0B03700186AFA /* MainTableViewCell.swift in Sources */,
+				18B79A4228CE215B00186AFA /* DdayWriteView.swift in Sources */,
+				18B79A5C28D1DFD600186AFA /* BackgroundImageView.swift in Sources */,
+				18B79A4E28CF4D6600186AFA /* UserDefaultsHelper.swift in Sources */,
+				18B79A5028D05CEB00186AFA /* PageViewController.swift in Sources */,
+				18B79A1828CCCBEB00186AFA /* ReusableProtocol.swift in Sources */,
+				18B79A3728CE139000186AFA /* SettingViewController.swift in Sources */,
+				18B79A2628CDF81100186AFA /* ScheduleView.swift in Sources */,
+				1814480B28D3246B00BEA60C /* ScheduleWriteView.swift in Sources */,
 				18B799ED28CCAB9400186AFA /* SceneDelegate.swift in Sources */,
+				18B79A3F28CE202F00186AFA /* DdayTableViewCell.swift in Sources */,
+				18B79A4C28CF41B300186AFA /* PopupZeroViewController.swift in Sources */,
+				1814481128D3309300BEA60C /* ScheduleDatePIckerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		18B799F028CCAB9400186AFA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				18B799F128CCAB9400186AFA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		18B799F528CCAB9600186AFA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -290,11 +565,11 @@
 				DEVELOPMENT_TEAM = UT362X937Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MakeMyDay/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,6 +577,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.yyyng2.MakeMyDay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -318,11 +596,11 @@
 				DEVELOPMENT_TEAM = UT362X937Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MakeMyDay/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,6 +608,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.yyyng2.MakeMyDay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -358,6 +639,56 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		18B79A0D28CCB76100186AFA /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+		18B79A1D28CDE81400186AFA /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		18B79A5728D1D64500186AFA /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		18B79A0E28CCB76100186AFA /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18B79A0D28CCB76100186AFA /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		18B79A1028CCB76100186AFA /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18B79A0D28CCB76100186AFA /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		18B79A1E28CDE81400186AFA /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18B79A1D28CDE81400186AFA /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		18B79A5828D1D64500186AFA /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18B79A5728D1D64500186AFA /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 18B799DF28CCAB9400186AFA /* Project object */;
 }
