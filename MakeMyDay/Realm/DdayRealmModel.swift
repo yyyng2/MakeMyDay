@@ -14,11 +14,13 @@ final class Dday: Object{
     @Persisted var title: String
     @Persisted var date: Date
     @Persisted var pin: Bool
+    @Persisted var dateString: String
     
-    convenience init(title: String, date: Date) {
+    convenience init(title: String, date: Date, dateString: String) {
         self.init()
         self.title = title
         self.date = date
         self.pin = false
+        self.dateString = dateString
     }
 }

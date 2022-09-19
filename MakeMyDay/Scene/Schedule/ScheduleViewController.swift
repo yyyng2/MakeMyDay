@@ -59,7 +59,7 @@ class ScheduleViewController: BaseViewController {
         
         calendar.delegate = self
         calendar.dataSource = self
-        print(Realm.Configuration.defaultConfiguration.fileURL)
+        //print(Realm.Configuration.defaultConfiguration.fileURL)
        
         calendarSwipe()
     }
@@ -90,7 +90,10 @@ class ScheduleViewController: BaseViewController {
     func fetchRealm() {
         guard let date: Date = stringFormatToDate(string: headerString, formatStyle: .yyyyMMdd) else { return }
         guard let formatDate = localDate(date: date, formatStyle: .yyyyMMdd) else { return }
-        scheduleTasks = scheduleRepository.fetchFilterDate(date: formatDate)
+        let selectDate = dateFormatToString(date: formatDate, formatStyle: .yyyyMMdd)
+        scheduleTasks = scheduleRepository.fetchFilterDateString(formatDate: selectDate)
+        
+        mainView.tableView.reloadData()
     }
     
     @objc private func swipeEvent(_ swipe: UISwipeGestureRecognizer) {

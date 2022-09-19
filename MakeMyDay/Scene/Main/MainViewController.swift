@@ -87,9 +87,10 @@ class MainViewController: BaseViewController {
     }
     
     func fetchRealm() {
-        guard let todayDate = localDate(date: Date(), formatStyle: .yyyyMMdd) else { return }
-        scheduleTasks = scheduleRepository.fetchFilterDate(date: todayDate)
-        ddayTasks = ddayRepository.fetchFilterDate(date: todayDate)
+//        guard let todayDate = localDate(date: Date(), formatStyle: .yyyyMMdd) else { return }
+        let today = dateFormatToString(date: Date(), formatStyle: .yyyyMMdd)
+        scheduleTasks = scheduleRepository.fetchFilterDateString(formatDate: today)
+        ddayTasks = ddayRepository.fetchFilterDateString(formatDate: today)
         
         mainView.tableView.reloadData()
      

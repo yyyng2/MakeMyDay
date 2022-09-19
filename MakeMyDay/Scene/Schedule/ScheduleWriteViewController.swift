@@ -119,6 +119,9 @@ class ScheduleWriteViewController: BaseViewController {
     func saveFunction(){
         print(#function)
         guard let date = dateData else { return }
+        
+        let stringDate = dateFormatToString(date: date, formatStyle: .yyyyMMddEaHHmm)
+        
         guard let data = localDate(date: date, formatStyle: .yyyyMMddEaHHmm) else { return }
 
         if edit == true {
@@ -131,11 +134,11 @@ class ScheduleWriteViewController: BaseViewController {
                 titleText = String(array[0])
                 contentText = String(array[1])
 
-                let task = Schedule(allText: content, title: titleText, content: contentText, date: data)
+                let task = Schedule(allText: content, title: titleText, content: contentText, date: data, dateString: stringDate)
                 scheduleRepository.updateRecord(id: id!, record: task)
             } else {
                 titleText = String(array[0])
-                let task = Schedule(allText: content, title: titleText, content: "추가 텍스트 없음", date: data)
+                let task = Schedule(allText: content, title: titleText, content: "추가 텍스트 없음", date: data, dateString: stringDate)
                 scheduleRepository.updateRecord(id: id!, record: task)
             }
         } else {
@@ -145,11 +148,11 @@ class ScheduleWriteViewController: BaseViewController {
             if array.count == 2 {
                 titleText = String(array[0])
                 contentText = String(array[1])
-                let task = Schedule(allText: content, title: titleText, content: contentText, date: data)
+                let task = Schedule(allText: content, title: titleText, content: contentText, date: data, dateString: stringDate)
                 scheduleRepository.addRecord(record: task)
             } else {
                 titleText = String(array[0])
-                let task = Schedule(allText: content, title: titleText, content: "추가 텍스트 없음", date: data)
+                let task = Schedule(allText: content, title: titleText, content: "추가 텍스트 없음", date: data, dateString: stringDate)
                 scheduleRepository.addRecord(record: task)
             }
         }

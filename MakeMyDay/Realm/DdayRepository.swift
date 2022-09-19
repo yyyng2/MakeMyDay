@@ -39,6 +39,10 @@ final class DdayRepository: DdayRepositoryType {
       
     }
     
+    func fetchFilterDateString(formatDate: String) -> Results<Dday> {
+        return localRealm.objects(Dday.self).filter("dateString CONTAINS[c] '\(formatDate)'").sorted(byKeyPath: "date", ascending: false)
+    }
+    
     func fetchFilterDate(date: Date) -> Results<Dday> {
         return localRealm.objects(Dday.self).filter("date == %@", date).sorted(byKeyPath: "date", ascending: false)
     }
