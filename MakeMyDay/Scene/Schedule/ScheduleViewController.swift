@@ -18,6 +18,9 @@ class ScheduleViewController: BaseViewController {
     
     var calendarHeight: CGFloat = 300
     
+    var viewTranslation = CGPoint(x: 0, y: 0)
+    var viewVelocity = CGPoint(x: 0, y: 0)
+    
     var headerDate: Date?
     var headerString = ""
     
@@ -59,9 +62,10 @@ class ScheduleViewController: BaseViewController {
         
         calendar.delegate = self
         calendar.dataSource = self
-        //print(Realm.Configuration.defaultConfiguration.fileURL)
+        print(Realm.Configuration.defaultConfiguration.fileURL)
        
         calendarSwipe()
+        //setGesture()
     }
     
     override internal func configureUI() {
@@ -95,6 +99,38 @@ class ScheduleViewController: BaseViewController {
         
         mainView.tableView.reloadData()
     }
+    
+//    func setGesture() {
+//        self.view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(panGestureHandler)))
+//    }
+//
+//    @objc func panGestureHandler(_ sender: UIPanGestureRecognizer) {
+//        viewTranslation = sender.translation(in: view)
+//        viewVelocity = sender.translation(in: view)
+//
+//        switch sender.state {
+//
+//        case .changed:
+//            if abs(viewVelocity.y) > abs(viewVelocity.x) {
+//                if viewVelocity.y < 0 {
+//                    UIView.animate(withDuration: 0.1) {
+////                        self.view.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
+//                        self.calendar.setScope(.week, animated: true)
+//                    }
+//                }
+//            }
+//        case .ended:
+//            if viewTranslation.y < 300 {
+//                UIView.animate(withDuration: 0.1) {
+//                    self.view.transform = .identity
+//                }
+//            } else {
+//                self.calendar.setScope(.month, animated: true)
+//            }
+//        default:
+//            break
+//        }
+//    }
     
     @objc private func swipeEvent(_ swipe: UISwipeGestureRecognizer) {
 
@@ -156,6 +192,12 @@ class ScheduleViewController: BaseViewController {
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+    }
+    
+    func deleteCell(schedule: Results<Schedule>, index: IndexPath){
+        let task = scheduleTasks[index.row].objectId
+        self.scheduleRepository.deleteById(id: task)
+        self.fetchRealm()
     }
     
 }
@@ -259,14 +301,31 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource{
         vc.schedule = scheduleTasks[indexPath.row]
         vc.delegate = self
   
-        if let data = dateData {
-            vc.dateData = data
-        } else {
-            let date = stringFormatToDate(string: headerString, formatStyle: .yyyyMMdd)
-            vc.dateData = date
-        }
+        let date = stringFormatToDate(string: scheduleTasks[indexPath.row].dateString, formatStyle: .yyyyMMddEaHHmm)
+        vc.dateData = date
+
         
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .normal, title: "삭제") { action, view, completionHandler in
+            
+            let alert = UIAlertController(title: nil, message: "삭제하시겠습니까?", preferredStyle: .alert)
+            
+            let okay = UIAlertAction(title: "삭제", style: .destructive) {_ in
+
+                self.deleteCell(schedule: self.scheduleTasks, index: indexPath)
+            
+            }
+            
+            let cancel = UIAlertAction(title: "취소", style: .cancel)
+            alert.addAction(okay)
+            alert.addAction(cancel)
+            self.present(alert, animated: true)
+        }
+        delete.backgroundColor = .red
+        return UISwipeActionsConfiguration(actions: [delete])
     }
     
 }

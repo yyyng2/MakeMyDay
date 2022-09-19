@@ -44,6 +44,7 @@ class ScheduleDatePickerView: BaseView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
+        configureLayer()
     }
     
     required init?(coder: NSCoder) {
@@ -51,9 +52,21 @@ class ScheduleDatePickerView: BaseView {
     }
     
     override func configure() {
+
+        
         [backgroundView, datePicker, doneButton].forEach {
             addSubview($0)
         }
+    }
+    
+    func configureLayer() {
+        datePicker.layer.cornerRadius = 10
+        datePicker.clipsToBounds = true
+        datePicker.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        doneButton.layer.cornerRadius = 10
+        doneButton.clipsToBounds = true
+        doneButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     }
     
     override func setConstraints() {

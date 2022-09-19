@@ -16,7 +16,9 @@ class ScheduleDatePickerViewController: BaseViewController {
     
     weak var delegate: DatePickerDataProtocol?
     
-    let date: Date? = nil
+    var date: Date? = nil
+    
+    var selectDate: Date?
     
     override func loadView() {
         super.loadView()
@@ -40,6 +42,9 @@ class ScheduleDatePickerViewController: BaseViewController {
         mainView.datePicker.locale = Locale.current
         mainView.datePicker.calendar.locale = Locale.current
         mainView.datePicker.timeZone = TimeZone.autoupdatingCurrent
+        
+        guard let date = selectDate else { return }
+        mainView.datePicker.setDate(date, animated: true)
     }
     override func configureUI() {
     
