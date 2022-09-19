@@ -18,9 +18,6 @@ class ScheduleViewController: BaseViewController {
     
     var calendarHeight: CGFloat = 300
     
-    var viewTranslation = CGPoint(x: 0, y: 0)
-    var viewVelocity = CGPoint(x: 0, y: 0)
-    
     var headerDate: Date?
     var headerString = ""
     
@@ -33,6 +30,15 @@ class ScheduleViewController: BaseViewController {
             mainView.tableView.reloadData()
         }
     }
+    
+    fileprivate lazy var scopeGesture: UIPanGestureRecognizer = {
+           [unowned self] in
+           let panGesture = UIPanGestureRecognizer(target: self.calendar, action: #selector(self.calendar.handleScopeGesture(_:)))
+           panGesture.delegate = self
+           panGesture.minimumNumberOfTouches = 1
+           panGesture.maximumNumberOfTouches = 2
+           return panGesture
+       }()
     
     override func loadView() {
         super.loadView()
@@ -64,7 +70,10 @@ class ScheduleViewController: BaseViewController {
         calendar.dataSource = self
         print(Realm.Configuration.defaultConfiguration.fileURL)
        
-        calendarSwipe()
+        self.view.addGestureRecognizer(self.scopeGesture)
+        self.mainView.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
+        
+//        calendarSwipe()
         //setGesture()
     }
     
@@ -81,15 +90,15 @@ class ScheduleViewController: BaseViewController {
         mainView.updownButton.addTarget(self, action: #selector(buttonEvent), for: .touchUpInside)
     }
     
-    private func calendarSwipe() {
-        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swipeEvent(_:)))
-        swipeUp.direction = .up
-        self.view.addGestureRecognizer(swipeUp)
-
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(swipeEvent(_:)))
-        swipeDown.direction = .down
-        self.view.addGestureRecognizer(swipeDown)
-    }
+//    private func calendarSwipe() {
+//        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swipeEvent(_:)))
+//        swipeUp.direction = .up
+//        self.view.addGestureRecognizer(swipeUp)
+//
+//        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(swipeEvent(_:)))
+//        swipeDown.direction = .down
+//        self.view.addGestureRecognizer(swipeDown)
+//    }
     
     func fetchRealm() {
         guard let date: Date = stringFormatToDate(string: headerString, formatStyle: .yyyyMMdd) else { return }
@@ -219,7 +228,7 @@ extension ScheduleViewController: FSCalendarDelegate, FSCalendarDataSource{
             $0.height.equalTo(calendarHeight)
         }
     
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.1) {
             self.view.layoutIfNeeded()
         }
 
@@ -345,4 +354,21 @@ extension ScheduleViewController: DatePickerDataProtocol {
        
     }
     
+}
+extension ScheduleViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        let shouldBegin = self.mainView.tableView.contentOffset.y <= -self.mainView.tableView.contentInset.top
+           if shouldBegin {
+               let velocity = self.scopeGesture.velocity(in: self.view)
+               switch self.calendar.scope {
+               case .month:
+                   return velocity.y < 0
+               case .week:
+                   return velocity.y > 0
+               default:
+                   fatalError()
+               }
+           }
+           return shouldBegin
+       }
 }

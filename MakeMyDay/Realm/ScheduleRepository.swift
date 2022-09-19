@@ -95,6 +95,8 @@ final class ScheduleRepository: ScheduleRepositoryType {
                 task?.date = record.date
                 task?.content = record.content
                 task?.title = record.title
+                task?.allText = record.allText
+                task?.dateString = record.dateString
             }
         } catch let error {
             print(error)

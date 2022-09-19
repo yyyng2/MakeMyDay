@@ -14,6 +14,18 @@ class DdayView: BaseView {
         return view
     }()
     
+    let writeButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
+        button.backgroundColor = .clear
+        if User.themeType {
+            button.tintColor = .white
+        } else {
+            button.tintColor = .black
+        }
+        return button
+    }()
+    
     let tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .insetGrouped)
         view.backgroundColor = .clear
@@ -31,7 +43,7 @@ class DdayView: BaseView {
     }
     
     override func configure() {
-        [backgroundView, tableView].forEach {
+        [backgroundView, tableView, writeButton].forEach {
             addSubview($0)
         }
     }
@@ -40,6 +52,7 @@ class DdayView: BaseView {
         backgroundView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
         }
+        
         tableView.snp.makeConstraints { make in
             make.leading.top.trailing.bottom.equalTo(safeAreaLayoutGuide)
         }

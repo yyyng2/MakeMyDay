@@ -90,6 +90,7 @@ final class DdayRepository: DdayRepositoryType {
                 task?.date = record.date
                 task?.title = record.title
                 task?.pin = record.pin
+                task?.dateString = record.dateString
             }
         } catch let error{
             print(error)
