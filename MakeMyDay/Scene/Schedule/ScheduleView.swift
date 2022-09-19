@@ -16,12 +16,14 @@ class ScheduleView: BaseView {
         return view
     }()
     
+    var calendarHeight: CGFloat = 300
+    
     let calendar: FSCalendar = {
         let calendar = FSCalendar()
-        calendar.locale = Locale(identifier: "ko_KR")
+        calendar.locale = Locale.current
 
         //color
-        if themeType {
+        if User.themeType {
             calendar.backgroundColor = .black
             calendar.appearance.titleDefaultColor = UIColor.white
             calendar.appearance.selectionColor = UIColor.systemGray2
@@ -63,10 +65,35 @@ class ScheduleView: BaseView {
         return calendar
     }()
     
+    let updownButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(systemName: "chevron.up.chevron.down"), for: .normal)
+        if User.themeType {
+            button.backgroundColor = .black
+            button.tintColor = .white
+        } else {
+            button.backgroundColor = .white
+            button.tintColor = .black
+        }
+        return button
+    }()
+    
     let tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .insetGrouped)
         view.backgroundColor = .clear
         return view
+    }()
+    
+    let writeButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
+        button.backgroundColor = .clear
+        if User.themeType {
+            button.tintColor = .white
+        } else {
+            button.tintColor = .black
+        }
+        return button
     }()
     
     override init(frame: CGRect) {
@@ -78,7 +105,7 @@ class ScheduleView: BaseView {
     }
     
     override func configure() {
-        [backgroundImageView, calendar, tableView].forEach {
+        [backgroundImageView, calendar, updownButton, tableView].forEach {
             addSubview($0)
         }
     }
@@ -88,16 +115,25 @@ class ScheduleView: BaseView {
             make.edges.equalTo(safeAreaLayoutGuide)
         }
         calendar.snp.makeConstraints { make in
-            make.height.equalTo(safeAreaLayoutGuide).multipliedBy(0.5)
+            make.height.equalTo(calendarHeight)
 //            make.height.equalTo(bounds.height).multipliedBy(0.5)
             make.top.leading.trailing.equalTo(safeAreaLayoutGuide)
-
            
         }
-        tableView.snp.makeConstraints { make in
+        
+        updownButton.snp.makeConstraints { make in
             make.top.equalTo(calendar.snp.bottom)
+            make.width.equalTo(safeAreaLayoutGuide)
+            make.centerX.equalTo(safeAreaLayoutGuide)
+            make.height.equalTo(safeAreaLayoutGuide).multipliedBy(0.05)
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(updownButton.snp.bottom)
             make.leading.trailing.bottom.equalTo(safeAreaLayoutGuide)
         }
+        
+     
     }
     
 }

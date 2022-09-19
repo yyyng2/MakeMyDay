@@ -49,12 +49,10 @@ class PopupOneViewController: BaseViewController {
         if !mainView.leftButton.isSelected, !mainView.rightButton.isSelected {
             showAlert(title: "", message: "테마를 선택해주세요!", buttonTitle: "확인")
         } else if mainView.leftButton.isSelected {
-            UserDefaultsHelper.standard.userDefaults.set(true, forKey: "theme")
-            themeType = UserDefaultsHelper.standard.userDefaults.bool(forKey: "theme")
+            User.themeType = true
             transition(vc, transitionStyle: .presentFullNavigation)
         } else {
-            UserDefaultsHelper.standard.userDefaults.set(false, forKey: "theme")
-            themeType = UserDefaultsHelper.standard.userDefaults.bool(forKey: "theme")
+            User.themeType = false
             transition(vc, transitionStyle: .presentFullNavigation)
         }
     }

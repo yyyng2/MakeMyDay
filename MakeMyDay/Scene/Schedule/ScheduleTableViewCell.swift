@@ -21,13 +21,8 @@ class ScheduleTableViewCell: BaseTableViewCell {
         return label
     }()
     
-    let dateLabel: UILabel = {
-       let label = UILabel()
-        if themeType {
-            label.textColor = .white
-        } else {
-            label.textColor = .systemGray3
-        }
+    let dateLabel: CustomLabel = {
+       let label = CustomLabel()
    
         label.font = .boldSystemFont(ofSize: 12)
         return label
@@ -35,7 +30,7 @@ class ScheduleTableViewCell: BaseTableViewCell {
     
     override func configure() {
      
-        if themeType {
+        if User.themeType {
             backgroundColor = Constants.BaseColor.foreground
         } else {
             backgroundColor = Constants.BaseColor.foregroundColor

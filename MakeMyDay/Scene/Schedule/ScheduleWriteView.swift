@@ -26,7 +26,7 @@ class ScheduleWriteView: BaseView {
         let label = CustomLabel()
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 16)
-        if themeType {
+        if User.themeType {
             label.layer.borderColor = UIColor.white.cgColor
             label.layer.borderWidth = 1
         } else {
@@ -47,7 +47,7 @@ class ScheduleWriteView: BaseView {
     let scheduleTextView: UITextView = {
        let view = UITextView()
         view.backgroundColor = .clear
-        if themeType {
+        if User.themeType {
             view.textColor = .white
         } else {
             view.textColor = .black

@@ -154,7 +154,6 @@
 		18B799FE28CCB2D700186AFA /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				18B79A3328CE137700186AFA /* Web */,
 				18B79A2028CDF65900186AFA /* Tabbar */,
 				18B799FF28CCB2E000186AFA /* Main */,
 				18B79A1228CCBE4300186AFA /* Schedule */,
@@ -285,13 +284,6 @@
 				18B79A3028CE0EF000186AFA /* CustomLabel.swift */,
 			);
 			path = CutomLabel;
-			sourceTree = "<group>";
-		};
-		18B79A3328CE137700186AFA /* Web */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Web;
 			sourceTree = "<group>";
 		};
 		18E2AB6F28D3BB1C0010AAB2 /* Realm */ = {

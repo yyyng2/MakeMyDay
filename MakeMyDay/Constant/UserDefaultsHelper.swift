@@ -5,27 +5,39 @@
 //  Created by Y on 2022/09/12.
 //
 
-import Foundation
+import UIKit
 
-class UserDefaultsHelper {
+@propertyWrapper struct UserDefaultsHelper<T> {
     
-    private init(){}
+    private var key: String
+    private let defaultValue: T
+  
     
-    static let standard = UserDefaultsHelper()
+    init(key: String, defaultValue: T) {
+          self.key = key
+          self.defaultValue = defaultValue
+      }
     
-    let userDefaults = UserDefaults.standard
-    
-    enum Key: String{
-        case first
-    }
-    
-    var first: Bool {
+    var wrappedValue: T {
         get {
-            return userDefaults.bool(forKey: Key.first.rawValue)
+            return UserDefaults.standard.object(forKey: key) as? T ?? defaultValue
         }
         set {
-            userDefaults.set(newValue, forKey: Key.first.rawValue)
+            UserDefaults.standard.set(newValue, forKey: key)
         }
     }
 
+}
+
+enum keyEnum: String {
+    case isAppFirstLaunch = "isAppFirstLaunch"
+    case themeType = "theme"
+}
+
+struct User {
+    @UserDefaultsHelper(key: keyEnum.isAppFirstLaunch.rawValue, defaultValue: true)
+    static var isAppFirstLaunch: Bool
+    
+    @UserDefaultsHelper(key: keyEnum.themeType.rawValue, defaultValue: true)
+    static var themeType: Bool
 }

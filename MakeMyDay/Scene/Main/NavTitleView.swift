@@ -10,7 +10,7 @@ import UIKit
 class NavTitleView: BaseView{
     let profileView: CustomImageView = {
         let view = CustomImageView(frame: .zero)
-        if themeType {
+        if User.themeType {
             view.image = UIImage(named: "day_white.png")
         } else {
             view.image = UIImage(named: "day_color.png")
@@ -24,7 +24,7 @@ class NavTitleView: BaseView{
     let profileLabel: CustomLabel = {
         let label = CustomLabel(frame: .zero)
         label.text = "D"
-        if themeType {
+        if User.themeType {
             label.textColor = .white
         } else {
             label.textColor = .black

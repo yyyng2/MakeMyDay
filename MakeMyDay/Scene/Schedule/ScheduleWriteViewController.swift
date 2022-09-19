@@ -10,11 +10,20 @@ import UIKit
 class ScheduleWriteViewController: BaseViewController {
     let mainView = ScheduleWriteView()
     
+    let scheduleRepository = ScheduleRepository()
+    
+    var edit = false
+    
     lazy var dateString = ""
     
     weak var delegate: DatePickerDataProtocol?
     
-    var dateData = Date()
+    var dateData: Date?
+    
+    var schedule: Schedule?
+    
+    var titleText = ""
+    var contentText = ""
     
     let textViewPlaceHolder = "텍스트를 입력하세요. 날짜도 변경가능합니다!"
     
@@ -24,6 +33,7 @@ class ScheduleWriteViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print(dateData as Any)
 
     }
     override func viewDidLoad() {
@@ -34,16 +44,29 @@ class ScheduleWriteViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        saveFunction()
+        
     }
     
     override func configureUI() {
-        mainView.dateLabel.text = dateString
+
+        if let data = dateData {
+            mainView.dateLabel.text = dateFormatToString(date: data, formatStyle: .yyyyMMddEaHHmm)
+        } else {
+            mainView.dateLabel.text = dateFormatToString(date: Date(), formatStyle: .yyyyMMddEaHHmm)
+        }
+    
+    
+        
+        if edit == true{
+            mainView.scheduleTextView.text = schedule?.allText
+        }
+        
     }
     
     override func setNavigationUI() {
         UINavigationBar.appearance().isTranslucent = false
-        if themeType {
+        
+        if User.themeType {
             navigationBarAppearance.backgroundColor = Constants.BaseColor.foreground
             navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
             navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -61,10 +84,10 @@ class ScheduleWriteViewController: BaseViewController {
     }
     
     func setNavigationItem() {
-        let doneButtonItem = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(doneButtonTapped))
+        let doneButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(doneButtonTapped))
         let shareButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(shareButtonTapped))
         
-        if themeType {
+        if User.themeType {
             doneButtonItem.tintColor = .white
             shareButtonItem.tintColor = .white
         } else {
@@ -87,14 +110,55 @@ class ScheduleWriteViewController: BaseViewController {
     }
     
     @objc func doneButtonTapped() {
-   
-        self.delegate?.updateDate(dateData)
+        saveFunction()
+        self.delegate?.updateDate(schedule!.date)
  
         self.navigationController?.popViewController(animated: true)
     }
     
-    func saveFunction() {
+    func saveFunction(){
+        print(#function)
+        guard let date = dateData else { return }
+        guard let data = localDate(date: date, formatStyle: .yyyyMMddEaHHmm) else { return }
+
+        if edit == true {
+            let id = schedule?.objectId
+            let content = mainView.scheduleTextView.text!
+            let array = content.split(maxSplits: 1, omittingEmptySubsequences: false, whereSeparator: {$0 == "\n"})
+
+
+            if array.count == 2 {
+                titleText = String(array[0])
+                contentText = String(array[1])
+
+                let task = Schedule(allText: content, title: titleText, content: contentText, date: data)
+                scheduleRepository.updateRecord(id: id!, record: task)
+            } else {
+                titleText = String(array[0])
+                let task = Schedule(allText: content, title: titleText, content: "추가 텍스트 없음", date: data)
+                scheduleRepository.updateRecord(id: id!, record: task)
+            }
+        } else {
+            let content = mainView.scheduleTextView.text!
+            print(content)
+            let array = content.split(maxSplits: 1, omittingEmptySubsequences: false, whereSeparator: {$0 == "\n"})
+            if array.count == 2 {
+                titleText = String(array[0])
+                contentText = String(array[1])
+                let task = Schedule(allText: content, title: titleText, content: contentText, date: data)
+                scheduleRepository.addRecord(record: task)
+            } else {
+                titleText = String(array[0])
+                let task = Schedule(allText: content, title: titleText, content: "추가 텍스트 없음", date: data)
+                scheduleRepository.addRecord(record: task)
+            }
+        }
         
+        scheduleRepository.deleteEmptyRecord()
+        
+        edit = false
+        let vc = ScheduleViewController()
+        vc.fetchRealm()
     }
     
     @objc func shareButtonTapped(){

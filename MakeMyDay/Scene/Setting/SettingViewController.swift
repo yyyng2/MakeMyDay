@@ -22,7 +22,7 @@ class SettingViewController: BaseViewController{
     }
     
     override func setNavigationUI() {
-        if themeType {
+        if User.themeType {
             navigationBarAppearance.backgroundColor = Constants.BaseColor.foreground
             navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
             navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]

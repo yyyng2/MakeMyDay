@@ -5,10 +5,9 @@
 //  Created by Y on 2022/09/11.
 //
 
-import Foundation
 import UIKit
 
-var themeType = UserDefaultsHelper.standard.userDefaults.bool(forKey: "theme")
+//var themeType = UserDefaultsHelper.standard.userDefaults.bool(forKey: "theme")
 
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate{
@@ -40,9 +39,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate{
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.clear]
  
         
-        if themeType == true {
-            UITabBar.appearance().tintColor = Constants.BaseColor.foreground
-            self.tabBar.backgroundColor = Constants.BaseColor.foreground
+        if User.themeType {
+            self.tabBar.backgroundColor = .systemGray6
             self.tabBar.tintColor = .white
             self.tabBar.unselectedItemTintColor = .white
             self.configureTab(vc: self.vc1, title: "Home", image: "home_white", selectedImage: "home_white_fill")
@@ -50,7 +48,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate{
             self.configureTab(vc: self.vc3, title: "D-day", image: "dday_white", selectedImage: "dday_white_fill")
             self.configureTab(vc: self.vc4, title: "Setting", image: "setting_white", selectedImage: "setting_white_fill")
         } else {
-            UITabBar.appearance().tintColor = Constants.BaseColor.foregroundColor
             self.tabBar.backgroundColor = Constants.BaseColor.foregroundColor
             self.tabBar.unselectedItemTintColor = .black
             self.tabBar.tintColor = .black

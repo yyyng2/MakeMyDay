@@ -7,6 +7,8 @@
 
 import UIKit
 
+import RealmSwift
+
 class DdayViewController: BaseViewController{
     lazy var mainView = DdayView()
     
@@ -25,7 +27,7 @@ class DdayViewController: BaseViewController{
     }
     
     override func setNavigationUI() {
-        if themeType {
+        if User.themeType {
             navigationBarAppearance.backgroundColor = Constants.BaseColor.foreground
             navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
             navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -57,7 +59,7 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let header = view as? UITableViewHeaderFooterView {
-            if themeType {
+            if User.themeType {
                 header.textLabel?.textColor = .white
             } else {
                 header.textLabel?.textColor = .black

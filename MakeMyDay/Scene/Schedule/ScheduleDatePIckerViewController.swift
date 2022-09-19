@@ -31,15 +31,24 @@ class ScheduleDatePickerViewController: BaseViewController {
         
         //configureGetsture()
         configureButton()
+        
+        configureDatePicker()
+        
     }
     
+    func configureDatePicker() {
+        mainView.datePicker.locale = Locale.current
+        mainView.datePicker.calendar.locale = Locale.current
+        mainView.datePicker.timeZone = TimeZone.autoupdatingCurrent
+    }
     override func configureUI() {
-        
+    
     }
     
     func configureButton() {
         mainView.datePicker.addTarget(self, action: #selector(datePickerValueTapped), for: .touchUpInside)
         mainView.doneButton.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
+  
     }
  
     func configureGetsture() {

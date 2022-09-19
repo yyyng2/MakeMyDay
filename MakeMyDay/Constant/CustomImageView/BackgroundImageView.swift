@@ -13,7 +13,7 @@ class BackgroundImageView: UIImageView{
 
         contentMode = .scaleAspectFill
 
-        if themeType {
+        if User.themeType {
             image = UIImage(named: "background_black")
         } else {
             image = UIImage(named: "background_color")

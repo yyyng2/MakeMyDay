@@ -27,7 +27,7 @@ class DdayTableViewCell: BaseTableViewCell{
     }()
     
     override func configure() {
-        if themeType {
+        if User.themeType {
             backgroundColor = Constants.BaseColor.foreground
         } else {
             backgroundColor = Constants.BaseColor.foregroundColor

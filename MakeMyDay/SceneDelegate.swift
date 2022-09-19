@@ -19,16 +19,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         
-        if UserDefaultsHelper.standard.first == false {
+        window?.overrideUserInterfaceStyle = .dark
+        
+        if User.isAppFirstLaunch {
+            //마지막에 제거
+            //User.isAppFirstLaunch = false
             let viewController = PageViewController()
             let navigationController = UINavigationController(rootViewController: viewController)
             window?.rootViewController = navigationController
-       
         } else {
             let viewController = TabBarController()
             let navigationController = UINavigationController(rootViewController: viewController)
             window?.rootViewController = navigationController
         }
+      
       
         window?.makeKeyAndVisible()
         

@@ -9,8 +9,8 @@ import UIKit
 
 class MainTableViewCell: BaseTableViewCell{
     
-    let backgroundImageView: CustomImageView = {
-        let view = CustomImageView(frame: .zero)
+    let backgroundImageView: CellShortCustomImageView = {
+        let view = CellShortCustomImageView(frame: .zero)
         return view
     }()
     
