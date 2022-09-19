@@ -73,8 +73,6 @@ class ScheduleViewController: BaseViewController {
         self.view.addGestureRecognizer(self.scopeGesture)
         self.mainView.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
         
-//        calendarSwipe()
-        //setGesture()
     }
     
     override internal func configureUI() {
@@ -90,16 +88,6 @@ class ScheduleViewController: BaseViewController {
         mainView.updownButton.addTarget(self, action: #selector(buttonEvent), for: .touchUpInside)
     }
     
-//    private func calendarSwipe() {
-//        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swipeEvent(_:)))
-//        swipeUp.direction = .up
-//        self.view.addGestureRecognizer(swipeUp)
-//
-//        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(swipeEvent(_:)))
-//        swipeDown.direction = .down
-//        self.view.addGestureRecognizer(swipeDown)
-//    }
-    
     func fetchRealm() {
         guard let date: Date = stringFormatToDate(string: headerString, formatStyle: .yyyyMMdd) else { return }
         guard let formatDate = localDate(date: date, formatStyle: .yyyyMMdd) else { return }
@@ -109,37 +97,7 @@ class ScheduleViewController: BaseViewController {
         mainView.tableView.reloadData()
     }
     
-//    func setGesture() {
-//        self.view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(panGestureHandler)))
-//    }
-//
-//    @objc func panGestureHandler(_ sender: UIPanGestureRecognizer) {
-//        viewTranslation = sender.translation(in: view)
-//        viewVelocity = sender.translation(in: view)
-//
-//        switch sender.state {
-//
-//        case .changed:
-//            if abs(viewVelocity.y) > abs(viewVelocity.x) {
-//                if viewVelocity.y < 0 {
-//                    UIView.animate(withDuration: 0.1) {
-////                        self.view.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
-//                        self.calendar.setScope(.week, animated: true)
-//                    }
-//                }
-//            }
-//        case .ended:
-//            if viewTranslation.y < 300 {
-//                UIView.animate(withDuration: 0.1) {
-//                    self.view.transform = .identity
-//                }
-//            } else {
-//                self.calendar.setScope(.month, animated: true)
-//            }
-//        default:
-//            break
-//        }
-//    }
+
     
     @objc private func swipeEvent(_ swipe: UISwipeGestureRecognizer) {
 
