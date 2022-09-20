@@ -12,9 +12,46 @@ import RealmSwift
 class DdayViewController: BaseViewController{
     lazy var mainView = DdayView()
     
+    let ddayRepository = DdayRepository()
+    
+    var ddayTasks: Results<Dday>! {
+        didSet {
+            mainView.tableView.reloadData()
+        }
+    }
+    
+    var pinned: Results<Dday>!{
+        didSet {
+            mainView.tableView.reloadData()
+            print("Tasks Changed")
+        }
+    }
+    
+    var unPinned: Results<Dday>!{
+        didSet {
+            mainView.tableView.reloadData()
+            print("Tasks Changed")
+        }
+    }
+    
+    func fetchRealm() {
+        ddayTasks = ddayRepository.fetch()
+        pinned = ddayRepository.fetchFilterPinned()
+        unPinned = ddayRepository.fetchFilterUnPinned()
+        
+        mainView.tableView.reloadData()
+    }
+    
+    var headerString = ""
+    
     override func loadView() {
         super.loadView()
         self.view = mainView
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchRealm()
     }
     
     override func viewDidLoad() {
@@ -24,47 +61,101 @@ class DdayViewController: BaseViewController{
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
         mainView.tableView.register(DdayTableViewCell.self, forCellReuseIdentifier: DdayTableViewCell.reuseIdentifier)
+        
+    }
+    
+    override func configureUI() {
+        guard let todayDate = localDate(date: Date(), formatStyle: .yyyyMMddEaHHmm) else { return }
+        headerString = dateFormatToString(date: todayDate, formatStyle: .yyyyMMdd)
     }
     
     override func setNavigationUI() {
-        if User.themeType {
-            navigationBarAppearance.backgroundColor = Constants.BaseColor.foreground
-            navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        } else {
-            navigationBarAppearance.backgroundColor = Constants.BaseColor.foregroundColor
-            navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        }
-
-       
+        UINavigationBar.appearance().isTranslucent = false
+      
+        let backBarButtonItem = UIBarButtonItem(title: "D-day", style: .plain, target: self, action: #selector(backButtonTapped))
+        navigationBarAppearance.backgroundColor = themeType().foregroundColor
+        navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
+        backBarButtonItem.tintColor = themeType().tintColor
+//        if User.themeType {
+//            navigationBarAppearance.backgroundColor = Constants.BaseColor.foreground
+//            navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//            backBarButtonItem.tintColor = .white
+//        } else {
+//            navigationBarAppearance.backgroundColor = Constants.BaseColor.foregroundColor
+//            navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+//            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+//            backBarButtonItem.tintColor = .black
+//        }
+        
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+        self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
     }
+    
+    @objc func backButtonTapped() {
+
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func writeItemTapped() {
+        let vc = DdayWriteViewController()
+        vc.edit = false
+        
+        let today = localDate(date: Date(), formatStyle: .yyyyMMddEaHHmm)
+        vc.dateData = today
+
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func deleteCell(schedule: Results<Dday>, index: IndexPath){
+        let task = ddayTasks[index.row].objectId
+        self.ddayRepository.deleteById(id: task)
+        self.fetchRealm()
+    }
+    
 }
 
 extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0{
-            return "고정된 D-day"
-        } else {
-            return "D-day"
+        switch section {
+        case 0:
+            return ""
+        case 1:
+            return pinned.count <= 0 ? "" : "즐겨찾는 D-day"
+        default:
+            return unPinned.count <= 0 ? "" : "Swipe 즐겨찾기로\n메인에서 확인해 보세요!"
         }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            let headerView = TableHeaderView()
+            headerView.sectionLabel.text = headerString
+            headerView.writeButton.addTarget(self, action: #selector(writeItemTapped), for: .touchUpInside)
+
+            return headerView
+        } else {
+            return nil
+        }
+       
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let header = view as? UITableViewHeaderFooterView {
-            if User.themeType {
-                header.textLabel?.textColor = .white
-            } else {
-                header.textLabel?.textColor = .black
-            }
-
+            header.textLabel?.textColor = themeType().tintColor
             header.contentView.backgroundColor = UIColor.clear
             header.textLabel?.font = .systemFont(ofSize: 20, weight: .black)
             header.sizeToFit()
@@ -72,17 +163,101 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0{
-            return 3
-        } else {
-            return 5
+        switch section {
+        case 1:
+            return pinned == nil ? 0 : pinned.count
+        case 2:
+            return unPinned == nil ? 0 : unPinned.count
+        default:
+            return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DdayTableViewCell.reuseIdentifier, for: indexPath) as? DdayTableViewCell else { return UITableViewCell() }
+        switch indexPath.section {
+        case 1:
+            let startDate = stringFormatToDate(string: pinned[indexPath.row].dateString, formatStyle: .yyyyMMdd)!
+            let daysCount = days(from: startDate)
+            
+            cell.countLabel.text = "\(daysCount)"
+            cell.titleLabel.text = pinned[indexPath.row].title
+            cell.dateLabel.text = pinned[indexPath.row].dateString
       
-        cell.titleLabel.text = "test"
-        return cell
+    
+            return cell
+        case 2:
+          
+            let startDate = stringFormatToDate(string: unPinned[indexPath.row].dateString, formatStyle: .yyyyMMdd)!
+            let daysCount = days(from: startDate)
+
+            cell.countLabel.text = "\(daysCount)"
+            
+            cell.titleLabel.text = unPinned[indexPath.row].title
+            cell.dateLabel.text = unPinned[indexPath.row].dateString
+//                dateCal(date: Date(), task: unPinned, tag: indexPath, label: cell.dateLabel)
+//                cell.contentLabel.attributedText = NSAttributedString(string: trimContentString(memo: unPinned, index: indexPath))
+            return cell
+        default:
+            return cell
+        }
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .normal, title: "삭제") { action, view, completionHandler in
+            
+            let alert = UIAlertController(title: nil, message: "삭제하시겠습니까?", preferredStyle: .alert)
+            
+            let okay = UIAlertAction(title: "삭제", style: .destructive) {_ in
+
+                self.deleteCell(schedule: self.ddayTasks, index: indexPath)
+            
+            }
+            
+            let cancel = UIAlertAction(title: "취소", style: .cancel)
+            alert.addAction(okay)
+            alert.addAction(cancel)
+            self.present(alert, animated: true)
+        }
+        delete.backgroundColor = .red
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        switch indexPath.section {
+        case 1:
+            
+            let pin = UIContextualAction(style: .normal, title: nil) { action, view, completionHandler in
+                self.ddayRepository.updatePin(record: self.pinned[indexPath.row])
+                self.fetchRealm()
+            }
+            
+            let image = self.pinned[indexPath.row].pin ? "star.fill" : "star"
+            pin.image = UIImage(systemName: image)
+            pin.backgroundColor = .orange
+            
+            return UISwipeActionsConfiguration(actions: [pin])
+            
+        default:
+            
+            let pin = UIContextualAction(style: .normal, title: nil) { action, view, completionHandler in
+                if self.pinned.count < 5 {
+                    self.ddayRepository.updatePin(record: self.unPinned[indexPath.row])
+                    self.fetchRealm()
+                } else {
+                    self.showAlert(title: "!", message: "즐겨찾기는 5개를 넘을 수 없습니다.", buttonTitle: "확인")
+                    return
+                }
+                
+                self.fetchRealm()
+            }
+            let image = self.unPinned[indexPath.row].pin ? "star.fill" : "star"
+            pin.image = UIImage(systemName: image)
+            pin.backgroundColor = .orange
+            
+            return UISwipeActionsConfiguration(actions: [pin])
+            
+        }
+    }
+    
 }

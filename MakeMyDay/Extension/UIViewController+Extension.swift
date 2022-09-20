@@ -11,6 +11,9 @@ extension UIViewController {
     enum FormatStyle {
         case yyyyMMddEaHHmm
         case yyyyMMdd
+        case yyyy
+        case MM
+        case dd
         case hhmm
     }
     
@@ -45,6 +48,12 @@ extension UIViewController {
            dateFormatter.dateFormat = "yyyy-MM-dd (E) a hh:mm"
         case .yyyyMMdd:
             dateFormatter.dateFormat = "yyyy-MM-dd"
+        case .yyyy:
+            dateFormatter.dateFormat = "yyyy"
+        case .MM:
+            dateFormatter.dateFormat = "MM"
+        case .dd:
+            dateFormatter.dateFormat = "dd"
         case .hhmm:
             dateFormatter.dateFormat = "a hh:mm"
         }
@@ -62,13 +71,19 @@ extension UIViewController {
            dateFormatter.dateFormat = "yyyy-MM-dd (E) a hh:mm"
         case .yyyyMMdd:
             dateFormatter.dateFormat = "yyyy-MM-dd"
+        case .yyyy:
+            dateFormatter.dateFormat = "yyyy"
+        case .MM:
+            dateFormatter.dateFormat = "MM"
+        case .dd:
+            dateFormatter.dateFormat = "dd"
         case .hhmm:
             dateFormatter.dateFormat = "a hh:mm"
         }
         
         let date = dateFormatter.date(from: string)
         return date
-    }
+    }    
     
     func localDate(date: Date, formatStyle: FormatStyle) -> Date? {
         
@@ -83,6 +98,12 @@ extension UIViewController {
            dateFormatter.dateFormat = "yyyy-MM-dd (E) a hh:mm"
         case .yyyyMMdd:
             dateFormatter.dateFormat = "yyyy-MM-dd"
+        case .yyyy:
+            dateFormatter.dateFormat = "yyyy"
+        case .MM:
+            dateFormatter.dateFormat = "MM"
+        case .dd:
+            dateFormatter.dateFormat = "dd"
         case .hhmm:
             dateFormatter.dateFormat = "a hh:mm"
         }
@@ -91,20 +112,6 @@ extension UIViewController {
         let today = dateFormatter.date(from: string)
         
         return today
-    }
-    
-    
-    func selectImage(imageType: ImageType) -> UIImage {
-        switch imageType {
-        case .bubbleBlackLong:
-            return UIImage(named: "bubble_black_long")!
-        case .bubbleBlackShort:
-            return UIImage(named: "bubble_black_short")!
-        case .bubbleWhiteLong:
-            return UIImage(named: "bubble_white_long")!
-        case .bubbleWhiteShort:
-            return UIImage(named: "bubble_white_short")!
-        }
     }
     
     func selectScript(scriptType: ScriptType) -> String {
@@ -120,6 +127,13 @@ extension UIViewController {
         case .ddayNil:
             return "디데이를 추가해보세요."
         }
+    }
+    
+    func days(from date: Date) -> Int {
+        let calendar = Calendar.current
+        let currentDate = localDate(date: Date(), formatStyle: .yyyyMMdd)
+        return calendar.dateComponents([.day], from: date, to: currentDate!).day! + 1
+     
     }
 
 }

@@ -37,25 +37,33 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate{
 
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.clear]
- 
         
-        if User.themeType {
-            self.tabBar.backgroundColor = .systemGray6
-            self.tabBar.tintColor = .white
-            self.tabBar.unselectedItemTintColor = .white
-            self.configureTab(vc: self.vc1, title: "Home", image: "home_white", selectedImage: "home_white_fill")
-            self.configureTab(vc: self.vc2, title: "Schedule", image: "schedule_white", selectedImage: "schedule_white_fill")
-            self.configureTab(vc: self.vc3, title: "D-day", image: "dday_white", selectedImage: "dday_white_fill")
-            self.configureTab(vc: self.vc4, title: "Setting", image: "setting_white", selectedImage: "setting_white_fill")
-        } else {
-            self.tabBar.backgroundColor = Constants.BaseColor.foregroundColor
-            self.tabBar.unselectedItemTintColor = .black
-            self.tabBar.tintColor = .black
-            self.configureTab(vc: self.vc1, title: "Home", image: "home_black", selectedImage: "home_black_fill")
-            self.configureTab(vc: self.vc2, title: "Schedule", image: "schedule_black", selectedImage: "schedule_black_fill")
-            self.configureTab(vc: self.vc3, title: "D-day", image: "dday_black", selectedImage: "dday_black_fill")
-            self.configureTab(vc: self.vc4, title: "Setting", image: "setting_black", selectedImage: "setting_black_fill")
-        }
+        
+        self.tabBar.backgroundColor = themeType().backgroundColor
+        self.tabBar.tintColor = themeType().tintColor
+        self.tabBar.unselectedItemTintColor = themeType().tintColor
+        configureTab(vc: vc1, title: "Home", image: themeType().tabBarHomeItem, selectedImage: themeType().tabBarHomeItemSelected)
+        configureTab(vc: vc2, title: "Schedule", image: themeType().tabBarScheduleItem, selectedImage: themeType().tabBarScheduleItemSelected)
+        configureTab(vc: vc3, title: "D-day", image: themeType().tabBarDdayItem, selectedImage: themeType().tabBarDdayItemSelected)
+        configureTab(vc: vc4, title: "Setting", image: themeType().tabBarSettingItem, selectedImage: themeType().tabBarSettingItemSelected)
+        
+//        if User.themeType {
+//            self.tabBar.backgroundColor = .systemGray6
+//            self.tabBar.tintColor = .white
+//            self.tabBar.unselectedItemTintColor = .white
+//            self.configureTab(vc: self.vc1, title: "Home", image: "home_white", selectedImage: "home_white_fill")
+//            self.configureTab(vc: self.vc2, title: "Schedule", image: "schedule_white", selectedImage: "schedule_white_fill")
+//            self.configureTab(vc: self.vc3, title: "D-day", image: "dday_white", selectedImage: "dday_white_fill")
+//            self.configureTab(vc: self.vc4, title: "Setting", image: "setting_white", selectedImage: "setting_white_fill")
+//        } else {
+//            self.tabBar.backgroundColor = Constants.BaseColor.foregroundColor
+//            self.tabBar.unselectedItemTintColor = .black
+//            self.tabBar.tintColor = .black
+//            self.configureTab(vc: self.vc1, title: "Home", image: "home_black", selectedImage: "home_black_fill")
+//            self.configureTab(vc: self.vc2, title: "Schedule", image: "schedule_black", selectedImage: "schedule_black_fill")
+//            self.configureTab(vc: self.vc3, title: "D-day", image: "dday_black", selectedImage: "dday_black_fill")
+//            self.configureTab(vc: self.vc4, title: "Setting", image: "setting_black", selectedImage: "setting_black_fill")
+//        }
         
         tabBar.isTranslucent = false
         
@@ -70,9 +78,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate{
  
     }
     
-    func configureTab(vc: UIViewController, title: String, image: String, selectedImage: String){
+    func configureTab(vc: UIViewController, title: String, image: UIImage, selectedImage: UIImage){
         vc.navigationItem.title = title
-        vc.tabBarItem = UITabBarItem(title: title, image: UIImage(named: image), selectedImage: UIImage(named: selectedImage))
+        vc.tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
         vc.navigationItem.largeTitleDisplayMode = .always
     }
     

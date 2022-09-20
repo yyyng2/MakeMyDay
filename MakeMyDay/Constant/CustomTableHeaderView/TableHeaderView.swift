@@ -1,5 +1,5 @@
 //
-//  ScheduleTableHeaderView.swift
+//  TableHeaderView.swift
 //  MakeMyDay
 //
 //  Created by Y on 2022/09/18.
@@ -7,27 +7,30 @@
 
 import UIKit
 
-class HeaderView: BaseView {
+class TableHeaderView: BaseView {
     let writeButton: UIButton = {
        let button = UIButton()
         button.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
         button.backgroundColor = .clear
-        if User.themeType {
-            button.tintColor = .white
-        } else {
-            button.tintColor = .black
-        }
+        button.tintColor = themeType().tintColor
+//        if User.themeType {
+//            button.tintColor = .white
+//        } else {
+//            button.tintColor = .black
+//        }
         return button
     }()
     
     let sectionLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .black)
-        if User.themeType {
-            label.textColor = .white
-        } else {
-            label.textColor = .black
-        }
+        label.textAlignment = .center
+        label.textColor = themeType().tintColor
+//        if User.themeType {
+//            label.textColor = .white
+//        } else {
+//            label.textColor = .black
+//        }
         return label
     }()
     
@@ -43,7 +46,7 @@ class HeaderView: BaseView {
         sectionLabel.snp.makeConstraints { make in
             make.centerY.equalTo(safeAreaLayoutGuide)
             make.centerX.equalTo(safeAreaLayoutGuide)
-            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.8)
+            make.width.equalTo(UIScreen.main.bounds.width)
             make.height.equalTo(80)
         }
         

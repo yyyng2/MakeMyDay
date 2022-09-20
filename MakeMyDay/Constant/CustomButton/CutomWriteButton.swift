@@ -1,18 +1,17 @@
 //
-//  BackgroundView.swift
+//  CutomWriteButton.swift
 //  MakeMyDay
 //
-//  Created by Y on 2022/09/14.
+//  Created by Y on 2022/09/20.
 //
 
 import UIKit
 
-class BackgroundImageView: UIImageView{
+class CustomWriteButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        contentMode = .scaleAspectFill
-        image = themeType().backgroundImage
+        backgroundColor = UIColor.clear
+        tintColor = themeType().tintColor
     }
     
     required init?(coder: NSCoder) {

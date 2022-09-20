@@ -25,14 +25,18 @@ class ScheduleWriteView: BaseView {
     let dateLabel: CustomLabel = {
         let label = CustomLabel()
         label.textAlignment = .center
+        label.layer.borderWidth = 3
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 10
+        label.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+
         label.font = .boldSystemFont(ofSize: 16)
-        if User.themeType {
-            label.layer.borderColor = UIColor.white.cgColor
-            label.layer.borderWidth = 1
-        } else {
-            label.layer.borderColor = UIColor.black.cgColor
-            label.layer.borderWidth = 1
-        }
+        label.layer.borderColor = themeType().whiteBlackBorderColor
+//        if User.themeType {
+//            label.layer.borderColor = UIColor.white.cgColor
+//        } else {
+//            label.layer.borderColor = UIColor.black.cgColor
+//        }
       
         return label
     }()
@@ -47,11 +51,19 @@ class ScheduleWriteView: BaseView {
     let scheduleTextView: UITextView = {
        let view = UITextView()
         view.backgroundColor = .clear
-        if User.themeType {
-            view.textColor = .white
-        } else {
-            view.textColor = .black
-        }
+        view.layer.borderWidth = 3
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
+        view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        view.textColor = themeType().tintColor
+        view.layer.borderColor = themeType().whiteBlackBorderColor
+//        if User.themeType {
+//            view.textColor = .white
+//            view.layer.borderColor = UIColor.white.cgColor
+//        } else {
+//            view.textColor = .black
+//            view.layer.borderColor = UIColor.black.cgColor
+//        }
         view.becomeFirstResponder()
         view.font = .boldSystemFont(ofSize: 20)
         return view
@@ -77,23 +89,24 @@ class ScheduleWriteView: BaseView {
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(infoeLabel.snp.bottom).offset(16)
+            make.top.equalTo(infoeLabel.snp.bottom).offset(8)
             make.centerX.equalTo(safeAreaLayoutGuide)
             make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.9)
-            make.height.equalTo(20)
+            make.height.equalTo(28)
         }
         
         dateButton.snp.makeConstraints { make in
             make.top.equalTo(dateLabel.snp.top)
             make.centerX.equalTo(safeAreaLayoutGuide)
             make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.9)
-            make.height.equalTo(20)
+            make.height.equalTo(28)
         }
         
         scheduleTextView.snp.makeConstraints { make in
-            make.top.left.equalTo(dateLabel).offset(20)
-            make.right.equalTo(safeAreaLayoutGuide).offset(-20)
-            make.height.equalTo(safeAreaLayoutGuide).multipliedBy(0.55)
+            make.top.equalTo(dateLabel.snp.bottom).offset(-1)
+            make.leading.equalTo(dateLabel.snp.leading)
+            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.9)
+            make.height.equalTo(safeAreaLayoutGuide).multipliedBy(0.43)
         }
      
 

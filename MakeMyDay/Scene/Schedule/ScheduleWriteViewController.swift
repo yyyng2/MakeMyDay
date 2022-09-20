@@ -70,16 +70,18 @@ class ScheduleWriteViewController: BaseViewController {
     
     override func setNavigationUI() {
         UINavigationBar.appearance().isTranslucent = false
-        
-        if User.themeType {
-            navigationBarAppearance.backgroundColor = Constants.BaseColor.foreground
-            navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        } else {
-            navigationBarAppearance.backgroundColor = Constants.BaseColor.foregroundColor
-            navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        }
+        navigationBarAppearance.backgroundColor = themeType().foregroundColor
+        navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
+//        if User.themeType {
+//            navigationBarAppearance.backgroundColor = Constants.BaseColor.foreground
+//            navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        } else {
+//            navigationBarAppearance.backgroundColor = Constants.BaseColor.foregroundColor
+//            navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+//            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+//        }
         
         self.navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
@@ -91,14 +93,15 @@ class ScheduleWriteViewController: BaseViewController {
     func setNavigationItem() {
         let doneButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(doneButtonTapped))
         let shareButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(shareButtonTapped))
-        
-        if User.themeType {
-            doneButtonItem.tintColor = .white
-            shareButtonItem.tintColor = .white
-        } else {
-            doneButtonItem.tintColor = .black
-            shareButtonItem.tintColor = .black
-        }
+        doneButtonItem.tintColor = themeType().tintColor
+        shareButtonItem.tintColor = themeType().tintColor
+//        if User.themeType {
+//            doneButtonItem.tintColor = .white
+//            shareButtonItem.tintColor = .white
+//        } else {
+//            doneButtonItem.tintColor = .black
+//            shareButtonItem.tintColor = .black
+//        }
         
         self.navigationItem.rightBarButtonItems = [doneButtonItem, shareButtonItem]
     }
@@ -108,10 +111,11 @@ class ScheduleWriteViewController: BaseViewController {
     }
     
     @objc func dateButtonTapped() {
-        let vc = ScheduleDatePickerViewController()
+        let vc = DatePickerViewController()
         vc.delegate = self
         guard let text = mainView.dateLabel.text else { return }
         vc.selectDate = stringFormatToDate(string: text, formatStyle: .yyyyMMddEaHHmm)
+        User.pickerType = true
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true)
     }
@@ -127,8 +131,6 @@ class ScheduleWriteViewController: BaseViewController {
         print(#function)
         guard let date = dateData else { return }
         guard let text = mainView.dateLabel.text else { return }
-        guard let dateString = stringFormatToDate(string: text, formatStyle: .yyyyMMddEaHHmm) else { return }
-        //let stringDate = dateFormatToString(date: dateString, formatStyle: .yyyyMMddEaHHmm)
         
         guard let data = localDate(date: date, formatStyle: .yyyyMMddEaHHmm) else { return }
 

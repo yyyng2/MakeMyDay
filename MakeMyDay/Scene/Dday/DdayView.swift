@@ -14,15 +14,9 @@ class DdayView: BaseView {
         return view
     }()
     
-    let writeButton: UIButton = {
-       let button = UIButton()
+    let writeButton: CustomWriteButton = {
+        let button = CustomWriteButton(frame: .zero)
         button.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
-        button.backgroundColor = .clear
-        if User.themeType {
-            button.tintColor = .white
-        } else {
-            button.tintColor = .black
-        }
         return button
     }()
     

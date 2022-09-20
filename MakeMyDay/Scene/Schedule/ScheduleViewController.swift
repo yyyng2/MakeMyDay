@@ -126,8 +126,7 @@ class ScheduleViewController: BaseViewController {
             vc.dateData = selectDay
         } else {
             let today = localDate(date: Date(), formatStyle: .yyyyMMddEaHHmm)
-            let date = today
-            vc.dateData = date
+            vc.dateData = today
         }
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -142,18 +141,10 @@ class ScheduleViewController: BaseViewController {
         UINavigationBar.appearance().isTranslucent = false
       
         let backBarButtonItem = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(backButtonTapped))
-      
-        if User.themeType {
-            navigationBarAppearance.backgroundColor = Constants.BaseColor.foreground
-            navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-            backBarButtonItem.tintColor = .white
-        } else {
-            navigationBarAppearance.backgroundColor = Constants.BaseColor.foregroundColor
-            navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-            backBarButtonItem.tintColor = .black
-        }
+        navigationBarAppearance.backgroundColor = themeType().foregroundColor
+        navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
+        backBarButtonItem.tintColor = themeType().tintColor
         
         self.navigationItem.backBarButtonItem = backBarButtonItem
         self.navigationItem.largeTitleDisplayMode = .always
@@ -165,6 +156,11 @@ class ScheduleViewController: BaseViewController {
         let task = scheduleTasks[index.row].objectId
         self.scheduleRepository.deleteById(id: task)
         self.fetchRealm()
+    }
+    
+    @objc func backButtonTapped() {
+
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
@@ -192,10 +188,7 @@ extension ScheduleViewController: FSCalendarDelegate, FSCalendarDataSource{
 
     }
     
-    @objc func backButtonTapped() {
-
-        self.navigationController?.popViewController(animated: true)
-    }
+   
     
     func moveToDate(date: Date) {
         calendar.select(date, scrollToDate: true)
@@ -216,7 +209,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let headerView = HeaderView()
+        let headerView = TableHeaderView()
         headerView.sectionLabel.text = headerString
         headerView.writeButton.addTarget(self, action: #selector(writeItemTapped), for: .touchUpInside)
 
@@ -230,12 +223,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let header = view as? UITableViewHeaderFooterView {
-            if User.themeType {
-                header.textLabel?.textColor = .white
-            } else {
-                header.textLabel?.textColor = .black
-            }
-
+            header.textLabel?.textColor = themeType().tintColor
             header.contentView.backgroundColor = UIColor.clear
             header.textLabel?.font = .systemFont(ofSize: 20, weight: .black)
             header.sizeToFit()
@@ -248,11 +236,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.reuseIdentifier, for: indexPath) as? ScheduleTableViewCell else { return UITableViewCell() }
-        if User.themeType {
-            cell.backgroundColor = Constants.BaseColor.foreground
-        } else {
-            cell.backgroundColor = Constants.BaseColor.foregroundColor
-        }
+        cell.backgroundColor = themeType().foregroundColor
       
         let string = dateFormatToString(date: scheduleTasks[indexPath.row].date, formatStyle: .hhmm)
         cell.titleLabel.text = scheduleTasks[indexPath.row].title

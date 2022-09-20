@@ -11,10 +11,12 @@ protocol DatePickerDataProtocol: AnyObject {
     func updateDate(_ date: Date)
 }
 
-class ScheduleDatePickerViewController: BaseViewController {
-    let mainView = ScheduleDatePickerView()
+class DatePickerViewController: BaseViewController {
+    let mainView = DatePickerView()
     
     weak var delegate: DatePickerDataProtocol?
+    
+    var schedule = false
     
     var date: Date? = nil
     
@@ -47,7 +49,11 @@ class ScheduleDatePickerViewController: BaseViewController {
         mainView.datePicker.setDate(date, animated: true)
     }
     override func configureUI() {
-    
+        if User.pickerType {
+            mainView.datePicker.datePickerMode = .dateAndTime
+        } else {
+            mainView.datePicker.datePickerMode = .date
+        }
     }
     
     func configureButton() {
@@ -87,7 +93,7 @@ class ScheduleDatePickerViewController: BaseViewController {
         
     
 }
-extension ScheduleDatePickerViewController: UIGestureRecognizerDelegate{
+extension DatePickerViewController: UIGestureRecognizerDelegate{
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive event: UIEvent) -> Bool {
         self.dismiss(animated: false)
         return true

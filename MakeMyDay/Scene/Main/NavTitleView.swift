@@ -10,11 +10,12 @@ import UIKit
 class NavTitleView: BaseView{
     let profileView: CustomImageView = {
         let view = CustomImageView(frame: .zero)
-        if User.themeType {
-            view.image = UIImage(named: "day_white.png")
-        } else {
-            view.image = UIImage(named: "day_color.png")
-        }
+        view.image = themeType().profileImage
+//        if User.themeType {
+//            view.image = UIImage(named: "day_white.png")
+//        } else {
+//            view.image = UIImage(named: "day_color.png")
+//        }
  
         view.layer.masksToBounds = true
         view.clipsToBounds = true
@@ -24,11 +25,12 @@ class NavTitleView: BaseView{
     let profileLabel: CustomLabel = {
         let label = CustomLabel(frame: .zero)
         label.text = "D"
-        if User.themeType {
-            label.textColor = .white
-        } else {
-            label.textColor = .black
-        }
+        label.textColor = themeType().tintColor
+//        if User.themeType {
+//            label.textColor = .white
+//        } else {
+//            label.textColor = .black
+//        }
 
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 12)

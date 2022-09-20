@@ -32,12 +32,16 @@ import UIKit
 enum keyEnum: String {
     case isAppFirstLaunch = "isAppFirstLaunch"
     case themeType = "theme"
+    case pickerType = "picker"
 }
 
 struct User {
     @UserDefaultsHelper(key: keyEnum.isAppFirstLaunch.rawValue, defaultValue: true)
     static var isAppFirstLaunch: Bool
     
-    @UserDefaultsHelper(key: keyEnum.themeType.rawValue, defaultValue: true)
-    static var themeType: Bool
+    @UserDefaultsHelper(key: keyEnum.themeType.rawValue, defaultValue: 0)
+    static var themeType: Int
+    
+    @UserDefaultsHelper(key: keyEnum.pickerType.rawValue, defaultValue: true)
+    static var pickerType: Bool
 }

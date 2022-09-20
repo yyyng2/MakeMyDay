@@ -48,7 +48,7 @@ final class DdayRepository: DdayRepositoryType {
     }
     
     func fetchFilter(text: String) -> Results<Dday> {
-        return localRealm.objects(Dday.self).filter("allText CONTAINS[c] '\(text)'").sorted(byKeyPath: "date", ascending: false)
+        return localRealm.objects(Dday.self).filter("title CONTAINS[c] '\(text)'").sorted(byKeyPath: "date", ascending: false)
     }
     
     func fetchFilterPinned() -> Results<Dday> {
@@ -109,7 +109,7 @@ final class DdayRepository: DdayRepositoryType {
     }
     
     func deleteEmptyRecord() {
-        let emptyRealm = localRealm.objects(Dday.self).filter("allText == ''")
+        let emptyRealm = localRealm.objects(Dday.self).filter("title == ''")
         do {
             try localRealm.write {
                 localRealm.delete(emptyRealm)

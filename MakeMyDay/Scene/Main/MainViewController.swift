@@ -35,6 +35,13 @@ class MainViewController: BaseViewController {
         }
     }
     
+    var pinned: Results<Dday>!{
+        didSet {
+            mainView.tableView.reloadData()
+            print("Tasks Changed")
+        }
+    }
+    
     override func loadView() {
         super.loadView()
         self.view = self.mainView
@@ -54,6 +61,7 @@ class MainViewController: BaseViewController {
         mainView.tableView.dataSource = self
         mainView.tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.reuseIdentifier)
         mainView.tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: ScheduleTableViewCell.reuseIdentifier)
+        mainView.tableView.register(DdayTableViewCell.self, forCellReuseIdentifier: DdayTableViewCell.reuseIdentifier)
         
         print(Date())
         
@@ -62,12 +70,12 @@ class MainViewController: BaseViewController {
     override func setNavigationUI() {
         
         navigationItem.titleView = navTitleView
-        
-        if User.themeType {
-            navigationBarAppearance.backgroundColor = .systemGray6
-        } else {
-            navigationBarAppearance.backgroundColor = Constants.BaseColor.foregroundColor
-        }
+        navigationBarAppearance.backgroundColor = themeType().backgroundColor
+//        if User.themeType {
+//            navigationBarAppearance.backgroundColor = .systemGray6
+//        } else {
+//            navigationBarAppearance.backgroundColor = Constants.BaseColor.foregroundColor
+//        }
      
         navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
@@ -90,7 +98,8 @@ class MainViewController: BaseViewController {
 //        guard let todayDate = localDate(date: Date(), formatStyle: .yyyyMMdd) else { return }
         let today = dateFormatToString(date: Date(), formatStyle: .yyyyMMdd)
         scheduleTasks = scheduleRepository.fetchFilterDateString(formatDate: today)
-        ddayTasks = ddayRepository.fetchFilterDateString(formatDate: today)
+        ddayTasks = ddayRepository.fetch()
+        pinned = ddayRepository.fetchFilterPinned()
         
         mainView.tableView.reloadData()
      
@@ -107,14 +116,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
+        switch indexPath.section {
+        case 0:
             return 60
-        } else if indexPath.section == 1 {
+        case 1:
             return 60
-        } else if indexPath.section == 3 {
+        case 3:
             return 60
+        default:
+            return 80
         }
-        return 80
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -122,32 +133,31 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if section == 0 {
+        switch section {
+        case 0:
             return 1
-        } else if section == 1 {
+        case 1:
             return 1
-        } else if section == 2 {
+        case 2:
             return scheduleTasks == nil ? 0 : scheduleTasks.count
-        } else if section == 3 {
+        case 3:
             return 1
-        } else if section == 4 {
+        default:
             return ddayTasks == nil ? 0 : ddayTasks.count
         }
-        return 0
+     
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.section == 0 {
+        switch indexPath.section {
+        case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.reuseIdentifier, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
             cell.selectionStyle = .none
 
             cell.titleLabel.text = selectScript(scriptType: .hi)
             
             return cell
-            
-        } else if indexPath.section == 1 {
+        case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.reuseIdentifier, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
             cell.selectionStyle = .none
             
@@ -156,32 +166,29 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
             } else {
                 cell.titleLabel.text = selectScript(scriptType: .scheduleValue)
             }
-
  
             return cell
-            
-        } else if indexPath.section == 2 {
-            
+        case 2:
             guard let scheduleCell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.reuseIdentifier, for: indexPath) as? ScheduleTableViewCell else { return UITableViewCell() }
             scheduleCell.selectionStyle = .none
             scheduleCell.backgroundColor = .clear
             
-            if User.themeType {
-                scheduleCell.backgroundImageView.image = selectImage(imageType: .bubbleBlackLong)
-            } else {
-                scheduleCell.backgroundImageView.image = selectImage(imageType: .bubbleWhiteLong)
-            }
+            scheduleCell.backgroundImageView.image = themeType().bubbleLong
+//            if User.themeType {
+//                scheduleCell.backgroundImageView.image = selectImage(imageType: .bubbleBlackLong)
+//            } else {
+//                scheduleCell.backgroundImageView.image = selectImage(imageType: .bubbleWhiteLong)
+//            }
             
             let string = dateFormatToString(date: scheduleTasks[indexPath.row].date, formatStyle: .hhmm)
             scheduleCell.titleLabel.text = scheduleTasks[indexPath.row].title
             scheduleCell.titleLabel.textAlignment = .center
             scheduleCell.dateLabel.text = string
             scheduleCell.dateLabel.textAlignment = .center
+            scheduleCell.dateLabel.textColor = .systemGray6
             
             return scheduleCell
-            
-        } else if indexPath.section == 3 {
-            
+        case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.reuseIdentifier, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
             
             cell.selectionStyle = .none
@@ -194,25 +201,26 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
 
             
             return cell
-            
-        } else if indexPath.section == 4 {
-            
-            guard let ddayCell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.reuseIdentifier, for: indexPath) as? ScheduleTableViewCell else { return UITableViewCell() }
+        default:
+            guard let ddayCell = tableView.dequeueReusableCell(withIdentifier: DdayTableViewCell.reuseIdentifier, for: indexPath) as? DdayTableViewCell else { return UITableViewCell() }
             ddayCell.selectionStyle = .none
             ddayCell.backgroundColor = .clear
             
-            if User.themeType {
-                ddayCell.backgroundImageView.image = selectImage(imageType: .bubbleBlackLong)
-            } else {
-                ddayCell.backgroundImageView.image = selectImage(imageType: .bubbleWhiteLong)
-            }
-//            ddayCell.titleLabel.text = ddayTasks[indexPath.row].title
-//            ddayCell.dateLabel.text = "\(ddayTasks[indexPath.row].date)"
+            ddayCell.backgroundImageView.image = themeType().bubbleLong
+            ddayCell.titleLabel.text = ddayTasks[indexPath.row].title
+            ddayCell.titleLabel.textAlignment = .center
+            ddayCell.dateLabel.text = "\(ddayTasks[indexPath.row].dateString)"
+            ddayCell.dateLabel.textColor = .systemGray6
+            
+            let startDate = stringFormatToDate(string: ddayTasks[indexPath.row].dateString, formatStyle: .yyyyMMdd)!
+            let daysCount = days(from: startDate)
+
+            ddayCell.countLabel.text = "\(daysCount)"
+            ddayCell.countLabel.textColor = .green
+            
             return ddayCell
             
         }
-       
-        return UITableViewCell()
        
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ScheduleDatePickerView: BaseView {
+class DatePickerView: BaseView {
     let backgroundView: BaseView = {
         let view = BaseView()
         view.backgroundColor = .clear
@@ -18,9 +18,14 @@ class ScheduleDatePickerView: BaseView {
         let picker = UIDatePicker()
         if #available(iOS 14.0, *) {
             picker.preferredDatePickerStyle = .inline
+        
          } else {
              picker.preferredDatePickerStyle = .automatic
          }
+        picker.layer.cornerRadius = 10
+        picker.layer.borderColor = UIColor.white.cgColor
+        picker.layer.borderWidth = 1
+        picker.clipsToBounds = true
         picker.locale = Locale(identifier: "ko_KR")
         picker.calendar.locale = Locale(identifier: "ko_KR")
         picker.tintColor = UIColor.green

@@ -18,12 +18,8 @@ class CustomLabel: UILabel{
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(){
-        if User.themeType {
-            textColor = .white
-        } else {
-            textColor = .black
-        }
+    func configure() {
+        textColor = themeType().tintColor
     }
     
 }

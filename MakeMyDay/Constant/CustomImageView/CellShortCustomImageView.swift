@@ -14,14 +14,14 @@ class CellShortCustomImageView: UIImageView {
         case bubbleWhiteShort
     }
     
-    func selectImage(imageType: ImageType) -> UIImage {
-        switch imageType {
-        case .bubbleBlackShort:
-            return UIImage(named: "bubble_black_short")!
-        case .bubbleWhiteShort:
-            return UIImage(named: "bubble_white_short")!
-        }
-    }
+//    func selectImage(imageType: ImageType) -> UIImage {
+//        switch imageType {
+//        case .bubbleBlackShort:
+//            return UIImage(named: "bubble_black_short")!
+//        case .bubbleWhiteShort:
+//            return UIImage(named: "bubble_white_short")!
+//        }
+//    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,11 +36,7 @@ class CellShortCustomImageView: UIImageView {
     }
     
     func configureBackgroundImage() {
-        if User.themeType {
-            image = selectImage(imageType: .bubbleBlackShort)
-        } else {
-            image = selectImage(imageType: .bubbleWhiteShort)
-        }
+        image = themeType().bubbleShort
     }
     
 }
