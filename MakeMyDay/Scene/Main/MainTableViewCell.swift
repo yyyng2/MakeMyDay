@@ -16,21 +16,16 @@ class MainTableViewCell: BaseTableViewCell{
     
     let titleLabel: CustomLabel = {
        let label = CustomLabel()
-        label.font = .boldSystemFont(ofSize: 20)
+        label.font = .boldSystemFont(ofSize: 16)
         return label
     }()
-    let dateLabel: UILabel = {
-       let label = UILabel()
-        label.textColor = .systemGray3
-        label.font = .boldSystemFont(ofSize: 12)
-        return label
-    }()
+   
     
     override func configure() {
         
         backgroundColor = .clear
        
-        [backgroundImageView, titleLabel, dateLabel].forEach {
+        [backgroundImageView, titleLabel].forEach {
             contentView.addSubview($0)
         }
 
@@ -42,13 +37,10 @@ class MainTableViewCell: BaseTableViewCell{
         }
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(safeAreaLayoutGuide)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(35)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(40)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-20)
         }
-        dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(8)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(35)
-        }
+      
     }
     
 

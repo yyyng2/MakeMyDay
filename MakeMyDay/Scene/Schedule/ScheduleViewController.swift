@@ -92,12 +92,12 @@ class ScheduleViewController: BaseViewController {
         guard let date: Date = stringFormatToDate(string: headerString, formatStyle: .yyyyMMdd) else { return }
         guard let formatDate = localDate(date: date, formatStyle: .yyyyMMdd) else { return }
         let selectDate = dateFormatToString(date: formatDate, formatStyle: .yyyyMMdd)
-        scheduleTasks = scheduleRepository.fetchFilterDateString(formatDate: selectDate)
+        scheduleTasks = scheduleRepository.fetchFilterDateString(formatString: selectDate)
         
         mainView.tableView.reloadData()
+        
+        mainView.calendar.reloadData()
     }
-    
-
     
     @objc private func swipeEvent(_ swipe: UISwipeGestureRecognizer) {
 
@@ -129,20 +129,19 @@ class ScheduleViewController: BaseViewController {
             vc.dateData = today
         }
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func configureBackButton() {
- 
-    }
+
     
     override func setNavigationUI() {
         UINavigationBar.appearance().isTranslucent = false
       
         let backBarButtonItem = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(backButtonTapped))
         navigationBarAppearance.backgroundColor = themeType().foregroundColor
-        navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
+        
+      
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
         backBarButtonItem.tintColor = themeType().tintColor
         
@@ -161,6 +160,12 @@ class ScheduleViewController: BaseViewController {
     @objc func backButtonTapped() {
 
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func dateCount(date: Date) -> Int {
+        let formatDate = dateFormatToString(date: date, formatStyle: .yyyyMMdd)
+        let result = scheduleRepository.fetchFilterDateString(formatString: formatDate)
+        return result.count
     }
     
 }
@@ -197,6 +202,14 @@ extension ScheduleViewController: FSCalendarDelegate, FSCalendarDataSource{
         fetchRealm()
         print(scheduleTasks[0])
         mainView.tableView.reloadData()
+    }
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        if dateCount(date: date) == 0 {
+            return 0
+        } else {
+            return 1
+        }
     }
     
 }

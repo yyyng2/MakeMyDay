@@ -11,11 +11,6 @@ class NavTitleView: BaseView{
     let profileView: CustomImageView = {
         let view = CustomImageView(frame: .zero)
         view.image = themeType().profileImage
-//        if User.themeType {
-//            view.image = UIImage(named: "day_white.png")
-//        } else {
-//            view.image = UIImage(named: "day_color.png")
-//        }
  
         view.layer.masksToBounds = true
         view.clipsToBounds = true
@@ -26,11 +21,6 @@ class NavTitleView: BaseView{
         let label = CustomLabel(frame: .zero)
         label.text = "D"
         label.textColor = themeType().tintColor
-//        if User.themeType {
-//            label.textColor = .white
-//        } else {
-//            label.textColor = .black
-//        }
 
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 12)
@@ -53,14 +43,14 @@ class NavTitleView: BaseView{
     
     override func setConstraints() {
         profileView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.15)
+            make.centerX.equalTo(safeAreaLayoutGuide)
+            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.1)
             make.height.equalTo(profileView.snp.width)
             make.top.equalToSuperview()
         }
         profileLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview()
+            make.centerX.equalTo(safeAreaLayoutGuide)
+            make.width.equalTo(safeAreaLayoutGuide)
             make.top.equalTo(profileView.snp.bottom).offset(8)
         }
     }

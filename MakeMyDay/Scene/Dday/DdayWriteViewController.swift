@@ -27,12 +27,26 @@ class DdayWriteViewController: BaseViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
         configureButton()
         setNavigationItem()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        edit = false
+    }
+    
     override func configureUI() {
-        mainView.dateLabel.text = dateFormatToString(date: Date(), formatStyle: .yyyyMMdd)
+        if edit == true {
+            guard let realmDate = dday?.date else { return }
+            mainView.dateLabel.text = dateFormatToString(date: realmDate, formatStyle: .yyyyMMdd)
+            mainView.titleTextField.text = dday?.title
+            mainView.dayPlusSwitchButton.isOn = dday!.dayPlus
+        } else {
+            mainView.dateLabel.text = dateFormatToString(date: Date(), formatStyle: .yyyyMMdd)
+        }
+       
     }
     
     func configureButton() {
@@ -42,33 +56,20 @@ class DdayWriteViewController: BaseViewController{
     override func setNavigationUI() {
         UINavigationBar.appearance().isTranslucent = false
         navigationBarAppearance.backgroundColor = themeType().foregroundColor
-        navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
+       
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
-//        if User.themeType {
-//            navigationBarAppearance.backgroundColor = Constants.BaseColor.foreground
-//            navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-//            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-//        } else {
-//            navigationBarAppearance.backgroundColor = Constants.BaseColor.foregroundColor
-//            navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-//            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-//        }
         
         self.navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         
     }
     
     func setNavigationItem() {
         let doneButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(doneButtonTapped))
         doneButtonItem.tintColor = themeType().tintColor
-//        if User.themeType {
-//            doneButtonItem.tintColor = .white
-//        } else {
-//            doneButtonItem.tintColor = .black
-//        }
+
         
         self.navigationItem.rightBarButtonItems = [doneButtonItem]
     }
@@ -76,28 +77,33 @@ class DdayWriteViewController: BaseViewController{
     @objc func doneButtonTapped() {
         saveFunction()
         self.delegate?.updateDate(dday!.date)
- 
+
         self.navigationController?.popViewController(animated: true)
     }
     
     func saveFunction(){
         print(#function)
-        guard let date = dateData else { return }
+    
+        print("지운쨩")
         guard let text = mainView.dateLabel.text else { return }
-        
-        guard let data = localDate(date: date, formatStyle: .yyyyMMddEaHHmm) else { return }
-        
+        print(0)
+      
+        print(1)
         guard let title = mainView.titleTextField.text else { return }
 
-        let task = Dday(title: title, date: data, dateString: text)
+        let dayPlus = mainView.dayPlusSwitchButton.isOn
 
         if edit == true {
+            dateData = dday?.date
+            guard let data = localDate(date: dateData!, formatStyle: .yyyyMMdd) else { return }
             let id = dday?.objectId
-         
+            let task = Dday(title: title, date: data, dateString: text, dayPlus: dayPlus)
             ddayRepository.updateRecord(id: id!, record: task)
-         
+            
         } else {
- 
+            guard let date = dateData else { return }
+            guard let data = localDate(date: date, formatStyle: .yyyyMMdd) else { return }
+            let task = Dday(title: title, date: data, dateString: text, dayPlus: false)
             ddayRepository.addRecord(record: task)
      
          
@@ -119,7 +125,7 @@ class DdayWriteViewController: BaseViewController{
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true)
     }
-    
+
 }
 extension DdayWriteViewController: DatePickerDataProtocol {
     func updateDate(_ date: Date) {

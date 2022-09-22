@@ -50,7 +50,7 @@ class PopupOneViewController: BaseViewController {
             showAlert(title: "", message: "테마를 선택해주세요!", buttonTitle: "확인")
         } else if mainView.leftButton.isSelected {
             User.themeType = 0
-            transition(vc, transitionStyle: .presentFullNavigation)
+            transition(vc, transitionStyle: .presentFullNavigation) 
         } else {
             User.themeType = 1
             transition(vc, transitionStyle: .presentFullNavigation)

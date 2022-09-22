@@ -28,9 +28,9 @@ class DdayTableViewCell: BaseTableViewCell{
     
     let countLabel: CustomLabel = {
        let label = CustomLabel()
-        label.textColor = .red
+        label.textColor = themeType().countTextColor
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 20)
+        label.font = .boldSystemFont(ofSize: 16)
         return label
     }()
     
@@ -60,7 +60,7 @@ class DdayTableViewCell: BaseTableViewCell{
         }
         countLabel.snp.makeConstraints { make in
             make.centerY.equalTo(safeAreaLayoutGuide)
-            make.trailing.equalTo(-10)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-10)
             make.height.equalTo(safeAreaLayoutGuide)
             make.width.equalTo(countLabel.snp.height).multipliedBy(2)
         }

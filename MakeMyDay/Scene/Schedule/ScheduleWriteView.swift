@@ -25,18 +25,10 @@ class ScheduleWriteView: BaseView {
     let dateLabel: CustomLabel = {
         let label = CustomLabel()
         label.textAlignment = .center
-        label.layer.borderWidth = 3
         label.clipsToBounds = true
         label.layer.cornerRadius = 10
-        label.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-
+        label.backgroundColor = themeType().foregroundColor
         label.font = .boldSystemFont(ofSize: 16)
-        label.layer.borderColor = themeType().whiteBlackBorderColor
-//        if User.themeType {
-//            label.layer.borderColor = UIColor.white.cgColor
-//        } else {
-//            label.layer.borderColor = UIColor.black.cgColor
-//        }
       
         return label
     }()
@@ -50,20 +42,10 @@ class ScheduleWriteView: BaseView {
     
     let scheduleTextView: UITextView = {
        let view = UITextView()
-        view.backgroundColor = .clear
-        view.layer.borderWidth = 3
+        view.backgroundColor = themeType().foregroundColor
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
-        view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         view.textColor = themeType().tintColor
-        view.layer.borderColor = themeType().whiteBlackBorderColor
-//        if User.themeType {
-//            view.textColor = .white
-//            view.layer.borderColor = UIColor.white.cgColor
-//        } else {
-//            view.textColor = .black
-//            view.layer.borderColor = UIColor.black.cgColor
-//        }
         view.becomeFirstResponder()
         view.font = .boldSystemFont(ofSize: 20)
         return view
@@ -103,7 +85,7 @@ class ScheduleWriteView: BaseView {
         }
         
         scheduleTextView.snp.makeConstraints { make in
-            make.top.equalTo(dateLabel.snp.bottom).offset(-1)
+            make.top.equalTo(dateLabel.snp.bottom).offset(8)
             make.leading.equalTo(dateLabel.snp.leading)
             make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.9)
             make.height.equalTo(safeAreaLayoutGuide).multipliedBy(0.43)

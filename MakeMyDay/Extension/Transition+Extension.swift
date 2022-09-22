@@ -16,7 +16,7 @@ extension UIViewController{
         case overFullScreen
     }
     
-    func transition<T: UIViewController>(_ viewController: T, transitionStyle: TransitionStyle = .present) {
+    func transition<T: UIViewController>(_ viewController: T, transitionStyle: TransitionStyle) {
         
         let navi = UINavigationController(rootViewController: viewController)
         
@@ -30,7 +30,7 @@ extension UIViewController{
         
         case .presentFullNavigation:
             navi.modalPresentationStyle = .fullScreen
-            self.present(navi, animated: true)
+            self.present(navi, animated: true) 
             
         case .push:
             self.navigationController?.pushViewController(navi, animated: true)
@@ -38,7 +38,7 @@ extension UIViewController{
         case .overFullScreen:
             navi.modalPresentationStyle = .overFullScreen
             self.present(navi, animated: true)
-            
+     
         }
         
 

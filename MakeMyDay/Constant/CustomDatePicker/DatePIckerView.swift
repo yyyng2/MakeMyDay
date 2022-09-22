@@ -28,7 +28,7 @@ class DatePickerView: BaseView {
         picker.clipsToBounds = true
         picker.locale = Locale(identifier: "ko_KR")
         picker.calendar.locale = Locale(identifier: "ko_KR")
-        picker.tintColor = UIColor.green
+        picker.tintColor = UIColor.systemMint
         picker.timeZone = .autoupdatingCurrent
         picker.datePickerMode = .dateAndTime
         picker.sizeToFit()

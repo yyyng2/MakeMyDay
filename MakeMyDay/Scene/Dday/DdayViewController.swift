@@ -74,23 +74,12 @@ class DdayViewController: BaseViewController{
       
         let backBarButtonItem = UIBarButtonItem(title: "D-day", style: .plain, target: self, action: #selector(backButtonTapped))
         navigationBarAppearance.backgroundColor = themeType().foregroundColor
-        navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
+   
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
         backBarButtonItem.tintColor = themeType().tintColor
-//        if User.themeType {
-//            navigationBarAppearance.backgroundColor = Constants.BaseColor.foreground
-//            navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-//            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-//            backBarButtonItem.tintColor = .white
-//        } else {
-//            navigationBarAppearance.backgroundColor = Constants.BaseColor.foregroundColor
-//            navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-//            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-//            backBarButtonItem.tintColor = .black
-//        }
         
         self.navigationItem.backBarButtonItem = backBarButtonItem
-        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationItem.largeTitleDisplayMode = .never
         self.navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
     }
@@ -104,17 +93,25 @@ class DdayViewController: BaseViewController{
         let vc = DdayWriteViewController()
         vc.edit = false
         
-        let today = localDate(date: Date(), formatStyle: .yyyyMMddEaHHmm)
+        let today = localDate(date: Date(), formatStyle: .yyyyMMdd)
         vc.dateData = today
 
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func deleteCell(schedule: Results<Dday>, index: IndexPath){
-        let task = ddayTasks[index.row].objectId
+    func deletePinnedCell(dday: Results<Dday>, index: IndexPath){
+        let task = pinned[index.row].objectId
         self.ddayRepository.deleteById(id: task)
         self.fetchRealm()
+        mainView.tableView.reloadData()
+    }
+    
+    func deleteUnpinnedCell(dday: Results<Dday>, index: IndexPath){
+        let task = unPinned[index.row].objectId
+        self.ddayRepository.deleteById(id: task)
+        self.fetchRealm()
+        mainView.tableView.reloadData()
     }
     
 }
@@ -136,7 +133,12 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
         case 1:
             return pinned.count <= 0 ? "" : "즐겨찾는 D-day"
         default:
-            return unPinned.count <= 0 ? "" : "Swipe 즐겨찾기로\n메인에서 확인해 보세요!"
+            if pinned.count > 0 {
+                return unPinned.count <= 0 ? "" : "D-day"
+            } else {
+                return unPinned.count <= 0 ? "" : "Swipe 즐겨찾기로\n메인화면에서 확인해 보세요!"
+            }
+            
         }
     }
     
@@ -177,10 +179,10 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DdayTableViewCell.reuseIdentifier, for: indexPath) as? DdayTableViewCell else { return UITableViewCell() }
         switch indexPath.section {
         case 1:
-            let startDate = stringFormatToDate(string: pinned[indexPath.row].dateString, formatStyle: .yyyyMMdd)!
-            let daysCount = days(from: startDate)
+    
+            let daysCount = ddayRepository.days(record: pinned[indexPath.row])
             
-            cell.countLabel.text = "\(daysCount)"
+            cell.countLabel.text = "\(daysCount) 일"
             cell.titleLabel.text = pinned[indexPath.row].title
             cell.dateLabel.text = pinned[indexPath.row].dateString
       
@@ -188,19 +190,31 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         case 2:
           
-            let startDate = stringFormatToDate(string: unPinned[indexPath.row].dateString, formatStyle: .yyyyMMdd)!
-            let daysCount = days(from: startDate)
+            let daysCount = ddayRepository.days(record: unPinned[indexPath.row])
 
-            cell.countLabel.text = "\(daysCount)"
+            cell.countLabel.text = "\(daysCount) 일"
             
             cell.titleLabel.text = unPinned[indexPath.row].title
             cell.dateLabel.text = unPinned[indexPath.row].dateString
-//                dateCal(date: Date(), task: unPinned, tag: indexPath, label: cell.dateLabel)
-//                cell.contentLabel.attributedText = NSAttributedString(string: trimContentString(memo: unPinned, index: indexPath))
+
             return cell
         default:
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DdayWriteViewController()
+        
+        
+        switch indexPath.section {
+        case 1:
+            vc.dday = pinned[indexPath.row]
+        default:
+            vc.dday = unPinned[indexPath.row]
+        }
+        vc.edit = true
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -209,9 +223,12 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
             let alert = UIAlertController(title: nil, message: "삭제하시겠습니까?", preferredStyle: .alert)
             
             let okay = UIAlertAction(title: "삭제", style: .destructive) {_ in
-
-                self.deleteCell(schedule: self.ddayTasks, index: indexPath)
-            
+                switch indexPath.section {
+                case 1:
+                    self.deletePinnedCell(dday: self.pinned, index: indexPath)
+                default:
+                    self.deleteUnpinnedCell(dday: self.unPinned, index: indexPath)
+                }
             }
             
             let cancel = UIAlertAction(title: "취소", style: .cancel)

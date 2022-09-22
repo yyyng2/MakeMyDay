@@ -49,8 +49,8 @@ final class ScheduleRepository: ScheduleRepositoryType {
         return localRealm.objects(Schedule.self).filter("date == %@", date).sorted(byKeyPath: "date", ascending: false)
     }
     
-    func fetchFilterDateString(formatDate: String) -> Results<Schedule> {
-        return localRealm.objects(Schedule.self).filter("dateString CONTAINS[c] '\(formatDate)'").sorted(byKeyPath: "date", ascending: true)
+    func fetchFilterDateString(formatString: String) -> Results<Schedule> {
+        return localRealm.objects(Schedule.self).filter("dateString CONTAINS[c] '\(formatString)'").sorted(byKeyPath: "date", ascending: true)
     }
         
     func fetchFilter(text: String) -> Results<Schedule> {

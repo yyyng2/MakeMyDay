@@ -25,12 +25,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             //마지막에 제거
             //User.isAppFirstLaunch = false
             let viewController = PageViewController()
-            let navigationController = UINavigationController(rootViewController: viewController)
-            window?.rootViewController = navigationController
+            window?.rootViewController = viewController
         } else {
             let viewController = TabBarController()
-            let navigationController = UINavigationController(rootViewController: viewController)
-            window?.rootViewController = navigationController
+            window?.rootViewController = viewController
         }
       
       

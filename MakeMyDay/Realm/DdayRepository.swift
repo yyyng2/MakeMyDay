@@ -82,17 +82,94 @@ final class DdayRepository: DdayRepositoryType {
         
     }
     
+    enum FormatStyle {
+        case yyyyMMddEaHHmm
+        case yyyyMMdd
+        case yyyy
+        case MM
+        case dd
+        case hhmm
+    }
+    
+    func localDate(date: Date, formatStyle: FormatStyle) -> Date? {
+        
+        let date = date
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+        dateFormatter.locale = Locale.current
+        
+        switch formatStyle {
+        case .yyyyMMddEaHHmm:
+           dateFormatter.dateFormat = "yyyy-MM-dd (E) a hh:mm"
+        case .yyyyMMdd:
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+        case .yyyy:
+            dateFormatter.dateFormat = "yyyy"
+        case .MM:
+            dateFormatter.dateFormat = "MM"
+        case .dd:
+            dateFormatter.dateFormat = "dd"
+        case .hhmm:
+            dateFormatter.dateFormat = "a hh:mm"
+        }
+        
+        let string = dateFormatter.string(from: date)
+        let today = dateFormatter.date(from: string)
+        
+        return today
+    }
+    
+    func stringFormatToDate(string: String, formatStyle: FormatStyle) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+        dateFormatter.locale = Locale.current
+        switch formatStyle {
+        case .yyyyMMddEaHHmm:
+           dateFormatter.dateFormat = "yyyy-MM-dd (E) a hh:mm"
+        case .yyyyMMdd:
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+        case .yyyy:
+            dateFormatter.dateFormat = "yyyy"
+        case .MM:
+            dateFormatter.dateFormat = "MM"
+        case .dd:
+            dateFormatter.dateFormat = "dd"
+        case .hhmm:
+            dateFormatter.dateFormat = "a hh:mm"
+        }
+        
+        let date = dateFormatter.date(from: string)
+        return date
+    }    
+    
+    func days(record: Dday) -> Int {
+        let date = stringFormatToDate(string: record.dateString, formatStyle: .yyyyMMdd)!
+        switch record.dayPlus {
+        case true:
+            let calendar = Calendar.current
+            let currentDate = localDate(date: Date(), formatStyle: .yyyyMMdd)
+            return calendar.dateComponents([.day], from: date, to: currentDate!).day! + 1
+        case false:
+            let calendar = Calendar.current
+            let currentDate = localDate(date: Date(), formatStyle: .yyyyMMdd)
+            return calendar.dateComponents([.day], from: date, to: currentDate!).day!
+        }
+     
+     
+    }
+    
     func updateRecord(id: ObjectId, record: Dday) {
         
-        do {
+        do{
             let task = localRealm.object(ofType: Dday.self, forPrimaryKey: id)
             try localRealm.write {
                 task?.date = record.date
                 task?.title = record.title
-                task?.pin = record.pin
                 task?.dateString = record.dateString
+                task?.dayPlus = record.dayPlus
             }
-        } catch let error{
+        } catch let error {
             print(error)
         }
         

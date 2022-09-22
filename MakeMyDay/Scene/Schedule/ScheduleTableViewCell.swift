@@ -30,11 +30,6 @@ class ScheduleTableViewCell: BaseTableViewCell {
     
     override func configure() {
         backgroundColor = themeType().foregroundColor
-//        if User.themeType {
-//            backgroundColor = Constants.BaseColor.foreground
-//        } else {
-//            backgroundColor = Constants.BaseColor.foregroundColor
-//        }
         
         [backgroundImageView, titleLabel, dateLabel].forEach {
             contentView.addSubview($0)

@@ -109,6 +109,15 @@ enum ThemeType {
         }
     }
     
+    var bubbleMini: UIImage {
+        switch self {
+        case .blackTheme:
+            return UIImage(named: "bubble_black_mini")!
+        case .colorfulTheme:
+            return UIImage(named: "bubble_white_mini")!
+        }
+    }
+    
         var backgroundColor: UIColor {
             switch self {
             case .blackTheme:
@@ -196,6 +205,15 @@ enum ThemeType {
             return UIImage(named: "day_white.png")!
         case .colorfulTheme:
             return UIImage(named: "day_color.png")!
+        }
+    }
+    
+    var countTextColor: UIColor {
+        switch self {
+        case .blackTheme:
+            return .systemMint
+        case .colorfulTheme:
+            return .systemBlue
         }
     }
     

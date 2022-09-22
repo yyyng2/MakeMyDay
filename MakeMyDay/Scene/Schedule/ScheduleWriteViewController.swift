@@ -71,17 +71,8 @@ class ScheduleWriteViewController: BaseViewController {
     override func setNavigationUI() {
         UINavigationBar.appearance().isTranslucent = false
         navigationBarAppearance.backgroundColor = themeType().foregroundColor
-        navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
+
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
-//        if User.themeType {
-//            navigationBarAppearance.backgroundColor = Constants.BaseColor.foreground
-//            navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-//            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-//        } else {
-//            navigationBarAppearance.backgroundColor = Constants.BaseColor.foregroundColor
-//            navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-//            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-//        }
         
         self.navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
@@ -95,13 +86,6 @@ class ScheduleWriteViewController: BaseViewController {
         let shareButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(shareButtonTapped))
         doneButtonItem.tintColor = themeType().tintColor
         shareButtonItem.tintColor = themeType().tintColor
-//        if User.themeType {
-//            doneButtonItem.tintColor = .white
-//            shareButtonItem.tintColor = .white
-//        } else {
-//            doneButtonItem.tintColor = .black
-//            shareButtonItem.tintColor = .black
-//        }
         
         self.navigationItem.rightBarButtonItems = [doneButtonItem, shareButtonItem]
     }
@@ -133,13 +117,13 @@ class ScheduleWriteViewController: BaseViewController {
         guard let text = mainView.dateLabel.text else { return }
         
         guard let data = localDate(date: date, formatStyle: .yyyyMMddEaHHmm) else { return }
-
+        
+        let content = mainView.scheduleTextView.text!
+        let array = content.split(maxSplits: 1, omittingEmptySubsequences: false, whereSeparator: {$0 == "\n"})
+        
         if edit == true {
             let id = schedule?.objectId
-            let content = mainView.scheduleTextView.text!
-            let array = content.split(maxSplits: 1, omittingEmptySubsequences: false, whereSeparator: {$0 == "\n"})
-
-
+      
             if array.count == 2 {
                 titleText = String(array[0])
                 contentText = String(array[1])
@@ -152,9 +136,7 @@ class ScheduleWriteViewController: BaseViewController {
                 scheduleRepository.updateRecord(id: id!, record: task)
             }
         } else {
-            let content = mainView.scheduleTextView.text!
-            print(content)
-            let array = content.split(maxSplits: 1, omittingEmptySubsequences: false, whereSeparator: {$0 == "\n"})
+           
             if array.count == 2 {
                 titleText = String(array[0])
                 contentText = String(array[1])

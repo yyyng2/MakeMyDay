@@ -13,9 +13,9 @@ class DdayWriteView: BaseView{
         return view
     }()
     
-    let infoeLabel: CustomLabel = {
+    let infoLabel: CustomLabel = {
         let label = CustomLabel()
-        label.text = "D-day 이름을 적어볼까요? 날짜를 탭하면 변경도 가능합니다!"
+        label.text = "D-day를 만들어볼까요? 날짜를 탭하면 변경도 가능합니다!"
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 13)
       
@@ -24,18 +24,11 @@ class DdayWriteView: BaseView{
     
     let dateLabel: CustomLabel = {
         let label = CustomLabel()
-        label.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 16)
-        label.layer.borderWidth = 3
         label.clipsToBounds = true
         label.layer.cornerRadius = 10
-        label.layer.borderColor = themeType().whiteBlackBorderColor
-//        if User.themeType {
-//            label.layer.borderColor = UIColor.white.cgColor
-//        } else {
-//            label.layer.borderColor = UIColor.black.cgColor
-//        }
+        label.backgroundColor = themeType().foregroundColor
       
         return label
     }()
@@ -49,30 +42,39 @@ class DdayWriteView: BaseView{
     
     let titleTextField: UITextField = {
        let field = UITextField()
-        field.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        field.layer.borderWidth = 3
-        field.clipsToBounds = true
-        field.layer.cornerRadius = 10
         field.backgroundColor = .clear
         field.placeholder = " D-day 제목"
         field.attributedPlaceholder = NSAttributedString(string: " D-day 제목", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
         field.textColor = themeType().tintColor
-        field.layer.borderColor = themeType().whiteBlackBorderColor
-//        if User.themeType {
-//            field.textColor = .white
-//            field.layer.borderColor = UIColor.white.cgColor
-//        } else {
-//            field.textColor = .black
-//            field.layer.borderColor = UIColor.black.cgColor
-//        }
         field.becomeFirstResponder()
         field.font = .boldSystemFont(ofSize: 20)
         return field
     }()
 
+    let borderView: UIImageView = {
+        let view = UIImageView()
+        view.backgroundColor = themeType().foregroundColor
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    let dayPlusLabel: UILabel = {
+       let label = UILabel()
+        label.textColor = themeType().tintColor
+        label.text = "오늘부터 1일"
+        label.textAlignment = .right
+        label.font = .boldSystemFont(ofSize: 16)
+        return label
+    }()
+    
+    let dayPlusSwitchButton: UISwitch = {
+       let button = UISwitch()
+        button.onTintColor = .systemMint
+        return button
+    }()
     
     override func configure() {
-        [backgroundImageView, infoeLabel, dateLabel, dateButton, titleTextField].forEach {
+        [backgroundImageView, infoLabel, dateLabel, dateButton, borderView, titleTextField, dayPlusLabel, dayPlusSwitchButton].forEach {
             addSubview($0)
         }
     }
@@ -82,7 +84,7 @@ class DdayWriteView: BaseView{
             make.edges.equalTo(safeAreaLayoutGuide)
         }
         
-        infoeLabel.snp.makeConstraints { make in
+        infoLabel.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(20)
             make.centerX.equalTo(safeAreaLayoutGuide)
             make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.9)
@@ -90,7 +92,7 @@ class DdayWriteView: BaseView{
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(infoeLabel.snp.bottom).offset(16)
+            make.top.equalTo(infoLabel.snp.bottom).offset(16)
             make.centerX.equalTo(safeAreaLayoutGuide)
             make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.9)
             make.height.equalTo(28)
@@ -103,14 +105,31 @@ class DdayWriteView: BaseView{
             make.height.equalTo(28)
         }
         
-        titleTextField.snp.makeConstraints { make in
-            make.top.equalTo(dateLabel.snp.bottom).offset(-1)
+        borderView.snp.makeConstraints { make in
+            make.top.equalTo(dateLabel.snp.bottom).offset(8)
             make.leading.equalTo(dateLabel.snp.leading)
             make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.9)
             make.height.equalTo(safeAreaLayoutGuide).multipliedBy(0.1)
         }
+        
+        titleTextField.snp.makeConstraints { make in
+            make.top.equalTo(dateLabel.snp.bottom).offset(8)
+            make.leading.equalTo(dateLabel.snp.leading)
+            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.85)
+            make.height.equalTo(safeAreaLayoutGuide).multipliedBy(0.1)
+        }
+        
+        dayPlusLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(dayPlusSwitchButton)
+            make.trailing.equalTo(dayPlusSwitchButton.snp.leading).offset(-8)
+            make.leading.equalTo(dateLabel.snp.leading)
+        }
      
-
+        dayPlusSwitchButton.snp.makeConstraints { make in
+            make.top.equalTo(titleTextField.snp.bottom).offset(8)
+            make.trailing.equalTo(titleTextField.snp.trailing)
+            
+        }
     }
 
 }

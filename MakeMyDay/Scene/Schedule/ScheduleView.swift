@@ -22,9 +22,10 @@ class ScheduleView: BaseView {
         let calendar = FSCalendar()
         calendar.locale = Locale.current
 
+        //Color
         calendar.backgroundColor = themeType().objectBackgroundColor
         calendar.appearance.headerTitleColor = themeType().calendarHeaderColor
-        calendar.appearance.todayColor = UIColor.green
+        calendar.appearance.todayColor = themeType().countTextColor
         calendar.appearance.eventDefaultColor = UIColor.red
 
         calendar.appearance.titleDefaultColor = themeType().tintColor
@@ -34,30 +35,6 @@ class ScheduleView: BaseView {
         calendar.appearance.eventSelectionColor = themeType().calendarSelectionColor
          
         calendar.appearance.todaySelectionColor = themeType().calendarSelectionColor
-        //color
-//        if User.themeType {
-//            calendar.backgroundColor = .black
-//            calendar.appearance.titleDefaultColor = UIColor.white
-//            calendar.appearance.selectionColor = UIColor.systemGray2
-//            calendar.appearance.weekdayTextColor = UIColor.white
-//            calendar.appearance.eventDefaultColor = UIColor.red
-//            calendar.appearance.eventSelectionColor = UIColor.systemGray2
-//            calendar.appearance.todayColor = UIColor.green
-//            calendar.appearance.todaySelectionColor = UIColor.systemGray2
-//
-//            calendar.appearance.headerTitleColor = .white
-//        } else {
-//            calendar.backgroundColor = .white
-//            calendar.appearance.titleDefaultColor = UIColor.black
-//            calendar.appearance.selectionColor = UIColor.black
-//            calendar.appearance.weekdayTextColor = UIColor.black
-//            calendar.appearance.eventDefaultColor = UIColor.red
-//            calendar.appearance.eventSelectionColor = UIColor.black
-//            calendar.appearance.todayColor = UIColor.green
-//            calendar.appearance.todaySelectionColor = UIColor.black
-//
-//            calendar.appearance.headerTitleColor = .black
-//        }
 
       
         //header
@@ -82,13 +59,7 @@ class ScheduleView: BaseView {
         button.setImage(UIImage(systemName: "chevron.up.chevron.down"), for: .normal)
         button.backgroundColor = themeType().objectBackgroundColor
         button.tintColor = themeType().tintColor
-//        if User.themeType {
-//            button.backgroundColor = .black
-//            button.tintColor = .white
-//        } else {
-//            button.backgroundColor = .white
-//            button.tintColor = .black
-//        }
+
         return button
     }()
     
