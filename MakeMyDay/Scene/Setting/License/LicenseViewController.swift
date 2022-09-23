@@ -28,9 +28,8 @@ class LicenseViewController: BaseViewController {
       
         let backBarButtonItem = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(backButtonTapped))
         navigationBarAppearance.backgroundColor = themeType().foregroundColor
-        
-      
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
+        navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
         backBarButtonItem.tintColor = themeType().tintColor
         
         self.navigationItem.backBarButtonItem = backBarButtonItem
@@ -45,6 +44,10 @@ class LicenseViewController: BaseViewController {
     
 }
 extension LicenseViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return license.license.count
     }

@@ -72,20 +72,22 @@ class DdayViewController: BaseViewController{
     override func setNavigationUI() {
         UINavigationBar.appearance().isTranslucent = false
       
-        let backBarButtonItem = UIBarButtonItem(title: "D-day", style: .plain, target: self, action: #selector(backButtonTapped))
+
         navigationBarAppearance.backgroundColor = themeType().foregroundColor
-   
+        navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
+        
+        let backBarButtonItem = UIBarButtonItem(title: "D-day", style: .plain, target: self, action: #selector(backButtonTapped))
         backBarButtonItem.tintColor = themeType().tintColor
         
         self.navigationItem.backBarButtonItem = backBarButtonItem
-        self.navigationItem.largeTitleDisplayMode = .never
+        self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
     }
     
     @objc func backButtonTapped() {
-
+        self.navigationController?.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -96,7 +98,7 @@ class DdayViewController: BaseViewController{
         let today = localDate(date: Date(), formatStyle: .yyyyMMdd)
         vc.dateData = today
 
-        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -179,8 +181,8 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DdayTableViewCell.reuseIdentifier, for: indexPath) as? DdayTableViewCell else { return UITableViewCell() }
         switch indexPath.section {
         case 1:
-    
-            let daysCount = ddayRepository.days(record: pinned[indexPath.row])
+            let startDate = stringFormatToDate(string: pinned[indexPath.row].dateString, formatStyle: .yyyyMMdd)!
+            let daysCount =  days(from: startDate)
             
             cell.countLabel.text = "\(daysCount) 일"
             cell.titleLabel.text = pinned[indexPath.row].title
@@ -189,8 +191,8 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
     
             return cell
         case 2:
-          
-            let daysCount = ddayRepository.days(record: unPinned[indexPath.row])
+            let startDate = stringFormatToDate(string: unPinned[indexPath.row].dateString, formatStyle: .yyyyMMdd)!
+            let daysCount =  days(from: startDate)
 
             cell.countLabel.text = "\(daysCount) 일"
             

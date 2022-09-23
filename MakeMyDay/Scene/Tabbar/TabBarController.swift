@@ -63,12 +63,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate{
     func configureTab(vc: UIViewController, title: String, image: UIImage, selectedImage: UIImage){
         vc.navigationItem.title = title
         vc.tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
-//        vc.navigationItem.largeTitleDisplayMode = .always
+        vc.navigationItem.largeTitleDisplayMode = .always
     }
     
     func configureNav(vc: UIViewController) -> UINavigationController{
         let nav = UINavigationController(rootViewController: vc)
-//        nav.navigationBar.prefersLargeTitles = true
+        nav.navigationBar.prefersLargeTitles = true
         return nav
     }
     

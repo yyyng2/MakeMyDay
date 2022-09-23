@@ -126,5 +126,11 @@ final class ScheduleRepository: ScheduleRepositoryType {
         }
     }
     
+    func deleteAll() {
+        try! localRealm.write {
+            localRealm.deleteAll()
+        }
+    }
+    
 }
 

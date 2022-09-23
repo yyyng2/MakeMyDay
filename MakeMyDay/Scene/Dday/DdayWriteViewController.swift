@@ -56,13 +56,13 @@ class DdayWriteViewController: BaseViewController{
     override func setNavigationUI() {
         UINavigationBar.appearance().isTranslucent = false
         navigationBarAppearance.backgroundColor = themeType().foregroundColor
-       
+        navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
         
         self.navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
         
-        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.largeTitleDisplayMode = .always
         
     }
     

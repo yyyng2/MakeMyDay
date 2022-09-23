@@ -23,6 +23,10 @@
 		18AF778628DC709E00D61E5D /* LicenseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF778528DC709E00D61E5D /* LicenseDetailView.swift */; };
 		18AF778828DC70A600D61E5D /* LicenseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF778728DC70A600D61E5D /* LicenseDetailViewController.swift */; };
 		18AF778A28DC721F00D61E5D /* LicenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF778928DC721F00D61E5D /* LicenseTableViewCell.swift */; };
+		18AF778E28DC95FE00D61E5D /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF778D28DC95FE00D61E5D /* ThemeView.swift */; };
+		18AF779028DC962700D61E5D /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF778F28DC962700D61E5D /* ThemeViewController.swift */; };
+		18AF779228DCAA5D00D61E5D /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF779128DCAA5D00D61E5D /* AppInfoView.swift */; };
+		18AF779428DCAA6800D61E5D /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF779328DCAA6800D61E5D /* AppInfoViewController.swift */; };
 		18B799EB28CCAB9400186AFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B799EA28CCAB9400186AFA /* AppDelegate.swift */; };
 		18B799ED28CCAB9400186AFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B799EC28CCAB9400186AFA /* SceneDelegate.swift */; };
 		18B799EF28CCAB9400186AFA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B799EE28CCAB9400186AFA /* MainViewController.swift */; };
@@ -86,6 +90,10 @@
 		18AF778528DC709E00D61E5D /* LicenseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseDetailView.swift; sourceTree = "<group>"; };
 		18AF778728DC70A600D61E5D /* LicenseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseDetailViewController.swift; sourceTree = "<group>"; };
 		18AF778928DC721F00D61E5D /* LicenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseTableViewCell.swift; sourceTree = "<group>"; };
+		18AF778D28DC95FE00D61E5D /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
+		18AF778F28DC962700D61E5D /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
+		18AF779128DCAA5D00D61E5D /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
+		18AF779328DCAA6800D61E5D /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		18B799E728CCAB9400186AFA /* MakeMyDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakeMyDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B799EA28CCAB9400186AFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B799EC28CCAB9400186AFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,8 +177,8 @@
 				18AF778928DC721F00D61E5D /* LicenseTableViewCell.swift */,
 				18AF778028DC6E6800D61E5D /* LicenseView.swift */,
 				18AF778228DC703C00D61E5D /* LicenseViewController.swift */,
-				18AF778728DC70A600D61E5D /* LicenseDetailViewController.swift */,
 				18AF778528DC709E00D61E5D /* LicenseDetailView.swift */,
+				18AF778728DC70A600D61E5D /* LicenseDetailViewController.swift */,
 			);
 			path = License;
 			sourceTree = "<group>";
@@ -178,8 +186,26 @@
 		18AF778B28DC7C8500D61E5D /* AppInfo */ = {
 			isa = PBXGroup;
 			children = (
+				18AF779128DCAA5D00D61E5D /* AppInfoView.swift */,
+				18AF779328DCAA6800D61E5D /* AppInfoViewController.swift */,
 			);
 			path = AppInfo;
+			sourceTree = "<group>";
+		};
+		18AF778C28DC95E800D61E5D /* ThemeType */ = {
+			isa = PBXGroup;
+			children = (
+				18AF778D28DC95FE00D61E5D /* ThemeView.swift */,
+				18AF778F28DC962700D61E5D /* ThemeViewController.swift */,
+			);
+			path = ThemeType;
+			sourceTree = "<group>";
+		};
+		18AF779528DCB6A900D61E5D /* BackupRestore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BackupRestore;
 			sourceTree = "<group>";
 		};
 		18B799DE28CCAB9400186AFA = {
@@ -277,8 +303,10 @@
 		18B79A1328CCBE5B00186AFA /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				18AF779528DCB6A900D61E5D /* BackupRestore */,
 				18AF778B28DC7C8500D61E5D /* AppInfo */,
 				18AF777D28DC6B3000D61E5D /* License */,
+				18AF778C28DC95E800D61E5D /* ThemeType */,
 				18AF777B28DC696600D61E5D /* SettingMenu.swift */,
 				18B79A3428CE138600186AFA /* SettingView.swift */,
 				18B79A3628CE139000186AFA /* SettingViewController.swift */,
@@ -487,12 +515,14 @@
 				187087F928D7FDCD001D11ED /* DdayRealmModel.swift in Sources */,
 				18B79A2A28CDFB7E00186AFA /* Color.swift in Sources */,
 				18B79A4428CE217000186AFA /* DdayWriteViewController.swift in Sources */,
+				18AF779428DCAA6800D61E5D /* AppInfoViewController.swift in Sources */,
 				18B79A2E28CE0B2200186AFA /* CustomImageView.swift in Sources */,
 				18B79A3D28CE202000186AFA /* DdayViewController.swift in Sources */,
 				18E2AB7128D3BB330010AAB2 /* ScheduleRealmModel.swift in Sources */,
 				18AF777928DC683200D61E5D /* SettingTableViewCell.swift in Sources */,
 				18B79A2828CDF82300186AFA /* ScheduleTableViewCell.swift in Sources */,
 				18B799EB28CCAB9400186AFA /* AppDelegate.swift in Sources */,
+				18AF778E28DC95FE00D61E5D /* ThemeView.swift in Sources */,
 				18B79A0628CCB3B900186AFA /* BaseTableViewCell.swift in Sources */,
 				187087F628D7FDB4001D11ED /* CellShortCustomImageView.swift in Sources */,
 				18B79A5628D0B03700186AFA /* MainTableViewCell.swift in Sources */,
@@ -502,12 +532,14 @@
 				18B79A5028D05CEB00186AFA /* PageViewController.swift in Sources */,
 				18B79A1828CCCBEB00186AFA /* ReusableProtocol.swift in Sources */,
 				18B79A3728CE139000186AFA /* SettingViewController.swift in Sources */,
+				18AF779228DCAA5D00D61E5D /* AppInfoView.swift in Sources */,
 				18B79A2628CDF81100186AFA /* ScheduleView.swift in Sources */,
 				1814480B28D3246B00BEA60C /* ScheduleWriteView.swift in Sources */,
 				18B799ED28CCAB9400186AFA /* SceneDelegate.swift in Sources */,
 				18AF778128DC6E6800D61E5D /* LicenseView.swift in Sources */,
 				18AF778328DC703C00D61E5D /* LicenseViewController.swift in Sources */,
 				18B79A3F28CE202F00186AFA /* DdayTableViewCell.swift in Sources */,
+				18AF779028DC962700D61E5D /* ThemeViewController.swift in Sources */,
 				18B79A4C28CF41B300186AFA /* PopupZeroViewController.swift in Sources */,
 				18AF778628DC709E00D61E5D /* LicenseDetailView.swift in Sources */,
 				1814481128D3309300BEA60C /* DatePIckerView.swift in Sources */,

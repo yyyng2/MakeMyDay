@@ -8,7 +8,7 @@
 import UIKit
 
 class NavTitleView: BaseView{
-    let profileView: CustomImageView = {
+    lazy var profileView: CustomImageView = {
         let view = CustomImageView(frame: .zero)
         view.image = themeType().profileImage
  
@@ -17,7 +17,7 @@ class NavTitleView: BaseView{
         return view
     }()
     
-    let profileLabel: CustomLabel = {
+    lazy var profileLabel: CustomLabel = {
         let label = CustomLabel(frame: .zero)
         label.text = "D"
         label.textColor = themeType().tintColor

@@ -49,6 +49,7 @@ class ScheduleViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationItem.largeTitleDisplayMode = .always
         fetchRealm()
     }
     
@@ -128,8 +129,7 @@ class ScheduleViewController: BaseViewController {
             let today = localDate(date: Date(), formatStyle: .yyyyMMddEaHHmm)
             vc.dateData = today
         }
-        
-        self.navigationController?.navigationBar.prefersLargeTitles = false
+
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -141,7 +141,7 @@ class ScheduleViewController: BaseViewController {
         let backBarButtonItem = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(backButtonTapped))
         navigationBarAppearance.backgroundColor = themeType().foregroundColor
         
-      
+        navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
         backBarButtonItem.tintColor = themeType().tintColor
         
@@ -158,7 +158,7 @@ class ScheduleViewController: BaseViewController {
     }
     
     @objc func backButtonTapped() {
-
+        self.navigationController?.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.popViewController(animated: true)
     }
     

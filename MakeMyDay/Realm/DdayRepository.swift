@@ -197,4 +197,9 @@ final class DdayRepository: DdayRepositoryType {
         }
     }
     
+    func deleteAll() {
+        try! localRealm.write {
+            localRealm.deleteAll()
+        }
+    }
 }

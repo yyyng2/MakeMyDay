@@ -18,10 +18,14 @@ class PopupOneViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureButton()
+
+    }
+    
+    func configureButton() {
         mainView.leftButton.addTarget(self, action: #selector(leftButtonChanged), for: .touchUpInside)
         mainView.rightButton.addTarget(self, action: #selector(rightButtonChanged), for: .touchUpInside)
         mainView.doneButton.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
-
     }
 
     @objc func leftButtonChanged() {

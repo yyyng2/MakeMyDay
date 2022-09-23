@@ -48,7 +48,7 @@ class MainViewController: BaseViewController {
       
     }
     
-    let popupView = NavTitleView()
+    lazy var popupView = NavTitleView()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -74,14 +74,14 @@ class MainViewController: BaseViewController {
     }
     
     override func setNavigationUI() {
-        navigationItem.titleView = popupView
+//        navigationItem.titleView = popupView
       
           let navController = parent as! UINavigationController
 
 //        navController.navigationItem.titleView = popupView
         navController.navigationBar.topItem!.title = .none
     
-//          navController.navigationBar.topItem!.titleView = popupView
+          navController.navigationBar.topItem!.titleView = popupView
         navController.navigationBar.topItem?.titleView?.isHidden = false
           navController.navigationBar.prefersLargeTitles = true
 

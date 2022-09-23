@@ -16,28 +16,28 @@ class MainView: BaseView {
         return view
     }()
     
-    let profileBackgroundView: BaseView = {
-        let view = BaseView()
-        view.backgroundColor = .clear
-        return view
-    }()
-    
-    let profileView: CustomImageView = {
-        let view = CustomImageView(frame: .zero)
-        view.image = themeType().profileImage
-        view.contentMode = .scaleAspectFit
-        return view
-    }()
-    
-    let profileLabel: CustomLabel = {
-        let label = CustomLabel(frame: .zero)
-        label.text = "D"
-        label.textColor = themeType().tintColor
-
-        label.textAlignment = .center
-        label.font = .boldSystemFont(ofSize: 12)
-        return label
-    }()
+//    let profileBackgroundView: BaseView = {
+//        let view = BaseView()
+//        view.backgroundColor = .clear
+//        return view
+//    }()
+//    
+//    let profileView: CustomImageView = {
+//        let view = CustomImageView(frame: .zero)
+//        view.image = themeType().profileImage
+//        view.contentMode = .scaleAspectFit
+//        return view
+//    }()
+//    
+//    let profileLabel: CustomLabel = {
+//        let label = CustomLabel(frame: .zero)
+//        label.text = "D"
+//        label.textColor = themeType().tintColor
+//
+//        label.textAlignment = .center
+//        label.font = .boldSystemFont(ofSize: 12)
+//        return label
+//    }()
     
     let dateLabel: CustomLabel = {
         let label = CustomLabel(frame: .zero)
@@ -90,7 +90,11 @@ class MainView: BaseView {
     
     override func configure() {
         
-        [backgroundView, profileBackgroundView, profileView, profileLabel, dateLabel, tableView, writeButton, scheduleWriteButton, ddayWriteButton].forEach {
+//        [backgroundView, profileBackgroundView, profileView, profileLabel, dateLabel, tableView, writeButton, scheduleWriteButton, ddayWriteButton].forEach {
+//            self.addSubview($0)
+//        }
+        
+        [backgroundView, dateLabel, tableView, writeButton, scheduleWriteButton, ddayWriteButton].forEach {
             self.addSubview($0)
         }
     }
@@ -98,24 +102,25 @@ class MainView: BaseView {
         backgroundView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
         }
-        profileBackgroundView.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(0.1)
-            make.centerX.equalTo(backgroundView)
-            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.09)
-            make.width.equalTo(profileBackgroundView.snp.height)
-        }
-        profileView.snp.makeConstraints { make in
-            make.top.equalTo(profileBackgroundView.snp.top)
-            make.height.equalTo(profileBackgroundView.snp.height).multipliedBy(0.7)
-            make.centerX.equalTo(profileBackgroundView)
-        }
-        profileLabel.snp.makeConstraints { make in
-            make.top.equalTo(profileView.snp.bottom)
-            make.centerX.equalTo(profileView)
-            make.width.equalTo(profileBackgroundView.snp.width)
-        }
+//        profileBackgroundView.snp.makeConstraints { make in
+//            make.top.equalTo(safeAreaLayoutGuide).offset(0.1)
+//            make.centerX.equalTo(backgroundView)
+//            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.09)
+//            make.width.equalTo(profileBackgroundView.snp.height)
+//        }
+//        profileView.snp.makeConstraints { make in
+//            make.top.equalTo(profileBackgroundView.snp.top)
+//            make.height.equalTo(profileBackgroundView.snp.height).multipliedBy(0.7)
+//            make.centerX.equalTo(profileBackgroundView)
+//        }
+//        profileLabel.snp.makeConstraints { make in
+//            make.top.equalTo(profileView.snp.bottom)
+//            make.centerX.equalTo(profileView)
+//            make.width.equalTo(profileBackgroundView.snp.width)
+//        }
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(profileBackgroundView.snp.bottom)
+            make.top.equalTo(safeAreaLayoutGuide).offset(8)
+       //     make.top.equalTo(profileBackgroundView.snp.bottom)
             make.centerX.equalTo(safeAreaLayoutGuide)
             make.width.equalTo(safeAreaLayoutGuide)
         }
