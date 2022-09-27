@@ -14,7 +14,7 @@
 		187087F628D7FDB4001D11ED /* CellShortCustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187087F528D7FDB4001D11ED /* CellShortCustomImageView.swift */; };
 		187087F928D7FDCD001D11ED /* DdayRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187087F728D7FDCD001D11ED /* DdayRealmModel.swift */; };
 		187087FA28D7FDCD001D11ED /* DdayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187087F828D7FDCD001D11ED /* DdayRepository.swift */; };
-		187087FC28D7FDF4001D11ED /* TableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187087FB28D7FDF4001D11ED /* TableHeaderView.swift */; };
+		187087FC28D7FDF4001D11ED /* DdayTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187087FB28D7FDF4001D11ED /* DdayTableHeaderView.swift */; };
 		18AF777928DC683200D61E5D /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF777828DC683200D61E5D /* SettingTableViewCell.swift */; };
 		18AF777C28DC696600D61E5D /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF777B28DC696600D61E5D /* SettingMenu.swift */; };
 		18AF777F28DC6B5400D61E5D /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF777E28DC6B5400D61E5D /* License.swift */; };
@@ -27,6 +27,13 @@
 		18AF779028DC962700D61E5D /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF778F28DC962700D61E5D /* ThemeViewController.swift */; };
 		18AF779228DCAA5D00D61E5D /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF779128DCAA5D00D61E5D /* AppInfoView.swift */; };
 		18AF779428DCAA6800D61E5D /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF779328DCAA6800D61E5D /* AppInfoViewController.swift */; };
+		18AF779D28E07F7A00D61E5D /* MainTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF779C28E07F7A00D61E5D /* MainTableHeaderView.swift */; };
+		18AF779F28E0863E00D61E5D /* MainProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF779E28E0863E00D61E5D /* MainProfileTableViewCell.swift */; };
+		18AF77A228E08AC400D61E5D /* MainScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF77A128E08AC400D61E5D /* MainScheduleTableViewCell.swift */; };
+		18AF77A428E08AE800D61E5D /* MainDdayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF77A328E08AE800D61E5D /* MainDdayTableViewCell.swift */; };
+		18AF77A828E092FB00D61E5D /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF77A728E092FB00D61E5D /* ProfileSettingView.swift */; };
+		18AF77AA28E0930800D61E5D /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF77A928E0930800D61E5D /* ProfileSettingViewController.swift */; };
+		18AF77CC28E1B04100D61E5D /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF77CB28E1B04100D61E5D /* ImageFileManager.swift */; };
 		18B799EB28CCAB9400186AFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B799EA28CCAB9400186AFA /* AppDelegate.swift */; };
 		18B799ED28CCAB9400186AFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B799EC28CCAB9400186AFA /* SceneDelegate.swift */; };
 		18B799EF28CCAB9400186AFA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B799EE28CCAB9400186AFA /* MainViewController.swift */; };
@@ -57,7 +64,6 @@
 		18B79A3F28CE202F00186AFA /* DdayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A3E28CE202F00186AFA /* DdayTableViewCell.swift */; };
 		18B79A4228CE215B00186AFA /* DdayWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A4128CE215B00186AFA /* DdayWriteView.swift */; };
 		18B79A4428CE217000186AFA /* DdayWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A4328CE217000186AFA /* DdayWriteViewController.swift */; };
-		18B79A4628CE27F100186AFA /* NavTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A4528CE27F100186AFA /* NavTitleView.swift */; };
 		18B79A4A28CF41AB00186AFA /* PopupZeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A4928CF41AB00186AFA /* PopupZeroView.swift */; };
 		18B79A4C28CF41B300186AFA /* PopupZeroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A4B28CF41B300186AFA /* PopupZeroViewController.swift */; };
 		18B79A4E28CF4D6600186AFA /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A4D28CF4D6600186AFA /* UserDefaultsHelper.swift */; };
@@ -81,7 +87,7 @@
 		187087F528D7FDB4001D11ED /* CellShortCustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellShortCustomImageView.swift; sourceTree = "<group>"; };
 		187087F728D7FDCD001D11ED /* DdayRealmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DdayRealmModel.swift; sourceTree = "<group>"; };
 		187087F828D7FDCD001D11ED /* DdayRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DdayRepository.swift; sourceTree = "<group>"; };
-		187087FB28D7FDF4001D11ED /* TableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableHeaderView.swift; sourceTree = "<group>"; };
+		187087FB28D7FDF4001D11ED /* DdayTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DdayTableHeaderView.swift; sourceTree = "<group>"; };
 		18AF777828DC683200D61E5D /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		18AF777B28DC696600D61E5D /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
 		18AF777E28DC6B5400D61E5D /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
@@ -94,6 +100,13 @@
 		18AF778F28DC962700D61E5D /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		18AF779128DCAA5D00D61E5D /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
 		18AF779328DCAA6800D61E5D /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
+		18AF779C28E07F7A00D61E5D /* MainTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableHeaderView.swift; sourceTree = "<group>"; };
+		18AF779E28E0863E00D61E5D /* MainProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileTableViewCell.swift; sourceTree = "<group>"; };
+		18AF77A128E08AC400D61E5D /* MainScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		18AF77A328E08AE800D61E5D /* MainDdayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDdayTableViewCell.swift; sourceTree = "<group>"; };
+		18AF77A728E092FB00D61E5D /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
+		18AF77A928E0930800D61E5D /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
+		18AF77CB28E1B04100D61E5D /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 		18B799E728CCAB9400186AFA /* MakeMyDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakeMyDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B799EA28CCAB9400186AFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B799EC28CCAB9400186AFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,7 +136,6 @@
 		18B79A3E28CE202F00186AFA /* DdayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DdayTableViewCell.swift; sourceTree = "<group>"; };
 		18B79A4128CE215B00186AFA /* DdayWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DdayWriteView.swift; sourceTree = "<group>"; };
 		18B79A4328CE217000186AFA /* DdayWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DdayWriteViewController.swift; sourceTree = "<group>"; };
-		18B79A4528CE27F100186AFA /* NavTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavTitleView.swift; sourceTree = "<group>"; };
 		18B79A4928CF41AB00186AFA /* PopupZeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupZeroView.swift; sourceTree = "<group>"; };
 		18B79A4B28CF41B300186AFA /* PopupZeroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupZeroViewController.swift; sourceTree = "<group>"; };
 		18B79A4D28CF4D6600186AFA /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
@@ -156,7 +168,8 @@
 		187087FD28D89DB1001D11ED /* CustomTableHeaderView */ = {
 			isa = PBXGroup;
 			children = (
-				187087FB28D7FDF4001D11ED /* TableHeaderView.swift */,
+				187087FB28D7FDF4001D11ED /* DdayTableHeaderView.swift */,
+				18AF779C28E07F7A00D61E5D /* MainTableHeaderView.swift */,
 			);
 			path = CustomTableHeaderView;
 			sourceTree = "<group>";
@@ -206,6 +219,26 @@
 			children = (
 			);
 			path = BackupRestore;
+			sourceTree = "<group>";
+		};
+		18AF77A028E08AAD00D61E5D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				18AF779E28E0863E00D61E5D /* MainProfileTableViewCell.swift */,
+				18B79A5528D0B03700186AFA /* MainTableViewCell.swift */,
+				18AF77A128E08AC400D61E5D /* MainScheduleTableViewCell.swift */,
+				18AF77A328E08AE800D61E5D /* MainDdayTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		18AF77A628E092E800D61E5D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				18AF77A728E092FB00D61E5D /* ProfileSettingView.swift */,
+				18AF77A928E0930800D61E5D /* ProfileSettingViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		18B799DE28CCAB9400186AFA = {
@@ -259,9 +292,8 @@
 			isa = PBXGroup;
 			children = (
 				18B79A0828CCB49500186AFA /* MainView.swift */,
-				18B79A5528D0B03700186AFA /* MainTableViewCell.swift */,
 				18B799EE28CCAB9400186AFA /* MainViewController.swift */,
-				18B79A4528CE27F100186AFA /* NavTitleView.swift */,
+				18AF77A028E08AAD00D61E5D /* Cell */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -303,6 +335,7 @@
 		18B79A1328CCBE5B00186AFA /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				18AF77A628E092E800D61E5D /* Profile */,
 				18AF779528DCB6A900D61E5D /* BackupRestore */,
 				18AF778B28DC7C8500D61E5D /* AppInfo */,
 				18AF777D28DC6B3000D61E5D /* License */,
@@ -348,6 +381,7 @@
 				18B79A1728CCCBEB00186AFA /* ReusableProtocol.swift */,
 				18B79A1928CCCC7100186AFA /* UIViewController+Extension.swift */,
 				18B79A1B28CCCC8D00186AFA /* Transition+Extension.swift */,
+				18AF77CB28E1B04100D61E5D /* ImageFileManager.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -487,30 +521,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18B79A4628CE27F100186AFA /* NavTitleView.swift in Sources */,
 				18D8F96C28D98DBB00179869 /* CutomWriteButton.swift in Sources */,
 				18AF778A28DC721F00D61E5D /* LicenseTableViewCell.swift in Sources */,
 				187087FA28D7FDCD001D11ED /* DdayRepository.swift in Sources */,
+				18AF779F28E0863E00D61E5D /* MainProfileTableViewCell.swift in Sources */,
 				18B79A1A28CCCC7100186AFA /* UIViewController+Extension.swift in Sources */,
 				18B799EF28CCAB9400186AFA /* MainViewController.swift in Sources */,
 				18B79A2228CDF66C00186AFA /* TabBarController.swift in Sources */,
+				18AF77A428E08AE800D61E5D /* MainDdayTableViewCell.swift in Sources */,
 				18B79A3528CE138600186AFA /* SettingView.swift in Sources */,
 				18B79A2428CDF80500186AFA /* ScheduleViewController.swift in Sources */,
 				18B79A5228D0636E00186AFA /* PopupOneView.swift in Sources */,
 				18B79A0928CCB49500186AFA /* MainView.swift in Sources */,
+				18AF77A228E08AC400D61E5D /* MainScheduleTableViewCell.swift in Sources */,
 				18B79A3128CE0EF000186AFA /* CustomLabel.swift in Sources */,
 				18AF777F28DC6B5400D61E5D /* License.swift in Sources */,
+				18AF77CC28E1B04100D61E5D /* ImageFileManager.swift in Sources */,
 				1814480F28D329BB00BEA60C /* DatePIckerViewController.swift in Sources */,
 				1814480D28D3247600BEA60C /* ScheduleWriteViewController.swift in Sources */,
 				18B79A0228CCB3A900186AFA /* BaseViewController.swift in Sources */,
+				18AF77A828E092FB00D61E5D /* ProfileSettingView.swift in Sources */,
 				18B79A4A28CF41AB00186AFA /* PopupZeroView.swift in Sources */,
 				18B79A1C28CCCC8D00186AFA /* Transition+Extension.swift in Sources */,
 				18AF777C28DC696600D61E5D /* SettingMenu.swift in Sources */,
 				18B79A5428D0637900186AFA /* PopupOneViewController.swift in Sources */,
-				187087FC28D7FDF4001D11ED /* TableHeaderView.swift in Sources */,
+				187087FC28D7FDF4001D11ED /* DdayTableHeaderView.swift in Sources */,
 				18E2AB7328D3BC0F0010AAB2 /* ScheduleRepository.swift in Sources */,
 				18B79A0428CCB3B200186AFA /* BaseView.swift in Sources */,
 				18D8F96928D96BAA00179869 /* ThemeHelper.swift in Sources */,
+				18AF779D28E07F7A00D61E5D /* MainTableHeaderView.swift in Sources */,
 				18B79A3B28CE201700186AFA /* DdayView.swift in Sources */,
 				187087F928D7FDCD001D11ED /* DdayRealmModel.swift in Sources */,
 				18B79A2A28CDFB7E00186AFA /* Color.swift in Sources */,
@@ -542,6 +581,7 @@
 				18AF779028DC962700D61E5D /* ThemeViewController.swift in Sources */,
 				18B79A4C28CF41B300186AFA /* PopupZeroViewController.swift in Sources */,
 				18AF778628DC709E00D61E5D /* LicenseDetailView.swift in Sources */,
+				18AF77AA28E0930800D61E5D /* ProfileSettingViewController.swift in Sources */,
 				1814481128D3309300BEA60C /* DatePIckerView.swift in Sources */,
 				18AF778828DC70A600D61E5D /* LicenseDetailViewController.swift in Sources */,
 			);
@@ -685,11 +725,14 @@
 				DEVELOPMENT_TEAM = UT362X937Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MakeMyDay/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MakeMyDay;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -699,10 +742,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -716,11 +759,14 @@
 				DEVELOPMENT_TEAM = UT362X937Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MakeMyDay/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MakeMyDay;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -730,10 +776,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

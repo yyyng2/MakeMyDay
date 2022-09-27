@@ -27,7 +27,7 @@ class DdayWriteViewController: BaseViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
+        configure()
         configureButton()
         setNavigationItem()
     }
@@ -37,7 +37,7 @@ class DdayWriteViewController: BaseViewController{
         edit = false
     }
     
-    override func configureUI() {
+    override func configure() {
         if edit == true {
             guard let realmDate = dday?.date else { return }
             mainView.dateLabel.text = dateFormatToString(date: realmDate, formatStyle: .yyyyMMdd)

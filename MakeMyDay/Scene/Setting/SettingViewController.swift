@@ -48,6 +48,8 @@ class SettingViewController: BaseViewController{
         warning.addAction(UIAlertAction(title: "초기화", style: .destructive, handler: {action in
             self.scheduleRepository.deleteAll()
             self.ddayRepository.deleteAll()
+            User.profileNameBool = false
+            User.profileImageBool = false
             let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                 let sceneDelegate = windowScene?.delegate as? SceneDelegate
                 let viewController = PageViewController()
@@ -80,19 +82,24 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         switch indexPath.row {
         case 0:
             let vc = AppInfoViewController()
             navigationController?.pushViewController(vc, animated: true)
-//       case 1:
-           
+        case 1:
+           showAlert(title: "", message: "추후 업데이트 예정입니다.", buttonTitle: "확인")
         case 2:
+            let vc = ProfileSettingViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case 3:
             let vc = ThemeViewController()
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
-        case 3:
-            resetApp()
         case 4:
+            resetApp()
+        case 5:
             let vc = LicenseViewController()
             navigationController?.pushViewController(vc, animated: true)
         default:

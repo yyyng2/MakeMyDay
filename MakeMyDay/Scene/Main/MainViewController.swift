@@ -47,9 +47,7 @@ class MainViewController: BaseViewController {
         self.view = self.mainView
       
     }
-    
-    lazy var popupView = NavTitleView()
-    
+     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationUI()
@@ -57,49 +55,45 @@ class MainViewController: BaseViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-
+        mainView.tableView.reloadData()
     }
     
     override func viewDidLoad() {
-        configureUI()
+        configure()
         setNavigationUI()
         hoverButton()
-        
+
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
+        mainView.tableView.register(MainProfileTableViewCell.self, forCellReuseIdentifier: MainProfileTableViewCell.reuseIdentifier)
         mainView.tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.reuseIdentifier)
-        mainView.tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: ScheduleTableViewCell.reuseIdentifier)
-        mainView.tableView.register(DdayTableViewCell.self, forCellReuseIdentifier: DdayTableViewCell.reuseIdentifier)
+        mainView.tableView.register(MainScheduleTableViewCell.self, forCellReuseIdentifier: MainScheduleTableViewCell.reuseIdentifier)
+        mainView.tableView.register(MainDdayTableViewCell.self, forCellReuseIdentifier: MainDdayTableViewCell.reuseIdentifier)
         
     }
     
     override func setNavigationUI() {
-//        navigationItem.titleView = popupView
       
           let navController = parent as! UINavigationController
 
-//        navController.navigationItem.titleView = popupView
-        navController.navigationBar.topItem!.title = .none
-    
-          navController.navigationBar.topItem!.titleView = popupView
-        navController.navigationBar.topItem?.titleView?.isHidden = false
-          navController.navigationBar.prefersLargeTitles = true
+        navController.navigationBar.topItem!.title = "Home"
 
+          navController.navigationBar.prefersLargeTitles = true
+     
         let backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(backButtonTapped))
         backBarButtonItem.tintColor = themeType().tintColor
         self.navigationItem.backBarButtonItem = backBarButtonItem
         navigationItem.titleView?.tintColor = themeType().tintColor
         
         navigationBarAppearance.backgroundColor = themeType().backgroundColor
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
-//        navigationBarAppearance.backgroundColor = themeType().backgroundColor
-//        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
+        navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
 
         self.navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
     }
     
-    override func configureUI() {
+    override func configure() {
         guard let date = localDate(date: Date(), formatStyle: .yyyyMMddEaHHmm) else { return }
         mainView.dateLabel.text = dateFormatToString(date: date, formatStyle: .yyyyMMddEaHHmm)
 
@@ -135,9 +129,6 @@ class MainViewController: BaseViewController {
             mainView.scheduleWriteButton.isHidden = !mainView.scheduleWriteButton.isHidden
             mainView.ddayWriteButton.isHidden = !mainView.ddayWriteButton.isHidden
         }
-      
-        
-    
     }
     
     @objc func scheduleWriteButtonTapped() {
@@ -151,9 +142,6 @@ class MainViewController: BaseViewController {
     }
     
     @objc func backButtonTapped() {
-
-        navigationController?.title = nil
-        navigationController?.navigationBar.topItem?.title = .none
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.popViewController(animated: true)
     }
@@ -171,34 +159,28 @@ class MainViewController: BaseViewController {
     
 }
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        0
-    }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        0
-    }
+extension MainViewController: UITableViewDelegate, UITableViewDataSource{    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
-        case 2:
-            return 80
-        case 4:
-            return 80
+        case 3:
+            return 60
+        case 6:
+            return 60
         default:
-            return 50
+            return 45
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 7
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 2:
+        case 3:
             return scheduleTasks == nil ? 0 : scheduleTasks.count
-        case 4:
+        case 6:
             return pinned == nil ? 0 : pinned.count
         default:
             return 1
@@ -207,14 +189,35 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let name = ImageFileManager.shared.profileImageName
+        
         switch indexPath.section {
         case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MainProfileTableViewCell.reuseIdentifier, for: indexPath) as? MainProfileTableViewCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
+            
+            if User.profileImageBool {
+                if let image: UIImage = ImageFileManager.shared.getSavedImage(named: name) {
+                    cell.profileView.image = image
+                }
+            } else {
+                cell.profileView.image = themeType().profileImage
+            }
+            
+            if User.profileNameBool {
+                cell.profileLabel.text = User.profileName
+            } else {
+                cell.profileLabel.text = "D"
+            }
+            
+            return cell
+        case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.reuseIdentifier, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
             cell.selectionStyle = .none
             cell.titleLabel.text = selectScript(scriptType: .hi)
             
             return cell
-        case 1:
+        case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.reuseIdentifier, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
             cell.selectionStyle = .none
             
@@ -225,8 +228,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
             }
  
             return cell
-        case 2:
-            guard let scheduleCell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.reuseIdentifier, for: indexPath) as? ScheduleTableViewCell else { return UITableViewCell() }
+        case 3:
+            guard let scheduleCell = tableView.dequeueReusableCell(withIdentifier: MainScheduleTableViewCell.reuseIdentifier, for: indexPath) as? MainScheduleTableViewCell else { return UITableViewCell() }
             scheduleCell.selectionStyle = .none
             scheduleCell.backgroundColor = .clear
             
@@ -234,14 +237,34 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
             
             let string = dateFormatToString(date: scheduleTasks[indexPath.row].date, formatStyle: .hhmm)
             scheduleCell.titleLabel.text = scheduleTasks[indexPath.row].title
-            scheduleCell.titleLabel.textAlignment = .center
             scheduleCell.titleLabel.textColor = themeType().countTextColor
             scheduleCell.dateLabel.text = string
             scheduleCell.dateLabel.textAlignment = .center
             scheduleCell.dateLabel.textColor = .systemGray6
             
             return scheduleCell
-        case 3:
+            
+        case 4:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MainProfileTableViewCell.reuseIdentifier, for: indexPath) as? MainProfileTableViewCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
+            
+            if User.profileImageBool {
+                if let image: UIImage = ImageFileManager.shared.getSavedImage(named: name) {
+                    cell.profileView.image = image
+                }
+            } else {
+                cell.profileView.image = themeType().profileImage
+            }
+            
+            if User.profileNameBool {
+                cell.profileLabel.text = User.profileName
+            } else {
+                cell.profileLabel.text = "D"
+            }
+            
+            return cell
+            
+        case 5:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.reuseIdentifier, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
             
             cell.selectionStyle = .none
@@ -255,13 +278,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
             
             return cell
         default:
-            guard let ddayCell = tableView.dequeueReusableCell(withIdentifier: DdayTableViewCell.reuseIdentifier, for: indexPath) as? DdayTableViewCell else { return UITableViewCell() }
+            guard let ddayCell = tableView.dequeueReusableCell(withIdentifier: MainDdayTableViewCell.reuseIdentifier, for: indexPath) as? MainDdayTableViewCell else { return UITableViewCell() }
             ddayCell.selectionStyle = .none
             ddayCell.backgroundColor = .clear
             
             ddayCell.backgroundImageView.image = themeType().bubbleLong
             ddayCell.titleLabel.text = pinned[indexPath.row].title
-            ddayCell.titleLabel.textAlignment = .center
             ddayCell.dateLabel.text = "\(pinned[indexPath.row].dateString)"
             ddayCell.dateLabel.textColor = .systemGray6
             

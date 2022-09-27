@@ -72,7 +72,14 @@ class ScheduleView: BaseView {
     let writeButton: CustomWriteButton = {
         let button = CustomWriteButton(frame: .zero)
         button.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
-
+        let pointSize: CGFloat = 15
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: pointSize)
+        var config = UIButton.Configuration.plain()
+        button.configuration = config
+        button.backgroundColor = themeType().foregroundColor
+        button.tintColor = themeType().tintColor
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 10
         return button
     }()
     
@@ -85,7 +92,7 @@ class ScheduleView: BaseView {
     }
     
     override func configure() {
-        [backgroundImageView, calendar, updownButton, tableView].forEach {
+        [backgroundImageView, calendar, updownButton, tableView, writeButton].forEach {
             addSubview($0)
         }
     }
@@ -113,7 +120,13 @@ class ScheduleView: BaseView {
             make.leading.trailing.bottom.equalTo(safeAreaLayoutGuide)
         }
         
-     
+        writeButton.snp.makeConstraints { make in
+            make.bottom.equalTo(safeAreaLayoutGuide).offset(-20)
+            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.15)
+            make.height.equalTo(writeButton.snp.width)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-8)
+        }
+        
     }
     
 }

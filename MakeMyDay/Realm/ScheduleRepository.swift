@@ -39,12 +39,6 @@ final class ScheduleRepository: ScheduleRepositoryType {
       
     }
     
-    func fetchImportant() -> Results<Schedule> {
-        
-        return localRealm.objects(Schedule.self).sorted(byKeyPath: "important", ascending: true)
-      
-    }
-    
     func fetchFilterDate(date: Date) -> Results<Schedule> {
         return localRealm.objects(Schedule.self).filter("date == %@", date).sorted(byKeyPath: "date", ascending: false)
     }
@@ -65,27 +59,16 @@ final class ScheduleRepository: ScheduleRepositoryType {
     }
     
     func deleteById(id: ObjectId) {
-//        let task = localRealm.objects(UserMemo.self).filter("objectId == \(id)")
-        let user = localRealm.object(ofType: Schedule.self, forPrimaryKey: id)
+
+        let task = localRealm.object(ofType: Schedule.self, forPrimaryKey: id)
         do {
             try localRealm.write {
-                localRealm.delete(user!)
+                localRealm.delete(task!)
             }
         } catch let error {
             print(error)
         }
     }
-    
-//    func updateImportant(record: Schedule) {
-//        do{
-//            try localRealm.write {
-//                //하나의 레코드에서 특정 컬럼 하나만 변경
-//                record.dday = !record.dday
-//            }
-//        } catch let error {
-//            print(error)
-//        }
-//    }
     
     func updateRecord(id: ObjectId, record: Schedule) {
         

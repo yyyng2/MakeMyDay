@@ -48,7 +48,7 @@ class AppInfoView: BaseView {
     
     let illustratorLabel: CustomLabel = {
        let label = CustomLabel()
-        label.text = " Illustrator_ Heejeong Chae."
+        label.text = "Illustrator_ Heejeong Chae."
         label.textColor = themeType().tintColor
 
         label.textAlignment = .center
@@ -58,9 +58,45 @@ class AppInfoView: BaseView {
         return label
     }()
     
+    let emailLabel: CustomLabel = {
+       let label = CustomLabel()
+        label.text = "Email: yyyng2@gmail.com"
+        label.textColor = themeType().tintColor
+
+        label.textAlignment = .center
+        label.font = .boldSystemFont(ofSize: 12)
+ 
+        label.textColor = themeType().tintColor
+        return label
+    }()
+    
+    let emailButton: UIButton = {
+        var config = UIButton.Configuration.plain()
+            config.title = "문의"
+        config.baseForegroundColor = themeType().tintColor
+        
+        let button = UIButton()
+        button.configuration = config
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 10
+        button.backgroundColor = themeType().foregroundColor
+        return button
+    }()
+    
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [emailLabel, emailButton])
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 8
+        return stackView
+    }()
+    
     override func configure() {
         backgroundColor = .clear
-        [backgroundView, profileView, profileLabel, developerLabel, illustratorLabel].forEach {
+        [backgroundView, profileView, profileLabel, developerLabel, illustratorLabel, stackView].forEach {
             addSubview($0)
         }
     }
@@ -88,6 +124,10 @@ class AppInfoView: BaseView {
             make.centerX.equalTo(safeAreaLayoutGuide)
             make.width.equalTo(safeAreaLayoutGuide)
             make.top.equalTo(developerLabel.snp.bottom).offset(8)
+        }
+        stackView.snp.makeConstraints { make in
+            make.centerX.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(illustratorLabel.snp.bottom).offset(30)
         }
     }
 }

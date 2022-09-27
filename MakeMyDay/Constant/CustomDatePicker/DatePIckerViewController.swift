@@ -48,7 +48,7 @@ class DatePickerViewController: BaseViewController {
         guard let date = selectDate else { return }
         mainView.datePicker.setDate(date, animated: true)
     }
-    override func configureUI() {
+    override func configure() {
         if User.pickerType {
             mainView.datePicker.datePickerMode = .dateAndTime
         } else {

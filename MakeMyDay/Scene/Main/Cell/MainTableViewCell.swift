@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTableViewCell: BaseTableViewCell{
+class MainTableViewCell: BaseTableViewCell {
     
     let backgroundImageView: CellShortCustomImageView = {
         let view = CellShortCustomImageView(frame: .zero)
@@ -17,12 +17,12 @@ class MainTableViewCell: BaseTableViewCell{
     let titleLabel: CustomLabel = {
        let label = CustomLabel()
         label.font = .boldSystemFont(ofSize: 16)
+        label.sizeToFit()
         return label
     }()
    
     
     override func configure() {
-        
         backgroundColor = .clear
        
         [backgroundImageView, titleLabel].forEach {
@@ -33,14 +33,15 @@ class MainTableViewCell: BaseTableViewCell{
     
     override func setConstraints() {
         backgroundImageView.snp.makeConstraints { make in
-            make.edges.equalTo(safeAreaLayoutGuide)
+            make.top.bottom.equalTo(safeAreaLayoutGuide)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-20)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(30)
         }
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(safeAreaLayoutGuide)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(40)
-            make.trailing.equalTo(safeAreaLayoutGuide).offset(-20)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(70)
+//            make.trailing.equalTo(safeAreaLayoutGuide).offset(-20)
         }
-      
     }
     
 

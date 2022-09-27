@@ -23,14 +23,12 @@ class DdayViewController: BaseViewController{
     var pinned: Results<Dday>!{
         didSet {
             mainView.tableView.reloadData()
-            print("Tasks Changed")
         }
     }
     
     var unPinned: Results<Dday>!{
         didSet {
             mainView.tableView.reloadData()
-            print("Tasks Changed")
         }
     }
     
@@ -64,9 +62,10 @@ class DdayViewController: BaseViewController{
         
     }
     
-    override func configureUI() {
+    override func configure() {
         guard let todayDate = localDate(date: Date(), formatStyle: .yyyyMMddEaHHmm) else { return }
         headerString = dateFormatToString(date: todayDate, formatStyle: .yyyyMMdd)
+        mainView.writeButton.addTarget(self, action: #selector(writeItemTapped), for: .touchUpInside)
     }
     
     override func setNavigationUI() {
@@ -138,7 +137,7 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
             if pinned.count > 0 {
                 return unPinned.count <= 0 ? "" : "D-day"
             } else {
-                return unPinned.count <= 0 ? "" : "Swipe 즐겨찾기로\n메인화면에서 확인해 보세요!"
+                return unPinned.count <= 0 ? "D-day를 추가해 볼까요?" : "Swipe 즐겨찾기로\n메인화면에서 확인해 보세요!"
             }
             
         }
@@ -146,9 +145,8 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            let headerView = TableHeaderView()
+            let headerView = DdayTableHeaderView()
             headerView.sectionLabel.text = headerString
-            headerView.writeButton.addTarget(self, action: #selector(writeItemTapped), for: .touchUpInside)
 
             return headerView
         } else {
@@ -206,6 +204,8 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         let vc = DdayWriteViewController()
         
         

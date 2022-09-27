@@ -60,10 +60,10 @@ final class DdayRepository: DdayRepositoryType {
     
     func deleteById(id: ObjectId) {
 
-        let user = localRealm.object(ofType: Dday.self, forPrimaryKey: id)
+        let task = localRealm.object(ofType: Dday.self, forPrimaryKey: id)
         do {
             try localRealm.write {
-                localRealm.delete(user!)
+                localRealm.delete(task!)
             }
         } catch let error {
             print(error)
@@ -142,7 +142,7 @@ final class DdayRepository: DdayRepositoryType {
         let date = dateFormatter.date(from: string)
         return date
     }    
-    
+    //D-day 계산
     func days(record: Dday) -> Int {
         let date = stringFormatToDate(string: record.dateString, formatStyle: .yyyyMMdd)!
         switch record.dayPlus {

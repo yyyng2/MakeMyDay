@@ -33,6 +33,10 @@ enum keyEnum: String {
     case isAppFirstLaunch = "isAppFirstLaunch"
     case themeType = "theme"
     case pickerType = "picker"
+    case nickname = "nickname"
+    case profileImageBool = "profileImageBool"
+    case profileNameBool = "profileNameBool"
+    case profileName = "profileName"
 }
 
 struct User {
@@ -44,4 +48,14 @@ struct User {
     
     @UserDefaultsHelper(key: keyEnum.pickerType.rawValue, defaultValue: true)
     static var pickerType: Bool
+    
+    @UserDefaultsHelper(key: keyEnum.profileImageBool.rawValue, defaultValue: false)
+    static var profileImageBool: Bool
+    
+    @UserDefaultsHelper(key: keyEnum.profileNameBool.rawValue, defaultValue: false)
+    static var profileNameBool: Bool
+    
+    @UserDefaultsHelper(key: keyEnum.nickname.rawValue, defaultValue: "")
+    static var profileName: String
+    
 }

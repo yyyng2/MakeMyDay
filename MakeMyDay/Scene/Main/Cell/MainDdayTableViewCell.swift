@@ -1,13 +1,13 @@
 //
-//  DdayTableViewCell.swift
+//  MainDdayTableViewCell.swift
 //  MakeMyDay
 //
-//  Created by Y on 2022/09/11.
+//  Created by Y on 2022/09/25.
 //
 
 import UIKit
 
-class DdayTableViewCell: BaseTableViewCell {
+class MainDdayTableViewCell: BaseTableViewCell {
     
     let backgroundImageView: CustomImageView = {
         let view = CustomImageView(frame: .zero)
@@ -45,22 +45,23 @@ class DdayTableViewCell: BaseTableViewCell {
     
     override func setConstraints() {
         backgroundImageView.snp.makeConstraints { make in
-            make.edges.equalTo(safeAreaLayoutGuide)
+            make.top.trailing.bottom.equalTo(safeAreaLayoutGuide)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(30)
         }
         
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(safeAreaLayoutGuide).multipliedBy(0.6)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(35)
-            make.trailing.equalTo(countLabel.snp.leading).offset(-10)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(70)
+            make.trailing.equalTo(countLabel.snp.leading).offset(-8)
         }
         dateLabel.snp.makeConstraints { make in
             make.centerY.equalTo(safeAreaLayoutGuide).multipliedBy(1.4)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(35)
-            make.trailing.equalTo(countLabel.snp.leading).offset(-10)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(70)
+            make.trailing.equalTo(countLabel.snp.leading).offset(-8)
         }
         countLabel.snp.makeConstraints { make in
             make.centerY.equalTo(safeAreaLayoutGuide)
-            make.trailing.equalTo(safeAreaLayoutGuide).offset(-10)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-8)
             make.height.equalTo(safeAreaLayoutGuide)
             make.width.equalTo(countLabel.snp.height).multipliedBy(2)
         }

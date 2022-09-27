@@ -58,6 +58,8 @@ extension LicenseViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         let vc = LicenseDetailViewController()
         vc.licenseDescription = license.license[indexPath.row].licenseDescription
         navigationController?.pushViewController(vc, animated: true)

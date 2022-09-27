@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIViewController {
+    
     enum FormatStyle {
         case yyyyMMddEaHHmm
         case yyyyMMdd
@@ -66,6 +67,7 @@ extension UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.autoupdatingCurrent
         dateFormatter.locale = Locale.current
+     
         switch formatStyle {
         case .yyyyMMddEaHHmm:
            dateFormatter.dateFormat = "yyyy-MM-dd (E) a hh:mm"
@@ -80,7 +82,6 @@ extension UIViewController {
         case .hhmm:
             dateFormatter.dateFormat = "a hh:mm"
         }
-        
         let date = dateFormatter.date(from: string)
         return date
     }    
@@ -133,7 +134,7 @@ extension UIViewController {
         let calendar = Calendar.current
         let currentDate = localDate(date: Date(), formatStyle: .yyyyMMdd)
         return calendar.dateComponents([.day], from: date, to: currentDate!).day! + 1
-     
     }
 
 }
+

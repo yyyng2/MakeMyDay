@@ -51,9 +51,9 @@ class ScheduleWriteViewController: BaseViewController {
         
     }
     
-    override func configureUI() {
+    override func configure() {
         
-        if edit == true{
+        if edit == true {
             guard let realmDate = schedule?.date else { return }
             let date = dateFormatToString(date: realmDate, formatStyle: .yyyyMMddEaHHmm)
             mainView.dateLabel.text = date

@@ -55,13 +55,13 @@ class ScheduleViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationUI()
-        configureUpdownButton()
+        configureButton()
         
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
@@ -69,23 +69,24 @@ class ScheduleViewController: BaseViewController {
         
         calendar.delegate = self
         calendar.dataSource = self
-        print(Realm.Configuration.defaultConfiguration.fileURL)
        
         self.view.addGestureRecognizer(self.scopeGesture)
         self.mainView.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
         
     }
     
-    override internal func configureUI() {
+    override internal func configure() {
         guard let todayDate = localDate(date: Date(), formatStyle: .yyyyMMddEaHHmm) else { return }
         headerDate = todayDate
         headerString = dateFormatToString(date: todayDate, formatStyle: .yyyyMMdd)
         calendar.appearance.headerMinimumDissolvedAlpha = 0.3
         calendar.scope = .month
         calendar.locale = Locale(identifier: "ko_KR")
+   
     }
     
-    private func configureUpdownButton() {
+    private func configureButton() {
+        mainView.writeButton.addTarget(self, action: #selector(writeItemTapped), for: .touchUpInside)
         mainView.updownButton.addTarget(self, action: #selector(buttonEvent), for: .touchUpInside)
     }
     
@@ -220,14 +221,8 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource{
         return 1
     }
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let headerView = TableHeaderView()
-        headerView.sectionLabel.text = headerString
-        headerView.writeButton.addTarget(self, action: #selector(writeItemTapped), for: .touchUpInside)
-
-        return headerView
-      
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return headerString
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -259,6 +254,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
         let vc = ScheduleWriteViewController()
         vc.edit = true

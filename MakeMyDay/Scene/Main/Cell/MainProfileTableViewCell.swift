@@ -1,41 +1,36 @@
 //
-//  NavTitleView.swift
+//  MainProfileTableViewCell.swift
 //  MakeMyDay
 //
-//  Created by Y on 2022/09/11.
+//  Created by Y on 2022/09/25.
 //
 
 import UIKit
 
-class NavTitleView: BaseView{
+class MainProfileTableViewCell: BaseTableViewCell {
+    
     lazy var profileView: CustomImageView = {
         let view = CustomImageView(frame: .zero)
-        view.image = themeType().profileImage
- 
-        view.layer.masksToBounds = true
         view.clipsToBounds = true
+        view.layer.cornerRadius = 10
+     
+        view.contentMode = .scaleAspectFit
         return view
     }()
     
     lazy var profileLabel: CustomLabel = {
         let label = CustomLabel(frame: .zero)
-        label.text = "D"
+      
         label.textColor = themeType().tintColor
-
-        label.textAlignment = .center
+    
+        label.textAlignment = .left
         label.font = .boldSystemFont(ofSize: 12)
         return label
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func configure() {
+        backgroundColor = .clear
+        
         [profileView, profileLabel].forEach {
             addSubview($0)
         }
@@ -43,15 +38,17 @@ class NavTitleView: BaseView{
     
     override func setConstraints() {
         profileView.snp.makeConstraints { make in
-            make.centerX.equalTo(safeAreaLayoutGuide)
-            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.1)
-            make.height.equalTo(profileView.snp.width)
-            make.top.equalToSuperview()
+            make.leading.equalTo(safeAreaLayoutGuide)
+            make.centerY.equalTo(safeAreaLayoutGuide)
+            make.width.equalTo(40)
+            make.height.equalTo(40)
         }
         profileLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(safeAreaLayoutGuide)
+            make.leading.equalTo(profileView.snp.trailing).offset(4)
+            make.centerY.equalTo(profileView)
             make.width.equalTo(safeAreaLayoutGuide)
-            make.top.equalTo(profileView.snp.bottom).offset(8)
         }
     }
+    
+
 }

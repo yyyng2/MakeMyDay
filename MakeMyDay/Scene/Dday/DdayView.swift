@@ -14,16 +14,24 @@ class DdayView: BaseView {
         return view
     }()
     
-    let writeButton: CustomWriteButton = {
-        let button = CustomWriteButton(frame: .zero)
-        button.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
-        return button
-    }()
-    
     let tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .insetGrouped)
         view.backgroundColor = .clear
         return view
+    }()
+    
+    let writeButton: CustomWriteButton = {
+        let button = CustomWriteButton(frame: .zero)
+        button.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
+        let pointSize: CGFloat = 15
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: pointSize)
+        var config = UIButton.Configuration.plain()
+        button.configuration = config
+        button.backgroundColor = themeType().foregroundColor
+        button.tintColor = themeType().tintColor
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 10
+        return button
     }()
     
     override init(frame: CGRect) {
@@ -49,6 +57,13 @@ class DdayView: BaseView {
         
         tableView.snp.makeConstraints { make in
             make.leading.top.trailing.bottom.equalTo(safeAreaLayoutGuide)
+        }
+        
+        writeButton.snp.makeConstraints { make in
+            make.bottom.equalTo(safeAreaLayoutGuide).offset(-20)
+            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.15)
+            make.height.equalTo(writeButton.snp.width)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-8)
         }
     }
 }

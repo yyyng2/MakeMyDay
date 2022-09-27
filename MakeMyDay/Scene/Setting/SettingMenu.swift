@@ -7,4 +7,4 @@
 
 import Foundation
 
-let settingMenuArray = ["앱 정보", "데이터 백업", "테마 변경", "초기화", "오픈소스"]
+let settingMenuArray = ["앱 정보", "데이터 백업", "프로필 변경", "테마 변경", "초기화", "오픈소스"]
