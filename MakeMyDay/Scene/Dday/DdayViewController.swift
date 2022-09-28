@@ -182,7 +182,13 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
             let startDate = stringFormatToDate(string: pinned[indexPath.row].dateString, formatStyle: .yyyyMMdd)!
             let daysCount =  days(from: startDate)
             
-            cell.countLabel.text = "\(daysCount) 일"
+            switch pinned[indexPath.row].dayPlus {
+            case true:
+                cell.countLabel.text = "\(daysCount) 일"
+            case false:
+                cell.countLabel.text = "\(daysCount - 1) 일"
+            }
+            
             cell.titleLabel.text = pinned[indexPath.row].title
             cell.dateLabel.text = pinned[indexPath.row].dateString
       
@@ -191,8 +197,14 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
         case 2:
             let startDate = stringFormatToDate(string: unPinned[indexPath.row].dateString, formatStyle: .yyyyMMdd)!
             let daysCount =  days(from: startDate)
-
-            cell.countLabel.text = "\(daysCount) 일"
+            
+            switch unPinned[indexPath.row].dayPlus {
+            case true:
+                cell.countLabel.text = "\(daysCount) 일"
+            case false:
+                cell.countLabel.text = "\(daysCount - 1) 일"
+            }
+    
             
             cell.titleLabel.text = unPinned[indexPath.row].title
             cell.dateLabel.text = unPinned[indexPath.row].dateString

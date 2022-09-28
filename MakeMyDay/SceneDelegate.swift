@@ -22,8 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.overrideUserInterfaceStyle = .dark
         
         if User.isAppFirstLaunch {
-            //마지막에 제거
-            //User.isAppFirstLaunch = false
+        
+            User.isAppFirstLaunch = false
             let viewController = PageViewController()
             window?.rootViewController = viewController
         } else {

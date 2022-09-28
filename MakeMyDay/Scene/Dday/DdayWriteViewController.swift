@@ -82,13 +82,9 @@ class DdayWriteViewController: BaseViewController{
     }
     
     func saveFunction(){
-        print(#function)
-    
-        print("지운쨩")
+
         guard let text = mainView.dateLabel.text else { return }
-        print(0)
-      
-        print(1)
+
         guard let title = mainView.titleTextField.text else { return }
 
         let dayPlus = mainView.dayPlusSwitchButton.isOn
@@ -103,7 +99,7 @@ class DdayWriteViewController: BaseViewController{
         } else {
             guard let date = dateData else { return }
             guard let data = localDate(date: date, formatStyle: .yyyyMMdd) else { return }
-            let task = Dday(title: title, date: data, dateString: text, dayPlus: false)
+            let task = Dday(title: title, date: data, dateString: text, dayPlus: dayPlus)
             ddayRepository.addRecord(record: task)
      
          

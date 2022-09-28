@@ -94,9 +94,7 @@ class MainViewController: BaseViewController {
     }
     
     override func configure() {
-        guard let date = localDate(date: Date(), formatStyle: .yyyyMMddEaHHmm) else { return }
-        mainView.dateLabel.text = dateFormatToString(date: date, formatStyle: .yyyyMMddEaHHmm)
-
+        mainView.dateLabel.text = Date().formattedToStringYyyymmddeahhmm()
     }
     
     func hoverButton() {

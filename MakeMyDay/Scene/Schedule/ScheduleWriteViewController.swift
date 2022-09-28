@@ -57,7 +57,11 @@ class ScheduleWriteViewController: BaseViewController {
             guard let realmDate = schedule?.date else { return }
             let date = dateFormatToString(date: realmDate, formatStyle: .yyyyMMddEaHHmm)
             mainView.dateLabel.text = date
-            mainView.scheduleTextView.text = schedule?.allText
+            
+            guard let title = schedule?.title else { return }
+            guard let content = schedule?.content else { return }
+            
+            mainView.scheduleTextView.text = "\(title)\n\(content)"
         } else {
             if let data = dateData {
                 mainView.dateLabel.text = dateFormatToString(date: data, formatStyle: .yyyyMMddEaHHmm)
@@ -129,11 +133,11 @@ class ScheduleWriteViewController: BaseViewController {
                 titleText = String(array[0])
                 contentText = String(array[1])
 
-                let task = Schedule(allText: content, title: titleText, content: contentText, date: data, dateString: text)
+                let task = Schedule(title: titleText, content: contentText, date: data, dateString: text)
                 scheduleRepository.updateRecord(id: id!, record: task)
             } else {
                 titleText = String(array[0])
-                let task = Schedule(allText: content, title: titleText, content: "추가 텍스트 없음", date: data, dateString: text)
+                let task = Schedule(title: titleText, content: "추가 텍스트 없음", date: data, dateString: text)
                 scheduleRepository.updateRecord(id: id!, record: task)
             }
         } else {
@@ -141,11 +145,11 @@ class ScheduleWriteViewController: BaseViewController {
             if array.count == 2 {
                 titleText = String(array[0])
                 contentText = String(array[1])
-                let task = Schedule(allText: content, title: titleText, content: contentText, date: data, dateString: text)
+                let task = Schedule(title: titleText, content: contentText, date: data, dateString: text)
                 scheduleRepository.addRecord(record: task)
             } else {
                 titleText = String(array[0])
-                let task = Schedule(allText: content, title: titleText, content: "추가 텍스트 없음", date: data, dateString: text)
+                let task = Schedule(title: titleText, content: "추가 텍스트 없음", date: data, dateString: text)
                 scheduleRepository.addRecord(record: task)
             }
         }

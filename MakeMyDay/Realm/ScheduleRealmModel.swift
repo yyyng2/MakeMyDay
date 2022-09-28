@@ -16,15 +16,13 @@ final class Schedule: Object{
     @Persisted var content: String?
     @Persisted var date: Date
     @Persisted var dateString: String
-    @Persisted var allText: String
     
-    convenience init(allText: String, title: String, content: String?, date: Date, dateString: String) {
+    convenience init(title: String, content: String?, date: Date, dateString: String) {
         self.init()
         self.title = title
         self.content = content
         self.date = date
         self.dateString = dateString
-        self.allText = allText
     }
 }
 
