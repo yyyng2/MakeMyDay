@@ -137,7 +137,7 @@ class ScheduleWriteViewController: BaseViewController {
                 scheduleRepository.updateRecord(id: id!, record: task)
             } else {
                 titleText = String(array[0])
-                let task = Schedule(title: titleText, content: "추가 텍스트 없음", date: data, dateString: text)
+                let task = Schedule(title: titleText, content: "", date: data, dateString: text)
                 scheduleRepository.updateRecord(id: id!, record: task)
             }
         } else {
@@ -149,7 +149,7 @@ class ScheduleWriteViewController: BaseViewController {
                 scheduleRepository.addRecord(record: task)
             } else {
                 titleText = String(array[0])
-                let task = Schedule(title: titleText, content: "추가 텍스트 없음", date: data, dateString: text)
+                let task = Schedule(title: titleText, content: "", date: data, dateString: text)
                 scheduleRepository.addRecord(record: task)
             }
         }

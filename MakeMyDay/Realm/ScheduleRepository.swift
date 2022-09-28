@@ -92,7 +92,7 @@ final class ScheduleRepository: ScheduleRepositoryType {
     }
     
     func deleteEmptyRecord() {
-        let emptyRealm = localRealm.objects(Schedule.self).filter("allText == ''")
+        let emptyRealm = localRealm.objects(Schedule.self).filter("title == '' AND content == ''")
         do {
             try localRealm.write {
                 localRealm.delete(emptyRealm)
