@@ -56,6 +56,7 @@ class ScheduleWriteViewController: BaseViewController {
         if edit == true {
             guard let realmDate = schedule?.date else { return }
             let date = dateFormatToString(date: realmDate, formatStyle: .yyyyMMddEaHHmm)
+
             mainView.dateLabel.text = date
             
             guard let title = schedule?.title else { return }

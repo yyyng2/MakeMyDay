@@ -10,8 +10,6 @@ import UIKit
 import RealmSwift
 
 protocol ScheduleRepositoryType {
-    func fetchFilterImportant() -> Results<Schedule>
-    func fetchFilterUnimportant() -> Results<Schedule>
     func fetch() -> Results<Schedule>
     func deleteRecord(record: Schedule)
     func addRecord(record: Schedule)
@@ -39,18 +37,11 @@ final class ScheduleRepository: ScheduleRepositoryType {
     }
     
     func fetchFilterDate(date: Date) -> Results<Schedule> {
-        return localRealm.objects(Schedule.self).filter("date == %@", date).sorted(byKeyPath: "date", ascending: false)
+        return localRealm.objects(Schedule.self).filter("date == %@", date).sorted(byKeyPath: "date", ascending: true)
     }
     
     func fetchFilterDateString(formatString: String) -> Results<Schedule> {
         return localRealm.objects(Schedule.self).filter("dateString CONTAINS[c] '\(formatString)'").sorted(byKeyPath: "date", ascending: true)
-    }
-    
-    func fetchFilterImportant() -> Results<Schedule> {
-        return localRealm.objects(Schedule.self).filter("dday == true").sorted(byKeyPath: "date", ascending: false)
-    }
-    func fetchFilterUnimportant() -> Results<Schedule> {
-        return localRealm.objects(Schedule.self).filter("dday == false").sorted(byKeyPath: "date", ascending: false)
     }
     
     func deleteById(id: ObjectId) {
