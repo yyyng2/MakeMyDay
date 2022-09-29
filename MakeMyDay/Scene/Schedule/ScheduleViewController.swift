@@ -81,8 +81,6 @@ class ScheduleViewController: BaseViewController {
         headerString = dateFormatToString(date: todayDate, formatStyle: .yyyyMMdd)
         calendar.appearance.headerMinimumDissolvedAlpha = 0.3
         calendar.scope = .month
-        calendar.locale = Locale(identifier: "ko_KR")
-   
     }
     
     private func configureButton() {
@@ -97,8 +95,7 @@ class ScheduleViewController: BaseViewController {
         scheduleTasks = scheduleRepository.fetchFilterDateString(formatString: selectDate)
         
         mainView.tableView.reloadData()
-        
-        mainView.calendar.reloadData()
+    
     }
     
     @objc private func swipeEvent(_ swipe: UISwipeGestureRecognizer) {
@@ -170,9 +167,8 @@ class ScheduleViewController: BaseViewController {
     }
     
 }
-extension ScheduleViewController: FSCalendarDelegate, FSCalendarDataSource{
+extension ScheduleViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print(date)
         headerDate = date
         dateData = date
         headerString = dateFormatToString(date: date, formatStyle: .yyyyMMdd)
@@ -201,7 +197,6 @@ extension ScheduleViewController: FSCalendarDelegate, FSCalendarDataSource{
         dateData = date
         headerString = dateFormatToString(date: date, formatStyle: .yyyyMMdd)
         fetchRealm()
-        print(scheduleTasks[0])
         mainView.tableView.reloadData()
     }
     

@@ -31,4 +31,14 @@ extension String {
         let date = dateFormatter.date(from: self)
         return date
     }
+    
+    func stringFormatToDateUTCYyyymmdd() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+     
+        let date = dateFormatter.date(from: self)
+        return date
+    }
 }

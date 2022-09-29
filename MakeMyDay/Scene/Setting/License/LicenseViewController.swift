@@ -54,7 +54,6 @@ extension LicenseViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LicenseTableViewCell.reuseIdentifier, for: indexPath) as? LicenseTableViewCell else { return UITableViewCell() }
         cell.titleLabel.text = license.license[indexPath.row].licenseName
-        print(license.license[indexPath.row].licenseName)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

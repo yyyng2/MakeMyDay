@@ -118,7 +118,7 @@ class ScheduleWriteViewController: BaseViewController {
     }
     
     func saveFunction(){
-        print(#function)
+   
         guard let date = dateData else { return }
         guard let text = mainView.dateLabel.text else { return }
         

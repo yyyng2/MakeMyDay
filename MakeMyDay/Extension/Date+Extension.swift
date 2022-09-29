@@ -50,6 +50,20 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    public func dateFormattedToDateYyyymmdd() -> Date {
+        
+        let dateFormatter = DateFormatter()
+  
+        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+        dateFormatter.locale = Locale.current
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+       
+        let string = dateFormatter.string(from: self)
+        
+        return string.stringFormatToDateYyyymmdd()!
+    }
+    
     public func dateFormattedToStringAhhmm() -> String {
         
         let dateFormatter = DateFormatter()

@@ -36,7 +36,6 @@ class MainViewController: BaseViewController {
     var pinned: Results<Dday>!{
         didSet {
             mainView.tableView.reloadData()
-            print("Tasks Changed")
         }
     }
     
