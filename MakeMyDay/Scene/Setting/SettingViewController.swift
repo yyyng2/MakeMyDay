@@ -89,17 +89,20 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             let vc = AppInfoViewController()
             navigationController?.pushViewController(vc, animated: true)
         case 1:
-           showAlert(title: "", message: "추후 업데이트 예정입니다.", buttonTitle: "확인")
+            let vc = FAQViewController()
+            navigationController?.pushViewController(vc, animated: true)
         case 2:
+           showAlert(title: "", message: "추후 업데이트 예정입니다.", buttonTitle: "확인")
+        case 3:
             let vc = ProfileSettingViewController()
             navigationController?.pushViewController(vc, animated: true)
-        case 3:
+        case 4:
             let vc = ThemeViewController()
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
-        case 4:
-            resetApp()
         case 5:
+            resetApp()
+        case 6:
             let vc = LicenseViewController()
             navigationController?.pushViewController(vc, animated: true)
         default:

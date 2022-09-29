@@ -18,6 +18,8 @@
 		187C415C28E3A44A005A6623 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 187C415B28E3A44A005A6623 /* readme.md */; };
 		187C416028E416FD005A6623 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C415F28E416FD005A6623 /* Date+Extension.swift */; };
 		187C416228E4653B005A6623 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C416128E4653B005A6623 /* String+Extension.swift */; };
+		187C416828E57067005A6623 /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C416728E57067005A6623 /* FAQView.swift */; };
+		187C416A28E57076005A6623 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C416928E57076005A6623 /* FAQViewController.swift */; };
 		18AF777928DC683200D61E5D /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF777828DC683200D61E5D /* SettingTableViewCell.swift */; };
 		18AF777C28DC696600D61E5D /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF777B28DC696600D61E5D /* SettingMenu.swift */; };
 		18AF777F28DC6B5400D61E5D /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF777E28DC6B5400D61E5D /* License.swift */; };
@@ -94,6 +96,8 @@
 		187C415B28E3A44A005A6623 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		187C415F28E416FD005A6623 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		187C416128E4653B005A6623 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		187C416728E57067005A6623 /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
+		187C416928E57076005A6623 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		18AF777828DC683200D61E5D /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		18AF777B28DC696600D61E5D /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
 		18AF777E28DC6B5400D61E5D /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
@@ -187,6 +191,15 @@
 				1814480E28D329BB00BEA60C /* DatePIckerViewController.swift */,
 			);
 			path = CustomDatePicker;
+			sourceTree = "<group>";
+		};
+		187C416628E57053005A6623 /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				187C416728E57067005A6623 /* FAQView.swift */,
+				187C416928E57076005A6623 /* FAQViewController.swift */,
+			);
+			path = FAQ;
 			sourceTree = "<group>";
 		};
 		18AF777D28DC6B3000D61E5D /* License */ = {
@@ -343,6 +356,7 @@
 		18B79A1328CCBE5B00186AFA /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				187C416628E57053005A6623 /* FAQ */,
 				18AF77A628E092E800D61E5D /* Profile */,
 				18AF779528DCB6A900D61E5D /* BackupRestore */,
 				18AF778B28DC7C8500D61E5D /* AppInfo */,
@@ -551,6 +565,7 @@
 				18B79A2428CDF80500186AFA /* ScheduleViewController.swift in Sources */,
 				18B79A5228D0636E00186AFA /* PopupOneView.swift in Sources */,
 				18B79A0928CCB49500186AFA /* MainView.swift in Sources */,
+				187C416A28E57076005A6623 /* FAQViewController.swift in Sources */,
 				18AF77A228E08AC400D61E5D /* MainScheduleTableViewCell.swift in Sources */,
 				18B79A3128CE0EF000186AFA /* CustomLabel.swift in Sources */,
 				18AF777F28DC6B5400D61E5D /* License.swift in Sources */,
@@ -582,6 +597,7 @@
 				18B799EB28CCAB9400186AFA /* AppDelegate.swift in Sources */,
 				18AF778E28DC95FE00D61E5D /* ThemeView.swift in Sources */,
 				18B79A0628CCB3B900186AFA /* BaseTableViewCell.swift in Sources */,
+				187C416828E57067005A6623 /* FAQView.swift in Sources */,
 				187087F628D7FDB4001D11ED /* CellShortCustomImageView.swift in Sources */,
 				18B79A5628D0B03700186AFA /* MainTableViewCell.swift in Sources */,
 				18B79A4228CE215B00186AFA /* DdayWriteView.swift in Sources */,

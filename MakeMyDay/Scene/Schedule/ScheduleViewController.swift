@@ -51,6 +51,7 @@ class ScheduleViewController: BaseViewController {
         super.viewWillAppear(animated)
         self.navigationItem.largeTitleDisplayMode = .always
         fetchRealm()
+        mainView.calendar.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
