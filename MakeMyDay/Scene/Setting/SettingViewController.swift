@@ -30,7 +30,7 @@ class SettingViewController: BaseViewController{
     }
     
     override func setNavigationUI() {
-        let backBarButtonItem = UIBarButtonItem(title: "D-day", style: .plain, target: self, action: #selector(backButtonTapped))
+        let backBarButtonItem = UIBarButtonItem(title: "Setting", style: .plain, target: self, action: #selector(backButtonTapped))
         backBarButtonItem.tintColor = themeType().tintColor
         self.navigationItem.backBarButtonItem = backBarButtonItem
         
