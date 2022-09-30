@@ -61,7 +61,7 @@ class MainDdayTableViewCell: BaseTableViewCell {
         }
         countLabel.snp.makeConstraints { make in
             make.centerY.equalTo(safeAreaLayoutGuide)
-            make.trailing.equalTo(safeAreaLayoutGuide).offset(-8)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-12)
             make.height.equalTo(safeAreaLayoutGuide)
             make.width.equalTo(countLabel.snp.height).multipliedBy(2)
         }

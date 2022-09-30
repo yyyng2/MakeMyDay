@@ -283,13 +283,19 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
             
             ddayCell.backgroundImageView.image = themeType().bubbleLong
             ddayCell.titleLabel.text = pinned[indexPath.row].title
-            ddayCell.dateLabel.text = "\(pinned[indexPath.row].dateString)"
-            ddayCell.dateLabel.textColor = .systemGray6
             
             let startDate = stringFormatToDate(string: pinned[indexPath.row].dateString, formatStyle: .yyyyMMdd)!
-            let daysCount = days(from: startDate)
-
-            ddayCell.countLabel.text = "\(daysCount) 일"
+            let daysCount =  days(from: startDate)
+            
+            switch pinned[indexPath.row].dayPlus {
+            case true:
+                ddayCell.countLabel.text = "\(daysCount) 일"
+            case false:
+                ddayCell.countLabel.text = "\(daysCount - 1) 일"
+            }
+            
+            ddayCell.dateLabel.text = "\(pinned[indexPath.row].dateString)"
+            ddayCell.dateLabel.textColor = .systemGray6
             
             return ddayCell
             

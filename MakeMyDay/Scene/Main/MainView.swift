@@ -95,21 +95,21 @@ class MainView: BaseView {
         
         writeButton.snp.makeConstraints { make in
             make.bottom.equalTo(safeAreaLayoutGuide).offset(-20)
-            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.15)
+            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.145)
             make.height.equalTo(writeButton.snp.width)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-8)
         }
         
         scheduleWriteButton.snp.makeConstraints { make in
             make.bottom.equalTo(writeButton.snp.top).offset(-8)
-            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.15)
+            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.145)
             make.height.equalTo(writeButton.snp.width)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-8)
         }
         
         ddayWriteButton.snp.makeConstraints { make in
             make.bottom.equalTo(scheduleWriteButton.snp.top).offset(-8)
-            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.15)
+            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.145)
             make.height.equalTo(writeButton.snp.width)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-8)
         }
