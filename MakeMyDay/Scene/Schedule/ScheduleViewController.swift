@@ -272,6 +272,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource{
             let okay = UIAlertAction(title: "삭제", style: .destructive) {_ in
 
                 self.deleteCell(schedule: self.scheduleTasks, index: indexPath)
+                self.mainView.calendar.reloadData()
             
             }
             

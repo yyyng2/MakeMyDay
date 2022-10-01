@@ -18,6 +18,7 @@ class ProfileSettingViewController: BaseViewController, UINavigationControllerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationItem()
+        configureProfile()
         
         mainView.imagePicker.delegate = self
     }
@@ -25,6 +26,24 @@ class ProfileSettingViewController: BaseViewController, UINavigationControllerDe
     override func configure() {
         mainView.loadImageButton.addTarget(self, action: #selector(loadImageButtonTapped), for: .touchUpInside)
         mainView.resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
+    }
+    
+    private func configureProfile() {
+        let name = ImageFileManager.shared.profileImageName
+        
+        if User.profileImageBool {
+            if let image: UIImage = ImageFileManager.shared.getSavedImage(named: name) {
+                mainView.imageView.image = image
+            }
+        } else {
+            mainView.imageView.image = themeType().profileImage
+        }
+        
+        if User.profileNameBool {
+            mainView.nicknameTextField.attributedPlaceholder = NSAttributedString(string: " \(User.profileName) (1~8글자)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
+        } else {
+            mainView.nicknameTextField.attributedPlaceholder = NSAttributedString(string: " D (1~8글자)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
+        }
     }
 
     func setNavigationItem() {

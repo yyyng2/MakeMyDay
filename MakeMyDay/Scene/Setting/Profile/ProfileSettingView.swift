@@ -18,8 +18,6 @@ class ProfileSettingView: BaseView {
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
  
-    
-    
         return picker
     }()
     
