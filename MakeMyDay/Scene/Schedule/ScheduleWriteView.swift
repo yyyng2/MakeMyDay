@@ -48,6 +48,7 @@ class ScheduleWriteView: BaseView {
         view.textColor = themeType().tintColor
         view.becomeFirstResponder()
         view.font = .boldSystemFont(ofSize: 20)
+        view.textContainerInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         return view
     }()
 

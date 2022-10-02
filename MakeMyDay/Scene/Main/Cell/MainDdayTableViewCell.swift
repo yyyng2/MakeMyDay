@@ -46,17 +46,17 @@ class MainDdayTableViewCell: BaseTableViewCell {
     override func setConstraints() {
         backgroundImageView.snp.makeConstraints { make in
             make.top.trailing.bottom.equalTo(safeAreaLayoutGuide)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(30)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(34)
         }
         
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(safeAreaLayoutGuide).multipliedBy(0.6)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(70)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(74)
             make.trailing.equalTo(countLabel.snp.leading).offset(-8)
         }
         dateLabel.snp.makeConstraints { make in
             make.centerY.equalTo(safeAreaLayoutGuide).multipliedBy(1.4)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(70)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(74)
             make.trailing.equalTo(countLabel.snp.leading).offset(-8)
         }
         countLabel.snp.makeConstraints { make in

@@ -35,11 +35,11 @@ class MainTableViewCell: BaseTableViewCell {
         backgroundImageView.snp.makeConstraints { make in
             make.top.bottom.equalTo(safeAreaLayoutGuide)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-20)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(30)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(34)
         }
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(safeAreaLayoutGuide)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(70)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(74)
 //            make.trailing.equalTo(safeAreaLayoutGuide).offset(-20)
         }
     }

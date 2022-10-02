@@ -48,6 +48,13 @@ class DdayWriteView: BaseView{
         field.textColor = themeType().tintColor
         field.becomeFirstResponder()
         field.font = .boldSystemFont(ofSize: 20)
+        let leftPadding = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: field.frame.height))
+        field.leftView = leftPadding
+        field.leftViewMode = UITextField.ViewMode.always
+
+        let rightPadding = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: field.frame.height))
+        field.rightView = rightPadding
+        field.rightViewMode = UITextField.ViewMode.always
         return field
     }()
 

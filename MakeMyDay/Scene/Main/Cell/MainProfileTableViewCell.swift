@@ -38,7 +38,7 @@ class MainProfileTableViewCell: BaseTableViewCell {
     
     override func setConstraints() {
         profileView.snp.makeConstraints { make in
-            make.leading.equalTo(safeAreaLayoutGuide)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(4)
             make.centerY.equalTo(safeAreaLayoutGuide)
             make.width.equalTo(40)
             make.height.equalTo(40)
