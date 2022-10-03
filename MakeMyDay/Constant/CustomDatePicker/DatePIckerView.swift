@@ -104,7 +104,6 @@ class DatePickerView: BaseView {
     lazy var buttonStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [cancelButton, doneButton])
         
-//        stackView.translatesAutoresizingMaskIntoConstraints = fals
         view.layer.borderColor = UIColor.white.cgColor
         view.axis = .horizontal
         view.alignment = .fill
@@ -161,7 +160,7 @@ class DatePickerView: BaseView {
         
         dayLabel.snp.makeConstraints { make in
             make.centerX.equalTo(backgroundView)
-            make.centerY.equalTo(backgroundView.snp.centerY).multipliedBy(0.7)
+            make.centerY.equalTo(backgroundView.snp.centerY).multipliedBy(0.6)
         }
         
         pickerLabel.snp.makeConstraints { make in

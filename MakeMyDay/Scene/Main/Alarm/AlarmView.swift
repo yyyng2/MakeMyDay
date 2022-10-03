@@ -13,6 +13,15 @@ class AlarmView: BaseView {
         return view
     }()
     
+    let dateLabel: CustomLabel = {
+        let label = CustomLabel(frame: .zero)
+  
+        label.text = "0000년 00월 00일 오전 00:00"
+        label.font = .systemFont(ofSize: 13)
+        label.textAlignment = .center
+        return label
+    }()
+    
     let tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .insetGrouped)
         view.backgroundColor = .clear

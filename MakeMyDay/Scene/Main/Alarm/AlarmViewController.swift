@@ -40,10 +40,28 @@ class AlarmViewController: BaseViewController {
     }
     
     func setLocalNotification(day: Int, hour: Int, minute: Int, id: Int) {
-        let notiContent = UNMutableNotificationContent()
-        notiContent.title = "Make My Day"
-        notiContent.body = "일정을 확인해 보세요."
-        notiContent.sound = .default
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "Make My Day"
+        notificationContent.body = "오늘의 일정을 확인해 보세요."
+        notificationContent.sound = .default
+        switch id {
+        case 1:
+            notificationContent.subtitle = "오늘은 일요일입니다."
+        case 2:
+            notificationContent.subtitle = "오늘은 월요일입니다."
+        case 3:
+            notificationContent.subtitle = "오늘은 화요일입니다."
+        case 4:
+            notificationContent.subtitle = "오늘은 수요일입니다."
+        case 5:
+            notificationContent.subtitle = "오늘은 목요일입니다."
+        case 6:
+            notificationContent.subtitle = "오늘은 금요일입니다."
+        case 7:
+            notificationContent.subtitle = "오늘은 토요일입니다."
+        default:
+            notificationContent.subtitle = ""
+        }
         
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
@@ -55,7 +73,7 @@ class AlarmViewController: BaseViewController {
         
         let idString = "\(id)"
         
-        let request = UNNotificationRequest(identifier: idString, content: notiContent, trigger: trigger)
+        let request = UNNotificationRequest(identifier: idString, content: notificationContent, trigger: trigger)
         
         userNotificationCenter.add(request)
     }
