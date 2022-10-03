@@ -78,6 +78,13 @@
 		18B79A5C28D1DFD600186AFA /* BackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A5B28D1DFD600186AFA /* BackgroundImageView.swift */; };
 		18D8F96928D96BAA00179869 /* ThemeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8F96828D96BAA00179869 /* ThemeHelper.swift */; };
 		18D8F96C28D98DBB00179869 /* CutomWriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8F96B28D98DBB00179869 /* CutomWriteButton.swift */; };
+		18DE8DA228EA51C900A74345 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DE8DA128EA51C900A74345 /* AlarmView.swift */; };
+		18DE8DA428EA51D300A74345 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DE8DA328EA51D300A74345 /* AlarmViewController.swift */; };
+		18DE8DA628EA5C9800A74345 /* CustomDayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DE8DA528EA5C9700A74345 /* CustomDayLabel.swift */; };
+		18DE8DA828EA5CE800A74345 /* CustomDayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DE8DA728EA5CE800A74345 /* CustomDayButton.swift */; };
+		18DE8DAB28EA5D3C00A74345 /* CustomDaySwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DE8DAA28EA5D3C00A74345 /* CustomDaySwitchButton.swift */; };
+		18DE8DAD28EA5E0400A74345 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DE8DAC28EA5E0400A74345 /* AlarmTableViewCell.swift */; };
+		18DE8DB128EA750800A74345 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DE8DB028EA750800A74345 /* Week.swift */; };
 		18E2AB7128D3BB330010AAB2 /* ScheduleRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2AB7028D3BB330010AAB2 /* ScheduleRealmModel.swift */; };
 		18E2AB7328D3BC0F0010AAB2 /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2AB7228D3BC0F0010AAB2 /* ScheduleRepository.swift */; };
 		18E9EAEC28E36411001757F5 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 18E9EAEB28E36411001757F5 /* Realm */; };
@@ -156,6 +163,13 @@
 		18B79A5B28D1DFD600186AFA /* BackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageView.swift; sourceTree = "<group>"; };
 		18D8F96828D96BAA00179869 /* ThemeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeHelper.swift; sourceTree = "<group>"; };
 		18D8F96B28D98DBB00179869 /* CutomWriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutomWriteButton.swift; sourceTree = "<group>"; };
+		18DE8DA128EA51C900A74345 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
+		18DE8DA328EA51D300A74345 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
+		18DE8DA528EA5C9700A74345 /* CustomDayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDayLabel.swift; sourceTree = "<group>"; };
+		18DE8DA728EA5CE800A74345 /* CustomDayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDayButton.swift; sourceTree = "<group>"; };
+		18DE8DAA28EA5D3C00A74345 /* CustomDaySwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDaySwitchButton.swift; sourceTree = "<group>"; };
+		18DE8DAC28EA5E0400A74345 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
+		18DE8DB028EA750800A74345 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		18E2AB7028D3BB330010AAB2 /* ScheduleRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRealmModel.swift; sourceTree = "<group>"; };
 		18E2AB7228D3BC0F0010AAB2 /* ScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -312,6 +326,7 @@
 		18B799FF28CCB2E000186AFA /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				18DE8DA028EA51B800A74345 /* Alarm */,
 				18B79A0828CCB49500186AFA /* MainView.swift */,
 				18B799EE28CCAB9400186AFA /* MainViewController.swift */,
 				18AF77A028E08AAD00D61E5D /* Cell */,
@@ -385,6 +400,7 @@
 		18B79A1528CCCBB300186AFA /* Constant */ = {
 			isa = PBXGroup;
 			children = (
+				18DE8DA928EA5D2F00A74345 /* CustomSwitch */,
 				18D8F96A28D98DB200179869 /* CustomButton */,
 				187087FF28D89EB6001D11ED /* CustomDatePicker */,
 				187087FD28D89DB1001D11ED /* CustomTableHeaderView */,
@@ -440,6 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				18B79A3028CE0EF000186AFA /* CustomLabel.swift */,
+				18DE8DA528EA5C9700A74345 /* CustomDayLabel.swift */,
 			);
 			path = CustomLabel;
 			sourceTree = "<group>";
@@ -448,8 +465,28 @@
 			isa = PBXGroup;
 			children = (
 				18D8F96B28D98DBB00179869 /* CutomWriteButton.swift */,
+				18DE8DA728EA5CE800A74345 /* CustomDayButton.swift */,
 			);
 			path = CustomButton;
+			sourceTree = "<group>";
+		};
+		18DE8DA028EA51B800A74345 /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				18DE8DB028EA750800A74345 /* Week.swift */,
+				18DE8DA128EA51C900A74345 /* AlarmView.swift */,
+				18DE8DA328EA51D300A74345 /* AlarmViewController.swift */,
+				18DE8DAC28EA5E0400A74345 /* AlarmTableViewCell.swift */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
+		18DE8DA928EA5D2F00A74345 /* CustomSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				18DE8DAA28EA5D3C00A74345 /* CustomDaySwitchButton.swift */,
+			);
+			path = CustomSwitch;
 			sourceTree = "<group>";
 		};
 		18E2AB6F28D3BB1C0010AAB2 /* Realm */ = {
@@ -554,6 +591,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D8F96C28D98DBB00179869 /* CutomWriteButton.swift in Sources */,
+				18DE8DA828EA5CE800A74345 /* CustomDayButton.swift in Sources */,
 				18AF778A28DC721F00D61E5D /* LicenseTableViewCell.swift in Sources */,
 				187087FA28D7FDCD001D11ED /* DdayRepository.swift in Sources */,
 				18AF779F28E0863E00D61E5D /* MainProfileTableViewCell.swift in Sources */,
@@ -579,14 +617,18 @@
 				18B79A1C28CCCC8D00186AFA /* Transition+Extension.swift in Sources */,
 				18AF777C28DC696600D61E5D /* SettingMenu.swift in Sources */,
 				18B79A5428D0637900186AFA /* PopupOneViewController.swift in Sources */,
+				18DE8DA428EA51D300A74345 /* AlarmViewController.swift in Sources */,
 				187087FC28D7FDF4001D11ED /* DdayTableHeaderView.swift in Sources */,
 				18E2AB7328D3BC0F0010AAB2 /* ScheduleRepository.swift in Sources */,
 				18B79A0428CCB3B200186AFA /* BaseView.swift in Sources */,
+				18DE8DB128EA750800A74345 /* Week.swift in Sources */,
+				18DE8DA628EA5C9800A74345 /* CustomDayLabel.swift in Sources */,
 				18D8F96928D96BAA00179869 /* ThemeHelper.swift in Sources */,
 				18AF779D28E07F7A00D61E5D /* MainTableHeaderView.swift in Sources */,
 				18B79A3B28CE201700186AFA /* DdayView.swift in Sources */,
 				187087F928D7FDCD001D11ED /* DdayRealmModel.swift in Sources */,
 				18B79A2A28CDFB7E00186AFA /* Color.swift in Sources */,
+				18DE8DAB28EA5D3C00A74345 /* CustomDaySwitchButton.swift in Sources */,
 				18B79A4428CE217000186AFA /* DdayWriteViewController.swift in Sources */,
 				18AF779428DCAA6800D61E5D /* AppInfoViewController.swift in Sources */,
 				18B79A2E28CE0B2200186AFA /* CustomImageView.swift in Sources */,
@@ -611,7 +653,9 @@
 				1814480B28D3246B00BEA60C /* ScheduleWriteView.swift in Sources */,
 				18B799ED28CCAB9400186AFA /* SceneDelegate.swift in Sources */,
 				18AF778128DC6E6800D61E5D /* LicenseView.swift in Sources */,
+				18DE8DA228EA51C900A74345 /* AlarmView.swift in Sources */,
 				18AF778328DC703C00D61E5D /* LicenseViewController.swift in Sources */,
+				18DE8DAD28EA5E0400A74345 /* AlarmTableViewCell.swift in Sources */,
 				18B79A3F28CE202F00186AFA /* DdayTableViewCell.swift in Sources */,
 				187C416228E4653B005A6623 /* String+Extension.swift in Sources */,
 				18AF779028DC962700D61E5D /* ThemeViewController.swift in Sources */,

@@ -22,21 +22,13 @@ class ScheduleWriteView: BaseView {
         return label
     }()
     
-    let dateLabel: CustomLabel = {
-        let label = CustomLabel()
-        label.textAlignment = .center
-        label.clipsToBounds = true
-        label.layer.cornerRadius = 10
-        label.backgroundColor = themeType().foregroundColor
-        label.font = .boldSystemFont(ofSize: 16)
-      
+    let dateLabel: CustomDayLabel = {
+        let label = CustomDayLabel()
         return label
     }()
     
-    let dateButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .clear
-        button.tintColor = .clear
+    let dateButton: CustomDayButton = {
+        let button = CustomDayButton()
         return button
     }()
     

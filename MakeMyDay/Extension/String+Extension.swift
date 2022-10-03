@@ -20,7 +20,7 @@ extension String {
         return date
     }
     
-    func stringFormatToDateYyyymmdd() -> Date? {
+    public func stringFormatToDateYyyymmdd() -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.autoupdatingCurrent
         dateFormatter.locale = Locale.current
@@ -32,11 +32,21 @@ extension String {
         return date
     }
     
-    func stringFormatToDateUTCYyyymmdd() -> Date? {
+    public func stringFormatToDateUTCYyyymmdd() -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         
         dateFormatter.dateFormat = "yyyy-MM-dd"
+     
+        let date = dateFormatter.date(from: self)
+        return date
+    }
+    
+    public func stringFormatToDateAHhmm() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
+        
+        dateFormatter.dateFormat = "a hh:mm"
      
         let date = dateFormatter.date(from: self)
         return date

@@ -1,13 +1,13 @@
 //
-//  CutomWriteButton.swift
+//  CustomDaySwitchButton.swift
 //  MakeMyDay
 //
-//  Created by Y on 2022/09/20.
+//  Created by Y on 2022/10/03.
 //
 
 import UIKit
 
-class CustomWriteButton: UIButton {
+class CustomDaySwitchButton: UISwitch {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -18,7 +18,6 @@ class CustomWriteButton: UIButton {
     }
     
     func configure() {
-        backgroundColor = UIColor.clear
-        tintColor = themeType().tintColor
+        onTintColor = .systemMint
     }
 }

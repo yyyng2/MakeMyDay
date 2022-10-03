@@ -16,7 +16,7 @@ class ScheduleWriteViewController: BaseViewController {
     
     lazy var dateString = ""
     
-    weak var delegate: DatePickerDataProtocol?
+    weak var delegate: DatePickerDateProtocol?
     
     var dateData: Date?
     
@@ -102,10 +102,10 @@ class ScheduleWriteViewController: BaseViewController {
     
     @objc func dateButtonTapped() {
         let vc = DatePickerViewController()
-        vc.delegate = self
+        vc.dateDelegate = self
         guard let text = mainView.dateLabel.text else { return }
         vc.selectDate = stringFormatToDate(string: text, formatStyle: .yyyyMMddEaHHmm)
-        User.pickerType = true
+        User.pickerType = 0
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true)
     }
@@ -183,7 +183,7 @@ class ScheduleWriteViewController: BaseViewController {
 }
 
 
-extension ScheduleWriteViewController: DatePickerDataProtocol {
+extension ScheduleWriteViewController: DatePickerDateProtocol {
     func updateDate(_ date: Date) {
         dateData = date
         let data = dateFormatToString(date: date, formatStyle: .yyyyMMddEaHHmm)

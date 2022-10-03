@@ -12,7 +12,7 @@ class DdayWriteViewController: BaseViewController{
     
     let ddayRepository = DdayRepository()
     
-    weak var delegate: DatePickerDataProtocol?
+    weak var delegate: DatePickerDateProtocol?
     
     var edit = false
 
@@ -114,16 +114,16 @@ class DdayWriteViewController: BaseViewController{
     
     @objc func dateButtonTapped() {
         let vc = DatePickerViewController()
-        vc.delegate = self
+        vc.dateDelegate = self
         guard let text = mainView.dateLabel.text else { return }
         vc.selectDate = stringFormatToDate(string: text, formatStyle: .yyyyMMdd)
-        User.pickerType = false
+        User.pickerType = 1
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true)
     }
 
 }
-extension DdayWriteViewController: DatePickerDataProtocol {
+extension DdayWriteViewController: DatePickerDateProtocol {
     func updateDate(_ date: Date) {
         dateData = date
         let data = dateFormatToString(date: date, formatStyle: .yyyyMMdd)

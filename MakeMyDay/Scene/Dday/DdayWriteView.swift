@@ -22,21 +22,13 @@ class DdayWriteView: BaseView{
         return label
     }()
     
-    let dateLabel: CustomLabel = {
-        let label = CustomLabel()
-        label.textAlignment = .center
-        label.font = .boldSystemFont(ofSize: 16)
-        label.clipsToBounds = true
-        label.layer.cornerRadius = 10
-        label.backgroundColor = themeType().foregroundColor
-      
+    let dateLabel: CustomDayLabel = {
+        let label = CustomDayLabel()
         return label
     }()
     
-    let dateButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .clear
-        button.tintColor = .clear
+    let dateButton: CustomDayButton = {
+        let button = CustomDayButton()
         return button
     }()
     
@@ -68,15 +60,14 @@ class DdayWriteView: BaseView{
     let dayPlusLabel: UILabel = {
        let label = UILabel()
         label.textColor = themeType().tintColor
-        label.text = "오늘부터 1일"
+        label.text = "On: D-day Count +1"
         label.textAlignment = .right
         label.font = .boldSystemFont(ofSize: 16)
         return label
     }()
     
-    let dayPlusSwitchButton: UISwitch = {
-       let button = UISwitch()
-        button.onTintColor = .systemMint
+    let dayPlusSwitchButton: CustomDaySwitchButton = {
+       let button = CustomDaySwitchButton()
         return button
     }()
     

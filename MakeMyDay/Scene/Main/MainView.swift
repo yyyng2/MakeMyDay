@@ -44,6 +44,13 @@ class MainView: BaseView {
         return button
     }()
     
+    let alarmButton: UIButton = {
+       let button = UIButton()
+        button.tintColor = themeType().tintColor
+        button.setImage(UIImage(systemName: "alarm.fill"), for: .normal)
+        return button
+    }()
+    
     let scheduleWriteButton: CustomWriteButton = {
         let button = CustomWriteButton(frame: .zero)
         button.setImage(themeType().tabBarScheduleItem, for: .normal)
@@ -69,11 +76,7 @@ class MainView: BaseView {
     
     override func configure() {
         
-//        [backgroundView, dateLabel, profileView, profileLabel, tableView, writeButton, scheduleWriteButton, ddayWriteButton].forEach {
-//            self.addSubview($0)
-//        }
-        
-        [backgroundView, dateLabel, tableView, writeButton, scheduleWriteButton, ddayWriteButton].forEach {
+        [backgroundView, dateLabel, alarmButton, tableView, writeButton, scheduleWriteButton, ddayWriteButton].forEach {
             self.addSubview($0)
         }
     }
@@ -86,6 +89,11 @@ class MainView: BaseView {
             make.top.equalTo(safeAreaLayoutGuide).offset(8)
             make.centerX.equalTo(safeAreaLayoutGuide)
             make.width.equalTo(safeAreaLayoutGuide)
+        }
+        
+        alarmButton.snp.makeConstraints { make in
+            make.centerY.equalTo(dateLabel)
+            make.trailing.equalTo(dateLabel.snp.trailing).offset(-20)
         }
         
         tableView.snp.makeConstraints { make in

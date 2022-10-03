@@ -95,7 +95,7 @@ class MainViewController: BaseViewController {
     override func configure() {
         guard let date = localDate(date: Date(), formatStyle: .yyyyMMddEaHHmm) else { return }
         mainView.dateLabel.text = dateFormatToString(date: date, formatStyle: .yyyyMMddEaHHmm)
-
+        mainView.alarmButton.addTarget(self, action: #selector(alarmButtonTapped), for: .touchUpInside)
     }
     
     func hoverButton() {
@@ -113,6 +113,11 @@ class MainViewController: BaseViewController {
         
         mainView.tableView.reloadData()
      
+    }
+    
+    @objc func alarmButtonTapped() {
+        let vc = AlarmViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func writeButtonTapped() {

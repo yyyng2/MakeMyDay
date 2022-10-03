@@ -103,7 +103,6 @@ class ScheduleView: BaseView {
         }
         calendar.snp.makeConstraints { make in
             make.height.equalTo(calendarHeight)
-//            make.height.equalTo(bounds.height).multipliedBy(0.5)
             make.top.leading.trailing.equalTo(safeAreaLayoutGuide)
            
         }
@@ -122,7 +121,7 @@ class ScheduleView: BaseView {
         
         writeButton.snp.makeConstraints { make in
             make.bottom.equalTo(safeAreaLayoutGuide).offset(-20)
-            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.15)
+            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.145)
             make.height.equalTo(writeButton.snp.width)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-8)
         }

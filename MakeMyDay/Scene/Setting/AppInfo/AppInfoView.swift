@@ -72,19 +72,55 @@ class AppInfoView: BaseView {
     
     let emailButton: UIButton = {
         var config = UIButton.Configuration.plain()
-            config.title = "문의"
         config.baseForegroundColor = themeType().tintColor
         
         let button = UIButton()
         button.configuration = config
+        button.setImage(UIImage(systemName: "mail.fill"), for: .normal)
         button.clipsToBounds = true
         button.layer.cornerRadius = 10
         button.backgroundColor = themeType().foregroundColor
         return button
     }()
     
-    lazy var stackView: UIStackView = {
+    let instaLabel: CustomLabel = {
+       let label = CustomLabel()
+        label.text = "Insta: @makemyday_app"
+        label.textColor = themeType().tintColor
+
+        label.textAlignment = .center
+        label.font = .boldSystemFont(ofSize: 12)
+ 
+        label.textColor = themeType().tintColor
+        return label
+    }()
+    
+    let instaButton: UIButton = {
+        var config = UIButton.Configuration.plain()
+        config.baseForegroundColor = themeType().tintColor
+        
+        let button = UIButton()
+        button.configuration = config
+        button.setImage(UIImage(systemName: "safari.fill"), for: .normal)
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 10
+        button.backgroundColor = themeType().foregroundColor
+        return button
+    }()
+    
+    lazy var emailStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [emailLabel, emailButton])
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 8
+        return stackView
+    }()
+    
+    lazy var instaStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [instaLabel, instaButton])
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
@@ -96,7 +132,7 @@ class AppInfoView: BaseView {
     
     override func configure() {
         backgroundColor = .clear
-        [backgroundView, profileView, profileLabel, developerLabel, illustratorLabel, stackView].forEach {
+        [backgroundView, profileView, profileLabel, developerLabel, illustratorLabel, emailStackView, instaStackView].forEach {
             addSubview($0)
         }
     }
@@ -125,9 +161,17 @@ class AppInfoView: BaseView {
             make.width.equalTo(safeAreaLayoutGuide)
             make.top.equalTo(developerLabel.snp.bottom).offset(8)
         }
-        stackView.snp.makeConstraints { make in
+        emailStackView.snp.makeConstraints { make in
             make.centerX.equalTo(safeAreaLayoutGuide)
             make.top.equalTo(illustratorLabel.snp.bottom).offset(30)
+        }
+        instaStackView.snp.makeConstraints { make in
+            make.centerX.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(emailStackView.snp.bottom).offset(8)
+            make.width.equalTo(emailStackView.snp.width)
+        }
+        instaButton.snp.makeConstraints { make in
+            make.width.equalTo(emailButton.snp.width)
         }
     }
 }

@@ -23,6 +23,7 @@ class AppInfoViewController: BaseViewController {
     
     override func configure() {
         mainView.emailButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
+        mainView.instaButton.addTarget(self, action: #selector(instaButtonTapped), for: .touchUpInside)
     }
     
     override func setNavigationUI() {
@@ -64,6 +65,20 @@ class AppInfoViewController: BaseViewController {
             self.showSendMailErrorAlert()
         }
         
+    }
+    
+    @objc func instaButtonTapped() {
+        let instagram = "https://www.instagram.com/makemyday_app"
+          
+          let instagramURL = NSURL(string: instagram)
+          
+          if UIApplication.shared.canOpenURL(instagramURL! as URL) {
+              UIApplication.shared.open(
+              instagramURL! as URL,
+              options: [:],
+              completionHandler: nil
+              )
+          }
     }
     
 }

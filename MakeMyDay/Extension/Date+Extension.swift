@@ -77,5 +77,32 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    public func dateFormattedToIntHh() -> Int {
+        
+        let dateFormatter = DateFormatter()
   
+        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+        dateFormatter.locale = Locale.current
+        
+        dateFormatter.dateFormat = "HH"
+       
+        let string = dateFormatter.string(from: self)
+        
+        return Int(string)!
+    }
+    
+    public func dateFormattedToIntMm() -> Int {
+        
+        let dateFormatter = DateFormatter()
+  
+        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+        dateFormatter.locale = Locale.current
+        
+        dateFormatter.dateFormat = "mm"
+       
+        let string = dateFormatter.string(from: self)
+        
+        return Int(string)!
+    }
+    
 }

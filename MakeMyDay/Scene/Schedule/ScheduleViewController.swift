@@ -287,7 +287,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource{
     
 }
 
-extension ScheduleViewController: DatePickerDataProtocol {
+extension ScheduleViewController: DatePickerDateProtocol {
     func updateDate(_ date: Date) {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")

@@ -61,7 +61,7 @@ class DdayView: BaseView {
         
         writeButton.snp.makeConstraints { make in
             make.bottom.equalTo(safeAreaLayoutGuide).offset(-20)
-            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.15)
+            make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.145)
             make.height.equalTo(writeButton.snp.width)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-8)
         }
