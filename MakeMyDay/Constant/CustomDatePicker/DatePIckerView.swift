@@ -54,7 +54,7 @@ class DatePickerView: BaseView {
         label.textColor = .white
         label.text = ""
         label.textAlignment = .right
-        label.font = .boldSystemFont(ofSize: 16)
+        label.font = .systemFont(ofSize: 35, weight: .black)
         label.isHidden = true
         return label
     }()
