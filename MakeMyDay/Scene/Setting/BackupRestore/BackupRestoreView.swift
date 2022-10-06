@@ -20,7 +20,7 @@ class BackupRestoreView: BaseView {
         
         let button = UIButton()
         button.configuration = config
-        button.setImage(UIImage(systemName: "safari.fill"), for: .normal)
+        button.setTitle("백업파일 내보내기", for: .normal)
         button.clipsToBounds = true
         button.layer.cornerRadius = 10
         button.backgroundColor = themeType().foregroundColor
@@ -33,7 +33,7 @@ class BackupRestoreView: BaseView {
         
         let button = UIButton()
         button.configuration = config
-        button.setImage(UIImage(systemName: "safari"), for: .normal)
+        button.setTitle("복구파일 가져오기", for: .normal)
         button.clipsToBounds = true
         button.layer.cornerRadius = 10
         button.backgroundColor = themeType().foregroundColor
@@ -51,10 +51,11 @@ class BackupRestoreView: BaseView {
             make.edges.equalTo(safeAreaLayoutGuide)
         }
         backupButton.snp.makeConstraints { make in
-            make.center.equalTo(safeAreaLayoutGuide)
+            make.centerX.equalTo(safeAreaLayoutGuide)
+            make.centerY.equalTo(safeAreaLayoutGuide).multipliedBy(0.8)
         }
         restoreButton.snp.makeConstraints { make in
-            make.top.equalTo(backupButton.snp.bottom)
+            make.top.equalTo(backupButton.snp.bottom).offset(50)
             make.centerX.equalTo(backupButton)
         }
     }

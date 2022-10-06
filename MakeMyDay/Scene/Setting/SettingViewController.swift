@@ -89,18 +89,18 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             let vc = AppInfoViewController()
             navigationController?.pushViewController(vc, animated: true)
         case 1:
-            let vc = FAQViewController()
-            navigationController?.pushViewController(vc, animated: true)
-        case 2:
-            let vc = BackupRestoreViewController()
-            navigationController?.pushViewController(vc, animated: true)
-        case 3:
             let vc = ProfileSettingViewController()
             navigationController?.pushViewController(vc, animated: true)
-        case 4:
+        case 2:
             let vc = ThemeViewController()
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
+        case 3:
+            let vc = FAQViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case 4:
+            let vc = BackupRestoreViewController()
+            navigationController?.pushViewController(vc, animated: true)
         case 5:
             resetApp()
         case 6:

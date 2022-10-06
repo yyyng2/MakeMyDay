@@ -40,9 +40,9 @@ class ProfileSettingViewController: BaseViewController, UINavigationControllerDe
         }
         
         if User.profileNameBool {
-            mainView.nicknameTextField.attributedPlaceholder = NSAttributedString(string: " \(User.profileName) (1~8글자)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
+            mainView.nicknameTextField.attributedPlaceholder = NSAttributedString(string: " \(User.profileName) (1~10글자)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
         } else {
-            mainView.nicknameTextField.attributedPlaceholder = NSAttributedString(string: " D (1~8글자)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
+            mainView.nicknameTextField.attributedPlaceholder = NSAttributedString(string: " D (1~10글자)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
         }
     }
 
@@ -99,8 +99,8 @@ class ProfileSettingViewController: BaseViewController, UINavigationControllerDe
     func saveName() {
         if User.profileNameBool {
             if let text = mainView.nicknameTextField.text {
-                if text.count > 8  {
-                    showAlert(title: "", message: "닉네임은 1~8글자만 가능합니다!", buttonTitle: "확인")
+                if text.count > 10 {
+                    showAlert(title: "", message: "닉네임은 1~10글자만 가능합니다!", buttonTitle: "확인")
                 } else if text.count < 1 {
                     User.profileNameBool = true
                 } else {
@@ -110,8 +110,8 @@ class ProfileSettingViewController: BaseViewController, UINavigationControllerDe
             }
         } else {
             if let text = mainView.nicknameTextField.text {
-                if text.count > 8  {
-                    showAlert(title: "", message: "닉네임은 1~8글자만 가능합니다!", buttonTitle: "확인")
+                if text.count > 10 {
+                    showAlert(title: "", message: "닉네임은 1~10글자만 가능합니다!", buttonTitle: "확인")
                 } else if text.count < 1 {
                     User.profileNameBool = false
                 } else {

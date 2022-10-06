@@ -48,7 +48,7 @@ class BackupRestoreViewController: BaseViewController {
             print(1)
             try saveEncodeDdayToDocument(tasks: ddayTasks)
             print(2)
-            let backupFilePath = try createBackupFile(fileName: "backup", keyFile: .MakeMyDayKeyFile)
+            let backupFilePath = try createBackupFile(fileName: "backup\(Date())", keyFile: .MakeMyDayKeyFile)
             print(3)
             //fetchBackupFileList()
             try showActivityViewController(backupFileURL: backupFilePath)
@@ -72,16 +72,15 @@ class BackupRestoreViewController: BaseViewController {
                  
                  if FileManager.default.fileExists(atPath: path.path) {
                      
-                     do {
+                    do {
                          let doucumentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.archive], asCopy: true)
                          doucumentPicker.delegate = self
                          doucumentPicker.allowsMultipleSelection = false
                          self.present(doucumentPicker, animated: true)
-                     } catch {
+                    } catch {
                          print("압축풀기에 실패하였습니다")
                      }
                  }
-                 //복구완료 얼럿넣기
              }
              let cancel = UIAlertAction(title: "취소", style: .cancel)
              
@@ -107,7 +106,7 @@ extension BackupRestoreViewController {
         let fileURL = path.appendingPathComponent(fileName.rawValue)
         let myTextString = NSString(string: fileName.rawValue)
     
-        do { //try문이기 땜눈에 do
+        do {
             try myTextString.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8.rawValue)
         } catch {
             print("=====> 이미지 폴더를 만들 수 없습니다")
@@ -117,7 +116,7 @@ extension BackupRestoreViewController {
     }
     
     func removeKeyFileDocument(fileName: PathComponentName) {
-          guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return } // 내 앱에 해당되는 도큐먼트 폴더가 있늬?
+          guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
           let fileURL = documentDirectory.appendingPathComponent(fileName.rawValue)
           
           do {
@@ -129,7 +128,7 @@ extension BackupRestoreViewController {
       }
       
       func removeBackupFileDocument(fileName: String) {
-          guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return } // 내 앱에 해당되는 도큐먼트 폴더가 있늬?
+          guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
          
           let fileURL = documentDirectory.appendingPathComponent(fileName)
           
@@ -141,7 +140,7 @@ extension BackupRestoreViewController {
           }
       }
       
-  // //제이슨 파일 다시 데이터로 만들기
+      //제이슨 to 데이터
       func scheduleFetchJSONData() throws -> Data {
           guard let path = documentDirectoryPath() else { throw DocumentPathError.fetchBackupFileError }
          
@@ -155,7 +154,7 @@ extension BackupRestoreViewController {
           }
       }
       
-      //제이슨 파일 다시 데이터로 만들기
+      //제이슨 to 데이터
       func ddayFetchJSONData() throws -> Data {
           guard let path = documentDirectoryPath() else { throw DocumentPathError.fetchBackupFileError }
          
@@ -172,21 +171,18 @@ extension BackupRestoreViewController {
       func fetchDocumentZipFile() -> [String] {
           
           do {
-              guard let path = documentDirectoryPath() else { return [] } //도큐먼트 경로 가져옴
+              guard let path = documentDirectoryPath() else { return [] } //도큐먼트 경로
               
               let docs =  try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil)
-              print("👉 docs: \(docs)")
               
-              let zip = docs.filter { $0.pathExtension == "zip" } //확장자가 모얀
-              print("👉 zip: \(zip)")
+              let zip = docs.filter { $0.pathExtension == "zip" } //확장자
               
-              let result = zip.map { $0.lastPathComponent } //경로 다 보여줄 필요 없으니까 마지막 확장자를 string으로 가져오는 것
-              print("👉 result: \(result)") // 오 이렇게 하면 폴더로 만들어서 관리하기도 쉬울듯
+              let result = zip.map { $0.lastPathComponent }
+   
               
               return result
               
           } catch {
-              print("Error🔴")
               return []
           }
       }
@@ -219,7 +215,7 @@ extension BackupRestoreViewController {
           }
       }
       
-      //MARK: 다이어리 인코드
+      //MARK:  인코드
       func encodeSchedule(_ scheduleData: Results<Schedule>) throws -> Data {
           
           do {
@@ -233,7 +229,7 @@ extension BackupRestoreViewController {
           }
       }
       
-      //MARK: 응원메세지 인코드
+
       func encodeDday(_ data: Results<Dday>) throws -> Data {
           do {
               let encoder = JSONEncoder()
@@ -246,9 +242,8 @@ extension BackupRestoreViewController {
           }
       }
       
-      //다이어리 디코드
-      @discardableResult
-      func decodeSchedule(_ scheduleData: Data) throws -> [Schedule]? {
+    //MARK:  디코드
+      @discardableResult func decodeSchedule(_ scheduleData: Data) throws -> [Schedule]? {
           
           do {
               let decoder = JSONDecoder()
@@ -261,9 +256,7 @@ extension BackupRestoreViewController {
           }
       }
     
-      // 응원메세지 디코드
-      @discardableResult
-      func decodeDday(_ data: Data) throws -> [Dday]? {
+      @discardableResult func decodeDday(_ data: Data) throws -> [Dday]? {
           
           do {
               let decoder = JSONDecoder()
@@ -285,7 +278,7 @@ extension BackupRestoreViewController {
           try data.write(to: jsonDataPath)
       }
       
-      //도큐먼트에 다이어리 인코드한거 저장하기 위해 준비 - 1
+      //도큐먼트에 인코드한것 저장하기 위해 준비 - 1
       func saveEncodeScheduleToDocument(tasks: Results<Schedule>) throws {
          
           do {
@@ -296,13 +289,13 @@ extension BackupRestoreViewController {
           }
       }
       
-      //도큐먼트에 응원메세지 인코드한거 저장하기 위해 준비 - 2
+      //도큐먼트에 인코드한것 저장하기 위해 준비 - 2
       func saveEncodeDdayToDocument(tasks: Results<Dday>) throws {
           let encodedData = try encodeDday(tasks)
           try saveDataToDocument(data: encodedData, fileName: "dday")
       }
       
-      //백업파일 복구하기
+      //복구
       func restoreRealmForBackupFile() throws {
           let scheduleJsonData = try scheduleFetchJSONData()
           let ddayJsonData = try ddayFetchJSONData()
@@ -317,7 +310,7 @@ extension BackupRestoreViewController {
           })
       }
      
-      //도큐먼트 피커보여주기
+      //도큐먼트 피커
       func showActivityViewController(backupFileURL: URL) throws {
           
           let vc = UIActivityViewController(activityItems: [backupFileURL], applicationActivities: [])
@@ -342,32 +335,28 @@ extension BackupRestoreViewController {
 extension BackupRestoreViewController: UIDocumentPickerDelegate {
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        print("도큐머트픽커 닫음", #function)
+        showAlert(title: "", message: "파일선택이 취소됐습니다.", buttonTitle: "확인")
     }
     
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) { // 어떤 압축파일을 선택했는지 명세
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         
-        //파일앱에서 선택한 filURL
         guard let selectedFileURL = urls.first else {
-            print("선택하진 파일을 찾을 수 없습니다.")
+            showAlert(title: "", message: "파일을 찾을 수 없습니다.", buttonTitle: "확인")
             return
         }
         
         guard let path = documentDirectoryPath() else {
-            print("도큐먼트 위치에 오류가 있습니다.")
+            showAlert(title: "", message: "위치에 오류가 있습니다.", buttonTitle: "확인")
             return
         }
         
         let sandboxFileURL = path.appendingPathComponent(selectedFileURL.lastPathComponent)
         
-        //여기서 앱의 백업복구 파일과 같은지 비교
+        //키파일이용 앱의 백업복구 파일과 같은지 비교
         if FileManager.default.fileExists(atPath: sandboxFileURL.path) {
             let filename_zip = selectedFileURL.lastPathComponent
-            print(filename_zip, "========🚀🚀🚀🚀🚀")
             let zipfileURL = path.appendingPathComponent(filename_zip)
-            print(zipfileURL)
             let keyFileURL = path.appendingPathComponent(PathComponentName.MakeMyDayKeyFile.rawValue)
-            print(keyFileURL)
             
             do {
                 scheduleRepository.deleteAll()
@@ -389,10 +378,10 @@ extension BackupRestoreViewController: UIDocumentPickerDelegate {
                         }
                     }
                 } catch {
-                    print("복구실패~~~")
+                    showAlert(title: "", message: "복구에 실패했습니다.", buttonTitle: "확인")
                 }
             } catch {
-                print("압축풀기 실패 다 이놈아~~~===============")
+                showAlert(title: "", message: "백업파일 압축해제에 실패했습니다.", buttonTitle: "확인")
             }
         } else {
             
@@ -424,13 +413,13 @@ extension BackupRestoreViewController: UIDocumentPickerDelegate {
                             }
                         }
                     } catch {
-                        print("복구실패~~~")
+                        showAlert(title: "", message: "복구에 실패했습니다.", buttonTitle: "확인")
                     }
                 } catch {
-                    print("압축풀기 실패 다 이놈아~~~")
+                    showAlert(title: "", message: "백업파일 압축해제에 실패했습니다.", buttonTitle: "확인")
                 }
             } catch {
-                print("🔴 압축 해제 실패")
+                showAlert(title: "", message: "백업파일 압축해제에 실패했습니다.", buttonTitle: "확인")
             }
         }
     }
