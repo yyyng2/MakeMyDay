@@ -92,7 +92,8 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             let vc = FAQViewController()
             navigationController?.pushViewController(vc, animated: true)
         case 2:
-           showAlert(title: "", message: "추후 업데이트 예정입니다.", buttonTitle: "확인")
+            let vc = BackupRestoreViewController()
+            navigationController?.pushViewController(vc, animated: true)
         case 3:
             let vc = ProfileSettingViewController()
             navigationController?.pushViewController(vc, animated: true)

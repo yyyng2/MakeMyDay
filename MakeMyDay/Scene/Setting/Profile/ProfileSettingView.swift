@@ -49,6 +49,15 @@ class ProfileSettingView: BaseView {
         field.attributedPlaceholder = NSAttributedString(string: " 닉네임 1~8글자", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
         field.textColor = themeType().tintColor
         field.becomeFirstResponder()
+        
+        let leftPadding = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: field.frame.height))
+        field.leftView = leftPadding
+        field.leftViewMode = UITextField.ViewMode.always
+
+        let rightPadding = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: field.frame.height))
+        field.rightView = rightPadding
+        field.rightViewMode = UITextField.ViewMode.always
+        
         field.font = .boldSystemFont(ofSize: 20)
         return field
     }()
@@ -86,7 +95,7 @@ class ProfileSettingView: BaseView {
         
         imageView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(8)
-            make.width.height.equalTo(50)
+            make.width.height.equalTo(100)
             make.centerX.equalTo(safeAreaLayoutGuide)
         }
         
