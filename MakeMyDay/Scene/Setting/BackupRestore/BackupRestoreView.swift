@@ -14,6 +14,19 @@ class BackupRestoreView: BaseView {
         return view
     }()
     
+    let infoLabel: CustomLabel = {
+        let label = CustomLabel()
+        label.text = """
+                    백업 / 복구를 통해 소중한 일정을 지켜보세요!
+                    (프로필 사진과 닉네임은 저장되지 않아요.)
+                    """
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 15, weight: .heavy)
+      
+        return label
+    }()
+    
     let backupButton: UIButton = {
         var config = UIButton.Configuration.plain()
         config.baseForegroundColor = themeType().tintColor
@@ -41,7 +54,7 @@ class BackupRestoreView: BaseView {
     }()
     
     override func configure() {
-        [backgroundView, backupButton, restoreButton].forEach {
+        [backgroundView, infoLabel, backupButton, restoreButton].forEach {
             addSubview($0)
         }
     }
@@ -49,6 +62,10 @@ class BackupRestoreView: BaseView {
     override func setConstraints() {
         backgroundView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
+        }
+        infoLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(safeAreaLayoutGuide)
+            make.bottom.equalTo(backupButton.snp.top).offset(-70)
         }
         backupButton.snp.makeConstraints { make in
             make.centerX.equalTo(safeAreaLayoutGuide)

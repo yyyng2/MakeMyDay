@@ -18,7 +18,8 @@ class AppInfoViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       
+        setVersion()
     }
     
     override func configure() {
@@ -46,7 +47,13 @@ class AppInfoViewController: BaseViewController {
            }
            sendMailErrorAlert.addAction(confirmAction)
            self.present(sendMailErrorAlert, animated: true, completion: nil)
-       }
+    }
+    
+    func setVersion() {
+        guard let dictionary = Bundle.main.infoDictionary else { return }
+        guard let version = dictionary["CFBundleShortVersionString"] as? String else { return }
+        mainView.versionLabel.text = "Current Version \(version)"
+    }
     
     @objc func emailButtonTapped(_ sender: UIButton) {
         

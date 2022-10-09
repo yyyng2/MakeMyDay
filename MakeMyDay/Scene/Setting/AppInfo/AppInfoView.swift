@@ -28,21 +28,16 @@ class AppInfoView: BaseView {
         label.textColor = themeType().tintColor
 
         label.textAlignment = .center
-        label.font = .boldSystemFont(ofSize: 12)
+        label.font = .boldSystemFont(ofSize: 15)
         return label
     }()
     
     let developerLabel: CustomLabel = {
        let label = CustomLabel()
-        label.text = "Make My Day"
         label.textColor = themeType().tintColor
-
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 12)
         label.text = "Developer_ Dongyeong Kim."
-                   
-                    
-        label.textColor = themeType().tintColor
         return label
     }()
     
@@ -130,9 +125,18 @@ class AppInfoView: BaseView {
         return stackView
     }()
     
+    let versionLabel: CustomLabel = {
+       let label = CustomLabel()
+        label.textColor = themeType().tintColor
+        label.textAlignment = .center
+        label.font = .boldSystemFont(ofSize: 12)
+        label.text = "Current Version 1.1.1"
+        return label
+    }()
+    
     override func configure() {
         backgroundColor = .clear
-        [backgroundView, profileView, profileLabel, developerLabel, illustratorLabel, emailStackView, instaStackView].forEach {
+        [backgroundView, profileView, profileLabel, developerLabel, illustratorLabel, emailStackView, instaStackView, versionLabel].forEach {
             addSubview($0)
         }
     }
@@ -172,6 +176,10 @@ class AppInfoView: BaseView {
         }
         instaButton.snp.makeConstraints { make in
             make.width.equalTo(emailButton.snp.width)
+        }
+        versionLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(instaStackView.snp.bottom).offset(50)
         }
     }
 }
