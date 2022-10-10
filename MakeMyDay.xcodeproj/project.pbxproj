@@ -22,6 +22,7 @@
 		187C416A28E57076005A6623 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C416928E57076005A6623 /* FAQViewController.swift */; };
 		1881D1B128EE405E009A7E7B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1881D1B028EE405E009A7E7B /* RealmSwift */; };
 		1881D1B328EE4063009A7E7B /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1881D1B228EE4063009A7E7B /* Realm */; };
+		1881D1C228F39F2A009A7E7B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1881D1C428F39F2A009A7E7B /* Localizable.strings */; };
 		18AF777928DC683200D61E5D /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF777828DC683200D61E5D /* SettingTableViewCell.swift */; };
 		18AF777C28DC696600D61E5D /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF777B28DC696600D61E5D /* SettingMenu.swift */; };
 		18AF777F28DC6B5400D61E5D /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF777E28DC6B5400D61E5D /* License.swift */; };
@@ -34,7 +35,6 @@
 		18AF779028DC962700D61E5D /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF778F28DC962700D61E5D /* ThemeViewController.swift */; };
 		18AF779228DCAA5D00D61E5D /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF779128DCAA5D00D61E5D /* AppInfoView.swift */; };
 		18AF779428DCAA6800D61E5D /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF779328DCAA6800D61E5D /* AppInfoViewController.swift */; };
-		18AF779D28E07F7A00D61E5D /* MainTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF779C28E07F7A00D61E5D /* MainTableHeaderView.swift */; };
 		18AF779F28E0863E00D61E5D /* MainProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF779E28E0863E00D61E5D /* MainProfileTableViewCell.swift */; };
 		18AF77A228E08AC400D61E5D /* MainScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF77A128E08AC400D61E5D /* MainScheduleTableViewCell.swift */; };
 		18AF77A428E08AE800D61E5D /* MainDdayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF77A328E08AE800D61E5D /* MainDdayTableViewCell.swift */; };
@@ -109,6 +109,9 @@
 		187C416128E4653B005A6623 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		187C416728E57067005A6623 /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
 		187C416928E57076005A6623 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
+		1881D1C328F39F2A009A7E7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1881D1C528F39F55009A7E7B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		1881D1C628F39F55009A7E7B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18AF777828DC683200D61E5D /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		18AF777B28DC696600D61E5D /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
 		18AF777E28DC6B5400D61E5D /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
@@ -121,7 +124,6 @@
 		18AF778F28DC962700D61E5D /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		18AF779128DCAA5D00D61E5D /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
 		18AF779328DCAA6800D61E5D /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
-		18AF779C28E07F7A00D61E5D /* MainTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableHeaderView.swift; sourceTree = "<group>"; };
 		18AF779E28E0863E00D61E5D /* MainProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileTableViewCell.swift; sourceTree = "<group>"; };
 		18AF77A128E08AC400D61E5D /* MainScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		18AF77A328E08AE800D61E5D /* MainDdayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDdayTableViewCell.swift; sourceTree = "<group>"; };
@@ -201,7 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				187087FB28D7FDF4001D11ED /* DdayTableHeaderView.swift */,
-				18AF779C28E07F7A00D61E5D /* MainTableHeaderView.swift */,
 			);
 			path = CustomTableHeaderView;
 			sourceTree = "<group>";
@@ -222,6 +223,14 @@
 				187C416928E57076005A6623 /* FAQViewController.swift */,
 			);
 			path = FAQ;
+			sourceTree = "<group>";
+		};
+		1881D1B628F39A29009A7E7B /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				1881D1C428F39F2A009A7E7B /* Localizable.strings */,
+			);
+			path = Localizable;
 			sourceTree = "<group>";
 		};
 		18AF777D28DC6B3000D61E5D /* License */ = {
@@ -306,6 +315,7 @@
 		18B799E928CCAB9400186AFA /* MakeMyDay */ = {
 			isa = PBXGroup;
 			children = (
+				1881D1B628F39A29009A7E7B /* Localizable */,
 				18E2AB6F28D3BB1C0010AAB2 /* Realm */,
 				18B79A1628CCCBCC00186AFA /* Extension */,
 				18B79A1528CCCBB300186AFA /* Constant */,
@@ -567,6 +577,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 18B799DE28CCAB9400186AFA;
 			packageReferences = (
@@ -589,6 +600,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1881D1C228F39F2A009A7E7B /* Localizable.strings in Resources */,
 				18B799F728CCAB9600186AFA /* LaunchScreen.storyboard in Resources */,
 				18B79A3928CE1A8700186AFA /* .gitignore in Resources */,
 				187C415C28E3A44A005A6623 /* readme.md in Resources */,
@@ -640,7 +652,6 @@
 				18DE8DB128EA750800A74345 /* Week.swift in Sources */,
 				18DE8DA628EA5C9800A74345 /* CustomDayLabel.swift in Sources */,
 				18D8F96928D96BAA00179869 /* ThemeHelper.swift in Sources */,
-				18AF779D28E07F7A00D61E5D /* MainTableHeaderView.swift in Sources */,
 				18B79A3B28CE201700186AFA /* DdayView.swift in Sources */,
 				187087F928D7FDCD001D11ED /* DdayRealmModel.swift in Sources */,
 				18B79A2A28CDFB7E00186AFA /* Color.swift in Sources */,
@@ -686,10 +697,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1881D1C428F39F2A009A7E7B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1881D1C328F39F2A009A7E7B /* en */,
+				1881D1C628F39F55009A7E7B /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		18B799F528CCAB9600186AFA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				18B799F628CCAB9600186AFA /* Base */,
+				1881D1C528F39F55009A7E7B /* ko */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -701,6 +722,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -761,6 +783,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

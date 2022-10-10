@@ -42,7 +42,7 @@ class DatePickerView: BaseView {
     let pickerLabel: UILabel = {
        let label = UILabel()
         label.textColor = .white
-        label.text = "Time"
+        label.text = "time".localized
         label.textAlignment = .right
         label.font = .boldSystemFont(ofSize: 16)
         label.isHidden = true
@@ -62,7 +62,7 @@ class DatePickerView: BaseView {
     let alarmLabel: UILabel = {
        let label = UILabel()
         label.textColor = .white
-        label.text = "Alarm"
+        label.text = "notifications".localized
         label.textAlignment = .right
         label.font = .boldSystemFont(ofSize: 16)
         label.isHidden = true
@@ -78,7 +78,7 @@ class DatePickerView: BaseView {
     let doneButton: UIButton = {
        let button = UIButton()
         button.tintColor = .white
-        button.setTitle("선택", for: .normal)
+        button.setTitle("select".localized, for: .normal)
         button.backgroundColor = .clear
         return button
     }()
@@ -95,7 +95,7 @@ class DatePickerView: BaseView {
         config.baseForegroundColor = .red
         
        let button = UIButton(configuration: config)
-        button.setTitle("취소", for: .normal)
+        button.setTitle("cancel".localized, for: .normal)
     
         button.backgroundColor = .clear
         return button

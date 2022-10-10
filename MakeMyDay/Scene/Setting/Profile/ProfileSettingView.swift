@@ -32,7 +32,7 @@ class ProfileSettingView: BaseView {
     
     let loadImageButton: UIButton = {
         var config = UIButton.Configuration.plain()
-            config.title = "이미지 로드"
+        config.title = "loadImage".localized
         config.baseForegroundColor = themeType().tintColor
         
         let button = UIButton()
@@ -46,7 +46,7 @@ class ProfileSettingView: BaseView {
     let nicknameTextField: UITextField = {
        let field = UITextField()
         field.backgroundColor = .clear
-        field.attributedPlaceholder = NSAttributedString(string: " 닉네임 1~8글자", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
+        field.attributedPlaceholder = NSAttributedString(string: " \("nicknamePlaceholder".localized)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
         field.textColor = themeType().tintColor
         field.becomeFirstResponder()
         
@@ -72,7 +72,7 @@ class ProfileSettingView: BaseView {
     
     let resetButton: UIButton = {
         var config = UIButton.Configuration.plain()
-            config.title = "초기화"
+        config.title = "reset".localized
         config.baseForegroundColor = themeType().tintColor
         
         let button = UIButton()

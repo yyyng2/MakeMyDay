@@ -119,15 +119,15 @@ class DatePickerViewController: BaseViewController {
                 } else {
                     DispatchQueue.main.async {
                         self.mainView.alarmSwitchButton.isOn = false
-                        let alert = UIAlertController(title: "", message: "알림 설정이 꺼져있습니다. 설정화면으로 이동하시겠습니까?", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { UIAlertAction in
+                        let alert = UIAlertController(title: "", message: "notificationsOff".localized, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "okay".localized, style: .default, handler: { UIAlertAction in
                             guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
 
                             if UIApplication.shared.canOpenURL(url) {
                                 UIApplication.shared.open(url)
                             }
                         }))
-                        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+                        alert.addAction(UIAlertAction(title: "cancel".localized, style: .cancel))
                         self.present(alert, animated: true)
                     }
                

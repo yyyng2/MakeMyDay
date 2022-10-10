@@ -40,14 +40,14 @@ class ProfileSettingViewController: BaseViewController, UINavigationControllerDe
         }
         
         if User.profileNameBool {
-            mainView.nicknameTextField.attributedPlaceholder = NSAttributedString(string: " \(User.profileName) (1~10글자)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
+            mainView.nicknameTextField.attributedPlaceholder = NSAttributedString(string: " \(User.profileName) \("nicknamePlaceholder".localized)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
         } else {
-            mainView.nicknameTextField.attributedPlaceholder = NSAttributedString(string: " D (1~10글자)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
+            mainView.nicknameTextField.attributedPlaceholder = NSAttributedString(string: " D \("nicknamePlaceholder".localized)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
         }
     }
 
     func setNavigationItem() {
-        let doneButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonTapped))
+        let doneButtonItem = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: #selector(saveButtonTapped))
         doneButtonItem.tintColor = themeType().tintColor
     
         self.navigationItem.rightBarButtonItems = [doneButtonItem]
@@ -100,7 +100,7 @@ class ProfileSettingViewController: BaseViewController, UINavigationControllerDe
         if User.profileNameBool {
             if let text = mainView.nicknameTextField.text {
                 if text.count > 10 {
-                    showAlert(title: "", message: "닉네임은 1~10글자만 가능합니다!", buttonTitle: "확인")
+                    showAlert(title: "", message: "warningNickname".localized, buttonTitle: "okay".localized)
                 } else if text.count < 1 {
                     User.profileNameBool = true
                 } else {
@@ -111,7 +111,7 @@ class ProfileSettingViewController: BaseViewController, UINavigationControllerDe
         } else {
             if let text = mainView.nicknameTextField.text {
                 if text.count > 10 {
-                    showAlert(title: "", message: "닉네임은 1~10글자만 가능합니다!", buttonTitle: "확인")
+                    showAlert(title: "", message: "warningNickname".localized, buttonTitle: "okay".localized)
                 } else if text.count < 1 {
                     User.profileNameBool = false
                 } else {

@@ -44,13 +44,13 @@ class ScheduleView: BaseView {
       
         calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 20)
         //weekday name
-        calendar.calendarWeekdayView.weekdayLabels[0].text = "Sun"
-        calendar.calendarWeekdayView.weekdayLabels[1].text = "Mon"
-        calendar.calendarWeekdayView.weekdayLabels[2].text = "Tue"
-        calendar.calendarWeekdayView.weekdayLabels[3].text = "Wed"
-        calendar.calendarWeekdayView.weekdayLabels[4].text = "Thu"
-        calendar.calendarWeekdayView.weekdayLabels[5].text = "Fri"
-        calendar.calendarWeekdayView.weekdayLabels[6].text = "Sat"
+        calendar.calendarWeekdayView.weekdayLabels[0].text = "sun".localized
+        calendar.calendarWeekdayView.weekdayLabels[1].text = "mon".localized
+        calendar.calendarWeekdayView.weekdayLabels[2].text = "tue".localized
+        calendar.calendarWeekdayView.weekdayLabels[3].text = "wed".localized
+        calendar.calendarWeekdayView.weekdayLabels[4].text = "thu".localized
+        calendar.calendarWeekdayView.weekdayLabels[5].text = "fri".localized
+        calendar.calendarWeekdayView.weekdayLabels[6].text = "sat".localized
         return calendar
     }()
     

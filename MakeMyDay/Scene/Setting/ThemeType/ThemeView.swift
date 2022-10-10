@@ -15,7 +15,7 @@ class ThemeView: BaseView {
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textColor = .black
         label.text = """
-                    테마를 변경해 볼까요?
+                    \("changeTheme".localized)
                     """
         return label
     }()
@@ -54,7 +54,7 @@ class ThemeView: BaseView {
         let button = UIButton()
         button.layer.cornerRadius = 10
         button.backgroundColor = .black
-        button.setTitle("확인", for: .normal)
+        button.setTitle("okay".localized, for: .normal)
         button.tintColor = .white
         return button
     }()
@@ -63,7 +63,7 @@ class ThemeView: BaseView {
         let button = UIButton()
         button.layer.cornerRadius = 10
         button.backgroundColor = .red
-        button.setTitle("취소", for: .normal)
+        button.setTitle("cancel".localized, for: .normal)
         button.tintColor = .white
         return button
     }()

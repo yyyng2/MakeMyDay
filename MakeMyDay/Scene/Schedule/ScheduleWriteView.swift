@@ -13,9 +13,9 @@ class ScheduleWriteView: BaseView {
         return view
     }()
     
-    let infoeLabel: CustomLabel = {
+    let infoLabel: CustomLabel = {
         let label = CustomLabel()
-        label.text = "일정을 적어볼까요? 날짜를 탭하면 변경도 가능합니다!"
+        label.text = "writeInfo".localized
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 13)
       
@@ -46,7 +46,7 @@ class ScheduleWriteView: BaseView {
 
     
     override func configure() {
-        [backgroundImageView, infoeLabel, dateLabel, dateButton, scheduleTextView].forEach {
+        [backgroundImageView, infoLabel, dateLabel, dateButton, scheduleTextView].forEach {
             addSubview($0)
         }
     }
@@ -56,7 +56,7 @@ class ScheduleWriteView: BaseView {
             make.edges.equalTo(safeAreaLayoutGuide)
         }
         
-        infoeLabel.snp.makeConstraints { make in
+        infoLabel.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(20)
             make.centerX.equalTo(safeAreaLayoutGuide)
             make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.9)
@@ -64,7 +64,7 @@ class ScheduleWriteView: BaseView {
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(infoeLabel.snp.bottom).offset(8)
+            make.top.equalTo(infoLabel.snp.bottom).offset(8)
             make.centerX.equalTo(safeAreaLayoutGuide)
             make.width.equalTo(safeAreaLayoutGuide).multipliedBy(0.9)
             make.height.equalTo(28)

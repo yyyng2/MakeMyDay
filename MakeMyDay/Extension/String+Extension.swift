@@ -51,4 +51,14 @@ extension String {
         let date = dateFormatter.date(from: self)
         return date
     }
+    
+    var localized: String{
+        return NSLocalizedString(self, comment: "")
+    }
+    func localized(with: String) -> String{
+        return String(format: self.localized, with)
+    }
+    func localized(number: Int) -> String {
+        return String(format: self.localized, number)
+    }
 }

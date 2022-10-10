@@ -1,0 +1,181 @@
+/* 
+  Localizable.strings
+  MakeMyDay
+
+  Created by Y on 2022/10/10.
+  
+*/
+
+"welcome" = "Welcome!";
+
+"welcomeTwo" = "I will assist your day.";
+
+"chooseTheme" = "Shall we choose your favorite theme?";
+
+"chooseThemeTwo" = "(You can change it in settings.)";
+
+"chooseTheme" = "Choose a theme!";
+
+"hi" = "Hello :D";
+
+"schedule" = "Today's Schedule.";
+
+"scheduleAddRecommend" = "Register your schedule.";
+
+"dday" = "Check D-day.";
+
+"ddayAddRecommend" = "Register your D-day.";
+
+"day" = "Days";
+
+"sun" = "Sun";
+
+"mon" = "Mon";
+
+"tue" = "Tue";
+
+"wed" = "Wed";
+
+"thu" = "Thu";
+
+"fri" = "Fri";
+
+"sat" = "Sat";
+
+"okay" = "Okay";
+
+"select" = "Select";
+
+"cancel" = "Cancel";
+
+"delete" = "Delete";
+
+"save" = "Save";
+
+"deleteCheck" = "Are you sure you want to delete?";
+
+"time" = "Time";
+
+"notifications" = "Notifications";
+
+"notificationsOff" = "Notifications are disabled. Do you want to go to settings?";
+
+"notificationsStatusON" = "On";
+
+"notificationsStatusOff" = "Off";
+
+"notificationsTitle" = "Check out today's schedule.";
+
+"notificationsSun" = "Today is Sunday.";
+
+"notificationsMon" = "Today is Monday.";
+
+"notificationsTue" = "Today is Tuesday.";
+
+"notificationsWed" = "Today is Wednesday.";
+
+"notificationsThu" = "Today is Thursday.";
+
+"notificationsFri" = "Today is Friday.";
+
+"notificationsSat" = "Today is Saturday.";
+
+"writeInfo" = "Shall we write? Tap the date to change it!";
+
+"sharingSuccess" = "Sharing Success!";
+
+"sharingFailed" = "Sharing failed.";
+
+"importantDday" = "Important D-day";
+
+"recommendDday" = "Shall we add D-day?";
+
+"recommendSwipe" = "Swipe to set important D-Days\nand see them on the home screen!";
+
+"cantNotOverFive" = "No more than 5 important D-Days can be added!";
+
+"ddayPlaceholder" = " D-day's title";
+
+"ddaySwitchInfo" = "Start counting from day 1";
+
+//Menu
+
+"appInfo" = "App Information";
+
+"setProfile" = "Profile settings";
+
+"setTheme" = "Change Theme";
+
+"FAQ" = "FAQ";
+
+"backupAndRestore" = "Backup / Restore";
+
+"reset" = "Reset";
+
+"license" = "License";
+
+"warning" = "Warning";
+
+"warningReset" = "Both schedule and D-day are reset";
+
+"changeTheme" = "Shall we change the theme?";
+
+//Profile
+
+"warningNickname" = "Nicknames are limited to 1-10 characters!";
+
+"nicknamePlaceholder" = "(1-10 characters)";
+
+"loadImage" = "Load Images";
+
+//FAQ
+
+"QDday" = "D-day is not displayed on the home screen.";
+
+"ADdayOne" = "Registration is required as ";
+"ADdayTwo" = "an important d-day on the D-day screen.";
+"ADdayThree" = "Swipe D-day from left to right!";
+
+"QDelete" = "I want to delete an event.";
+
+"ADeleteOne" = "It can be deleted by moving to ";
+"ADeleteTwo" = "the Schedule/D-Day screen.";
+"ADeleteThree" = "Swipe right to left!";
+
+"QTheme" = "I selected the wrong theme, will it change?";
+
+"AThemeOne" = "You can change it via the Change Theme menu in Settings!";
+
+//Mail
+
+"mail" = "Mail";
+
+"mailFailed" = "Failed to send mail.";
+
+//Backup&Restore
+
+"BRInfo" = "Protect important events with backup/restore!";
+"BRInfoTwo" = "(Your profile settings are not saved.)";
+
+"backup" = "Backup";
+"restore" = "Restore";
+
+"restoreWarning" = "The current data will be overwritten. Do you want to proceed?";
+
+"cancelChoose" = "The file selection has been cancelled.";
+
+"cantNotFoundFile" = "File not found.";
+
+"locationError" = "There is an error in the location.";
+
+"wrongBackupFile" = "This is not a backup file for MakeMyDay.";
+
+"restoreFailed" = "Restore Failed";
+
+"unzipFailed" = "Unzip Failed";
+
+"zipFailed" = "Zip Failed";
+
+"encodeFailed" = "Encode Failed";
+
+"pleaseContact" = "Please contact me.";

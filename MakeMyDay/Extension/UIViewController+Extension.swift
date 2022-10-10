@@ -118,15 +118,15 @@ extension UIViewController {
     func selectScript(scriptType: ScriptType) -> String {
         switch scriptType {
         case .hi:
-            return "안녕하세요 :D"
+            return "hi".localized
         case .scheduleValue:
-            return "오늘의 일정을 알려드릴게요."
+            return "schedule".localized
         case .scheduleNil:
-            return "일정을 추가해보세요."
+            return "scheduleAddRecommend".localized
         case .ddayValue:
-            return "오늘 기준 디데이입니다."
+            return "dday".localized
         case .ddayNil:
-            return "디데이를 추가해보세요."
+            return "ddayAddRecommend".localized
         }
     }
     

@@ -36,29 +36,29 @@ class AlarmViewController: BaseViewController {
     }
     
     override func setNavigationUI() {
-        title = "Alarm"
+        title = "notifications".localized
     }
     
     func setLocalNotification(day: Int, hour: Int, minute: Int, id: Int) {
         let notificationContent = UNMutableNotificationContent()
         notificationContent.title = "Make My Day"
-        notificationContent.body = "오늘의 일정을 확인해 보세요."
+        notificationContent.body = "notificationsTitle".localized
         notificationContent.sound = .default
         switch id {
         case 1:
-            notificationContent.subtitle = "오늘은 일요일입니다."
+            notificationContent.subtitle = "notificationsSun".localized
         case 2:
-            notificationContent.subtitle = "오늘은 월요일입니다."
+            notificationContent.subtitle = "notificationsMon".localized
         case 3:
-            notificationContent.subtitle = "오늘은 화요일입니다."
+            notificationContent.subtitle = "notificationsTue".localized
         case 4:
-            notificationContent.subtitle = "오늘은 수요일입니다."
+            notificationContent.subtitle = "notificationsWed".localized
         case 5:
-            notificationContent.subtitle = "오늘은 목요일입니다."
+            notificationContent.subtitle = "notificationsThu".localized
         case 6:
-            notificationContent.subtitle = "오늘은 금요일입니다."
+            notificationContent.subtitle = "notificationsFri".localized
         case 7:
-            notificationContent.subtitle = "오늘은 토요일입니다."
+            notificationContent.subtitle = "notificationsSat".localized
         default:
             notificationContent.subtitle = ""
         }
@@ -95,10 +95,10 @@ extension AlarmViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch days.week[indexPath.row].dayAlarm {
         case true:
-            cell.statusLabel.text = "켬"
+            cell.statusLabel.text = "notificationsStatusON".localized
             cell.statusLabel.textColor = .systemMint
         case false:
-            cell.statusLabel.text = "끔"
+            cell.statusLabel.text = "notificationsStatusOff".localized
             cell.statusLabel.textColor = .lightGray
         }
         

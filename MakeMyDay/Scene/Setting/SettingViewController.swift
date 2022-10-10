@@ -30,7 +30,7 @@ class SettingViewController: BaseViewController{
     }
     
     override func setNavigationUI() {
-        let backBarButtonItem = UIBarButtonItem(title: "Setting", style: .plain, target: self, action: #selector(backButtonTapped))
+        let backBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(backButtonTapped))
         backBarButtonItem.tintColor = themeType().tintColor
         self.navigationItem.backBarButtonItem = backBarButtonItem
         
@@ -44,8 +44,8 @@ class SettingViewController: BaseViewController{
     }
     
     func resetApp() {
-        let warning = UIAlertController(title: "경고", message: "일정과 디데이 모두 초기화됩니다", preferredStyle: .alert)
-        warning.addAction(UIAlertAction(title: "초기화", style: .destructive, handler: {action in
+        let warning = UIAlertController(title: "warning".localized, message: "warningReset".localized, preferredStyle: .alert)
+        warning.addAction(UIAlertAction(title: "reset".localized, style: .destructive, handler: {action in
             self.scheduleRepository.deleteAll()
             self.ddayRepository.deleteAll()
             User.profileNameBool = false
@@ -56,7 +56,7 @@ class SettingViewController: BaseViewController{
                 sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: viewController)
                 sceneDelegate?.window?.makeKeyAndVisible()
         }))
-        warning.addAction(UIAlertAction(title: "취소", style: .cancel))
+        warning.addAction(UIAlertAction(title: "cancel".localized, style: .cancel))
         present(warning, animated: true)
     }
     

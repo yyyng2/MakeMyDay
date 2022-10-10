@@ -16,8 +16,8 @@ class PopupZeroView: BaseView {
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textColor = .black
         label.text = """
-                    환영합니다!
-                    매일 하루를 보조해드릴게요.
+                    \("welcome".localized)
+                    \("welcomeTwo".localized)
                     """
         return label
     }()

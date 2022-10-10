@@ -1,0 +1,181 @@
+/* 
+  Localizable.strings
+  MakeMyDay
+
+  Created by Y on 2022/10/10.
+  
+*/
+
+"welcome" = "환영합니다!";
+
+"welcomeTwo" = "당신의 하루를 보조해드릴게요.";
+
+"chooseTheme" = "마음에 드는 테마를 선택해 볼까요?";
+
+"chooseThemeTwo" = "(설정에서 변경가능합니다.)";
+
+"chooseTheme" = "테마를 선택해주세요!";
+
+"hi" = "안녕하세요 :D";
+
+"schedule" = "오늘의 일정을 알려드릴게요.";
+
+"scheduleAddRecommend" = "일정을 추가해보세요.";
+
+"dday" = "오늘 기준 디데이입니다.";
+
+"ddayAddRecommend" = "디데이를 추가해보세요.";
+
+"day" = "일";
+
+"sun" = "일";
+
+"mon" = "월";
+
+"tue" = "화";
+
+"wed" = "수";
+
+"thu" = "목";
+
+"fri" = "금";
+
+"sat" = "토";
+
+"okay" = "확인";
+
+"select" = "선택";
+
+"cancel" = "취소";
+
+"delete" = "삭제";
+
+"save" = "저장";
+
+"deleteCheck" = "정말 삭제하시겠습니까?";
+
+"time" = "시간";
+
+"notifications" = "알림";
+
+"notificationsOff" = "알림 설정이 꺼져있습니다. 설정화면으로 이동하시겠습니까?";
+
+"notificationsStatusON" = "켬";
+
+"notificationsStatusOff" = "끔";
+
+"notificationsTitle" = "오늘의 일정을 확인해보세요.";
+
+"notificationsSun" = "오늘은 일요일입니다.";
+
+"notificationsMon" = "오늘은 월요일입니다.";
+
+"notificationsTue" = "오늘은 화요일입니다.";
+
+"notificationsWed" = "오늘은 수요일입니다.";
+
+"notificationsThu" = "오늘은 목요일입니다.";
+
+"notificationsFri" = "오늘은 금요일입니다.";
+
+"notificationsSat" = "오늘은 토요일입니다.";
+
+"writeInfo" = "일정을 적어볼까요? 날짜를 탭하면 변경도 가능합니다!";
+
+"sharingSuccess" = "성공적으로 공유했습니다!";
+
+"sharingFailed" = "공유에 실패했습니다.";
+
+"importantDday" = "즐겨찾는 D-day";
+
+"recommendDday" = "D-day를 추가해 볼까요?";
+
+"recommendSwipe" = "Swipe 즐겨찾기로\n메인화면에서 확인해 보세요!";
+
+"cantNotOverFive" = "즐겨찾기는 5개를 넘어갈 수 없습니다!";
+
+"ddayPlaceholder" = " D-day 제목";
+
+"ddaySwitchInfo" = "1일차로 카운트";
+
+//Menu
+
+"appInfo" = "앱 정보";
+
+"setProfile" = "프로필 변경";
+
+"setTheme" = "테마 변경";
+
+"FAQ" = "자주 묻는 질문";
+
+"backupAndRestore" = "백업 / 복구";
+
+"reset" = "초기화";
+
+"license" = "오픈소스";
+
+"warning" = "경고";
+
+"warningReset" = "일정과 디데이 모두 초기화됩니다";
+
+"changeTheme" = "테마를 변경해볼까요?";
+
+//Profile
+
+"warningNickname" = "닉네임은 1-10자로 제한됩니다!";
+
+"nicknamePlaceholder" = "(1~10글자)";
+
+"loadImage" = "사진 가져오기";
+
+//FAQ
+
+"QDday" = "D-day가 홈화면에 보이지 않아요.";
+
+"ADdayOne" = "D-day화면에서 즐겨찾기 등록해주셔야 표시됩니다.";
+"ADdayTwo" = "해당 D-day를";
+"ADdayThree" = "왼쪽에서 오른쪽 방향으로 스와이프해보세요!";
+
+"QDelete" = "일정을 삭제하고 싶어요.";
+
+"ADeleteOne" = "Schedule/D-day화면으로 가시면 지울 수 있어요.";
+"ADeleteTwo" = "해당 항목을";
+"ADeleteThree" = "오른쪽에서 왼쪽 방향으로 스와이프해보세요!";
+
+"QTheme" = "테마를 잘못 선택했어요, 변경되나요?";
+
+"AThemeOne" = "Schedule/D-day화면으로 가시면 지울 수 있어요.";
+
+//Mail
+
+"mail" = "메일";
+
+"mailFailed" = "메일 전송에 실패했습니다.";
+
+//Backup&Restore
+
+"BRInfo" = "백업 / 복구를 통해 소중한 일정을 지켜보세요!";
+"BRInfoTwo" = "(프로필 사진과 닉네임은 저장되지 않아요.)";
+
+"backup" = "백업파일 내보내기";
+"restore" = "복구파일 가져오기";
+
+"restoreWarning" = "현재 데이터에 덮어씌워집니다. 진행하시겠습니까?";
+
+"cancelChoose" = "파일선택이 취소됐습니다.";
+
+"cantNotFoundFile" = "파일을 찾을 수 없습니다.";
+
+"locationError" = "위치에 오류가 있습니다.";
+
+"wrongBackupFile" = "MakeMyDay의 백업파일이 아닙니다.";
+
+"restoreFailed" = "복구에 실패했습니다.";
+
+"unzipFailed" = "백업파일 압축해제에 실패했습니다.";
+
+"zipFailed" = "압축에 실패했습니다.";
+
+"encodeFailed" = "인코딩에 실패했습니다.";
+
+"pleaseContact" = "문의 부탁드립니다.";

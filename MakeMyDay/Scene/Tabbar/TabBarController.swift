@@ -51,7 +51,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate{
      
         configureTab(vc: vc2, title: "Schedule", image: themeType().tabBarScheduleItem, selectedImage: themeType().tabBarScheduleItemSelected)
         configureTab(vc: vc3, title: "D-day", image: themeType().tabBarDdayItem, selectedImage: themeType().tabBarDdayItemSelected)
-        configureTab(vc: vc4, title: "Setting", image: themeType().tabBarSettingItem, selectedImage: themeType().tabBarSettingItemSelected)
+        configureTab(vc: vc4, title: "Settings", image: themeType().tabBarSettingItem, selectedImage: themeType().tabBarSettingItemSelected)
         
         tabBar.isTranslucent = false
         

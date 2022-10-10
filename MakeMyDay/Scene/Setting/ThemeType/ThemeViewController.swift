@@ -62,7 +62,7 @@ class ThemeViewController: BaseViewController {
         let viewController = TabBarController()
         
         if !mainView.leftButton.isSelected, !mainView.rightButton.isSelected {
-            showAlert(title: "", message: "테마를 선택해주세요!", buttonTitle: "확인")
+            showAlert(title: "", message: "chooseTheme".localized, buttonTitle: "okay".localized)
         } else if mainView.leftButton.isSelected {
             User.themeType = 0
             sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: viewController)

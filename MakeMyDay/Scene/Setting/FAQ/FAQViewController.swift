@@ -34,8 +34,8 @@ class FAQViewController: BaseViewController {
     }
     
     func showSendMailErrorAlert() {
-           let sendMailErrorAlert = UIAlertController(title: "메일 전송", message: "메일 전송에 실패 했습니다.", preferredStyle: .alert)
-           let confirmAction = UIAlertAction(title: "확인", style: .default) {
+        let sendMailErrorAlert = UIAlertController(title: "mail".localized, message: "mailFailed".localized, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "okay".localized, style: .default) {
                (action) in
                print("확인")
            }
@@ -51,7 +51,7 @@ class FAQViewController: BaseViewController {
             compseVC.mailComposeDelegate = self
             
             compseVC.setToRecipients(["yyyng2@gmail.com"])
-            compseVC.setSubject("[MakeMyDay]문의")
+            compseVC.setSubject("[MakeMyDay]")
             compseVC.setMessageBody("", isHTML: false)
             
             self.present(compseVC, animated: true, completion: nil)

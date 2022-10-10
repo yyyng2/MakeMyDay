@@ -25,8 +25,6 @@ class ScheduleWriteViewController: BaseViewController {
     var titleText = ""
     var contentText = ""
     
-    let textViewPlaceHolder = "텍스트를 입력하세요. 날짜도 변경가능합니다!"
-    
     override func loadView() {
         super.loadView()
         self.view = mainView
@@ -88,7 +86,7 @@ class ScheduleWriteViewController: BaseViewController {
     }
     
     func setNavigationItem() {
-        let doneButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(doneButtonTapped))
+        let doneButtonItem = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: #selector(doneButtonTapped))
         let shareButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(shareButtonTapped))
         doneButtonItem.tintColor = themeType().tintColor
         shareButtonItem.tintColor = themeType().tintColor
@@ -171,10 +169,10 @@ class ScheduleWriteViewController: BaseViewController {
         activityViewController.completionWithItemsHandler = { (activity, success, items, error) in
             if success {
             // 성공했을 때 작업
-                self.showAlert(title: "", message: "전달에 성공했습니다.", buttonTitle: "확인")
+                self.showAlert(title: "", message: "sharingSuccess".localized, buttonTitle: "okay".localized)
            }  else  {
             // 실패했을 때 작업
-               self.showAlert(title: "", message: "전달에 실패했습니다.", buttonTitle: "확인")
+               self.showAlert(title: "", message: "sharingFailed".localized, buttonTitle: "okay".localized)
            }
         }
         self.present(activityViewController, animated: true, completion: nil)

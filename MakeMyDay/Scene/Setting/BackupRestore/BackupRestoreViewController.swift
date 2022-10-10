@@ -48,20 +48,20 @@ class BackupRestoreViewController: BaseViewController {
             print(1)
             try saveEncodeDdayToDocument(tasks: ddayTasks)
             print(2)
-            let backupFilePath = try createBackupFile(fileName: "backup\(Date())", keyFile: .MakeMyDayKeyFile)
+            let backupFilePath = try createBackupFile(fileName: "MMDBackup\(Date().dateFormattedToDateYyyymmddeahhmm())", keyFile: .MakeMyDayKeyFile)
             print(3)
             //fetchBackupFileList()
             try showActivityViewController(backupFileURL: backupFilePath)
-            fetchDocumentZipFile()
+           // fetchDocumentZipFile()
         } catch {
-                  showAlert(title: "압축에 실패했습니다.", message: "", buttonTitle: "확인")
+            showAlert(title: "zipFailed".localized, message: "", buttonTitle: "okay".localized)
         }
         removeKeyFileDocument(fileName: .MakeMyDayKeyFile)
     }
     
     @objc private func restoreButtonTapped() {
-        let alert = UIAlertController(title: "알림", message: "현재 데이터에 덮어씌워집니다. 진행하시겠습니까?", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "네", style: .destructive) { [weak self]_ in
+        let alert = UIAlertController(title: "warning".localized, message: "restoreWarning".localized, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "okay".localized, style: .destructive) { [weak self]_ in
                  
                  guard let self = self else { return }
                  
@@ -82,7 +82,7 @@ class BackupRestoreViewController: BaseViewController {
                      }
                  }
              }
-             let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let cancel = UIAlertAction(title: "cancel".localized, style: .cancel)
              
              alert.addAction(ok)
              alert.addAction(cancel)
@@ -122,7 +122,7 @@ extension BackupRestoreViewController {
           do {
               try FileManager.default.removeItem(at: fileURL)
           } catch let error {
-              showAlert(title: "삭제할 키파일이 없습니다.", message: "", buttonTitle: "확인")
+              showAlert(title: "삭제할 키파일이 없습니다.", message: "", buttonTitle: "okay".localized)
               print(error)
           }
       }
@@ -135,7 +135,7 @@ extension BackupRestoreViewController {
           do {
               try FileManager.default.removeItem(at: fileURL)
           } catch let error {
-              showAlert(title: "삭제할 백업파일이 없습니다.", message: "", buttonTitle: "확인")
+              showAlert(title: "삭제할 백업파일이 없습니다.", message: "", buttonTitle: "okay".localized)
               print(error)
           }
       }
@@ -285,7 +285,7 @@ extension BackupRestoreViewController {
               let encodedData = try encodeSchedule(tasks)
               try saveDataToDocument(data: encodedData, fileName: "schedule")
           } catch {
-              showAlert(title: "인코딩에 실패했습니다.", message: "문의 부탁드립니다.", buttonTitle: "확인")
+              showAlert(title: "encodeFailed".localized, message: "pleaseContact".localized, buttonTitle: "okay".localized)
           }
       }
       
@@ -335,18 +335,18 @@ extension BackupRestoreViewController {
 extension BackupRestoreViewController: UIDocumentPickerDelegate {
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        showAlert(title: "", message: "파일선택이 취소됐습니다.", buttonTitle: "확인")
+        showAlert(title: "", message: "cancelChoose".localized, buttonTitle: "okay".localized)
     }
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         
         guard let selectedFileURL = urls.first else {
-            showAlert(title: "", message: "파일을 찾을 수 없습니다.", buttonTitle: "확인")
+            showAlert(title: "", message: "cantNotFoundFile".localized, buttonTitle: "okay".localized)
             return
         }
         
         guard let path = documentDirectoryPath() else {
-            showAlert(title: "", message: "위치에 오류가 있습니다.", buttonTitle: "확인")
+            showAlert(title: "", message: "locationError".localized, buttonTitle: "okay".localized)
             return
         }
         
@@ -369,8 +369,8 @@ extension BackupRestoreViewController: UIDocumentPickerDelegate {
                         self.tabBarController?.selectedIndex = 0
                     } else {
                         controller.dismiss(animated: true) {
-                            let alert = UIAlertController(title: "에러", message: "MakeMyDay의 백업파일이 아닙니다.", preferredStyle: .alert)
-                            let ok = UIAlertAction(title: "확인", style: .default)
+                            let alert = UIAlertController(title: "warning".localized, message: "wrongBackupFile".localized, preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "okay".localized, style: .default)
                             self.removeBackupFileDocument(fileName: filename_zip)
                             
                             alert.addAction(ok)
@@ -378,10 +378,10 @@ extension BackupRestoreViewController: UIDocumentPickerDelegate {
                         }
                     }
                 } catch {
-                    showAlert(title: "", message: "복구에 실패했습니다.", buttonTitle: "확인")
+                    showAlert(title: "", message: "restoreFailed".localized, buttonTitle: "okay".localized)
                 }
             } catch {
-                showAlert(title: "", message: "백업파일 압축해제에 실패했습니다.", buttonTitle: "확인")
+                showAlert(title: "", message: "unzipFailed".localized, buttonTitle: "okay".localized)
             }
         } else {
             
@@ -405,21 +405,21 @@ extension BackupRestoreViewController: UIDocumentPickerDelegate {
                             removeKeyFileDocument(fileName: .MakeMyDayKeyFile)
                         } else {
                             controller.dismiss(animated: true) {
-                                let alert = UIAlertController(title: "에러", message: "MakeMyDay의 백업파일이 아닙니다.", preferredStyle: .alert)
-                                let ok = UIAlertAction(title: "확인", style: .default)
+                                let alert = UIAlertController(title: "warning".localized, message: "wrongBackupFile".localized, preferredStyle: .alert)
+                                let ok = UIAlertAction(title: "okay".localized, style: .default)
                                 alert.addAction(ok)
                                 self.removeBackupFileDocument(fileName: filename_zip)
                                 self.present(alert, animated: true)
                             }
                         }
                     } catch {
-                        showAlert(title: "", message: "복구에 실패했습니다.", buttonTitle: "확인")
+                        showAlert(title: "", message: "restoreFailed".localized, buttonTitle: "okay".localized)
                     }
                 } catch {
-                    showAlert(title: "", message: "백업파일 압축해제에 실패했습니다.", buttonTitle: "확인")
+                    showAlert(title: "", message: "unzipFailed".localized, buttonTitle: "okay".localized)
                 }
             } catch {
-                showAlert(title: "", message: "백업파일 압축해제에 실패했습니다.", buttonTitle: "확인")
+                showAlert(title: "", message: "unzipFailed".localized, buttonTitle: "okay".localized)
             }
         }
     }

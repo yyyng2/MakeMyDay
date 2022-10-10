@@ -265,18 +265,18 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .normal, title: "삭제") { action, view, completionHandler in
+        let delete = UIContextualAction(style: .normal, title: "delete".localized) { action, view, completionHandler in
             
-            let alert = UIAlertController(title: nil, message: "삭제하시겠습니까?", preferredStyle: .alert)
+            let alert = UIAlertController(title: nil, message: "deleteCheck".localized, preferredStyle: .alert)
             
-            let okay = UIAlertAction(title: "삭제", style: .destructive) {_ in
+            let okay = UIAlertAction(title: "delete".localized, style: .destructive) {_ in
 
                 self.deleteCell(schedule: self.scheduleTasks, index: indexPath)
                 self.mainView.calendar.reloadData()
             
             }
             
-            let cancel = UIAlertAction(title: "취소", style: .cancel)
+            let cancel = UIAlertAction(title: "cancel".localized, style: .cancel)
             alert.addAction(okay)
             alert.addAction(cancel)
             self.present(alert, animated: true)
@@ -290,7 +290,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource{
 extension ScheduleViewController: DatePickerDateProtocol {
     func updateDate(_ date: Date) {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.locale = Locale.current
         formatter.dateFormat = "yyyy-MM-dd"
     
         let data = dateFormatToString(date: date, formatStyle: .yyyyMMdd)

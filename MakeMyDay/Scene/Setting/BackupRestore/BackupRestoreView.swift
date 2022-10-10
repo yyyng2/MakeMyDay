@@ -17,8 +17,8 @@ class BackupRestoreView: BaseView {
     let infoLabel: CustomLabel = {
         let label = CustomLabel()
         label.text = """
-                    백업 / 복구를 통해 소중한 일정을 지켜보세요!
-                    (프로필 사진과 닉네임은 저장되지 않아요.)
+                    \("BRInfo".localized)
+                    \("BRInfoTwo".localized)
                     """
         label.numberOfLines = 2
         label.textAlignment = .center
@@ -33,7 +33,7 @@ class BackupRestoreView: BaseView {
         
         let button = UIButton()
         button.configuration = config
-        button.setTitle("백업파일 내보내기", for: .normal)
+        button.setTitle("backup".localized, for: .normal)
         button.clipsToBounds = true
         button.layer.cornerRadius = 10
         button.backgroundColor = themeType().foregroundColor
@@ -46,7 +46,7 @@ class BackupRestoreView: BaseView {
         
         let button = UIButton()
         button.configuration = config
-        button.setTitle("복구파일 가져오기", for: .normal)
+        button.setTitle("restore".localized, for: .normal)
         button.clipsToBounds = true
         button.layer.cornerRadius = 10
         button.backgroundColor = themeType().foregroundColor

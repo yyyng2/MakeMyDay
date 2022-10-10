@@ -15,8 +15,8 @@ class PopupOneView: BaseView {
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textColor = .black
         label.text = """
-                    마음에 드는 테마를 선택해 볼까요?
-                    (설정에서 변경 가능합니다.)
+                    \("chooseTheme".localized)
+                    \("chooseThemeTwo".localized)
                     """
         return label
     }()
@@ -55,7 +55,7 @@ class PopupOneView: BaseView {
         let button = UIButton()
         button.layer.cornerRadius = 10
         button.backgroundColor = .black
-        button.setTitle("확인", for: .normal)
+        button.setTitle("oay".localized, for: .normal)
         button.tintColor = .white
         return button
     }()

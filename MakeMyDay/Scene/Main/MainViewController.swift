@@ -294,9 +294,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
             
             switch pinned[indexPath.row].dayPlus {
             case true:
-                ddayCell.countLabel.text = "\(daysCount) 일"
+                ddayCell.countLabel.text = "\(daysCount) \("day".localized)"
             case false:
-                ddayCell.countLabel.text = "\(daysCount - 1) 일"
+                ddayCell.countLabel.text = "\(daysCount - 1) \("day".localized)"
             }
             
             ddayCell.dateLabel.text = "\(pinned[indexPath.row].dateString)"

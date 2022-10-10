@@ -67,7 +67,7 @@ class DdayWriteViewController: BaseViewController{
     }
     
     func setNavigationItem() {
-        let doneButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(doneButtonTapped))
+        let doneButtonItem = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: #selector(doneButtonTapped))
         doneButtonItem.tintColor = themeType().tintColor
 
         

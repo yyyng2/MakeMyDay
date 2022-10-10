@@ -15,7 +15,7 @@ class DdayWriteView: BaseView{
     
     let infoLabel: CustomLabel = {
         let label = CustomLabel()
-        label.text = "D-day를 만들어볼까요? 날짜를 탭하면 변경도 가능합니다!"
+        label.text = "writeInfo".localized
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 13)
       
@@ -35,8 +35,8 @@ class DdayWriteView: BaseView{
     let titleTextField: UITextField = {
        let field = UITextField()
         field.backgroundColor = .clear
-        field.placeholder = " D-day 제목"
-        field.attributedPlaceholder = NSAttributedString(string: " D-day 제목", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
+        field.placeholder = "ddayPlaceholder".localized
+        field.attributedPlaceholder = NSAttributedString(string: "ddayPlaceholder".localized, attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
         field.textColor = themeType().tintColor
         field.becomeFirstResponder()
         field.font = .boldSystemFont(ofSize: 20)
@@ -60,7 +60,7 @@ class DdayWriteView: BaseView{
     let dayPlusLabel: UILabel = {
        let label = UILabel()
         label.textColor = themeType().tintColor
-        label.text = "On: D-day Count +1"
+        label.text = "ddaySwitchInfo".localized
         label.textAlignment = .right
         label.font = .boldSystemFont(ofSize: 16)
         return label

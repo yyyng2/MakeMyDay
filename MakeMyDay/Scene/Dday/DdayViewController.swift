@@ -132,12 +132,12 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
         case 0:
             return ""
         case 1:
-            return pinned.count <= 0 ? "" : "즐겨찾는 D-day"
+            return pinned.count <= 0 ? "" : "importantDday".localized
         default:
             if pinned.count > 0 {
                 return unPinned.count <= 0 ? "" : "D-day"
             } else {
-                return unPinned.count <= 0 ? "D-day를 추가해 볼까요?" : "Swipe 즐겨찾기로\n메인화면에서 확인해 보세요!"
+                return unPinned.count <= 0 ? "recommendDday".localized : "recommendSwipe".localized
             }
             
         }
@@ -184,9 +184,9 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
             
             switch pinned[indexPath.row].dayPlus {
             case true:
-                cell.countLabel.text = "\(daysCount) 일"
+                cell.countLabel.text = "\(daysCount) \("day".localized)"
             case false:
-                cell.countLabel.text = "\(daysCount - 1) 일"
+                cell.countLabel.text = "\(daysCount - 1) \("day".localized)"
             }
             
             cell.titleLabel.text = pinned[indexPath.row].title
@@ -200,9 +200,9 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
             
             switch unPinned[indexPath.row].dayPlus {
             case true:
-                cell.countLabel.text = "\(daysCount) 일"
+                cell.countLabel.text = "\(daysCount) \("day".localized)"
             case false:
-                cell.countLabel.text = "\(daysCount - 1) 일"
+                cell.countLabel.text = "\(daysCount - 1) \("day".localized)"
             }
     
             
@@ -232,11 +232,11 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .normal, title: "삭제") { action, view, completionHandler in
+        let delete = UIContextualAction(style: .normal, title: "delete".localized) { action, view, completionHandler in
             
-            let alert = UIAlertController(title: nil, message: "삭제하시겠습니까?", preferredStyle: .alert)
+            let alert = UIAlertController(title: nil, message: "deleteCheck".localized, preferredStyle: .alert)
             
-            let okay = UIAlertAction(title: "삭제", style: .destructive) {_ in
+            let okay = UIAlertAction(title: "delete".localized, style: .destructive) {_ in
                 switch indexPath.section {
                 case 1:
                     self.deletePinnedCell(dday: self.pinned, index: indexPath)
@@ -245,7 +245,7 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
                 }
             }
             
-            let cancel = UIAlertAction(title: "취소", style: .cancel)
+            let cancel = UIAlertAction(title: "cancel".localized, style: .cancel)
             alert.addAction(okay)
             alert.addAction(cancel)
             self.present(alert, animated: true)
@@ -276,7 +276,7 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
                     self.ddayRepository.updatePin(record: self.unPinned[indexPath.row])
                     self.fetchRealm()
                 } else {
-                    self.showAlert(title: "!", message: "즐겨찾기는 5개를 넘을 수 없습니다.", buttonTitle: "확인")
+                    self.showAlert(title: "!", message: "cantNotOverFive".localized, buttonTitle: "okay".localized)
                     return
                 }
                 

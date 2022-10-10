@@ -15,7 +15,7 @@ class FAQView: BaseView {
     
     lazy var question1Label: CustomLabel = {
         let label = CustomLabel(frame: .zero)
-        label.text = "Q. 홈화면에서 D-day가 표시되지 않아요."
+        label.text = "Q. \("QDday".localized)"
         label.textColor = themeType().tintColor
 
         label.textAlignment = .left
@@ -26,9 +26,9 @@ class FAQView: BaseView {
     lazy var answer1Label: CustomLabel = {
         let label = CustomLabel(frame: .zero)
         label.text = """
-                    A. D-day화면에서 즐겨찾기 등록해주셔야 표시됩니다.
-                        해당 D-day를
-                        왼쪽에서 오른쪽 방향으로 스와이프해보세요!
+                    A. \("ADdayOne".localized)
+                    \("    ")\("ADdayTwo".localized)
+                    \("    ")\("ADdayThree".localized)
                     """
         label.textColor = themeType().tintColor
         label.numberOfLines = 3
@@ -46,7 +46,7 @@ class FAQView: BaseView {
     
     lazy var question2Label: CustomLabel = {
         let label = CustomLabel(frame: .zero)
-        label.text = "Q. 일정을 삭제하고 싶어요."
+        label.text = "Q. \("QDelete".localized)"
         label.textColor = themeType().tintColor
 
         label.textAlignment = .left
@@ -57,9 +57,9 @@ class FAQView: BaseView {
     lazy var answer2Label: CustomLabel = {
         let label = CustomLabel(frame: .zero)
         label.text = """
-                    A. Schedule/D-day화면으로 가시면 지울 수 있어요.
-                        해당 항목을
-                        오른쪽에서 왼쪽 방향으로 스와이프해보세요!
+                    A. \("ADeleteOne".localized)
+                    \("    ")\("ADeleteTwo".localized)
+                    \("    ")\("ADeleteThree".localized)
                     """
         label.textColor = themeType().tintColor
         label.numberOfLines = 3
@@ -77,7 +77,7 @@ class FAQView: BaseView {
     
     lazy var question3Label: CustomLabel = {
         let label = CustomLabel(frame: .zero)
-        label.text = "Q. 테마를 잘못 선택했어요, 변경되나요?"
+        label.text = "Q. \("QTheme".localized)"
         label.textColor = themeType().tintColor
 
         label.textAlignment = .left
@@ -88,7 +88,7 @@ class FAQView: BaseView {
     lazy var answer3Label: CustomLabel = {
         let label = CustomLabel(frame: .zero)
         label.text = """
-                    A. Setting의 테마 변경 메뉴를 통해 변경가능해요!
+                    A. \("AThemeOne".localized)
                     """
         label.textColor = themeType().tintColor
         label.numberOfLines = 2
