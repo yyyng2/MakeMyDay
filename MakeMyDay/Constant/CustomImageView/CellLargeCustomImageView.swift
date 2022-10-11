@@ -1,13 +1,13 @@
 //
-//  CellCustomImageView.swift
+//  CellLargeCustomImageView.swift
 //  MakeMyDay
 //
-//  Created by Y on 2022/09/17.
+//  Created by Y on 2022/10/11.
 //
 
 import UIKit
 
-class CellShortCustomImageView: UIImageView {
+class CellLargeCustomImageView: UIImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,7 +22,7 @@ class CellShortCustomImageView: UIImageView {
     }
     
     func configureBackgroundImage() {
-        image = themeType().bubbleShort
+        image = themeType().bubbleLarge
     }
     
 }

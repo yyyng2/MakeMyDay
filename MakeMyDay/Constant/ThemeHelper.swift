@@ -109,6 +109,15 @@ enum ThemeType {
         }
     }
     
+    var bubbleLarge: UIImage {
+        switch self {
+        case .blackTheme:
+            return UIImage(named: "bubble_black_large")!
+        case .colorfulTheme:
+            return UIImage(named: "bubble_white_large")!
+        }
+    }
+    
     var bubbleMini: UIImage {
         switch self {
         case .blackTheme:

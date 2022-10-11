@@ -23,6 +23,16 @@
 		1881D1B128EE405E009A7E7B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1881D1B028EE405E009A7E7B /* RealmSwift */; };
 		1881D1B328EE4063009A7E7B /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1881D1B228EE4063009A7E7B /* Realm */; };
 		1881D1C228F39F2A009A7E7B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1881D1C428F39F2A009A7E7B /* Localizable.strings */; };
+		1881D1D228F52BA2009A7E7B /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881D1D128F52BA2009A7E7B /* APIKey.swift */; };
+		1881D1D528F53817009A7E7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1881D1D728F53817009A7E7B /* InfoPlist.strings */; };
+		1881D1DA28F53A17009A7E7B /* MainWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881D1D928F53A17009A7E7B /* MainWeatherTableViewCell.swift */; };
+		1881D1E028F53D04009A7E7B /* WeatherAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881D1DF28F53D04009A7E7B /* WeatherAPIManager.swift */; };
+		1881D1E428F53D96009A7E7B /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881D1E328F53D96009A7E7B /* Weather.swift */; };
+		1881D1E628F54519009A7E7B /* CellLargeCustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881D1E528F54519009A7E7B /* CellLargeCustomImageView.swift */; };
+		1881D1EA28F56B57009A7E7B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1881D1E928F56B57009A7E7B /* GoogleService-Info.plist */; };
+		1881D1ED28F56C30009A7E7B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 1881D1EC28F56C30009A7E7B /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		1881D1EF28F56C30009A7E7B /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1881D1EE28F56C30009A7E7B /* FirebaseCrashlytics */; };
+		1881D1F128F56C31009A7E7B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1881D1F028F56C31009A7E7B /* FirebaseMessaging */; };
 		18AF777928DC683200D61E5D /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF777828DC683200D61E5D /* SettingTableViewCell.swift */; };
 		18AF777C28DC696600D61E5D /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF777B28DC696600D61E5D /* SettingMenu.swift */; };
 		18AF777F28DC6B5400D61E5D /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF777E28DC6B5400D61E5D /* License.swift */; };
@@ -112,6 +122,15 @@
 		1881D1C328F39F2A009A7E7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1881D1C528F39F55009A7E7B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		1881D1C628F39F55009A7E7B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1881D1D128F52BA2009A7E7B /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		1881D1D628F53817009A7E7B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1881D1D828F5381C009A7E7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1881D1D928F53A17009A7E7B /* MainWeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherTableViewCell.swift; sourceTree = "<group>"; };
+		1881D1DF28F53D04009A7E7B /* WeatherAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIManager.swift; sourceTree = "<group>"; };
+		1881D1E328F53D96009A7E7B /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		1881D1E528F54519009A7E7B /* CellLargeCustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellLargeCustomImageView.swift; sourceTree = "<group>"; };
+		1881D1E828F5517E009A7E7B /* MakeMyDay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MakeMyDay.entitlements; sourceTree = "<group>"; };
+		1881D1E928F56B57009A7E7B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/AppleKey/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18AF777828DC683200D61E5D /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		18AF777B28DC696600D61E5D /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
 		18AF777E28DC6B5400D61E5D /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
@@ -188,8 +207,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1881D1F128F56C31009A7E7B /* FirebaseMessaging in Frameworks */,
 				1881D1B128EE405E009A7E7B /* RealmSwift in Frameworks */,
+				1881D1ED28F56C30009A7E7B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				18B79A1F28CDE81400186AFA /* SnapKit in Frameworks */,
+				1881D1EF28F56C30009A7E7B /* FirebaseCrashlytics in Frameworks */,
 				18B79A5928D1D64500186AFA /* FSCalendar in Frameworks */,
 				18CDA50628ED846900ECC540 /* Zip in Frameworks */,
 				1881D1B328EE4063009A7E7B /* Realm in Frameworks */,
@@ -229,8 +251,18 @@
 			isa = PBXGroup;
 			children = (
 				1881D1C428F39F2A009A7E7B /* Localizable.strings */,
+				1881D1D728F53817009A7E7B /* InfoPlist.strings */,
 			);
 			path = Localizable;
+			sourceTree = "<group>";
+		};
+		1881D1DE28F53CEF009A7E7B /* APIManager */ = {
+			isa = PBXGroup;
+			children = (
+				1881D1E328F53D96009A7E7B /* Weather.swift */,
+				1881D1DF28F53D04009A7E7B /* WeatherAPIManager.swift */,
+			);
+			path = APIManager;
 			sourceTree = "<group>";
 		};
 		18AF777D28DC6B3000D61E5D /* License */ = {
@@ -280,6 +312,7 @@
 				18B79A5528D0B03700186AFA /* MainTableViewCell.swift */,
 				18AF77A128E08AC400D61E5D /* MainScheduleTableViewCell.swift */,
 				18AF77A328E08AE800D61E5D /* MainDdayTableViewCell.swift */,
+				1881D1D928F53A17009A7E7B /* MainWeatherTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -315,6 +348,8 @@
 		18B799E928CCAB9400186AFA /* MakeMyDay */ = {
 			isa = PBXGroup;
 			children = (
+				1881D1E828F5517E009A7E7B /* MakeMyDay.entitlements */,
+				1881D1DE28F53CEF009A7E7B /* APIManager */,
 				1881D1B628F39A29009A7E7B /* Localizable */,
 				18E2AB6F28D3BB1C0010AAB2 /* Realm */,
 				18B79A1628CCCBCC00186AFA /* Extension */,
@@ -326,6 +361,8 @@
 				18B799F328CCAB9600186AFA /* Assets.xcassets */,
 				18B799F528CCAB9600186AFA /* LaunchScreen.storyboard */,
 				18B799F828CCAB9600186AFA /* Info.plist */,
+				1881D1E928F56B57009A7E7B /* GoogleService-Info.plist */,
+				1881D1D128F52BA2009A7E7B /* APIKey.swift */,
 			);
 			path = MakeMyDay;
 			sourceTree = "<group>";
@@ -468,6 +505,7 @@
 			children = (
 				18B79A5B28D1DFD600186AFA /* BackgroundImageView.swift */,
 				187087F528D7FDB4001D11ED /* CellShortCustomImageView.swift */,
+				1881D1E528F54519009A7E7B /* CellLargeCustomImageView.swift */,
 				18B79A2D28CE0B2200186AFA /* CustomImageView.swift */,
 			);
 			path = CustomImageView;
@@ -550,6 +588,9 @@
 				18CDA50528ED846900ECC540 /* Zip */,
 				1881D1B028EE405E009A7E7B /* RealmSwift */,
 				1881D1B228EE4063009A7E7B /* Realm */,
+				1881D1EC28F56C30009A7E7B /* FirebaseAnalyticsWithoutAdIdSupport */,
+				1881D1EE28F56C30009A7E7B /* FirebaseCrashlytics */,
+				1881D1F028F56C31009A7E7B /* FirebaseMessaging */,
 			);
 			productName = MakeMyDay;
 			productReference = 18B799E728CCAB9400186AFA /* MakeMyDay.app */;
@@ -585,6 +626,7 @@
 				18B79A5728D1D64500186AFA /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				18CDA50428ED846900ECC540 /* XCRemoteSwiftPackageReference "Zip" */,
 				18CDA50728EDB74500ECC540 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				1881D1EB28F56C30009A7E7B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 18B799E828CCAB9400186AFA /* Products */;
 			projectDirPath = "";
@@ -601,10 +643,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1881D1C228F39F2A009A7E7B /* Localizable.strings in Resources */,
+				1881D1D528F53817009A7E7B /* InfoPlist.strings in Resources */,
 				18B799F728CCAB9600186AFA /* LaunchScreen.storyboard in Resources */,
 				18B79A3928CE1A8700186AFA /* .gitignore in Resources */,
 				187C415C28E3A44A005A6623 /* readme.md in Resources */,
 				18B799F428CCAB9600186AFA /* Assets.xcassets in Resources */,
+				1881D1EA28F56B57009A7E7B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,11 +693,13 @@
 				18E2AB7328D3BC0F0010AAB2 /* ScheduleRepository.swift in Sources */,
 				18B79A0428CCB3B200186AFA /* BaseView.swift in Sources */,
 				18CDA50328ED83BC00ECC540 /* FileManager+Extension.swift in Sources */,
+				1881D1E028F53D04009A7E7B /* WeatherAPIManager.swift in Sources */,
 				18DE8DB128EA750800A74345 /* Week.swift in Sources */,
 				18DE8DA628EA5C9800A74345 /* CustomDayLabel.swift in Sources */,
 				18D8F96928D96BAA00179869 /* ThemeHelper.swift in Sources */,
 				18B79A3B28CE201700186AFA /* DdayView.swift in Sources */,
 				187087F928D7FDCD001D11ED /* DdayRealmModel.swift in Sources */,
+				1881D1E428F53D96009A7E7B /* Weather.swift in Sources */,
 				18B79A2A28CDFB7E00186AFA /* Color.swift in Sources */,
 				18DE8DAB28EA5D3C00A74345 /* CustomDaySwitchButton.swift in Sources */,
 				18B79A4428CE217000186AFA /* DdayWriteViewController.swift in Sources */,
@@ -665,6 +711,8 @@
 				18B79A2828CDF82300186AFA /* ScheduleTableViewCell.swift in Sources */,
 				18B799EB28CCAB9400186AFA /* AppDelegate.swift in Sources */,
 				18AF778E28DC95FE00D61E5D /* ThemeView.swift in Sources */,
+				1881D1E628F54519009A7E7B /* CellLargeCustomImageView.swift in Sources */,
+				1881D1D228F52BA2009A7E7B /* APIKey.swift in Sources */,
 				18B79A0628CCB3B900186AFA /* BaseTableViewCell.swift in Sources */,
 				187C416828E57067005A6623 /* FAQView.swift in Sources */,
 				187087F628D7FDB4001D11ED /* CellShortCustomImageView.swift in Sources */,
@@ -683,6 +731,7 @@
 				18DE8DA228EA51C900A74345 /* AlarmView.swift in Sources */,
 				18AF778328DC703C00D61E5D /* LicenseViewController.swift in Sources */,
 				18DE8DAD28EA5E0400A74345 /* AlarmTableViewCell.swift in Sources */,
+				1881D1DA28F53A17009A7E7B /* MainWeatherTableViewCell.swift in Sources */,
 				18B79A3F28CE202F00186AFA /* DdayTableViewCell.swift in Sources */,
 				187C416228E4653B005A6623 /* String+Extension.swift in Sources */,
 				18AF779028DC962700D61E5D /* ThemeViewController.swift in Sources */,
@@ -704,6 +753,15 @@
 				1881D1C628F39F55009A7E7B /* ko */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		1881D1D728F53817009A7E7B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1881D1D628F53817009A7E7B /* ko */,
+				1881D1D828F5381C009A7E7B /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		18B799F528CCAB9600186AFA /* LaunchScreen.storyboard */ = {
@@ -839,6 +897,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MakeMyDay/MakeMyDay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UT362X937Q;
@@ -846,17 +905,20 @@
 				INFOPLIST_FILE = MakeMyDay/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MakeMyDay;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "날씨 정보 검색을 위해 권한이 필요합니다. 허용하시겠습니까?";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 접근을 위해 권한이 필요합니다. 허용하시겠습니까?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.yyyng2.MakeMyDay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -873,6 +935,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MakeMyDay/MakeMyDay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UT362X937Q;
@@ -880,17 +943,20 @@
 				INFOPLIST_FILE = MakeMyDay/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MakeMyDay;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "날씨 정보 검색을 위해 권한이 필요합니다. 허용하시겠습니까?";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 접근을 위해 권한이 필요합니다. 허용하시겠습니까?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.yyyng2.MakeMyDay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -926,6 +992,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1881D1EB28F56C30009A7E7B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		18B79A1D28CDE81400186AFA /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -970,6 +1044,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 18CDA50728EDB74500ECC540 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
+		};
+		1881D1EC28F56C30009A7E7B /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1881D1EB28F56C30009A7E7B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		1881D1EE28F56C30009A7E7B /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1881D1EB28F56C30009A7E7B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		1881D1F028F56C31009A7E7B /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1881D1EB28F56C30009A7E7B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 		18B79A1E28CDE81400186AFA /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
