@@ -179,3 +179,11 @@
 "encodeFailed" = "Encode Failed";
 
 "pleaseContact" = "Please contact me.";
+
+//Location
+
+"useLocationInfo" = "위치정보 이용";
+
+"lostLocationService" = "Location Services is not available. Please turn on Location Services in 'Settings>Privacy' on your device.";
+
+"goToSettings" = "Go to Settings";

@@ -39,8 +39,7 @@ class DdayWriteViewController: BaseViewController{
     
     override func configure() {
         if edit == true {
-            guard let realmDate = dday?.date else { return }
-            mainView.dateLabel.text = dateFormatToString(date: realmDate, formatStyle: .yyyyMMdd)
+            mainView.dateLabel.text = dday?.dateString
             mainView.titleTextField.text = dday?.title
             mainView.dayPlusSwitchButton.isOn = dday!.dayPlus
         } else {

@@ -224,8 +224,10 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
         switch indexPath.section {
         case 1:
             vc.dday = pinned[indexPath.row]
-        default:
+        case 2:
             vc.dday = unPinned[indexPath.row]
+        default:
+            return
         }
         vc.edit = true
         navigationController?.pushViewController(vc, animated: true)
