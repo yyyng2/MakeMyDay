@@ -182,7 +182,7 @@
 
 //Location
 
-"useLocationInfo" = "위치정보 이용";
+"useLocationInfo" = "Use of location information";
 
 "lostLocationService" = "Location Services is not available. Please turn on Location Services in 'Settings>Privacy' on your device.";
 

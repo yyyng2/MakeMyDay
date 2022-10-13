@@ -1,0 +1,189 @@
+/* 
+  Localizable.strings
+  MakeMyDay
+
+  Created by Y on 2022/10/10.
+  
+*/
+
+"welcome" = "ようこそ！";
+
+"welcomeTwo" = "あなたの一日をお手伝いします。";
+
+"chooseTheme" = "好きなテーマを選びましょうか。";
+
+"chooseThemeTwo" = "（設定で変更できます。）";
+
+"chooseTheme" = "テーマを選ぼう！";
+
+"hi" = "こんにちは :D";
+
+"schedule" = "今日のスケジュール。";
+
+"scheduleAddRecommend" = "スケジュールを登録します。";
+
+"dday" = "Dデイをチェック。";
+
+"ddayAddRecommend" = "D-デー を登録します。";
+
+"day" = "日々";
+
+"sun" = "日";
+
+"mon" = "月";
+
+"tue" = "火";
+
+"wed" = "水";
+
+"thu" = "木";
+
+"fri" = "金";
+
+"sat" = "土";
+
+"okay" = "確認";
+
+"select" = "選択";
+
+"cancel" = "キャンセル";
+
+"delete" = "削除";
+
+"save" = "保存";
+
+"deleteCheck" = "消去してもよろしいですか？";
+
+"time" = "時間";
+
+"notifications" = "通知";
+
+"notificationsOff" = "通知が無効になっています。 設定に移動しますか？";
+
+"notificationsStatusON" = "の上";
+
+"notificationsStatusOff" = "オフ";
+
+"notificationsTitle" = "今日の予定をチェック。";
+
+"notificationsSun" = "今日は日曜日です。";
+
+"notificationsMon" = "今日は月曜日です。";
+
+"notificationsTue" = "今日は火曜日です。";
+
+"notificationsWed" = "今日は水曜日です。";
+
+"notificationsThu" = "今日は木曜日です。";
+
+"notificationsFri" = "今日は金曜日です。";
+
+"notificationsSat" = "今日は土曜日です。";
+
+"writeInfo" = "書きましょうか？ 日付をタップして変更してください！";
+
+"sharingSuccess" = "分かち合い成功！";
+
+"sharingFailed" = "共有に失敗しました。";
+
+"importantDday" = "重要な D-デー";
+
+"recommendDday" = "D-デーを追加しましょうか？";
+
+"recommendSwipe" = "スワイプして重要な D-Days を\n設定し、ホーム画面で確認してください!";
+
+"cantNotOverFive" = "追加できる重要な D-デー は 5 つまでです。";
+
+"ddayPlaceholder" = " D-デーのタイトル";
+
+"ddaySwitchInfo" = "1日目から数え始める";
+
+//Menu
+
+"appInfo" = "アプリ情報";
+
+"setProfile" = "プロファイル設定";
+
+"setTheme" = "テーマを変更";
+
+"FAQ" = "よくある質問";
+
+"backupAndRestore" = "バックアップ / 復元";
+
+"reset" = "リセット";
+
+"license" = "ライセンス";
+
+"warning" = "警告";
+
+"warningReset" = "スケジュールもD-dayもリセット";
+
+"changeTheme" = "テーマを変えましょうか。";
+
+//Profile
+
+"warningNickname" = "ニックネームは1～10文字まで！";
+
+"nicknamePlaceholder" = "(1～10文字)";
+
+"loadImage" = "画像の読み込み";
+
+//FAQ
+
+"QDday" = "ホーム画面にD-dayが表示されません。";
+
+"ADdayOne" = "D-day画面で重要な";
+"ADdayTwo" = "d-dayとして登録が必要です。";
+"ADdayThree" = "D-デイを左から右にスワイプ！";
+
+"QDelete" = "イベントを削除したい。";
+
+"ADeleteOne" = "スケジュール/";
+"ADeleteTwo" = "D-Day画面に移動することで削除できます。";
+"ADeleteThree" = "右から左にスワイプ！";
+
+"QTheme" = "間違ったテーマを選択しましたが、変更されますか?";
+
+"AThemeOne" = "[設定] の [テーマの変更] メニューから変更できます。";
+
+//Mail
+
+"mail" = "郵便";
+
+"mailFailed" = "メールの送信に失敗しました。";
+
+//Backup&Restore
+
+"BRInfo" = "大切なイベントをバックアップ・リストアで守る！";
+"BRInfoTwo" = "(プロファイル設定は保存されません。)";
+
+"backup" = "バックアップ";
+"restore" = "復元";
+
+"restoreWarning" = "現在のデータは上書きされます。 続行しますか?";
+
+"cancelChoose" = "ファイルの選択がキャンセルされました。";
+
+"cantNotFoundFile" = "ファイルが見つかりません。";
+
+"locationError" = "場所に誤りがあります。";
+
+"wrongBackupFile" = "これは MakeMyDay のバックアップ ファイルではありません。";
+
+"restoreFailed" = "復元に失敗しました";
+
+"unzipFailed" = "解凍に失敗しました";
+
+"zipFailed" = "圧縮に失敗しました";
+
+"encodeFailed" = "エンコードに失敗しました";
+
+"pleaseContact" = "私に連絡してください。";
+
+//Location
+
+"useLocationInfo" = "位置情報利用";
+
+"lostLocationService" = "位置情報サービスは利用できません。 デバイスの [設定] > [プライバシー] で位置情報サービスをオンにしてください。";
+
+"goToSettings" = "設定に移動";
