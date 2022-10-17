@@ -1,0 +1,189 @@
+/* 
+  Localizable.strings
+  MakeMyDay
+
+  Created by Y on 2022/10/10.
+  
+*/
+
+"welcome" = "Selamat datang!";
+
+"welcomeTwo" = "Saya akan membantu Anda menjalani hari Anda.";
+
+"chooseTheme" = "Apakah kita akan memilih tema yang kita suka?";
+
+"chooseThemeTwo" = "(Anda dapat mengubah ini di Pengaturan.)";
+
+"chooseTheme" = "Pilih tema!";
+
+"hi" = "Halo :D";
+
+"schedule" = "Saya akan memberikan jadwal hari ini.";
+
+"scheduleAddRecommend" = "Coba tambahkan jadwal.";
+
+"dday" = "Ini adalah hari-H mulai hari ini.";
+
+"ddayAddRecommend" = "Coba tambahkan hari.";
+
+"day" = "hari";
+
+"sun" = "Sun";
+
+"mon" = "Mon";
+
+"tue" = "Tue";
+
+"wed" = "Wed";
+
+"thu" = "Thu";
+
+"fri" = "Fri";
+
+"sat" = "Sat";
+
+"okay" = "Oke";
+
+"select" = "pilih";
+
+"cancel" = "Batalkan";
+
+"delete" = "Hapus";
+
+"save" = "simpan";
+
+"deleteCheck" = "Apakah Anda yakin ingin menghapusnya?";
+
+"time" = "waktu";
+
+"notifications" = "Pemberitahuan";
+
+"notificationsOff" = "Pemberitahuan dimatikan. Apakah Anda ingin membuka layar pengaturan?";
+
+"notificationsStatusON" = "Aktif";
+
+"notificationsStatusOff" = "Nonaktif";
+
+"notificationsTitle" = "Periksa jadwal hari ini.";
+
+"notificationsSun" = "Hari ini adalah hari Minggu.";
+
+"notificationsMon" = "Hari ini adalah hari Senin.";
+
+"notificationsTue" = "Hari ini adalah hari Selasa.";
+
+"notificationsWed" = "Hari ini hari Rabu.";
+
+"notificationsThu" = "Hari ini hari Kamis.";
+
+"notificationsFri" = "Hari ini hari Jumat.";
+
+"notificationsSat" = "Hari ini adalah hari Sabtu.";
+
+"writeInfo" = "Tuliskan jadwal Anda? Anda juga dapat mengubahnya dengan mengetuk tanggal!";
+
+"sharingSuccess" = "Berhasil dibagikan!";
+
+"sharingFailed" = "Gagal berbagi.";
+
+"importantDday" = "Hari H Favorit";
+
+"recommendDday" = "Apakah kita akan menambahkan hari-H?";
+
+"recommendSwipe" = "Gesek Favorit\nLihat di layar utama!";
+
+"cantNotOverFive" = "Anda tidak dapat memiliki lebih dari 5 favorit!";
+
+"ddayPlaceholder" = " Judul Hari-H";
+
+"ddaySwitchInfo" = "Hitung sebagai Hari 1";
+
+//Menu
+
+"appInfo" = "Info aplikasi";
+
+"setProfile" = "Ubah Profil";
+
+"setTheme" = "Ubah tema";
+
+"FAQ" = "Pertanyaan yang Sering Diajukan";
+
+"backupAndRestore" = "Cadangkan/Pulihkan";
+
+"reset" = "setel ulang";
+
+"license" = "sumber terbuka";
+
+"warning" = "peringatan";
+
+"warningReset" = "Jadwal dan Hari-H direset";
+
+"changeTheme" = "Apakah kita akan mengubah tema?";
+
+//Profil
+
+"warningNickname" = "Nama panggilan dibatasi hingga 1-10 karakter!";
+
+"nicknamePlaceholder" = "(1-10 karakter)";
+
+"loadImage" = "Impor foto";
+
+//FAQ
+
+"QDday" = "Hari-H tidak ditampilkan di layar beranda.";
+
+"ADdayOne" = "Pendaftaran diperlukan sebagai ";
+"ADdayTwo" = "hari-H penting di layar hari-H.";
+"ADdayThree" = "Gesek hari-H dari kiri ke kanan!";
+
+"QDelete" = "Saya ingin menghapus acara.";
+
+"ADeleteOne" = "Itu dapat dihapus dengan ";
+"ADeleteTwo" = "pindah ke layar Jadwal/Hari-H.";
+"ADeleteThree" = "Gesek dari kanan ke kiri!";
+
+"QTheme" = "Saya memilih tema yang salah, apakah akan berubah?";
+
+"AThemeOne" = "Anda dapat mengubahnya melalui menu Ubah Tema di Pengaturan!";
+
+//Mail
+
+"mail" = "surat";
+
+"mailFailed" = "Gagal mengirim email.";
+
+//Backup&Restore
+
+"BRInfo" = "Simpan jadwal berharga Anda dengan pencadangan/pemulihan!";
+"BRInfoTwo" = "(Gambar profil dan nama panggilan tidak disimpan.)";
+
+"backup" = "Ekspor file cadangan";
+"restore" = "Impor file pemulihan";
+
+"restoreWarning" = "Data saat ini akan ditimpa. Apakah Anda yakin ingin melanjutkan?";
+
+"cancelChoose" = "Pemilihan file dibatalkan.";
+
+"cantNotFoundFile" = "File tidak dapat ditemukan.";
+
+"locationError" = "Ada kesalahan dengan lokasi.";
+
+"wrongBackupFile" = "Ini bukan file cadangan untuk MakeMyDay.";
+
+"restoreFailed" = "Pemulihan gagal.";
+
+"unzipFailed" = "Gagal membuka zip file cadangan.";
+
+"zipFailed" = "Kompresi gagal.";
+
+"encodeFailed" = "Pengkodean gagal.";
+
+"pleaseContact" = "Silakan hubungi kami.";
+
+//Location
+
+"useLocationInfo" = "Gunakan informasi lokasi";
+
+"lostLocationService" = "Layanan Lokasi tidak tersedia. Harap aktifkan Layanan Lokasi di 'Pengaturan > Privasi' di perangkat Anda.";
+
+"goToSettings" = "Buka Pengaturan";

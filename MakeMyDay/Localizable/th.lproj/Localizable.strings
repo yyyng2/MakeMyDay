@@ -1,0 +1,189 @@
+/* 
+  Localizable.strings
+  MakeMyDay
+
+  Created by Y on 2022/10/10.
+  
+*/
+
+"welcome" = "ยินดีต้อนรับ!";
+
+"welcomeTwo" = "ฉันจะช่วยวันของคุณ";
+
+"chooseTheme" = "เราจะเลือกธีมโปรดของคุณหรือไม่";
+
+"chooseThemeTwo" = "(คุณสามารถเปลี่ยนได้ในการตั้งค่า)";
+
+"chooseTheme" = "เลือกธีม!";
+
+"hi" = "สวัสดี :D";
+
+"schedule" = "กำหนดการของวันนี้";
+
+"scheduleAddRecommend" = "ลงทะเบียนกำหนดการของคุณ";
+
+"dday" = "ตรวจสอบ D-day";
+
+"ddayAddRecommend" = "ลงทะเบียน D-day ของคุณ";
+
+"day" = "วัน";
+
+"sun" = "Sun";
+
+"mon" = "Mon";
+
+"tue" = "Tue";
+
+"wed" = "Wed";
+
+"thu" = "Thu";
+
+"fri" = "Fri";
+
+"sat" = "Sat";
+
+"okay" = "โอเค";
+
+"select" = "Select";
+
+"cancel" = "ยกเลิก";
+
+"delete" = "ลบ";
+
+"save" = "บันทึก";
+
+"deleteCheck" = "คุณแน่ใจหรือไม่ว่าคุณต้องการลบ";
+
+"time" = "เวลา";
+
+"notifications" = "การแจ้งเตือน";
+
+"notificationsOff" = "การแจ้งเตือนถูกปิดใช้งาน คุณต้องการไปที่การตั้งค่าหรือไม่";
+
+"notificationsStatusON" = "เปิด";
+
+"notificationsStatusOff" = "ปิด";
+
+"notificationsTitle" = "ดูกำหนดการของวันนี้";
+
+"notificationsSun" = "วันนี้เป็นวันอาทิตย์";
+
+"notificationsMon" = "วันนี้วันจันทร์";
+
+"notificationsTue" = "วันนี้วันอังคาร";
+
+"notificationsWed" = "วันนี้วันพุธ";
+
+"notificationsThu" = "วันนี้เป็นวันพฤหัสบดี";
+
+"notificationsFri" = "วันนี้เป็นวันศุกร์";
+
+"notificationsSat" = "วันนี้เป็นวันเสาร์";
+
+"writeInfo" = "เราจะเขียนไหม แตะวันที่เพื่อเปลี่ยน!";
+
+"sharingSuccess" = "การแบ่งปันความสำเร็จ!";
+
+"sharingFailed" = "การแชร์ล้มเหลว";
+
+"importantDday" = "วันสำคัญ";
+
+"recommendDday" = "เราควรเพิ่ม D-day ไหม";
+
+"recommendSwipe" = "ปัดเพื่อตั้งค่า D-Days ที่สำคัญ\nแล้วดูบนหน้าจอหลัก!";
+
+"cantNotOverFive" = "เพิ่ม D-Day ที่สำคัญได้ไม่เกิน 5 วัน!";
+
+"ddayPlaceholder" = " ชื่อของวันดีเดย์";
+
+"ddaySwitchInfo" = "เริ่มนับจากวันที่ 1";
+
+//Menu
+
+"appInfo" = "ข้อมูลแอป";
+
+"setProfile" = "การตั้งค่าโปรไฟล์";
+
+"setTheme" = "เปลี่ยนธีม";
+
+"FAQ" = "คำถามที่พบบ่อย";
+
+"backupAndRestore" = "สำรองข้อมูล / กู้คืน";
+
+"reset" = "รีเซ็ต";
+
+"license" = "ใบอนุญาต";
+
+"warning" = "คำเตือน";
+
+"warningReset" = "ทั้งกำหนดการและวันดีเดย์ถูกรีเซ็ต";
+
+"changeTheme" = "เราจะเปลี่ยนธีมไหม";
+
+//Profile
+
+"warningNickname" = "ชื่อเล่นจำกัดที่ 1-10 อักขระ!";
+
+"nicknamePlaceholder" = "(1-10 อักขระ)";
+
+"loadImage" = "โหลดภาพ";
+
+//FAQ
+
+"QDday" = "D-day ไม่แสดงบนหน้าจอหลัก";
+
+"ADdayOne" = "จำเป็นต้องลงทะเบียนเป็นวันสำคัญในหน้าจอ ";
+"ADdayTwo" = "D-day";
+"ADdayThree" = "ปัด D-day จากซ้ายไปขวา!";
+
+"QDelete" = "ฉันต้องการลบกิจกรรม";
+
+"ADeleteOne" = "สามารถลบได้โดยการย้ายไปยังหน้าจอกำหนดการ/";
+"ADeleteTwo" = "วันดีเดย์";
+"ADeleteThree" = "ปัดไปทางซ้าย!";
+
+"QTheme" = "ฉันเลือกธีมผิด ธีมจะเปลี่ยนไหม";
+
+"AThemeOne" = "คุณสามารถเปลี่ยนได้โดยใช้เมนูเปลี่ยนธีมในการตั้งค่า!";
+
+//Mail
+
+"mail" = "เมล";
+
+"mailFailed" = "ไม่สามารถส่งเมลได้";
+
+//Backup&Restore
+
+"BRInfo" = "ปกป้องเหตุการณ์สำคัญด้วยการสำรอง/กู้คืน!";
+"BRInfoTwo" = "(การตั้งค่าโปรไฟล์ของคุณไม่ได้รับการบันทึก)";
+
+"backup" = "สำรองข้อมูล";
+"restore" = "คืนค่า";
+
+"restoreWarning" = "ข้อมูลปัจจุบันจะถูกเขียนทับ คุณต้องการดำเนินการต่อหรือไม่";
+
+"cancelChoose" = "การเลือกไฟล์ถูกยกเลิก";
+
+"cantNotFoundFile" = "ไม่พบไฟล์";
+
+"locationError" = "มีข้อผิดพลาดในตำแหน่ง";
+
+"wrongBackupFile" = "นี่ไม่ใช่ไฟล์สำรองสำหรับ MakeMyDay";
+
+"restoreFailed" = "การกู้คืนล้มเหลว";
+
+"unzipFailed" = "คลายซิปล้มเหลว";
+
+"zipFailed" = "ซิปล้มเหลว";
+
+"encodeFailed" = "การเข้ารหัสล้มเหลว";
+
+"pleaseContact" = "โปรดติดต่อฉัน";
+
+//Location
+
+"useLocationInfo" = "การใช้ข้อมูลตำแหน่ง";
+
+"lostLocationService" = "บริการระบุตำแหน่งไม่พร้อมใช้งาน โปรดเปิดบริการตำแหน่งใน 'การตั้งค่า>ความเป็นส่วนตัว' บนอุปกรณ์ของคุณ";
+
+"goToSettings" = "ไปที่การตั้งค่า";

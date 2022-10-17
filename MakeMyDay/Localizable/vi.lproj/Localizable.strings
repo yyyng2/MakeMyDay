@@ -1,0 +1,189 @@
+/* 
+  Localizable.strings
+  MakeMyDay
+
+  Created by Y on 2022/10/10.
+  
+*/
+
+"welcome" = "Chào mừng!";
+
+"welcomeTwo" = "Tôi sẽ giúp ngày của bạn.";
+
+"selectTheme" = "Chúng tôi sẽ chọn chủ đề yêu thích của bạn chứ?";
+
+"selectThemeTwo" = "(Bạn có thể thay đổi nó trong cài đặt.)";
+
+"selectTheme" = "Chọn một chủ đề!";
+
+"hi" = "Xin chào: D";
+
+"Schedule" = "Lịch trình hôm nay.";
+
+"SchedAddRecommend" = "Đăng ký lịch trình của bạn.";
+
+"dday" = "Kiểm tra D-day.";
+
+"ddayAddRecommend" = "Đăng ký D-day của bạn.";
+
+"day" = "Ngày";
+
+"sun" = "Sun";
+
+"mon" = "Mon";
+
+"tue" = "Tue";
+
+"wed" = "Wed";
+
+"thu" = "Thu";
+
+"fri" = "Fri";
+
+"sat" = "Sat";
+
+"okay" = "Được rồi";
+
+"select" = "Chọn";
+
+"cancel" = "Hủy bỏ";
+
+"delete" = "Xóa";
+
+"save" = "Lưu";
+
+"deleteCheck" = "Bạn có chắc chắn muốn xóa không?";
+
+"time" = "Thời gian";
+
+"notifications" = "Thông báo";
+
+"notificationOff" = "Thông báo bị tắt. Bạn có muốn vào cài đặt không?";
+
+"notificationStatusON" = "Bật";
+
+"notificationStatusOff" = "Tắt";
+
+"notificationTitle" = "Xem lịch trình hôm nay.";
+
+"notificationSun" = "Hôm nay là Chủ nhật.";
+
+"notificationMon" = "Hôm nay là thứ Hai.";
+
+"messagesTue" = "Hôm nay là Thứ Ba.";
+
+"notificationWed" = "Hôm nay là thứ Tư.";
+
+"notificationThu" = "Hôm nay là thứ Năm.";
+
+"notificationFri" = "Hôm nay là thứ sáu.";
+
+"notificationSat" = "Hôm nay là thứ Bảy.";
+
+"writeInfo" = "Chúng ta sẽ viết chứ? Hãy nhấn vào ngày để thay đổi nó!";
+
+"sharingSuccess" = "Chia sẻ Thành công!";
+
+"sharingFailed" = "Không chia sẻ được.";
+
+"importantDday" = "Ngày quan trọng";
+
+"recommendDday" = "Chúng ta có nên thêm D-day không?";
+
+"recommendSwipe" = "Vuốt để đặt các Ngày D quan trọng \ na và xem chúng trên màn hình chính!";
+
+"cantNotOverFive" = "Không thể thêm quá 5 Ngày D quan trọng!";
+
+"ddayPlaceholder" = "Tiêu đề của D-day";
+
+"ddaySwitchInfo" = "Bắt đầu đếm từ ngày 1";
+
+//Menu
+
+"appInfo" = "Thông tin ứng dụng";
+
+"setProfile" = "Cài đặt cấu hình";
+
+"setTheme" = "Thay đổi chủ đề";
+
+"FAQ" = "Câu hỏi thường gặp";
+
+"backupAndRestore" = "Sao lưu / Khôi phục";
+
+"reset" = "Đặt lại";
+
+"license" = "Giấy phép";
+
+"warning" = "Cảnh báo";
+
+"warningReset" = "Cả lịch trình và ngày D đều được đặt lại";
+
+"changeTheme" = "Chúng ta có nên thay đổi chủ đề không?";
+
+//Profile
+
+"warningNickname" = "Biệt hiệu được giới hạn từ 1-10 ký tự!";
+
+"nicknamePlaceholder" = "(1-10 ký tự)";
+
+"loadImage" = "Tải hình ảnh";
+
+//FAQ
+
+"QDday" = "D-day không được hiển thị trên màn hình chính.";
+
+"ADdayOne" = "Đăng ký là một ngày quan trọng ";
+"ADdayTwo" = "trên màn hình D-day.";
+"ADdayThree" = "Vuốt D-day từ trái sang phải!";
+
+"QDelete" = "Tôi muốn xóa một sự kiện.";
+
+"ADeleteOne" = "Nó có thể được xóa bằng cách chuyển ";
+"ADeleteTwo" = "sang màn hình Lịch biểu / Ngày.";
+"ADeleteThree" = "Vuốt từ phải sang trái!";
+
+"QTheme" = "Tôi đã chọn sai chủ đề, nó có thay đổi không?";
+
+"AThemeOne" = "Bạn có thể thay đổi nó qua menu Thay đổi Chủ đề trong Cài đặt!";
+
+//Mail
+
+"mail" = "Thư";
+
+"mailFailed" = "Không gửi được thư.";
+
+//Backup&Restore
+
+"BRInfo" = "Bảo vệ các sự kiện quan trọng bằng sao lưu / khôi phục!";
+"BRInfoTwo" = "(Cài đặt hồ sơ của bạn chưa được lưu.)";
+
+"backup" = "Sao lưu";
+"restore" = "Khôi phục";
+
+"restoreWarning" = "Dữ liệu hiện tại sẽ bị ghi đè. Bạn có muốn tiếp tục không?";
+
+"cancelChoose" = "Việc lựa chọn tập tin đã bị hủy bỏ.";
+
+"cantNotFoundFile" = "Không tìm thấy tệp.";
+
+"locationError" = "Có lỗi ở vị trí.";
+
+"falseBackupFile" = "Đây không phải là tệp sao lưu cho MakeMyDay.";
+
+"restoreFailed" = "Khôi phục không thành công";
+
+"unzipFailed" = "Giải nén không thành công";
+
+"zipFailed" = "Zip không thành công";
+
+"encodeFailed" = "Mã hóa không thành công";
+
+"pleaseContact" = "Vui lòng liên hệ với tôi.";
+
+//Location
+
+"useLocationInfo" = "Sử dụng thông tin vị trí";
+
+"lostLocationService" = "Dịch vụ Vị trí không khả dụng. Vui lòng bật Dịch vụ Vị trí trong 'Cài đặt> Quyền riêng tư' trên thiết bị của bạn.";
+
+"goToSettings" = "Đi tới Cài đặt";

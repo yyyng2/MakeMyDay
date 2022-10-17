@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  MakeMyDay
+
+  Created by Y on 2022/10/11.
+  
+*/
+
+"CFBundleDisplayName" = "MakeMyDay";
+
+"NSLocationWhenInUseUsageDescription" = "天气信息需要您的位置。";

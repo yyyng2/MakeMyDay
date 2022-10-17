@@ -1,0 +1,188 @@
+/* 
+  Localizable.strings
+  MakeMyDay
+
+  Created by Y on 2022/10/10.
+  
+*/
+
+"welcome" = "Bienvenue !" ;
+
+"welcomeTwo" = "Je vais t'aider dans ta journée.";
+
+"chooseTheme" = "Allons-nous choisir un thème que nous aimons ?";
+
+"chooseThemeTwo" = "(Vous pouvez modifier cela dans les paramètres.)";
+
+"chooseTheme" = "Choisissez un thème!";
+
+"hi" = "Bonjour :D";
+
+"schedule" = "Je vais vous donner le programme d'aujourd'hui.";
+
+"scheduleAddRecommend" = "Essayez d'ajouter un horaire.";
+
+"dday" = "C'est le jour J à partir d'aujourd'hui.";
+
+"ddayAddRecommend" = "Essayez d'ajouter un dday.";
+
+"day" = "jour";
+
+"sun" = "Di";
+
+"mon" = "Lu";
+
+"tue" = "Ma";
+
+"wed" = "Me";
+
+"thu" = "Je";
+
+"fri" = "Ve";
+
+"sat" = "Sa";
+
+"okay" = "d'accord";
+
+"select" = "sélectionner";
+
+"cancel" = "Annuler";
+
+"delete" = "Supprimer";
+
+"save" = "sauvegarder";
+
+"deleteCheck" = "Etes-vous sûr de vouloir le supprimer ?";
+
+"time" = "heure";
+
+"notifications" = "Notifications";
+
+"notificationsOff" = "Les notifications sont désactivées. Voulez-vous accéder à l'écran des paramètres ?";
+
+"notificationsStatusON" = "Activé";
+
+"notificationsStatusOff" = "Désactivé";
+
+"notificationsTitle" = "Vérifiez l'horaire d'aujourd'hui.";
+
+"notificationsSun" = "Aujourd'hui est un dimanche.";
+
+"notificationsMon" = "Aujourd'hui, c'est lundi.";
+
+"notificationsTue" = "Aujourd'hui est un mardi.";
+
+"notificationsWed" = "Aujourd'hui est un mercredi.";
+
+"notificationsThu" = "Aujourd'hui, c'est jeudi.";
+
+"notificationsFri" = "Aujourd'hui, c'est vendredi.";
+
+"notificationsSat" = "Aujourd'hui c'est samedi.";
+
+"writeInfo" = "Écrivez votre emploi du temps ? Vous pouvez également le modifier en appuyant sur la date !";
+
+"sharingSuccess" = "Partagé avec succès !";
+
+"sharingFailed" = "Le partage a échoué.";
+
+"importantDday" = "Jour J préféré";
+
+"recommendDday" = "Allons-nous ajouter le jour J?";
+
+"recommendSwipe" = "Balayer les favoris\nConsultez-le sur l'écran principal!";
+
+"cantNotOverFive" = "Vous ne pouvez pas avoir plus de 5 favoris!";
+
+"ddayPlaceholder" = " Titre du jour J";
+
+"ddaySwitchInfo" = "Compter comme Jour 1";
+
+//Menu
+
+"appInfo" = "Informations sur l'application";
+
+"setProfile" = "Modifier le profil";
+
+"setTheme" = "Changer de thème";
+
+"FAQ" = "Foire aux questions";
+
+"backupAndRestore" = "Sauvegarder/Restaurer";
+
+"reset" = "réinitialiser";
+
+"license" = "open source";
+
+"warning" = "avertissement";
+
+"warningReset" = "La programmation et le jour J sont réinitialisés";
+
+"changeTheme" = "Allons-nous changer le thème ?";
+
+//Profile
+
+"warningNickname" = "Les surnoms sont limités à 1-10 caractères!";
+
+"nicknamePlaceholder" = "(1-10 caractères)";
+
+"loadImage" = "Importer une photo";
+
+//FAQ
+
+"QDday" = "Le jour J n'apparaît pas sur l'écran d'accueil.";
+
+"ADdayOne" = "L'inscription est obligatoire en tant que ";
+"ADdayTwo" = "jour J important sur l'écran du jour J.";
+"ADdayThree" = "Balayer le jour J de gauche à droite !" ;
+
+"QDelete" = "Je veux supprimer un événement.";
+
+"ADeleteOne" = "Il peut être supprimé en allant ";
+"ADeleteTwo" = "sur l'écran Planning/Jour J.";
+"ADeleteThree" = "Balayer de droite à gauche !";
+
+"QTheme" = "J'ai choisi le mauvais thème, cela changera-t-il?";
+
+"Athemeone" = "Vous pouvez le supprimer en accédant à l'écran du calendrier / du jour J";
+
+//Mail
+
+"mail" = "Courrier";
+
+"mailFailed" = "Échec de l'envoi du courrier.";
+
+//Backup&Restore
+
+"BRInfo" = "Protégez les événements importants avec la sauvegarde/restauration !" ;
+"BRInfoTwo" = "(Vos paramètres de profil ne sont pas enregistrés.)" ;
+
+"backup" = "Sauvegarde";
+"restore" = "Restaurer";
+
+"restoreWarning" = "Les données actuelles seront écrasées. Voulez-vous continuer ?";
+
+"cancelChoose" = "La sélection de fichiers a été annulée.";
+
+"cantNotFoundFile" = "Fichier introuvable.";
+
+"locationError" = "Il y a une erreur dans l'emplacement.";
+
+"wrongBackupFile" = "Ceci n'est pas un fichier de sauvegarde pour MakeMyDay.";
+
+"restoreFailed" = "La restauration a échoué";
+
+"unzipFailed" = "Échec de la décompression";
+
+"zipFailed" = "Échec de la fermeture éclair" ;
+
+"encodeFailed" = "L'encodage a échoué" ;
+
+"pleaseContact" = "Veuillez me contacter.";
+
+//Location
+
+"useLocationInfo" = "Utilisation des informations de localisation" ;
+
+"lostLocationService" = "Les services de localisation ne sont pas disponibles. Veuillez activer les services de localisation dans 'Paramètres > Confidentialité' sur votre appareil.";
+"goToSettings" = "Aller aux paramètres" ;
