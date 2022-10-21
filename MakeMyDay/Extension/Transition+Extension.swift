@@ -7,8 +7,8 @@
 
 import UIKit
 
-extension UIViewController{
-    enum TransitionStyle{
+extension UIViewController {
+    enum TransitionStyle {
         case present
         case presentNavigation
         case presentFullNavigation

@@ -6,7 +6,7 @@
   
 */
 
-"welcome" = "Bienvenue !" ;
+"welcome" = "Bienvenue!";
 
 "welcomeTwo" = "Je vais t'aider dans ta journée.";
 
@@ -134,7 +134,7 @@
 
 "ADdayOne" = "L'inscription est obligatoire en tant que ";
 "ADdayTwo" = "jour J important sur l'écran du jour J.";
-"ADdayThree" = "Balayer le jour J de gauche à droite !" ;
+"ADdayThree" = "Balayer le jour J de gauche à droite !";
 
 "QDelete" = "Je veux supprimer un événement.";
 
@@ -154,8 +154,8 @@
 
 //Backup&Restore
 
-"BRInfo" = "Protégez les événements importants avec la sauvegarde/restauration !" ;
-"BRInfoTwo" = "(Vos paramètres de profil ne sont pas enregistrés.)" ;
+"BRInfo" = "Protégez les événements importants avec la sauvegarde/restauration !";
+"BRInfoTwo" = "(Vos paramètres de profil ne sont pas enregistrés.)";
 
 "backup" = "Sauvegarde";
 "restore" = "Restaurer";
@@ -174,15 +174,15 @@
 
 "unzipFailed" = "Échec de la décompression";
 
-"zipFailed" = "Échec de la fermeture éclair" ;
+"zipFailed" = "Échec de la fermeture éclair";
 
-"encodeFailed" = "L'encodage a échoué" ;
+"encodeFailed" = "L'encodage a échoué";
 
 "pleaseContact" = "Veuillez me contacter.";
 
 //Location
 
-"useLocationInfo" = "Utilisation des informations de localisation" ;
+"useLocationInfo" = "Utilisation des informations de localisation";
 
 "lostLocationService" = "Les services de localisation ne sont pas disponibles. Veuillez activer les services de localisation dans 'Paramètres > Confidentialité' sur votre appareil.";
-"goToSettings" = "Aller aux paramètres" ;
+"goToSettings" = "Aller aux paramètres";
