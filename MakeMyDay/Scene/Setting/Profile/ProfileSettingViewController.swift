@@ -11,7 +11,6 @@ class ProfileSettingViewController: BaseViewController, UINavigationControllerDe
     lazy var mainView = ProfileSettingView()
         
     override func loadView() {
-        super.loadView()
         self.view = mainView
     }
     

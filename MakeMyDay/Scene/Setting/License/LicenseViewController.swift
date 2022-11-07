@@ -13,7 +13,6 @@ class LicenseViewController: BaseViewController {
     let license = LicenseInfo()
     
     override func loadView() {
-        super.loadView()
         self.view = mainView
     }
     override func viewDidLoad() {

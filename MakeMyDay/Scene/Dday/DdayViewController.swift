@@ -43,7 +43,6 @@ class DdayViewController: BaseViewController{
     var headerString = ""
     
     override func loadView() {
-        super.loadView()
         self.view = mainView
     }
     

@@ -21,7 +21,6 @@ class DdayWriteViewController: BaseViewController{
     var dday: Dday?
     
     override func loadView() {
-        super.loadView()
         self.view = mainView
     }
     

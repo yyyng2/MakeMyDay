@@ -11,7 +11,6 @@ class PopupOneViewController: BaseViewController {
     let mainView = PopupOneView()
     
     override func loadView() {
-        super.loadView()
         self.view = mainView
     }
     

@@ -13,7 +13,6 @@ class LicenseDetailViewController: BaseViewController {
                     """
     
     override func loadView() {
-        super.loadView()
         self.view = mainView
     }
     

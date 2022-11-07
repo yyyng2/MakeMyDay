@@ -11,7 +11,6 @@ class PopupZeroViewController: BaseViewController {
     let mainView = PopupZeroView()
     
     override func loadView() {
-        super.loadView()
         self.view = mainView
     }
 

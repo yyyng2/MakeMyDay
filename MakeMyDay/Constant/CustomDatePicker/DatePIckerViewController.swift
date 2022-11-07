@@ -33,9 +33,7 @@ class DatePickerViewController: BaseViewController {
     
     var selectDate: Date?
     
-    override func loadView() {
-        super.loadView()
-        
+    override func loadView() {        
         self.view = mainView
     }
     

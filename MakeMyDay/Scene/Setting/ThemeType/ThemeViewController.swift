@@ -11,7 +11,6 @@ class ThemeViewController: BaseViewController {
     let mainView = ThemeView()
     
     override func loadView() {
-        super.loadView()
         self.view = mainView
     }
     

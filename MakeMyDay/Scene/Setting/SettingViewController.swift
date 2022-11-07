@@ -16,7 +16,6 @@ class SettingViewController: BaseViewController{
     let ddayRepository = DdayRepository()
     
     override func loadView() {
-        super.loadView()
         self.view = mainView
     }
     

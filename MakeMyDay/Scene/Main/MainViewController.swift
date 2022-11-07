@@ -46,7 +46,6 @@ class MainViewController: BaseViewController {
     var menuState = false
     
     override func loadView() {
-        super.loadView()
         self.view = self.mainView
       
     }
@@ -69,7 +68,6 @@ class MainViewController: BaseViewController {
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
         registerCell()
-        
     }
     
     func registerCell() {

@@ -23,7 +23,6 @@ class BackupRestoreViewController: BaseViewController {
     var ddayTasks: Results<Dday>!
     
     override func loadView() {
-        super.loadView()
         self.view = mainView
     }
     

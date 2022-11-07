@@ -40,9 +40,7 @@ class ScheduleViewController: BaseViewController {
            return panGesture
        }()
     
-    override func loadView() {
-        super.loadView()
- 
+    override func loadView() { 
         self.view = mainView
         
     }

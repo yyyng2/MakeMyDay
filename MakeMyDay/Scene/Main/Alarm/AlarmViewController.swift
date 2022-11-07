@@ -17,7 +17,6 @@ class AlarmViewController: BaseViewController {
     var time = "00:00"
     
     override func loadView() {
-        super.loadView()
         self.view = mainView
     }
     

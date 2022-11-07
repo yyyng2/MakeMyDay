@@ -12,7 +12,6 @@ class FAQViewController: BaseViewController {
     lazy var mainView = FAQView()
     
     override func loadView() {
-        super.loadView()
         self.view = mainView
     }
     

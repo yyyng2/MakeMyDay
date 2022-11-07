@@ -12,7 +12,6 @@ class AppInfoViewController: BaseViewController {
     let mainView = AppInfoView()
     
     override func loadView() {
-        super.loadView()
         self.view = mainView
     }
     

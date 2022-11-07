@@ -26,7 +26,6 @@ class ScheduleWriteViewController: BaseViewController {
     var contentText = ""
     
     override func loadView() {
-        super.loadView()
         self.view = mainView
     }
     override func viewWillAppear(_ animated: Bool) {
