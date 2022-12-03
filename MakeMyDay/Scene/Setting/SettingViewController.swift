@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingViewController: BaseViewController{
+class SettingViewController: BaseViewController {
     
     lazy var mainView = SettingView()
     
