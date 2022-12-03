@@ -55,7 +55,7 @@ class PopupOneView: BaseView {
         let button = UIButton()
         button.layer.cornerRadius = 10
         button.backgroundColor = .black
-        button.setTitle("oay".localized, for: .normal)
+        button.setTitle("okay".localized, for: .normal)
         button.tintColor = .white
         return button
     }()

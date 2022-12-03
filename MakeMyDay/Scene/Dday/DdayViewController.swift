@@ -179,7 +179,7 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
         switch indexPath.section {
         case 1:
             let startDate = stringFormatToDate(string: pinned[indexPath.row].dateString, formatStyle: .yyyyMMdd)!
-            let daysCount =  days(from: startDate)
+            let daysCount = days(from: startDate)
             
             switch pinned[indexPath.row].dayPlus {
             case true:
@@ -195,7 +195,7 @@ extension DdayViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         case 2:
             let startDate = stringFormatToDate(string: unPinned[indexPath.row].dateString, formatStyle: .yyyyMMdd)!
-            let daysCount =  days(from: startDate)
+            let daysCount = days(from: startDate)
             
             switch unPinned[indexPath.row].dayPlus {
             case true:
