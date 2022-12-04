@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Hero
+
 //var themeType = UserDefaultsHelper.standard.userDefaults.bool(forKey: "theme")
 
 
@@ -25,6 +27,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         }
 
         self.delegate = self
+        
+    
+        
     }
     
     func configure(){
@@ -55,15 +60,18 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let nav4 = configureNav(vc: vc4)
         
         setViewControllers([nav1, nav2, nav3, nav4], animated: true)
+        
+        self.hero.isEnabled = true
+        self.hero.tabBarAnimationType = .fade
     }
     
-    func configureTab(vc: UIViewController, title: String, image: UIImage, selectedImage: UIImage){
+    func configureTab(vc: UIViewController, title: String, image: UIImage, selectedImage: UIImage) {
         vc.navigationItem.title = title
         vc.tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
         vc.navigationItem.largeTitleDisplayMode = .always
     }
     
-    func configureNav(vc: UIViewController) -> UINavigationController{
+    func configureNav(vc: UIViewController) -> UINavigationController {
         let nav = UINavigationController(rootViewController: vc)
         nav.navigationBar.prefersLargeTitles = true
         return nav
@@ -72,3 +80,5 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     
 }
+
+

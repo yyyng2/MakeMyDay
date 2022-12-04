@@ -103,6 +103,7 @@
 		18DE8DB128EA750800A74345 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DE8DB028EA750800A74345 /* Week.swift */; };
 		18E2AB7128D3BB330010AAB2 /* ScheduleRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2AB7028D3BB330010AAB2 /* ScheduleRealmModel.swift */; };
 		18E2AB7328D3BC0F0010AAB2 /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2AB7228D3BC0F0010AAB2 /* ScheduleRepository.swift */; };
+		18F17F93293CB0950002C938 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 18F17F92293CB0950002C938 /* Hero */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -250,6 +251,7 @@
 				1881D1EF28F56C30009A7E7B /* FirebaseCrashlytics in Frameworks */,
 				18B79A5928D1D64500186AFA /* FSCalendar in Frameworks */,
 				18CDA50628ED846900ECC540 /* Zip in Frameworks */,
+				18F17F93293CB0950002C938 /* Hero in Frameworks */,
 				1881D1B328EE4063009A7E7B /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -627,6 +629,7 @@
 				1881D1EC28F56C30009A7E7B /* FirebaseAnalyticsWithoutAdIdSupport */,
 				1881D1EE28F56C30009A7E7B /* FirebaseCrashlytics */,
 				1881D1F028F56C31009A7E7B /* FirebaseMessaging */,
+				18F17F92293CB0950002C938 /* Hero */,
 			);
 			productName = MakeMyDay;
 			productReference = 18B799E728CCAB9400186AFA /* MakeMyDay.app */;
@@ -675,6 +678,7 @@
 				18CDA50428ED846900ECC540 /* XCRemoteSwiftPackageReference "Zip" */,
 				18CDA50728EDB74500ECC540 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				1881D1EB28F56C30009A7E7B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				18F17F91293CB0950002C938 /* XCRemoteSwiftPackageReference "Hero" */,
 			);
 			productRefGroup = 18B799E828CCAB9400186AFA /* Products */;
 			projectDirPath = "";
@@ -1116,6 +1120,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		18F17F91293CB0950002C938 /* XCRemoteSwiftPackageReference "Hero" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1158,6 +1170,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 18CDA50428ED846900ECC540 /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
+		};
+		18F17F92293CB0950002C938 /* Hero */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18F17F91293CB0950002C938 /* XCRemoteSwiftPackageReference "Hero" */;
+			productName = Hero;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
