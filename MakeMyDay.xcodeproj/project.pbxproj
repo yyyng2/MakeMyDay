@@ -88,6 +88,22 @@
 		18B79A5628D0B03700186AFA /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A5528D0B03700186AFA /* MainTableViewCell.swift */; };
 		18B79A5928D1D64500186AFA /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 18B79A5828D1D64500186AFA /* FSCalendar */; };
 		18B79A5C28D1DFD600186AFA /* BackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A5B28D1DFD600186AFA /* BackgroundImageView.swift */; };
+		18C38E8E294BA699008E7A3C /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C38E2D29494B36008E7A3C /* WidgetKit.framework */; };
+		18C38E8F294BA699008E7A3C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C38E2F29494B36008E7A3C /* SwiftUI.framework */; };
+		18C38E92294BA699008E7A3C /* MMDWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C38E91294BA699008E7A3C /* MMDWidgetBundle.swift */; };
+		18C38E94294BA699008E7A3C /* MMDWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C38E93294BA699008E7A3C /* MMDWidget.swift */; };
+		18C38E97294BA69B008E7A3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C38E96294BA69B008E7A3C /* Assets.xcassets */; };
+		18C38E99294BA69B008E7A3C /* MMDWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 18C38E95294BA699008E7A3C /* MMDWidget.intentdefinition */; };
+		18C38E9A294BA69B008E7A3C /* MMDWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 18C38E95294BA699008E7A3C /* MMDWidget.intentdefinition */; };
+		18C38E9D294BA69B008E7A3C /* MMDWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 18C38E8D294BA699008E7A3C /* MMDWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		18C38EA2294BA6A3008E7A3C /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 18C38EA1294BA6A3008E7A3C /* Realm */; };
+		18C38EA4294BA6A6008E7A3C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18C38EA3294BA6A6008E7A3C /* RealmSwift */; };
+		18C38EA5294BA8AE008E7A3C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1881D1C428F39F2A009A7E7B /* Localizable.strings */; };
+		18C38EA6294BA8B8008E7A3C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C415F28E416FD005A6623 /* Date+Extension.swift */; };
+		18C38EA7294BA8BA008E7A3C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C416128E4653B005A6623 /* String+Extension.swift */; };
+		18C38EA8294BA8D3008E7A3C /* ScheduleRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2AB7028D3BB330010AAB2 /* ScheduleRealmModel.swift */; };
+		18C38EA9294BA8D5008E7A3C /* DdayRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187087F728D7FDCD001D11ED /* DdayRealmModel.swift */; };
+		18C38EAB294BB516008E7A3C /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B79A1928CCCC7100186AFA /* UIViewController+Extension.swift */; };
 		18CDA4FF28ED514200ECC540 /* BackupRestoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDA4FE28ED514200ECC540 /* BackupRestoreView.swift */; };
 		18CDA50128ED515700ECC540 /* BackupRestoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDA50028ED515700ECC540 /* BackupRestoreViewController.swift */; };
 		18CDA50328ED83BC00ECC540 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDA50228ED83BC00ECC540 /* FileManager+Extension.swift */; };
@@ -105,6 +121,30 @@
 		18E2AB7328D3BC0F0010AAB2 /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2AB7228D3BC0F0010AAB2 /* ScheduleRepository.swift */; };
 		18F17F93293CB0950002C938 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 18F17F92293CB0950002C938 /* Hero */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		18C38E9B294BA69B008E7A3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18B799DF28CCAB9400186AFA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18C38E8C294BA699008E7A3C;
+			remoteInfo = MMDWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		18C38E3C29494B3A008E7A3C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				18C38E9D294BA69B008E7A3C /* MMDWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1814480A28D3246B00BEA60C /* ScheduleWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWriteView.swift; sourceTree = "<group>"; };
@@ -223,6 +263,15 @@
 		18B79A5328D0637900186AFA /* PopupOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupOneViewController.swift; sourceTree = "<group>"; };
 		18B79A5528D0B03700186AFA /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		18B79A5B28D1DFD600186AFA /* BackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageView.swift; sourceTree = "<group>"; };
+		18C38E2D29494B36008E7A3C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		18C38E2F29494B36008E7A3C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		18C38E8D294BA699008E7A3C /* MMDWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MMDWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		18C38E91294BA699008E7A3C /* MMDWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMDWidgetBundle.swift; sourceTree = "<group>"; };
+		18C38E93294BA699008E7A3C /* MMDWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMDWidget.swift; sourceTree = "<group>"; };
+		18C38E95294BA699008E7A3C /* MMDWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = MMDWidget.intentdefinition; sourceTree = "<group>"; };
+		18C38E96294BA69B008E7A3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		18C38E98294BA69B008E7A3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18C38EAA294BAE9C008E7A3C /* MMDWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MMDWidgetExtension.entitlements; sourceTree = "<group>"; };
 		18CDA4FE28ED514200ECC540 /* BackupRestoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupRestoreView.swift; sourceTree = "<group>"; };
 		18CDA50028ED515700ECC540 /* BackupRestoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupRestoreViewController.swift; sourceTree = "<group>"; };
 		18CDA50228ED83BC00ECC540 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
@@ -253,6 +302,17 @@
 				18CDA50628ED846900ECC540 /* Zip in Frameworks */,
 				18F17F93293CB0950002C938 /* Hero in Frameworks */,
 				1881D1B328EE4063009A7E7B /* Realm in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18C38E8A294BA699008E7A3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18C38EA4294BA6A6008E7A3C /* RealmSwift in Frameworks */,
+				18C38EA2294BA6A3008E7A3C /* Realm in Frameworks */,
+				18C38E8F294BA699008E7A3C /* SwiftUI.framework in Frameworks */,
+				18C38E8E294BA699008E7A3C /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,9 +427,11 @@
 		18B799DE28CCAB9400186AFA = {
 			isa = PBXGroup;
 			children = (
+				18C38EAA294BAE9C008E7A3C /* MMDWidgetExtension.entitlements */,
 				18B79A3828CE1A8700186AFA /* .gitignore */,
 				187C415B28E3A44A005A6623 /* readme.md */,
 				18B799E928CCAB9400186AFA /* MakeMyDay */,
+				18C38E90294BA699008E7A3C /* MMDWidget */,
 				18B799E828CCAB9400186AFA /* Products */,
 				18E9EAEA28E36411001757F5 /* Frameworks */,
 			);
@@ -379,6 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				18B799E728CCAB9400186AFA /* MakeMyDay.app */,
+				18C38E8D294BA699008E7A3C /* MMDWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -558,6 +621,18 @@
 			path = CustomLabel;
 			sourceTree = "<group>";
 		};
+		18C38E90294BA699008E7A3C /* MMDWidget */ = {
+			isa = PBXGroup;
+			children = (
+				18C38E91294BA699008E7A3C /* MMDWidgetBundle.swift */,
+				18C38E93294BA699008E7A3C /* MMDWidget.swift */,
+				18C38E95294BA699008E7A3C /* MMDWidget.intentdefinition */,
+				18C38E96294BA69B008E7A3C /* Assets.xcassets */,
+				18C38E98294BA69B008E7A3C /* Info.plist */,
+			);
+			path = MMDWidget;
+			sourceTree = "<group>";
+		};
 		18D8F96A28D98DB200179869 /* CustomButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -600,6 +675,8 @@
 		18E9EAEA28E36411001757F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18C38E2D29494B36008E7A3C /* WidgetKit.framework */,
+				18C38E2F29494B36008E7A3C /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -614,10 +691,12 @@
 				18B799E328CCAB9400186AFA /* Sources */,
 				18B799E428CCAB9400186AFA /* Frameworks */,
 				18B799E528CCAB9400186AFA /* Resources */,
+				18C38E3C29494B3A008E7A3C /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				18C38E9C294BA69B008E7A3C /* PBXTargetDependency */,
 			);
 			name = MakeMyDay;
 			packageProductDependencies = (
@@ -635,6 +714,27 @@
 			productReference = 18B799E728CCAB9400186AFA /* MakeMyDay.app */;
 			productType = "com.apple.product-type.application";
 		};
+		18C38E8C294BA699008E7A3C /* MMDWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18C38E9E294BA69B008E7A3C /* Build configuration list for PBXNativeTarget "MMDWidgetExtension" */;
+			buildPhases = (
+				18C38E89294BA699008E7A3C /* Sources */,
+				18C38E8A294BA699008E7A3C /* Frameworks */,
+				18C38E8B294BA699008E7A3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MMDWidgetExtension;
+			packageProductDependencies = (
+				18C38EA1294BA6A3008E7A3C /* Realm */,
+				18C38EA3294BA6A6008E7A3C /* RealmSwift */,
+			);
+			productName = MMDWidgetExtension;
+			productReference = 18C38E8D294BA699008E7A3C /* MMDWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -642,11 +742,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					18B799E628CCAB9400186AFA = {
 						CreatedOnToolsVersion = 13.4.1;
+					};
+					18C38E8C294BA699008E7A3C = {
+						CreatedOnToolsVersion = 14.1;
 					};
 				};
 			};
@@ -685,6 +788,7 @@
 			projectRoot = "";
 			targets = (
 				18B799E628CCAB9400186AFA /* MakeMyDay */,
+				18C38E8C294BA699008E7A3C /* MMDWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -701,6 +805,15 @@
 				187C415C28E3A44A005A6623 /* readme.md in Resources */,
 				18B799F428CCAB9600186AFA /* Assets.xcassets in Resources */,
 				1881D1EA28F56B57009A7E7B /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18C38E8B294BA699008E7A3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18C38E97294BA69B008E7A3C /* Assets.xcassets in Resources */,
+				18C38EA5294BA8AE008E7A3C /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,6 +895,7 @@
 				18AF778128DC6E6800D61E5D /* LicenseView.swift in Sources */,
 				18DE8DA228EA51C900A74345 /* AlarmView.swift in Sources */,
 				18AF778328DC703C00D61E5D /* LicenseViewController.swift in Sources */,
+				18C38E9A294BA69B008E7A3C /* MMDWidget.intentdefinition in Sources */,
 				18DE8DAD28EA5E0400A74345 /* AlarmTableViewCell.swift in Sources */,
 				1881D1DA28F53A17009A7E7B /* MainWeatherTableViewCell.swift in Sources */,
 				18B79A3F28CE202F00186AFA /* DdayTableViewCell.swift in Sources */,
@@ -795,7 +909,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18C38E89294BA699008E7A3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18C38EAB294BB516008E7A3C /* UIViewController+Extension.swift in Sources */,
+				18C38E99294BA69B008E7A3C /* MMDWidget.intentdefinition in Sources */,
+				18C38EA6294BA8B8008E7A3C /* Date+Extension.swift in Sources */,
+				18C38E94294BA699008E7A3C /* MMDWidget.swift in Sources */,
+				18C38EA7294BA8BA008E7A3C /* String+Extension.swift in Sources */,
+				18C38EA9294BA8D5008E7A3C /* DdayRealmModel.swift in Sources */,
+				18C38EA8294BA8D3008E7A3C /* ScheduleRealmModel.swift in Sources */,
+				18C38E92294BA699008E7A3C /* MMDWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		18C38E9C294BA69B008E7A3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 18C38E8C294BA699008E7A3C /* MMDWidgetExtension */;
+			targetProxy = 18C38E9B294BA69B008E7A3C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1881D1C428F39F2A009A7E7B /* Localizable.strings */ = {
@@ -983,6 +1120,7 @@
 		18B799FC28CCAB9600186AFA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MakeMyDay/MakeMyDay.entitlements;
@@ -1006,7 +1144,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.4;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.yyyng2.MakeMyDay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1021,6 +1159,7 @@
 		18B799FD28CCAB9600186AFA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MakeMyDay/MakeMyDay.entitlements;
@@ -1044,12 +1183,72 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.4;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.yyyng2.MakeMyDay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		18C38E9F294BA69B008E7A3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = MMDWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UT362X937Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MMDWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MMDWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.yyyng2.MakeMyDay.MMDWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		18C38EA0294BA69B008E7A3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = MMDWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UT362X937Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MMDWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MMDWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.yyyng2.MakeMyDay.MMDWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1073,6 +1272,15 @@
 			buildConfigurations = (
 				18B799FC28CCAB9600186AFA /* Debug */,
 				18B799FD28CCAB9600186AFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18C38E9E294BA69B008E7A3C /* Build configuration list for PBXNativeTarget "MMDWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18C38E9F294BA69B008E7A3C /* Debug */,
+				18C38EA0294BA69B008E7A3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1165,6 +1373,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 18B79A5728D1D64500186AFA /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
+		};
+		18C38EA1294BA6A3008E7A3C /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18CDA50728EDB74500ECC540 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		18C38EA3294BA6A6008E7A3C /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18CDA50728EDB74500ECC540 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 		18CDA50528ED846900ECC540 /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -187,3 +187,7 @@
 "lostLocationService" = "位置情報サービスは利用できません。 デバイスの [設定] > [プライバシー] で位置情報サービスをオンにしてください。";
 
 "goToSettings" = "設定に移動";
+
+//Widget
+
+"todayTodoCount" = "今日の予定";

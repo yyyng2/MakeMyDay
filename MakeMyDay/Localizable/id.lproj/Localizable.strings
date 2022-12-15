@@ -187,3 +187,7 @@
 "lostLocationService" = "Layanan Lokasi tidak tersedia. Harap aktifkan Layanan Lokasi di 'Pengaturan > Privasi' di perangkat Anda.";
 
 "goToSettings" = "Buka Pengaturan";
+
+//Widget
+
+"todayTodoCount" = "Jadwal hari ini";

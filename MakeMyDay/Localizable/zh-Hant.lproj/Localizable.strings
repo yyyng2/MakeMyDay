@@ -187,3 +187,7 @@
 "lostLocationService" = "定位服務不可用。 請在您設備上的“設置>隱私”中打開定位服務。";
 
 "goToSettings" = "前往設置";
+
+//Widget
+
+"todayTodoCount" = "今天的日程";

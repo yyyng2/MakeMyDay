@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WidgetKit
 
 import RealmSwift
 
@@ -21,7 +22,17 @@ protocol DdayRepositoryType {
 
 final class DdayRepository: DdayRepositoryType {
     
-    let localRealm = try! Realm() // struct
+     var localRealm: Realm {
+        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.io.github.yyyng2.MakeMyDay")
+        let realmURL = container?.appendingPathComponent("default.realm")
+        let config = Realm.Configuration(fileURL: realmURL, schemaVersion: 0)
+        do {
+            return try Realm(configuration: config)
+        } catch let error as NSError {
+            print("error \(error.debugDescription)")
+            fatalError("Can't continue further, no Realm available")
+        }
+    }
     
     func addRecord(record: Dday) {
         do {
@@ -31,6 +42,7 @@ final class DdayRepository: DdayRepositoryType {
         } catch let error {
             print(error)
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     func fetch() -> Results<Dday> {
@@ -68,6 +80,7 @@ final class DdayRepository: DdayRepositoryType {
         } catch let error {
             print(error)
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func updatePin(record: Dday) {
@@ -79,7 +92,7 @@ final class DdayRepository: DdayRepositoryType {
         } catch let error {
             print(error)
         }
-        
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     enum FormatStyle {
@@ -172,7 +185,7 @@ final class DdayRepository: DdayRepositoryType {
         } catch let error {
             print(error)
         }
-        
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func deleteRecord(record: Dday){
@@ -183,6 +196,7 @@ final class DdayRepository: DdayRepositoryType {
         } catch let error {
             print(error)
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func deleteEmptyRecord() {
@@ -195,11 +209,13 @@ final class DdayRepository: DdayRepositoryType {
             print(error)
             
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func deleteAll() {
         try! localRealm.write {
             localRealm.deleteAll()
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }

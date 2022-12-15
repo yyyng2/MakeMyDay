@@ -187,3 +187,7 @@
 "lostLocationService" = "Dịch vụ Vị trí không khả dụng. Vui lòng bật Dịch vụ Vị trí trong 'Cài đặt> Quyền riêng tư' trên thiết bị của bạn.";
 
 "goToSettings" = "Đi tới Cài đặt";
+
+//Widget
+
+"todayTodoCount" = "Kế hoạch của ngày hôm nay";

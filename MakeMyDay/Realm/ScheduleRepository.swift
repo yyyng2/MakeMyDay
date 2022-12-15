@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WidgetKit
 
 import RealmSwift
 
@@ -17,17 +18,27 @@ protocol ScheduleRepositoryType {
 
 final class ScheduleRepository: ScheduleRepositoryType {
     
-     
-    let localRealm = try! Realm() // struct
+     var localRealm: Realm {
+        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.io.github.yyyng2.MakeMyDay")
+        let realmURL = container?.appendingPathComponent("default.realm")
+        let config = Realm.Configuration(fileURL: realmURL, schemaVersion: 0)
+        do {
+            return try Realm(configuration: config)
+        } catch let error as NSError {
+            print("error \(error.debugDescription)")
+            fatalError("Can't continue further, no Realm available")
+        }
+    }
     
     func addRecord(record: Schedule) {
-        do{
-            try localRealm.write{
+        do {
+            try localRealm.write {
                 localRealm.add(record)
             }
         } catch let error {
             print(error)
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     func fetch() -> Results<Schedule> {
@@ -54,6 +65,7 @@ final class ScheduleRepository: ScheduleRepositoryType {
         } catch let error {
             print(error)
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func updateRecord(id: ObjectId, record: Schedule) {
@@ -70,6 +82,8 @@ final class ScheduleRepository: ScheduleRepositoryType {
             print(error)
         }
         
+        WidgetCenter.shared.reloadAllTimelines()
+        
     }
     
     func deleteRecord(record: Schedule) {
@@ -80,6 +94,8 @@ final class ScheduleRepository: ScheduleRepositoryType {
         } catch let error {
             print(error)
         }
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func deleteEmptyRecord() {
@@ -91,12 +107,15 @@ final class ScheduleRepository: ScheduleRepositoryType {
         } catch let error {
             print(error)
         }
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func deleteAll() {
         try! localRealm.write {
             localRealm.deleteAll()
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
 }

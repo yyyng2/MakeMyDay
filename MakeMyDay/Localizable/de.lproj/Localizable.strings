@@ -187,3 +187,7 @@
 "lostLocationService" = "Ortungsdienste sind nicht verfügbar. Bitte aktivieren Sie die Ortungsdienste in „Einstellungen > Datenschutz“ auf Ihrem Gerät.";
 
 "goToSettings" = "Zu den Einstellungen gehen";
+
+//Widget
+
+"todayTodoCount" = "Der heutige Zeitplan";

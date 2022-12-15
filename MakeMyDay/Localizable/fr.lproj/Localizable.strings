@@ -186,3 +186,7 @@
 
 "lostLocationService" = "Les services de localisation ne sont pas disponibles. Veuillez activer les services de localisation dans 'Paramètres > Confidentialité' sur votre appareil.";
 "goToSettings" = "Aller aux paramètres";
+
+//Widget
+
+"todayTodoCount" = "Le programme d'aujourd'hui";

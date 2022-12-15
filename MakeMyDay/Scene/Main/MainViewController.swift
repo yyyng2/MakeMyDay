@@ -54,6 +54,7 @@ class MainViewController: BaseViewController {
         super.viewWillAppear(animated)
         setNavigationUI()
         fetchRealm()
+        configure()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

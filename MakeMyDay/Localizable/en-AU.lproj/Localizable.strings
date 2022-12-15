@@ -187,3 +187,7 @@
 "lostLocationService" = "Location Services is not available. Please turn on Location Services in 'Settings>Privacy' on your device.";
 
 "goToSettings" = "Go to Settings";
+
+//Widget
+
+"todayTodoCount" = "Today's schedule";
