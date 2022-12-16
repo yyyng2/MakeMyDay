@@ -53,6 +53,7 @@ struct MMDWidgetEntryView : View {
         case .systemSmall:
             VStack {
                 Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
+                    .minimumScaleFactor(0.001)
                     .padding(4)
                 ForEach(data, id: \.self) { i in
                     HStack {
@@ -61,16 +62,24 @@ struct MMDWidgetEntryView : View {
                             Spacer()
                             Text("\(i.title)")
                                 .lineLimit(1)
+                                .minimumScaleFactor(0.001)
                             Spacer()
+                                .minimumScaleFactor(0.001)
                             Text("\(DdayRepository.shared.days(string: i.dateString))\("day".localized)")
+                                .minimumScaleFactor(0.001)
                             Spacer()
+                                .minimumScaleFactor(0.001)
                         case false:
                             Spacer()
                             Text("\(i.title)")
                                 .lineLimit(1)
+                                .minimumScaleFactor(0.001)
                             Spacer()
+                                .minimumScaleFactor(0.001)
                             Text("\(DdayRepository.shared.days(string: i.dateString) - 1)\("day".localized)")
+                                .minimumScaleFactor(0.001)
                             Spacer()
+                                .minimumScaleFactor(0.001)
                         }
                     }
                 }
@@ -79,23 +88,32 @@ struct MMDWidgetEntryView : View {
             VStack {
                 Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
                     .padding(4)
+                    .minimumScaleFactor(0.001)
                 ForEach(data, id: \.self) { i in
                     HStack {
                         switch i.dayPlus {
                         case true:
                             Spacer()
+                                .minimumScaleFactor(0.001)
                             Text("\(i.title)")
                                 .lineLimit(1)
+                                .minimumScaleFactor(0.001)
                             Spacer()
+                                .minimumScaleFactor(0.001)
                             Text("\(DdayRepository.shared.days(string: i.dateString))\("day".localized)")
+                                .minimumScaleFactor(0.001)
                             Spacer()
+                                .minimumScaleFactor(0.001)
                         case false:
                             Spacer()
+                                .minimumScaleFactor(0.001)
                             Text("\(i.title)")
                                 .lineLimit(1)
                             Spacer()
+                                .minimumScaleFactor(0.001)
                             Text("\(DdayRepository.shared.days(string: i.dateString) - 1)\("day".localized)")
                             Spacer()
+                                .minimumScaleFactor(0.001)
                         }
                     }
                 }
@@ -104,138 +122,109 @@ struct MMDWidgetEntryView : View {
             VStack {
                 Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
                     .padding()
+                    .minimumScaleFactor(0.001)
                 ForEach(data, id: \.self) { i in
                     HStack {
                         switch i.dayPlus {
                         case true:
                             Text("\(i.title)")
                                 .lineLimit(1)
+                                .minimumScaleFactor(0.001)
                             Spacer()
+                                .minimumScaleFactor(0.001)
                             Text("\(DdayRepository.shared.days(string: i.dateString))\("day".localized)")
+                                .minimumScaleFactor(0.001)
                         case false:
                             Text("\(i.title)")
                                 .lineLimit(1)
+                                .minimumScaleFactor(0.001)
                             Spacer()
+                                .minimumScaleFactor(0.001)
                             Text("\(DdayRepository.shared.days(string: i.dateString) - 1)\("day".localized)")
+                                .minimumScaleFactor(0.001)
                         }
                     }
                     .padding()
+                    .minimumScaleFactor(0.001)
                 }
             }
         case .systemExtraLarge:
             VStack {
                 Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
                     .padding()
+                    .minimumScaleFactor(0.001)
                 ForEach(data, id: \.self) { i in
                     HStack {
                         switch i.dayPlus {
                         case true:
                             Text("\(i.title)")
                                 .lineLimit(1)
+                                .minimumScaleFactor(0.001)
                             Spacer()
+                                .minimumScaleFactor(0.001)
                             Text("\(DdayRepository.shared.days(string: i.dateString))\("day".localized)")
+                                .minimumScaleFactor(0.001)
                         case false:
                             Text("\(i.title)")
                                 .lineLimit(1)
+                                .minimumScaleFactor(0.001)
                             Spacer()
+                                .minimumScaleFactor(0.001)
                             Text("\(DdayRepository.shared.days(string: i.dateString) - 1)\("day".localized)")
+                                .minimumScaleFactor(0.001)
                         }
                     }
                     .padding()
+                    .minimumScaleFactor(0.001)
                 }
             }
         case .accessoryCircular:
             VStack {
-                Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
+                Image("day_white")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
                 HStack {
-                    switch data[0].dayPlus {
-                    case true:
-                        Text("\(DdayRepository.shared.fetchFilterPinned()[0].title)")
-                        Spacer()
-                        Text("\(DdayRepository.shared.fetchFilterPinned()[0].title)")
-                    case false:
-                        Text("\(DdayRepository.shared.fetchFilterPinned()[0].title)")
-                    }
-                }
-                HStack {
-                    Text("left text2")
-                    Spacer()
-                    Text("right")
-                }
-                HStack {
-                    Text("left text3")
-                    Spacer()
-                    Text("right")
-                }
-                HStack {
-                    Text("left text4")
-                    Spacer()
-                    Text("right")
-                }
-                HStack {
-                    Text("left text5")
-                    Spacer()
-                    Text("right")
+                    Text("\(ScheduleRepository.shared.scheduleCount())")
+                        .minimumScaleFactor(0.001)
                 }
             }
         case .accessoryRectangular:
             VStack {
-                Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
-                HStack {
-                    Text("left text1")
-                    Spacer()
-                    Text("right")
-                }
-                HStack {
-                    Text("left text2")
-                    Spacer()
-                    Text("right")
-                }
-                HStack {
-                    Text("left text3")
-                    Spacer()
-                    Text("right")
-                }
-                HStack {
-                    Text("left text4")
-                    Spacer()
-                    Text("right")
-                }
-                HStack {
-                    Text("left text5")
-                    Spacer()
-                    Text("right")
+//                Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
+                ForEach(data, id: \.self) { i in
+                    HStack {
+                        switch i.dayPlus {
+                        case true:
+                            Spacer()
+                                .minimumScaleFactor(0.001)
+                            Text("\(i.title)")
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.001)
+                            Spacer()
+                                .minimumScaleFactor(0.001)
+                            Text("\(DdayRepository.shared.days(string: i.dateString))\("day".localized)")
+                                .minimumScaleFactor(0.001)
+                            Spacer()
+                        case false:
+                            Spacer()
+                                .minimumScaleFactor(0.001)
+                            Text("\(i.title)")
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.001)
+                            Spacer()
+                                .minimumScaleFactor(0.001)
+                            Text("\(DdayRepository.shared.days(string: i.dateString) - 1)\("day".localized)")
+                                .minimumScaleFactor(0.001)
+                            Spacer()
+                                .minimumScaleFactor(0.001)
+                        }
+                    }
                 }
             }
         case .accessoryInline:
             VStack {
                 Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
-                    .padding()
-                HStack {
-                    Text("left text1")
-                    Spacer()
-                    Text("right")
-                }
-                HStack {
-                    Text("left text2")
-                    Spacer()
-                    Text("right")
-                }
-                HStack {
-                    Text("left text3")
-                    Spacer()
-                    Text("right")
-                }
-                HStack {
-                    Text("left text4")
-                    Spacer()
-                    Text("right")
-                }
-                HStack {
-                    Text("left text5")
-                    Spacer()
-                    Text("right")
-                }
+                    .minimumScaleFactor(0.001)
             }
         @unknown default:
             Text("unknown")
@@ -248,7 +237,7 @@ struct MMDWidget: Widget {
 
     private let supportedFamilies:[WidgetFamily] = {
         if #available(iOSApplicationExtension 16.0, *) {
-            return [.systemSmall, .systemMedium, .systemLarge,  .accessoryCircular, .accessoryRectangular]
+            return [.systemSmall, .systemMedium, .systemLarge, .accessoryCircular, .accessoryRectangular, .accessoryInline]
         } else {
             return [.systemSmall, .systemMedium, .systemLarge]
         }
