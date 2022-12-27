@@ -47,8 +47,10 @@ struct MMDWidgetEntryView : View {
 
     @Environment(\.widgetFamily) private var widgetFamily
     
+    let data = DdayRepository.shared.fetchFilterPinned()
+//    let filterData = DdayRepository.shared.fetchRange()
+    
     var body: some View {
-        let data = DdayRepository.shared.fetchFilterPinned()
         switch widgetFamily {
         case .systemSmall:
             VStack {
@@ -190,7 +192,6 @@ struct MMDWidgetEntryView : View {
             }
         case .accessoryRectangular:
             VStack {
-//                Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
                 ForEach(data, id: \.self) { i in
                     HStack {
                         switch i.dayPlus {
@@ -365,8 +366,19 @@ final class DdayRepository {
         return localRealm.objects(Dday.self).filter("pin == true").sorted(byKeyPath: "date", ascending: false)
     }
     
-    func fetchFilterUnPinned() -> Results<Dday> {
-        return localRealm.objects(Dday.self).filter("pin == false").sorted(byKeyPath: "date", ascending: false)
+    func fetchRange() -> [Dday] {
+        let data = localRealm.objects(Dday.self).filter("pin == true").sorted(byKeyPath: "date", ascending: false)
+        var filter: [Dday] = []
+        if data.count > 3 {
+            for i in data[0..<3] {
+                filter.append(i)
+            }
+        } else {
+            for i in data {
+                filter.append(i)
+            }
+        }
+        return filter
     }
     
     enum FormatStyle {
