@@ -48,7 +48,7 @@ struct MMDWidgetEntryView : View {
     @Environment(\.widgetFamily) private var widgetFamily
     
     let data = DdayRepository.shared.fetchFilterPinned()
-//    let filterData = DdayRepository.shared.fetchRange()
+    let filterData = DdayRepository.shared.fetchRange()
     
     var body: some View {
         switch widgetFamily {
@@ -192,7 +192,7 @@ struct MMDWidgetEntryView : View {
             }
         case .accessoryRectangular:
             VStack {
-                ForEach(data, id: \.self) { i in
+                ForEach(filterData, id: \.self) { i in
                     HStack {
                         switch i.dayPlus {
                         case true:
@@ -369,7 +369,7 @@ final class DdayRepository {
     func fetchRange() -> [Dday] {
         let data = localRealm.objects(Dday.self).filter("pin == true").sorted(byKeyPath: "date", ascending: false)
         var filter: [Dday] = []
-        if data.count > 3 {
+        if data.count > 2 {
             for i in data[0..<3] {
                 filter.append(i)
             }
