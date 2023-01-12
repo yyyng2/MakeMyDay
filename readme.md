@@ -11,6 +11,7 @@
 
 <br/>
 
+[AppStore](https://apple.co/3CFIPgM)  
 [Development log](https://velog.io/@yyyng/SeSACProject1)  
-[Development retrospective](https://yyyng.tistory.com/12)
-[AppStore](https://apple.co/3CFIPgM)
+[Development retrospective](https://yyyng.tistory.com/12) 
+
