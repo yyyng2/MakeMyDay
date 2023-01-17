@@ -10,7 +10,6 @@ import UIKit
 class LicenseDetailView: BaseView {
     let textView: UITextView = {
         let view = UITextView()
-        view.isEditable = false
         view.isSelectable = false
         view.backgroundColor = themeType().backgroundColor
         view.textColor = themeType().tintColor

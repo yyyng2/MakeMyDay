@@ -105,6 +105,7 @@
 		18C38EAC294BC301008E7A3C /* MMDWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 18C38EAF294BC301008E7A3C /* MMDWidget.intentdefinition */; };
 		18C38EAD294BC301008E7A3C /* MMDWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 18C38EAF294BC301008E7A3C /* MMDWidget.intentdefinition */; };
 		18C38EDB294C66B7008E7A3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B799F328CCAB9600186AFA /* Assets.xcassets */; };
+		18C63BCD29737E15007E7508 /* CollectionViewCustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C63BCC29737E15007E7508 /* CollectionViewCustomLayout.swift */; };
 		18CDA4FF28ED514200ECC540 /* BackupRestoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDA4FE28ED514200ECC540 /* BackupRestoreView.swift */; };
 		18CDA50128ED515700ECC540 /* BackupRestoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDA50028ED515700ECC540 /* BackupRestoreViewController.swift */; };
 		18CDA50328ED83BC00ECC540 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDA50228ED83BC00ECC540 /* FileManager+Extension.swift */; };
@@ -287,6 +288,7 @@
 		18C38ED5294BC451008E7A3C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/MMDWidget.strings; sourceTree = "<group>"; };
 		18C38ED7294BC453008E7A3C /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/MMDWidget.strings; sourceTree = "<group>"; };
 		18C38EDA294BC858008E7A3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MMDWidget.strings; sourceTree = "<group>"; };
+		18C63BCC29737E15007E7508 /* CollectionViewCustomLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCustomLayout.swift; sourceTree = "<group>"; };
 		18CDA4FE28ED514200ECC540 /* BackupRestoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupRestoreView.swift; sourceTree = "<group>"; };
 		18CDA50028ED515700ECC540 /* BackupRestoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupRestoreViewController.swift; sourceTree = "<group>"; };
 		18CDA50228ED83BC00ECC540 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
@@ -573,6 +575,7 @@
 		18B79A1528CCCBB300186AFA /* Constant */ = {
 			isa = PBXGroup;
 			children = (
+				18C63BCB29737DF3007E7508 /* CollectionViewCustomLayout */,
 				18DE8DA928EA5D2F00A74345 /* CustomSwitch */,
 				18D8F96A28D98DB200179869 /* CustomButton */,
 				187087FF28D89EB6001D11ED /* CustomDatePicker */,
@@ -646,6 +649,14 @@
 				18C38E98294BA69B008E7A3C /* Info.plist */,
 			);
 			path = MMDWidget;
+			sourceTree = "<group>";
+		};
+		18C63BCB29737DF3007E7508 /* CollectionViewCustomLayout */ = {
+			isa = PBXGroup;
+			children = (
+				18C63BCC29737E15007E7508 /* CollectionViewCustomLayout.swift */,
+			);
+			path = CollectionViewCustomLayout;
 			sourceTree = "<group>";
 		};
 		18D8F96A28D98DB200179869 /* CustomButton */ = {
@@ -840,6 +851,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18C63BCD29737E15007E7508 /* CollectionViewCustomLayout.swift in Sources */,
 				18D8F96C28D98DBB00179869 /* CutomWriteButton.swift in Sources */,
 				18DE8DA828EA5CE800A74345 /* CustomDayButton.swift in Sources */,
 				18AF778A28DC721F00D61E5D /* LicenseTableViewCell.swift in Sources */,

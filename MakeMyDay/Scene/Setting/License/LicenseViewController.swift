@@ -25,7 +25,7 @@ class LicenseViewController: BaseViewController {
     override func setNavigationUI() {
         UINavigationBar.appearance().isTranslucent = false
       
-        let backBarButtonItem = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(backButtonTapped))
+        let backBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(backButtonTapped))
         navigationBarAppearance.backgroundColor = themeType().foregroundColor
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]
         navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: themeType().whiteBlackUIColor]

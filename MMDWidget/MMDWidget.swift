@@ -54,81 +54,130 @@ struct MMDWidgetEntryView : View {
         switch widgetFamily {
         case .systemSmall:
             VStack {
-                Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
-                    .minimumScaleFactor(0.001)
-                    .padding(4)
+                Spacer(minLength: 1)
+                HStack(alignment: .center) {
+                    Spacer()
+                    Spacer()
+                    Image("day_color")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                    Spacer()
+                    Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
+                        .minimumScaleFactor(0.001)
+                        .lineLimit(1)
+                        .font(.system(size: 16))
+                    Spacer()
+                }
+                .frame(maxHeight: 16, alignment: .topLeading)
+                Spacer()
+                Divider()
+                Spacer()
                 ForEach(data, id: \.self) { i in
                     HStack {
                         switch i.dayPlus {
                         case true:
-                            Spacer()
+                            Spacer(minLength: 1)
                             Text("\(i.title)")
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.001)
+                                .font(.system(size: 12))
                             Spacer()
                                 .minimumScaleFactor(0.001)
                             Text("\(DdayRepository.shared.days(string: i.dateString))\("day".localized)")
                                 .minimumScaleFactor(0.001)
-                            Spacer()
-                                .minimumScaleFactor(0.001)
+                                .font(.system(size: 12))
+                            Spacer(minLength: 1)
                         case false:
-                            Spacer()
+                            Spacer(minLength: 1)
                             Text("\(i.title)")
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.001)
+                                .font(.system(size: 12))
                             Spacer()
-                                .minimumScaleFactor(0.001)
                             Text("\(DdayRepository.shared.days(string: i.dateString) - 1)\("day".localized)")
                                 .minimumScaleFactor(0.001)
-                            Spacer()
-                                .minimumScaleFactor(0.001)
+                                .font(.system(size: 12))
+                            Spacer(minLength: 1)
                         }
                     }
+                    .minimumScaleFactor(0.001)
+                    Spacer()
                 }
             }
         case .systemMedium:
             VStack {
-                Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
-                    .padding(4)
-                    .minimumScaleFactor(0.001)
+                Spacer(minLength: 1)
+                HStack(alignment: .center) {
+                    Spacer()
+                    Image("day_color")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                    Spacer()
+                    Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
+                        .minimumScaleFactor(0.001)
+                        .lineLimit(1)
+                        .font(.system(size: 16))
+                    Spacer()
+                }
+                .frame(maxHeight: 16, alignment: .topLeading)
+                Spacer()
+                Divider()
+                Spacer()
                 ForEach(data, id: \.self) { i in
                     HStack {
                         switch i.dayPlus {
                         case true:
-                            Spacer()
-                                .minimumScaleFactor(0.001)
+                            Spacer(minLength: 1)
                             Text("\(i.title)")
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.001)
+                                .font(.system(size: 12))
                             Spacer()
                                 .minimumScaleFactor(0.001)
                             Text("\(DdayRepository.shared.days(string: i.dateString))\("day".localized)")
                                 .minimumScaleFactor(0.001)
-                            Spacer()
-                                .minimumScaleFactor(0.001)
+                                .font(.system(size: 12))
+                            Spacer(minLength: 1)
                         case false:
-                            Spacer()
-                                .minimumScaleFactor(0.001)
+                            Spacer(minLength: 1)
                             Text("\(i.title)")
                                 .lineLimit(1)
-                            Spacer()
                                 .minimumScaleFactor(0.001)
+                                .font(.system(size: 12))
+                            Spacer()
                             Text("\(DdayRepository.shared.days(string: i.dateString) - 1)\("day".localized)")
-                            Spacer()
                                 .minimumScaleFactor(0.001)
+                                .font(.system(size: 12))
+                            Spacer(minLength: 1)
                         }
                     }
+                    Spacer()
                 }
             }
         case .systemLarge:
             VStack {
-                Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
-                    .padding()
-                    .minimumScaleFactor(0.001)
+                Spacer(minLength: 1)
+                HStack(alignment: .center) {
+                    Spacer()
+                    Image("day_color")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                    Spacer()
+                    Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
+                        .minimumScaleFactor(0.001)
+                        .lineLimit(1)
+                        .font(.system(size: 30))
+                    Spacer()
+                }
+                .frame(maxHeight: 30, alignment: .topLeading)
+                Spacer()
+                Divider()
+                Spacer()
                 ForEach(data, id: \.self) { i in
                     HStack {
                         switch i.dayPlus {
                         case true:
+                            Spacer(minLength: 1)
                             Text("\(i.title)")
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.001)
@@ -136,7 +185,9 @@ struct MMDWidgetEntryView : View {
                                 .minimumScaleFactor(0.001)
                             Text("\(DdayRepository.shared.days(string: i.dateString))\("day".localized)")
                                 .minimumScaleFactor(0.001)
+                            Spacer(minLength: 1)
                         case false:
+                            Spacer(minLength: 1)
                             Text("\(i.title)")
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.001)
@@ -144,21 +195,36 @@ struct MMDWidgetEntryView : View {
                                 .minimumScaleFactor(0.001)
                             Text("\(DdayRepository.shared.days(string: i.dateString) - 1)\("day".localized)")
                                 .minimumScaleFactor(0.001)
+                            Spacer(minLength: 1)
                         }
                     }
-                    .padding()
-                    .minimumScaleFactor(0.001)
+                    Spacer()
                 }
             }
         case .systemExtraLarge:
             VStack {
-                Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
-                    .padding()
-                    .minimumScaleFactor(0.001)
+                Spacer(minLength: 1)
+                HStack(alignment: .center) {
+                    Spacer()
+                    Image("day_color")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                    Spacer()
+                    Text("\("todayTodoCount".localized) \(ScheduleRepository.shared.scheduleCount())")
+                        .minimumScaleFactor(0.001)
+                        .lineLimit(1)
+                        .font(.system(size: 30))
+                    Spacer()
+                }
+                .frame(maxHeight: 30, alignment: .topLeading)
+                Spacer()
+                Divider()
+                Spacer()
                 ForEach(data, id: \.self) { i in
                     HStack {
                         switch i.dayPlus {
                         case true:
+                            Spacer(minLength: 1)
                             Text("\(i.title)")
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.001)
@@ -166,7 +232,9 @@ struct MMDWidgetEntryView : View {
                                 .minimumScaleFactor(0.001)
                             Text("\(DdayRepository.shared.days(string: i.dateString))\("day".localized)")
                                 .minimumScaleFactor(0.001)
+                            Spacer(minLength: 1)
                         case false:
+                            Spacer(minLength: 1)
                             Text("\(i.title)")
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.001)
@@ -174,10 +242,10 @@ struct MMDWidgetEntryView : View {
                                 .minimumScaleFactor(0.001)
                             Text("\(DdayRepository.shared.days(string: i.dateString) - 1)\("day".localized)")
                                 .minimumScaleFactor(0.001)
+                            Spacer(minLength: 1)
                         }
                     }
-                    .padding()
-                    .minimumScaleFactor(0.001)
+                    Spacer()
                 }
             }
         case .accessoryCircular:
