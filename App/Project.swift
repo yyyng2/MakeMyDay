@@ -7,7 +7,7 @@ let project = Project(
             name: "MakeMyDay",
             destinations: .iOS,
             product: .app,
-            bundleId: "dev.tuist.MakeMyDay",
+            bundleId: "io.github.yyyng2.MakeMyDay",
             infoPlist: .extendingDefault(
                 with: [
                     "UILaunchScreen": [
@@ -17,21 +17,10 @@ let project = Project(
                 ]
             ),
             buildableFolders: [
-                "MakeMyDay/Sources",
-                "MakeMyDay/Resources",
+                "Sources",
+                "Resources",
             ],
             dependencies: []
-        ),
-        .target(
-            name: "MakeMyDayTests",
-            destinations: .iOS,
-            product: .unitTests,
-            bundleId: "dev.tuist.MakeMyDayTests",
-            infoPlist: .default,
-            buildableFolders: [
-                "MakeMyDay/Tests"
-            ],
-            dependencies: [.target(name: "MakeMyDay")]
         ),
     ]
 )
