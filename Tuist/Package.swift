@@ -5,18 +5,21 @@ import PackageDescription
     import struct ProjectDescription.PackageSettings
 
     let packageSettings = PackageSettings(
-        // Customize the product types for specific package product
-        // Default is .staticFramework
-        // productTypes: ["Alamofire": .framework,]
-        productTypes: [:]
+        productTypes: [
+            "ComposableArchitecture": .framework,
+            "GoogleMobileAds": .framework,
+            "FirebaseAnalyticsWithoutAdId": .staticLibrary,
+            "FirebaseCrashlytics": .staticLibrary,
+        ]
     )
 #endif
 
 let package = Package(
     name: "MakeMyDay",
     dependencies: [
-        // Add your own dependencies here:
-        // .package(url: "https://github.com/Alamofire/Alamofire", from: "5.0.0"),
-        // You can read more about dependencies here: https://docs.tuist.io/documentation/tuist/dependencies
+        .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.23.0"),
+        .package(url: "https://github.com/pointfreeco/swift-navigation", from: "2.6.0"),
+        .package(url: "https://github.com/googleads/swift-package-manager-google-mobile-ads", from: "12.12.0"),
+        .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "12.4.0"),
     ]
 )

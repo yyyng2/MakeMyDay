@@ -69,5 +69,8 @@ Derived/
 ### Tuist managed dependencies ###
 Tuist/.build
 
+### Plist ###
+GoogleService-Info.plist
+
 ### Secret Config ###
 XCConfig/Secrets.xcconfig

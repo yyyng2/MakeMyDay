@@ -1,0 +1,4 @@
+#include "Secrets.xcconfig"
+
+// Add other release-specific settings here
+GAD_BANNER_UNIT_ID = $(GAD_BANNER_UNIT_ID_RELEASE)
