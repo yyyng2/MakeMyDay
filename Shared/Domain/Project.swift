@@ -8,4 +8,3 @@ private let project = Project.makeModule(
     dependencies: [],
     needTest: false
 )
-
