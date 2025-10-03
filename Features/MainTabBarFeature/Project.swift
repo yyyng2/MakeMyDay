@@ -2,17 +2,19 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 private let project = Project.makeModule(
-    name: "HomeFeature",
+    name: "MainTabBarFeature",
     product: .framework,
     sources: ["Sources/**"],
     dependencies: [
         .project(target: "Core", path: .relativeToRoot("Core")),
         .project(target: "Domain", path: .relativeToRoot("Shared/Domain")),
         .project(target: "Data", path: .relativeToRoot("Shared/Data")),
+        .project(target: "HomeFeature", path: .relativeToRoot("Features/HomeFeature")),
+        .project(target: "ScheduleFeature", path: .relativeToRoot("Features/ScheduleFeature")),
+        .project(target: "DDayFeature", path: .relativeToRoot("Features/DDayFeature")),
+        .project(target: "SettingsFeature", path: .relativeToRoot("Features/SettingsFeature")),
         .project(target: "Resources", path: .relativeToRoot("Shared/Resources")),
-        .project(target: "UIComponents", path: .relativeToRoot("Shared/UIComponents")),
-        .project(target: "Utilities", path: .relativeToRoot("Shared/Utilities")),
-        .external(name: "ComposableArchitecture")
+        .external(name: "ComposableArchitecture"),
     ],
     needTest: false
 )
