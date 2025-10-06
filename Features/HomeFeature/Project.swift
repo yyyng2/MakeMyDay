@@ -16,4 +16,3 @@ private let project = Project.makeModule(
     ],
     needTest: false
 )
-
