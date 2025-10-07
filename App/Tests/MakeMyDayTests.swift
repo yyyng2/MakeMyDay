@@ -1,10 +1,8 @@
-import Testing
-@testable import MakeMyDay
+import Foundation
+import XCTest
 
-struct MakeMyDayTests {
-
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+final class MakeMyDayTests: XCTestCase {
+    func test_twoPlusTwo_isFour() {
+        XCTAssertEqual(2+2, 4)
     }
-
 }

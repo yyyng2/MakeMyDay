@@ -10,7 +10,7 @@ private let project = Project(
     settings: .settings(
         base: [
             "SWIFT_EMIT_LOC_STRINGS": "YES",
-            "OTHER_LDFLAGS": "$(inherited) -ObjC"
+            "OTHER_LDFLAGS": "$(inherited) -ObjC" 
         ],
         configurations: [
             .debug(name: "Debug", xcconfig: .relativeToRoot("XCConfig/Debug.xcconfig")),
@@ -23,6 +23,7 @@ private let project = Project(
             destinations: .iOS,
             product: .app,
             bundleId: "io.github.yyyng2.MakeMyDay",
+//            infoPlist: .file(path: "Resources/Info.plist"),
             infoPlist: .extendingDefault(with: [
                        "CFBundleShortVersionString": "1.4.2",
                        "CFBundleVersion": "1",
@@ -45,6 +46,7 @@ private let project = Project(
                        "UIUserInterfaceStyle": "Light",
                        "UIRequiresFullScreen": "true",
                        "FirebaseCrashlyticsCollectionEnabled": "true",
+//                       "GADApplicationIdentifier": "ca-app-pub-7183232535482605~3929469972",
                        "GADApplicationIdentifier": "$(GAD_APPLICATION_ID)",
                        "GADBannerUnitID": "$(GAD_BANNER_UNIT_ID)",
                        "SKAdNetworkItems": [
@@ -135,7 +137,9 @@ private let project = Project(
                 .external(name: "FirebaseCrashlytics"),
             ],
             settings: .settings(
-                base: [:],
+                base: [:
+//                    "CODE_SIGN_ENTITLEMENTS": "$(SRCROOT)/Signing/App.entitlements",
+                ],
                 defaultSettings: .recommended
             ),
         ),
@@ -161,7 +165,9 @@ private let project = Project(
                 .project(target: "Resources", path: .relativeToRoot("Shared/Resources")),
             ],
             settings: .settings(
-                base: [:],
+                base: [:
+//                    "CODE_SIGN_ENTITLEMENTS": "$(SRCROOT)/Signing/WidgetFeature.entitlements",
+                ],
                 debug: [:],
                 release: [:],
                 defaultSettings: .recommended
