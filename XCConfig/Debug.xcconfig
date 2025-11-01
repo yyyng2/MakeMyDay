@@ -3,4 +3,3 @@
 // Add other debug-specific settings here
 DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
 GAD_BANNER_UNIT_ID = $(GAD_BANNER_UNIT_ID_DEBUG)
-
