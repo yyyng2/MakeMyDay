@@ -14,11 +14,12 @@ import ComposableArchitecture
 public struct SettingsThemeView: View {
     @Bindable
     public var store: StoreOf<SettingsThemeReducer>
-    @AppStorage("bannerAdHeight") private var storedBannerAdHeight: Double = 60
+    @Dependency(\.appStorageRepository) var storage
     @State private var bannerAdHeight: Double = 60
     
     public init(store: StoreOf<SettingsThemeReducer>) {
         self.store = store
+        self._bannerAdHeight = State(initialValue: self.storage.get(.bannerAdHeight, defaultValue: 60.0))
     }
     
     public var body: some View {
@@ -122,13 +123,14 @@ public struct SettingsThemeView: View {
                 }
             }
             .onAppear {
-                if bannerAdHeight < storedBannerAdHeight {
-                    bannerAdHeight = storedBannerAdHeight
+                let storedHeight = storage.get(.bannerAdHeight, defaultValue: 60.0)
+                if bannerAdHeight < storedHeight {
+                    bannerAdHeight = storedHeight
                 }
                 store.send(.onAppear)
             }
             .onChange(of: bannerAdHeight) { oldValue, newValue in
-                storedBannerAdHeight = newValue
+                storage.set(.bannerAdHeight, value: newValue)
             }
         }
         .toolbar(.hidden, for: .tabBar)

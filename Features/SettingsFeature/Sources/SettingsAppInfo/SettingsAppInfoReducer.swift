@@ -34,6 +34,7 @@ public struct SettingsAppInfoReducer {
     }
     
     @Dependency(\.appVersionService) var appVersionService: AppVersionServiceProtocol
+    @Dependency(\.appStorageRepository) var storage
     @Dependency(\.openURL) var openURL: OpenURLEffect
     
     public var body: some ReducerOf<Self> {

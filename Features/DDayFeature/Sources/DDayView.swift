@@ -8,11 +8,12 @@ import ComposableArchitecture
 public struct DDayView: View {
     @Bindable
     var store: StoreOf<DDayReducer>
-    @AppStorage("bannerAdHeight") private var storedBannerAdHeight: Double = 60
+    @Dependency(\.appStorageRepository) var storage
     @State private var bannerAdHeight: Double = 60
     
     public init(store: StoreOf<DDayReducer>) {
         self.store = store
+        _bannerAdHeight = State(initialValue: storage.get(.bannerAdHeight, defaultValue: 60.0))
     }
     
     public var body: some View {
@@ -131,12 +132,13 @@ public struct DDayView: View {
                             //                                    .frame(height: bannerAdHeight)
                             //                            }
                             .onAppear {
-                                if bannerAdHeight < storedBannerAdHeight {
-                                    bannerAdHeight = storedBannerAdHeight
+                                let storedHeight = storage.get(.bannerAdHeight, defaultValue: 60.0)
+                                if bannerAdHeight < storedHeight {
+                                    bannerAdHeight = storedHeight
                                 }
                             }
                             .onChange(of: bannerAdHeight) { oldValue, newValue in
-                                storedBannerAdHeight = newValue
+                                storage.set(.bannerAdHeight, value: newValue)
                             }
                         }
                     }
@@ -161,6 +163,7 @@ public struct DDayView: View {
                             
                             if store.isSortPresented {
                                 SortPopupView(
+                                    currentSortType: store.currentSortType,
                                     onSortSelected: { sortType in
                                         store.send(.sortSelected(sortType))
                                     },
@@ -211,7 +214,7 @@ public struct DDayView: View {
 }
 
 public struct SortPopupView: View {
-    @AppStorage("ddaySortType") private var storedSortType: String = DDaySortType.dateAsc.rawValue
+    let currentSortType: DDaySortType
     let onSortSelected: (DDaySortType) -> Void
     let onDismiss: () -> Void
     
@@ -226,14 +229,13 @@ public struct SortPopupView: View {
             ForEach(Array(sortPairs.enumerated()), id: \.offset) { index, pair in
                 HStack(spacing: 10) {
                     Button(action: {
-                        storedSortType = pair.0.rawValue
                         onSortSelected(pair.0)
                     }) {
                         HStack {
                             Text(pair.0.rawValue.localized())
                                 .font(.headline)
                             Spacer()
-                            if storedSortType == pair.0.rawValue {
+                            if currentSortType == pair.0 {
                                 Image(systemName: "checkmark")
                                     .foregroundColor(.mint)
                             }
@@ -245,14 +247,13 @@ public struct SortPopupView: View {
                     .buttonStyle(PlainButtonStyle())
                     
                     Button(action: {
-                        storedSortType = pair.1.rawValue
                         onSortSelected(pair.1)
                     }) {
                         HStack {
                             Text(pair.1.rawValue.localized())
                                 .font(.headline)
                             Spacer()
-                            if storedSortType == pair.1.rawValue {
+                            if currentSortType == pair.1 {
                                 Image(systemName: "checkmark")
                                     .foregroundColor(.mint)
                             }

@@ -12,6 +12,7 @@ public struct DDayReducer {
         public var editingDDay: DDay?
         public var isEditSheetPresented: Bool = false
         public var isSortPresented: Bool = false
+        public var currentSortType: DDaySortType = .dateAsc
         
         public init(
             ddays: [DDay] = [],
@@ -40,6 +41,7 @@ public struct DDayReducer {
         case sortSelected(DDaySortType)
     }
     
+    @Dependency(\.appStorageRepository) var storage
     @Dependency(\.ddayRepository) var ddayRepository: DDayRepositoryProtocol
     
     public init() {}
@@ -49,6 +51,10 @@ public struct DDayReducer {
             switch action {
             case .onAppear:
                 state.isLoading = true
+                let sortType = DDaySortType(
+                    rawValue: storage.get(.ddaySortType, defaultValue: DDaySortType.dateAsc.rawValue)
+                ) ?? .dateAsc
+                state.currentSortType = sortType
                 
                 return .run { [ddayRepository] send in
                     await MainActor.run {
@@ -100,12 +106,13 @@ public struct DDayReducer {
                     }
                 }
             case .didFetchDDays(let ddayList):
-                @AppStorage("ddaySortType") var storedSortType: String = DDaySortType.dateAsc.rawValue
+                let storedSortType = storage.get(.ddaySortType, defaultValue: DDaySortType.dateAsc.rawValue)
                 if let sortType = DDaySortType(rawValue: storedSortType) {
                     state.ddays = sortDDays(ddayList, by: sortType)
                 } else {
                     state.ddays = ddayList
                 }
+                state.isLoading = false
                 return .none
             case .deleteDDay(let dday):
                 let ddayId = dday.id
@@ -127,13 +134,13 @@ public struct DDayReducer {
                 return .none
                 
             case .sortSelected(let sortType):
+                state.currentSortType = sortType
+                storage.set(.ddaySortType, value: sortType.rawValue)
                 state.isSortPresented = false
-                return .run { [state] send in
-                    await MainActor.run {
-                        let sortedDDays = sortDDays(state.ddays, by: sortType)
-                        send(.didFetchDDays(sortedDDays))
-                    }
-                } 
+                
+                let sortedDDays = sortDDays(state.ddays, by: sortType)
+                state.ddays = sortedDDays
+                return .none
             }
             
         }

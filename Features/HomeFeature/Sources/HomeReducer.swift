@@ -43,6 +43,7 @@ public struct HomeReducer {
     }
     
     @Dependency(\.userDefaultsClient) var userDefaultsClient: UserDefaultsClient
+    @Dependency(\.appStorageRepository) var storage
     @Dependency(\.scheduleRepository) var scheduleRepository: ScheduleRepositoryProtocol
     @Dependency(\.ddayRepository) var ddayRepository: DDayRepositoryProtocol
 //    @Dependency(\.locationService) var locationService: LocationServiceProtocol
@@ -204,7 +205,7 @@ public struct HomeReducer {
                 return .none
                 
             case .didFetchDDays(let ddays):
-                @AppStorage("ddaySortType") var storedSortType: String = DDaySortType.dateAsc.rawValue
+                let storedSortType = storage.get(.ddaySortType, defaultValue: DDaySortType.dateAsc.rawValue)
                 if let sortType = DDaySortType(rawValue: storedSortType) {
                     state.todayDDays = sortDDays(ddays, by: sortType)
                 } else {

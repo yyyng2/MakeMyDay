@@ -43,6 +43,8 @@ public struct SettingsReducer {
 //              case pushOpenSource
     }
     
+    @Dependency(\.appStorageRepository) var storage
+    
     public init() {}
     
     public var body: some ReducerOf<Self> {

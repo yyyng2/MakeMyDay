@@ -50,6 +50,7 @@ public struct SettingsProfileReducer {
     
     @Dependency(\.dismiss) var dismiss
     @Dependency(\.userDefaultsClient) var userDefaultsClient: UserDefaultsClient
+    @Dependency(\.appStorageRepository) var storage
     
     public init() {}
     

@@ -61,6 +61,7 @@ public struct ScheduleReducer {
     }
     
     @Dependency(\.scheduleRepository) var scheduleRepository: ScheduleRepositoryProtocol
+    @Dependency(\.appStorageRepository) var storage
     
     public init() {}
     

@@ -1,4 +1,5 @@
 import SwiftUI
+import Domain
 import HomeFeature
 import ScheduleFeature
 import DDayFeature
@@ -8,15 +9,16 @@ import ComposableArchitecture
 
 public struct MainTabBarView: View {
     public let store: StoreOf<MainTabBarReducer>
+    @Dependency(\.appStorageRepository) var storage
     public let bannerView: any UIViewRepresentable
     @State public var adSize: CGSize = CGSize(width: 360, height: 60)
-    @AppStorage("bannerAdHeight") private var bannerAdHeight: Double = 60
+    @State private var bannerAdHeight: Double = 60
     
     public init(store: StoreOf<MainTabBarReducer>, bannerView: any UIViewRepresentable, adSize: CGSize) {
         self.store = store
         self.bannerView = bannerView
         self.adSize = adSize
-        self.bannerAdHeight = self.adSize.height
+        self._bannerAdHeight = State(initialValue: self.storage.get(.bannerAdHeight, defaultValue: 60.0))
     }
     
     public var body: some View {

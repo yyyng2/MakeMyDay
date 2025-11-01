@@ -9,13 +9,14 @@ import ComposableArchitecture
 public struct HomeView: View {
     @Bindable
     var store: StoreOf<HomeReducer>
-    @AppStorage("bannerAdHeight") private var storedBannerAdHeight: Double = 60
+    @Dependency(\.appStorageRepository) var storage
     @State private var bannerAdHeight: Double = 60
     @FocusState private var isTextFieldFocused: Bool
     @State private var scrollProxy: ScrollViewProxy?
     
     public init(store: StoreOf<HomeReducer>) {
         self.store = store
+        _bannerAdHeight = State(initialValue: storage.get(.bannerAdHeight, defaultValue: 60.0))
     }
     
     public var body: some View {

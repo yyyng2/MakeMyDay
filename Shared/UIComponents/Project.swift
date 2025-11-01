@@ -6,7 +6,6 @@ private let project = Project.makeModule(
     product: .framework,
     sources: ["Sources/**"],
     dependencies: [
-        .project(target: "Domain", path: .relativeToRoot("Shared/Domain")),
         .project(target: "Resources", path: .relativeToRoot("Shared/Resources")),
         .project(target: "Utilities", path: .relativeToRoot("Shared/Utilities")),
     ],

@@ -28,11 +28,6 @@ public class BannerCoordinator: NSObject, ObservableObject, BannerViewDelegate {
     
     private(set) lazy var bannerView: BannerView = {
         let banner = BannerView(adSize: adSize)
-//        #if DEBUG
-//        banner.adUnitID = "ca-app-pub-3940256099942544/2435281174"
-//        #else
-//        banner.adUnitID = "ca-app-pub-7183232535482605/2957213083"
-//        #endif
         if let unitID = Bundle.main.object(forInfoDictionaryKey: "GADBannerUnitID") as? String {
             banner.adUnitID = unitID
         }

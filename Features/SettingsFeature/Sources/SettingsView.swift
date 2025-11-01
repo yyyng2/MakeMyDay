@@ -6,11 +6,12 @@ import ComposableArchitecture
 public struct SettingsView: View {
     @Bindable
     var store: StoreOf<SettingsReducer>
-    @AppStorage("bannerAdHeight") private var storedBannerAdHeight: Double = 60
+    @Dependency(\.appStorageRepository) var storage
     @State private var bannerAdHeight: Double = 60
     
     public init(store: StoreOf<SettingsReducer>) {
         self.store = store
+        self._bannerAdHeight = State(initialValue: self.storage.get(.bannerAdHeight, defaultValue: 60.0))
     }
     
     public var body: some View {
@@ -44,12 +45,13 @@ public struct SettingsView: View {
                 }
                 .scrollContentBackground(.hidden)
                 .onAppear {
-                    if bannerAdHeight < storedBannerAdHeight {
-                        bannerAdHeight = storedBannerAdHeight
+                    let storedHeight = storage.get(.bannerAdHeight, defaultValue: 60.0)
+                    if bannerAdHeight < storedHeight {
+                        bannerAdHeight = storedHeight
                     }
                 }
                 .onChange(of: bannerAdHeight) { oldValue, newValue in
-                    storedBannerAdHeight = newValue
+                    storage.set(.bannerAdHeight, value: newValue)
                 }
             } destination: { store in
                 switch store.case {

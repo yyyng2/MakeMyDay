@@ -25,6 +25,11 @@ extension DependencyValues {
         set { self[UserDefaultsClientKey.self] = newValue }
     }
     
+    public var appStorageRepository: AppStorageKeyRepositoryProtocol {
+        get { self[AppStorageKeyRepositoryKey.self] }
+        set { self[AppStorageKeyRepositoryKey.self] = newValue }
+    }
+    
 //    public var weatherService: WeatherServiceProtocol {
 //        get { self[WeatherServiceKey.self] }
 //        set { self[WeatherServiceKey.self] = newValue }
@@ -126,4 +131,9 @@ private enum UserDefaultsClientKey: DependencyKey {
         getData: { _ in nil },
         setData: { _, _ in }
     )
+}
+
+private enum AppStorageKeyRepositoryKey: DependencyKey {
+    static let liveValue: AppStorageKeyRepositoryProtocol = AppStorageKeyRepository()
+    static let testValue: AppStorageKeyRepositoryProtocol = MockAppStorageKeyRepository()
 }
