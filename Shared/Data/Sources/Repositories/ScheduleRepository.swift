@@ -51,36 +51,37 @@ public class ScheduleRepository: ScheduleRepositoryImpl {
     }
     
     public func updateSchedule(_ schedule: Schedule) throws {
+        let allSchedules = try fetchAllSchedules()
+        
+        guard let existingSchedule = allSchedules.first(where: { $0.id == schedule.id }) else {
+            throw ErrorType.notFound(id: schedule.id)
+        }
+        
+        existingSchedule.title = schedule.title
+        existingSchedule.date = schedule.date
+        existingSchedule.isWeeklyRepeat = schedule.isWeeklyRepeat
+        existingSchedule.showInCalendar = schedule.showInCalendar
+        
         do {
-             let allSchedules = try fetchAllSchedules()
-             
-             if let existingSchedule = allSchedules.first(where: { $0.id == schedule.id }) {
-                 existingSchedule.title = schedule.title
-                 existingSchedule.date = schedule.date
-                 existingSchedule.isWeeklyRepeat = schedule.isWeeklyRepeat
-                 existingSchedule.showInCalendar = schedule.showInCalendar
-
-                 try modelContainer.mainContext.save()
-             } else {
-                 throw NSError(domain: "ScheduleRepository", code: 404, userInfo: [NSLocalizedDescriptionKey: "Schedule not found"])
-             }
-         } catch {
-             throw error
-         }
+            try modelContainer.mainContext.save()
+        } catch {
+            throw ErrorType.saveFailed(underlying: error)
+        }
     }
     
     public func deleteScheduleById(_ id: UUID) throws {
+        let allSchedules = try fetchAllSchedules()
+        
+        guard let scheduleToDelete = allSchedules.first(where: { $0.id == id }) else {
+            throw ErrorType.notFound(id: id)
+        }
+        
+        modelContainer.mainContext.delete(scheduleToDelete)
+        
         do {
-            let allSchedules = try fetchAllSchedules()
-            
-            if let scheduleToDelete = allSchedules.first(where: { $0.id == id }) {
-                modelContainer.mainContext.delete(scheduleToDelete)
-                try modelContainer.mainContext.save()
-            } else {
-                throw NSError(domain: "ScheduleRepository", code: 404, userInfo: [NSLocalizedDescriptionKey: "Schedule not found with id: \(id)"])
-            }
+            try modelContainer.mainContext.save()
         } catch {
-            throw error
+            throw ErrorType.saveFailed(underlying: error)
         }
     }
 }
