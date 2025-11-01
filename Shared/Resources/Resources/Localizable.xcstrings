@@ -891,13 +891,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A new version is available.\\nWould you like to update?"
+            "value" : "A new version is available.\nWould you like to update?"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "새 버전이 있습니다.\\n업데이트 하시겠습니까?"
+            "value" : "새 버전이 있습니다.\n업데이트 하시겠습니까?"
           }
         }
       }
