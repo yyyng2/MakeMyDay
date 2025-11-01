@@ -32,7 +32,8 @@ public struct SettingsReducer {
     }
     
     public enum Action {
-        case path(StackAction<Path.State, Path.Action>)
+        case path(StackActionOf<Path>)
+//        case path(StackAction<Path.State, Path.Action>)
         case appInfo(SettingsAppInfoReducer.Action)
         case profile(SettingsProfileReducer.Action)
         case theme(SettingsThemeReducer.Action)

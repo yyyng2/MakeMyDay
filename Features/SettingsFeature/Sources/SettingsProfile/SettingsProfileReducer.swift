@@ -16,14 +16,8 @@ import ComposableArchitecture
 
 @Reducer
 public struct SettingsProfileReducer {
-    @Reducer(state: .equatable)
-    public enum Path {
-        // 필요시 추가
-    }
-    
     @ObservableState
     public struct State: Equatable {
-        public var path = StackState<Path.State>()
         public var currentImage: UIImage = ResourcesAsset.Assets.dIcon.image
         public var hasChanges: Bool = false
         public var showImagePicker: Bool = false
@@ -36,7 +30,6 @@ public struct SettingsProfileReducer {
     }
     
     public enum Action {
-        case path(StackAction<Path.State, Path.Action>)
         case dismissButtonTapped
         case saveButtonTapped
         case loadImageButtonTapped
@@ -57,9 +50,6 @@ public struct SettingsProfileReducer {
     public var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-            case .path(_):
-                return .none
-                
             case .dismissButtonTapped:
                 return .run { _ in
                     await dismiss()
@@ -152,6 +142,5 @@ public struct SettingsProfileReducer {
                 return .none
             }
         }
-        .forEach(\.path, action: \.path)
     }
 }

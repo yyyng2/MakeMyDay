@@ -37,8 +37,8 @@ private let project = Project(
                        "UISupportedInterfaceOrientations~ipad": [
                            "UIInterfaceOrientationPortrait",
                        ],
-                       "NSUserTrackingUsageDescription": "This app requests permission to track your activity for better ad recommendations.",
-       //                "NSUserTrackingUsageDescription": "$(NSUserTrackingUsageDescription)",
+//                       "NSUserTrackingUsageDescription": "This app requests permission to track your activity for better ad recommendations.",
+                       "NSUserTrackingUsageDescription": "$(NSUserTrackingUsageDescription)",
 //                       "NSUserTrackingUsageDescription": .dictionary([
 //                             "en": "This app requests permission to track your activity for better ad recommendations.",
 //                             "ko": "더 나은 광고 추천을 위해 활동 추적 권한을 요청합니다."
