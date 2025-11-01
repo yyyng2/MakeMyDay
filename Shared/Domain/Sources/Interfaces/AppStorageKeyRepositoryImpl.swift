@@ -1,5 +1,5 @@
 //
-//  AppStorageKeyRepositoryProtocol.swift
+//  AppStorageKeyRepositoryImpl.swift
 //  Domain
 //
 //  Created by Y on 11/1/25.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AppStorageKeyRepositoryProtocol {
+public protocol AppStorageKeyRepositoryImpl {
     func get<T>(_ key: AppStorageKey, defaultValue: T) -> T
     func set<T>(_ key: AppStorageKey, value: T)
 }

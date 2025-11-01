@@ -44,10 +44,10 @@ public struct HomeReducer {
     
     @Dependency(\.userDefaultsClient) var userDefaultsClient: UserDefaultsClient
     @Dependency(\.appStorageRepository) var storage
-    @Dependency(\.scheduleRepository) var scheduleRepository: ScheduleRepositoryProtocol
-    @Dependency(\.ddayRepository) var ddayRepository: DDayRepositoryProtocol
-//    @Dependency(\.locationService) var locationService: LocationServiceProtocol
-//    @Dependency(\.weatherService) var weatherService: WeatherServiceProtocol
+    @Dependency(\.scheduleRepository) var scheduleRepository: ScheduleRepositoryImpl
+    @Dependency(\.ddayRepository) var ddayRepository: DDayRepositoryImpl
+//    @Dependency(\.locationService) var locationService: LocationServiceImpl
+//    @Dependency(\.weatherService) var weatherService: WeatherServiceImpl
     
     public init() {}
     

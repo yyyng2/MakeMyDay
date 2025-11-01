@@ -1,7 +1,7 @@
 import Foundation
 import Domain
 
-public struct LiveAppVersionService: AppVersionServiceProtocol {
+public struct LiveAppVersionService: AppVersionServiceImpl {
     public init() {}
     
     public func getUpdateURL() -> URL? {

@@ -9,7 +9,7 @@
 import Foundation
 import Domain
 
-public final class MockAppStorageKeyRepository: AppStorageKeyRepositoryProtocol {
+public final class MockAppStorageKeyRepository: AppStorageKeyRepositoryImpl {
     private var storage: [String: Any] = [:]
     
     public init() {}

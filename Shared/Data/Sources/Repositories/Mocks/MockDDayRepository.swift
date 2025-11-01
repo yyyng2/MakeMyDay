@@ -2,7 +2,7 @@ import Foundation
 import Domain
 
 @MainActor
-public class MockDDayRepository: DDayRepositoryProtocol {
+public class MockDDayRepository: DDayRepositoryImpl {
     public var ddays: [DDay] = []
     
     public init() {}

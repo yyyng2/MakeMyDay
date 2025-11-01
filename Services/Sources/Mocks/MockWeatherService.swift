@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import Domain
 
-public class MockWeatherService: WeatherServiceProtocol {
+public class MockWeatherService: WeatherServiceImpl {
     public init() {}
     
     public func fetchWeather(location: CLLocation) async throws -> WeatherInfo? {

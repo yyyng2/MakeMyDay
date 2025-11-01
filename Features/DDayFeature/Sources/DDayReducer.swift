@@ -42,7 +42,7 @@ public struct DDayReducer {
     }
     
     @Dependency(\.appStorageRepository) var storage
-    @Dependency(\.ddayRepository) var ddayRepository: DDayRepositoryProtocol
+    @Dependency(\.ddayRepository) var ddayRepository: DDayRepositoryImpl
     
     public init() {}
     

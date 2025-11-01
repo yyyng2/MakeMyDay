@@ -5,17 +5,17 @@ import Services
 import ComposableArchitecture
 
 extension DependencyValues {
-    public var scheduleRepository: ScheduleRepositoryProtocol {
+    public var scheduleRepository: ScheduleRepositoryImpl {
         get { self[ScheduleRepositoryKey.self] }
         set { self[ScheduleRepositoryKey.self] = newValue }
     }
     
-    public var ddayRepository: DDayRepositoryProtocol {
+    public var ddayRepository: DDayRepositoryImpl {
         get { self[DDayRepositoryKey.self] }
         set { self[DDayRepositoryKey.self] = newValue }
     }
     
-    public var appVersionService: AppVersionServiceProtocol {
+    public var appVersionService: AppVersionServiceImpl {
         get { self[AppVersionServiceKey.self] }
         set { self[AppVersionServiceKey.self] = newValue }
     }
@@ -25,7 +25,7 @@ extension DependencyValues {
         set { self[UserDefaultsClientKey.self] = newValue }
     }
     
-    public var appStorageRepository: AppStorageKeyRepositoryProtocol {
+    public var appStorageRepository: AppStorageKeyRepositoryImpl {
         get { self[AppStorageKeyRepositoryKey.self] }
         set { self[AppStorageKeyRepositoryKey.self] = newValue }
     }
@@ -53,26 +53,26 @@ private let sharedModelContainer = ModelContainerClient.create(schemas: [
 
 @MainActor
 private enum ScheduleRepositoryKey: @preconcurrency DependencyKey {
-    static var liveValue: ScheduleRepositoryProtocol = {
+    static var liveValue: ScheduleRepositoryImpl = {
         return ScheduleRepository(modelContainer: sharedModelContainer)
     }()
     
-    static let testValue: ScheduleRepositoryProtocol = MockScheduleRepository()
+    static let testValue: ScheduleRepositoryImpl = MockScheduleRepository()
 }
 
 @MainActor
 private enum DDayRepositoryKey: @preconcurrency DependencyKey {
-    static let liveValue: DDayRepositoryProtocol = {
+    static let liveValue: DDayRepositoryImpl = {
         return DDayRepository(modelContainer: sharedModelContainer)
     }()
     
-    static let testValue: DDayRepositoryProtocol = MockDDayRepository()
+    static let testValue: DDayRepositoryImpl = MockDDayRepository()
 }
 
 private enum AppVersionServiceKey: DependencyKey {
-    static let liveValue: AppVersionServiceProtocol = LiveAppVersionService()
+    static let liveValue: AppVersionServiceImpl = LiveAppVersionService()
     
-    static let testValue: AppVersionServiceProtocol = MockAppVersionService()
+    static let testValue: AppVersionServiceImpl = MockAppVersionService()
 }
 
 //private enum WeatherServiceKey: DependencyKey {
@@ -134,6 +134,6 @@ private enum UserDefaultsClientKey: DependencyKey {
 }
 
 private enum AppStorageKeyRepositoryKey: DependencyKey {
-    static let liveValue: AppStorageKeyRepositoryProtocol = AppStorageKeyRepository()
-    static let testValue: AppStorageKeyRepositoryProtocol = MockAppStorageKeyRepository()
+    static let liveValue: AppStorageKeyRepositoryImpl = AppStorageKeyRepository()
+    static let testValue: AppStorageKeyRepositoryImpl = MockAppStorageKeyRepository()
 }

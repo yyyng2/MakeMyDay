@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import Domain
 
-public class MockLocationService: LocationServiceProtocol {
+public class MockLocationService: LocationServiceImpl {
     public var shouldThrowPermissionError = false
     public var shouldThrowLocationError = false
     public var mockLocation: CLLocation?

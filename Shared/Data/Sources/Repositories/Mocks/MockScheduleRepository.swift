@@ -2,7 +2,7 @@ import Foundation
 import Domain
 
 @MainActor
-public class MockScheduleRepository: ScheduleRepositoryProtocol {
+public class MockScheduleRepository: ScheduleRepositoryImpl {
     public var schedules: [Schedule] = []
     
     public init() {}

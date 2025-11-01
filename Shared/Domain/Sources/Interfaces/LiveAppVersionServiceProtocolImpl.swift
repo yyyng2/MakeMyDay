@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol AppVersionServiceProtocol {
+public protocol AppVersionServiceImpl {
     func getUpdateURL() -> URL?
     var isLatestVersion: @Sendable () async -> Bool { get }
 }

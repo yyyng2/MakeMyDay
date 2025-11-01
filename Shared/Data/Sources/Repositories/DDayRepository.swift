@@ -3,7 +3,7 @@ import SwiftData
 import Domain
 
 @MainActor
-public class DDayRepository: DDayRepositoryProtocol {
+public class DDayRepository: DDayRepositoryImpl {
     public let modelContainer: ModelContainer
     
     public init(modelContainer: ModelContainer) {

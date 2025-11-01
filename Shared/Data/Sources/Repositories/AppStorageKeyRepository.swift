@@ -9,7 +9,7 @@
 import Foundation
 import Domain
 
-public final class AppStorageKeyRepository: AppStorageKeyRepositoryProtocol {
+public final class AppStorageKeyRepository: AppStorageKeyRepositoryImpl {
     private let storage = UserDefaults.standard
     
     public init() {}

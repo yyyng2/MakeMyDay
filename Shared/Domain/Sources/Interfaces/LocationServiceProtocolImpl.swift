@@ -1,5 +1,5 @@
 //
-//  LocationServiceProtocol.swift
+//  LocationServiceImpl.swift
 //  Domain
 //
 //  Created by Y on 5/30/25.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-public protocol LocationServiceProtocol {
+public protocol LocationServiceImpl {
     func requestLocationPermission() async throws
     func getCurrentLocation() async throws -> CLLocation
 }
