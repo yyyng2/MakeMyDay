@@ -25,7 +25,7 @@ private let project = Project(
             bundleId: "io.github.yyyng2.MakeMyDay",
 //            infoPlist: .file(path: "Resources/Info.plist"),
             infoPlist: .extendingDefault(with: [
-                       "CFBundleShortVersionString": "1.4.2",
+                       "CFBundleShortVersionString": "1.4.3",
                        "CFBundleVersion": "1",
                        "CFBundleDevelopmentRegion": "en",
                        "CFBundleLocalizations": ["en", "ko"],
