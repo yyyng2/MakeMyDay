@@ -2,6 +2,7 @@ import SwiftUI
 import Domain
 import UIComponents
 import Utilities
+import Resources
 
 public struct ScheduleEditView: View {
     @State private var title: String
@@ -160,22 +161,24 @@ public struct ScheduleEditView: View {
                     .disabled(title.isEmpty)
                 }
             }
-            .popupNavigationView(show: $showDatePicker) {
-                DatePickerView(
-                    date: $date,
-                    showTime: true,
-                    confirmHandler: { selectedDate in
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            date = selectedDate
-                            showDatePicker = false
+            .overlay {
+                if showDatePicker {
+                    DatePickerView(
+                        date: $date,
+                        showTime: true,
+                        confirmHandler: { selectedDate in
+                            withAnimation(.easeInOut(duration: 0.5)) {
+                                date = selectedDate
+                                showDatePicker = false
+                            }
+                        }, cancelHandler: {
+                            withAnimation(.easeInOut(duration: 0.5)) {
+                                showDatePicker = false
+                            }
                         }
-                    }, cancelHandler: {
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            showDatePicker = false
-                        }
-                    }
-                )
-                .padding()
+                    )
+                    .padding()
+                }
             }
         }
     }

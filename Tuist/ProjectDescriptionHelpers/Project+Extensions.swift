@@ -14,7 +14,6 @@ extension Project {
         dependencies: [TargetDependency] = [],
         settings: Settings? = .settings(
             base: [
-                "DEVELOPMENT_TEAM": "UT362X937Q",
                 "SWIFT_EMIT_LOC_STRINGS": "YES"
             ],
             debug: [:],

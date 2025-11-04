@@ -17,8 +17,6 @@ public struct DatePickerView: View {
     
     public var body: some View {
         ZStack {
-            Color.clear.ignoresSafeArea()
-            
             VStack(alignment: .center, spacing: 0) {
                 DatePicker(
                     "",
@@ -28,7 +26,7 @@ public struct DatePickerView: View {
                 .environment(\.locale, Locale(identifier: String(Locale.preferredLanguages[0])))
                 .datePickerStyle(.graphical)
                 .labelsHidden()
-                .frame(maxWidth: .infinity, maxHeight: showTime ? 320 : 350)
+                .frame(maxWidth: .infinity, maxHeight: showTime ? 350 : 320)
                 
                 HStack(spacing: 20) {
                     Button(action: {
@@ -58,7 +56,7 @@ public struct DatePickerView: View {
                 .padding(.top, 10)
             }
             .padding()
-            .background(.clear)
+            .background(Color(ResourcesAsset.Assets.baseForeground.color))
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
