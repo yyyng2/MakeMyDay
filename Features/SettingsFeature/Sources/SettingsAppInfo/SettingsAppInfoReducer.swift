@@ -33,7 +33,7 @@ public struct SettingsAppInfoReducer {
         case mailComposerDismissed
     }
     
-    @Dependency(\.appVersionService) var appVersionService: AppVersionServiceImpl
+    @Dependency(\.appVersionService) var appVersionService
     @Dependency(\.appStorageRepository) var storage
     @Dependency(\.openURL) var openURL: OpenURLEffect
     

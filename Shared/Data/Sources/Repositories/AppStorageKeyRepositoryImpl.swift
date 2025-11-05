@@ -1,5 +1,5 @@
 //
-//  AppStorageKeyRepository.swift
+//  AppStorageKeyRepositoryImpl.swift
 //  Data
 //
 //  Created by Y on 11/1/25.
@@ -9,7 +9,7 @@
 import Foundation
 import Domain
 
-public final class AppStorageKeyRepository: AppStorageKeyRepositoryImpl {
+public final class AppStorageKeyRepositoryImpl: AppStorageKeyRepository {
     private let storage = UserDefaults.standard
     
     public init() {}

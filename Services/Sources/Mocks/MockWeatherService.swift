@@ -10,14 +10,14 @@ import Foundation
 import CoreLocation
 import Domain
 
-public class MockWeatherService: WeatherServiceImpl {
-    public init() {}
-    
-    public func fetchWeather(location: CLLocation) async throws -> WeatherInfo? {
-        return WeatherInfo(
-            minTemp: 20,
-            maxTemp: 28,
-            condition: "맑은"
-        )
-    }
-}
+//public class MockWeatherService: WeatherServiceImpl {
+//    public init() {}
+//    
+//    public func fetchWeather(location: CLLocation) async throws -> WeatherInfo? {
+//        return WeatherInfo(
+//            minTemp: 20,
+//            maxTemp: 28,
+//            condition: "맑은"
+//        )
+//    }
+//}

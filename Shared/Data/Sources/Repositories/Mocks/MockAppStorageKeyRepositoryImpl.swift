@@ -1,5 +1,5 @@
 //
-//  MockAppStorageKeyRepository.swift
+//  MockAppStorageKeyRepositoryImpl.swift
 //  Data
 //
 //  Created by Y on 11/1/25.
@@ -9,7 +9,7 @@
 import Foundation
 import Domain
 
-public final class MockAppStorageKeyRepository: AppStorageKeyRepositoryImpl {
+public final class MockAppStorageKeyRepositoryImpl: AppStorageKeyRepository {
     private var storage: [String: Any] = [:]
     
     public init() {}

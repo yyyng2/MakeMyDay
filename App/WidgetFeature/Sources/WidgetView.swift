@@ -42,8 +42,8 @@ struct DDayEntity: AppEntity {
 
 struct DDayQuery: EntityQuery {
     func entities(for identifiers: [String]) async throws -> [DDayEntity] {
-        let modelContainer = ModelContainerClient.create(schemas: [DDay.self, Schedule.self])
-        let repository = await DDayRepository(modelContainer: modelContainer)
+        let modelContainer = ModelContainerClientImpl.create(schemas: [DDay.self, Schedule.self])
+        let repository = await DDayRepositoryImpl(modelContainer: modelContainer)
         let allDDays = try await repository.fetchAllDDays()
         
         return allDDays
@@ -52,8 +52,8 @@ struct DDayQuery: EntityQuery {
     }
     
     func suggestedEntities() async throws -> [DDayEntity] {
-        let modelContainer = ModelContainerClient.create(schemas: [DDay.self, Schedule.self])
-        let repository = await DDayRepository(modelContainer: modelContainer)
+        let modelContainer = ModelContainerClientImpl.create(schemas: [DDay.self, Schedule.self])
+        let repository = await DDayRepositoryImpl(modelContainer: modelContainer)
         let allDDays = try await repository.fetchAllDDays()
         
         return allDDays.map { DDayEntity(id: $0.id.uuidString, title: $0.title) }
@@ -104,14 +104,14 @@ struct MMDWidgetEntryView : View {
     var entry: Provider.Entry
     @Environment(\.widgetFamily) private var widgetFamily
     
-    let modelContainer = ModelContainerClient.create(schemas: [DDay.self, Schedule.self])
+    let modelContainer = ModelContainerClientImpl.create(schemas: [DDay.self, Schedule.self])
     
     var ddayRepository: DDayRepository {
-        DDayRepository(modelContainer: modelContainer)
+        DDayRepositoryImpl(modelContainer: modelContainer)
     }
     
     var scheduleRepository: ScheduleRepository {
-        ScheduleRepository(modelContainer: modelContainer)
+        ScheduleRepositoryImpl(modelContainer: modelContainer)
     }
     
     var ddays: [DDay] {

@@ -3,7 +3,7 @@ import SwiftData
 import Domain
 
 @MainActor
-public class ScheduleRepository: ScheduleRepositoryImpl {
+public class ScheduleRepositoryImpl: ScheduleRepository {
     public let modelContainer: ModelContainer
     
     public init(modelContainer: ModelContainer) {

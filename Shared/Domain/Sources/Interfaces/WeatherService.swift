@@ -1,5 +1,5 @@
 //
-//  WeatherServiceImpl.swift
+//  WeatherService.swift
 //  Domain
 //
 //  Created by Y on 5/30/25.
@@ -9,6 +9,6 @@
 import Foundation
 import CoreLocation
 
-public protocol WeatherServiceImpl {
+public protocol WeatherService {
     func fetchWeather(location: CLLocation) async throws -> WeatherInfo?
 }

@@ -8,7 +8,6 @@
 
 import SwiftUI
 import Core
-import Data
 import Domain
 import ComposableArchitecture
 
@@ -30,7 +29,7 @@ public struct SettingsThemeReducer {
     }
     
     @Dependency(\.dismiss) var dismiss
-    @Dependency(\.userDefaultsClient) var userDefaultsClient: UserDefaultsClient
+    @Dependency(\.userDefaultsClient) var userDefaultsClient
     @Dependency(\.appStorageRepository) var storage
     
     public init() {}

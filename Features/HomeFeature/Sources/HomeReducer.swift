@@ -1,6 +1,5 @@
 import SwiftUI
 import Core
-import Data
 import Domain
 import Resources
 import Utilities
@@ -42,12 +41,12 @@ public struct HomeReducer {
         case dismissAlert
     }
     
-    @Dependency(\.userDefaultsClient) var userDefaultsClient: UserDefaultsClient
+    @Dependency(\.userDefaultsClient) var userDefaultsClient
     @Dependency(\.appStorageRepository) var storage
-    @Dependency(\.scheduleRepository) var scheduleRepository: ScheduleRepositoryImpl
-    @Dependency(\.ddayRepository) var ddayRepository: DDayRepositoryImpl
-//    @Dependency(\.locationService) var locationService: LocationServiceImpl
-//    @Dependency(\.weatherService) var weatherService: WeatherServiceImpl
+    @Dependency(\.scheduleRepository) var scheduleRepository
+    @Dependency(\.ddayRepository) var ddayRepository
+//    @Dependency(\.locationService) var locationService
+//    @Dependency(\.weatherService) var weatherService
     
     public init() {}
     

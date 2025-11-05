@@ -1,7 +1,6 @@
 import Foundation
 import Core
 import Domain
-import Data
 import HomeFeature
 import ScheduleFeature
 import DDayFeature

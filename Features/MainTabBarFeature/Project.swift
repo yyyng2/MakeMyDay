@@ -8,7 +8,6 @@ private let project = Project.makeModule(
     dependencies: [
         .project(target: "Core", path: .relativeToRoot("Core")),
         .project(target: "Domain", path: .relativeToRoot("Shared/Domain")),
-        .project(target: "Data", path: .relativeToRoot("Shared/Data")),
         .project(target: "HomeFeature", path: .relativeToRoot("Features/HomeFeature")),
         .project(target: "ScheduleFeature", path: .relativeToRoot("Features/ScheduleFeature")),
         .project(target: "DDayFeature", path: .relativeToRoot("Features/DDayFeature")),

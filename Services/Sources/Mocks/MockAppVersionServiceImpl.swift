@@ -1,7 +1,7 @@
 import Foundation
 import Domain
 
-public struct MockAppVersionService: AppVersionServiceImpl {
+public struct MockAppVersionServiceImpl: AppVersionService {
     public init() {}
     
     public func getUpdateURL() -> URL? {

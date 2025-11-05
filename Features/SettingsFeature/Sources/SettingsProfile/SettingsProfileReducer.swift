@@ -8,7 +8,6 @@
 
 import SwiftUI
 import PhotosUI
-import Data
 import Domain
 import Resources
 import Utilities
@@ -42,7 +41,7 @@ public struct SettingsProfileReducer {
     }
     
     @Dependency(\.dismiss) var dismiss
-    @Dependency(\.userDefaultsClient) var userDefaultsClient: UserDefaultsClient
+    @Dependency(\.userDefaultsClient) var userDefaultsClient
     @Dependency(\.appStorageRepository) var storage
     
     public init() {}

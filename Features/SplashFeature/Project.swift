@@ -7,7 +7,6 @@ private let project = Project.makeModule(
     sources: ["Sources/**"],
     dependencies: [
         .project(target: "Core", path: .relativeToRoot("Core")),
-        .project(target: "Services", path: .relativeToRoot("Services")),
         .project(target: "Resources", path: .relativeToRoot("Shared/Resources")),
         .project(target: "UIComponents", path: .relativeToRoot("Shared/UIComponents")),
         .external(name: "ComposableArchitecture")

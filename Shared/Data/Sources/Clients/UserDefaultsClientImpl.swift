@@ -1,5 +1,5 @@
 //
-//  UserDefaultsClient.swift
+//  UserDefaultsClientImpl.swift
 //  Data
 //
 //  Created by Y on 5/24/25.
@@ -9,7 +9,7 @@
 import Foundation
 import Domain
 
-public struct UserDefaultsClient {
+public struct UserDefaultsClientImpl: UserDefaultsClient {
     public var getBool: @Sendable (UserDefaultsKey) -> Bool
     public var setBool: @Sendable (UserDefaultsKey, Bool) -> Void
     public var getString: @Sendable (UserDefaultsKey) -> String

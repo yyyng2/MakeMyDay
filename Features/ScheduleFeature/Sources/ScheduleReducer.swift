@@ -60,7 +60,7 @@ public struct ScheduleReducer {
         case searchResultSelected(Schedule)
     }
     
-    @Dependency(\.scheduleRepository) var scheduleRepository: ScheduleRepositoryImpl
+    @Dependency(\.scheduleRepository) var scheduleRepository
     @Dependency(\.appStorageRepository) var storage
     
     public init() {}
