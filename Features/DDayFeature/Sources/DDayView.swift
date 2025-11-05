@@ -2,13 +2,15 @@ import SwiftUI
 import Domain
 import UIComponents
 import Utilities
-import Resources
 import ComposableArchitecture
 
 public struct DDayView: View {
     @Bindable
     var store: StoreOf<DDayReducer>
     @Dependency(\.appStorageRepository) var storage
+    @Dependency(\.localeService) var localeService
+    @Dependency(\.colorProvider) var colorProvider
+    @Dependency(\.imageProvider) var imageProvider
     @State private var bannerAdHeight: Double = 60
     
     public init(store: StoreOf<DDayReducer>) {
@@ -37,7 +39,7 @@ public struct DDayView: View {
                                                    HStack {
                                                        Spacer()
                                                        VStack {
-                                                           Text("dday_empty".localized())
+                                                           Text(localeService.localized(forKey: .ddayEmpty))
                                                                .font(.headline)
                                                                .lineLimit(1)
                                                            HStack {
@@ -57,7 +59,7 @@ public struct DDayView: View {
                                                .frame(height: 50)
                                                .frame(maxWidth: .infinity)
                                                .background(
-                                                   Color(ResourcesAsset.Assets.baseForeground.swiftUIColor)
+                                                    colorProvider.color(asset: .baseForeground)
                                                )
                                                .clipShape(.rect(cornerRadius: 10))
                                            }
@@ -99,14 +101,17 @@ public struct DDayView: View {
                                                         }
                                                         .frame(width: geometry.size.width - 40, height: 50)
                                                         .background(
-                                                            Color(ResourcesAsset.Assets.baseForeground.swiftUIColor)
+                                                            colorProvider.color(asset: .baseForeground)
                                                         )
                                                         .clipShape(.rect(cornerRadius: 10))
                                                         .contextMenu {
                                                             Button {
                                                                 store.send(.deleteDDay(item))
                                                             } label: {
-                                                                Label("common_delete".localized(), systemImage: "trash.circle")
+                                                                Label(
+                                                                    localeService.localized(forKey: .commonDelete),
+                                                                    systemImage: "trash.circle"
+                                                                )
                                                                     .tint(.red)
                                                             }
                                                         }
@@ -143,7 +148,7 @@ public struct DDayView: View {
                         }
                     }
                     .background {
-                        Image(uiImage: ResourcesAsset.Assets.baseBackground.image)
+                        Image(uiImage: imageProvider.image(asset: .baseBackground))
                             .resizable()
                             .ignoresSafeArea()
                     }
@@ -169,7 +174,15 @@ public struct DDayView: View {
                                     },
                                     onDismiss: {
                                         store.send(.setSortPresented(false))
-                                    }
+                                    },
+                                    localized: { rawValue in
+                                        if let key = localeService.getKeyByRawValue(rawValue: rawValue) {
+                                            return localeService.localized(forKey: key)
+                                        } else {
+                                            return rawValue 
+                                        }
+                                    },
+                                    backgroundColor: colorProvider.color(asset: .baseForeground)
                                 )
                                 .padding(.bottom, 150)
                                 .transition(.scale.combined(with: .opacity))
@@ -182,11 +195,17 @@ public struct DDayView: View {
                         FloatingButtonView(
                             buttonAction: { store.send(.sortButtonTapped) },
                             buttonImageName: "arrow.up.arrow.down",
+                            buttonImgaeTintColor: colorProvider.color(asset: .baseFontColor),
+                            buttonBackgroundColor: colorProvider.color(asset: .baseForeground),
+                            buttonBorderColor: colorProvider.color(asset: .baseBorder),
                             buttonBottomPadding: 90
                         )
                         
                         FloatingButtonView(
-                            buttonAction: { store.send(.editDDayTapped(nil)) }
+                            buttonAction: { store.send(.editDDayTapped(nil)) },
+                            buttonImgaeTintColor: colorProvider.color(asset: .baseFontColor),
+                            buttonBackgroundColor: colorProvider.color(asset: .baseForeground),
+                            buttonBorderColor: colorProvider.color(asset: .baseBorder)
                         )
                     }
                 )
@@ -217,12 +236,22 @@ public struct SortPopupView: View {
     let currentSortType: DDaySortType
     let onSortSelected: (DDaySortType) -> Void
     let onDismiss: () -> Void
+    let localized: (String) -> String
+    let backgroundColor: Color
     
     private let sortPairs: [(DDaySortType, DDaySortType)] = [
         (.titleAsc, .titleDesc),
         (.dateAsc, .dateDesc),
         (.ddayAsc, .ddayDesc)
     ]
+    
+    public init(currentSortType: DDaySortType, onSortSelected: @escaping (DDaySortType) -> Void, onDismiss: @escaping () -> Void, localized: @escaping (String) -> String, backgroundColor: Color) {
+        self.currentSortType = currentSortType
+        self.onSortSelected = onSortSelected
+        self.onDismiss = onDismiss
+        self.localized = localized
+        self.backgroundColor = backgroundColor
+    }
     
     public var body: some View {
         VStack(spacing: 10) {
@@ -232,7 +261,7 @@ public struct SortPopupView: View {
                         onSortSelected(pair.0)
                     }) {
                         HStack {
-                            Text(pair.0.rawValue.localized())
+                            Text(localized(pair.0.rawValue))
                                 .font(.headline)
                             Spacer()
                             if currentSortType == pair.0 {
@@ -241,7 +270,7 @@ public struct SortPopupView: View {
                             }
                         }
                         .padding()
-                        .background(Color(ResourcesAsset.Assets.baseForeground.swiftUIColor))
+                        .background(backgroundColor)
                         .clipShape(.rect(cornerRadius: 10))
                     }
                     .buttonStyle(PlainButtonStyle())
@@ -250,7 +279,7 @@ public struct SortPopupView: View {
                         onSortSelected(pair.1)
                     }) {
                         HStack {
-                            Text(pair.1.rawValue.localized())
+                            Text(localized(pair.1.rawValue))
                                 .font(.headline)
                             Spacer()
                             if currentSortType == pair.1 {
@@ -259,7 +288,7 @@ public struct SortPopupView: View {
                             }
                         }
                         .padding()
-                        .background(Color(ResourcesAsset.Assets.baseForeground.swiftUIColor))
+                        .background(backgroundColor)
                         .clipShape(.rect(cornerRadius: 10))
                     }
                     .buttonStyle(PlainButtonStyle())

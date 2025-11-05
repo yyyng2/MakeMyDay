@@ -5,9 +5,6 @@ private let project = Project.makeModule(
     name: "UIComponents",
     product: .framework,
     sources: ["Sources/**"],
-    dependencies: [
-        .project(target: "Resources", path: .relativeToRoot("Shared/Resources")),
-        .project(target: "Utilities", path: .relativeToRoot("Shared/Utilities")),
-    ],
+    dependencies: [],
     needTest: false
 )

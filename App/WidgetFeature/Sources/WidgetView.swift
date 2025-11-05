@@ -16,15 +16,15 @@ import Resources
 import ComposableArchitecture
 
 enum WidgetDisplayType: String, AppEnum {
-    case ddayWithSchedule = "widget_ddayWithSchedule"
-    case ddayOnly = "widget_ddayOnly"
-    case scheduleOnly = "widget_scheduleOnly"
+    case ddayWithSchedule = "widgetDdayWithSchedule"
+    case ddayOnly = "widgetDdayOnly"
+    case scheduleOnly = "widgetScheduleOnly"
     
-    static var typeDisplayRepresentation: TypeDisplayRepresentation = "widget_displayType"
+    static var typeDisplayRepresentation: TypeDisplayRepresentation = "widgetDisplayType"
     static var caseDisplayRepresentations: [WidgetDisplayType: DisplayRepresentation] = [
-        .ddayWithSchedule: "widget_ddayWithSchedule",
-        .ddayOnly: "widget_ddayOnly",
-        .scheduleOnly: "widget_scheduleOnly"
+        .ddayWithSchedule: "widgetDdayWithSchedule",
+        .ddayOnly: "widgetDdayOnly",
+        .scheduleOnly: "widgetScheduleOnly"
     ]
 }
 
@@ -59,13 +59,13 @@ struct DDayQuery: EntityQuery {
 }
 
 struct ConfigurationAppIntent: WidgetConfigurationIntent {
-    static var title: LocalizedStringResource = LocalizedStringResource("widget_displaySettings")
-    static var description = IntentDescription("widget_displayContents")
+    static var title: LocalizedStringResource = LocalizedStringResource("widgetDisplaySettings")
+    static var description = IntentDescription("widgetDisplayContents")
     
-    @Parameter(title: "widget_displayType")
+    @Parameter(title: "widgetDisplayType")
     var displayType: WidgetDisplayType?
     
-    @Parameter(title: "widget_ddaySelect")
+    @Parameter(title: "widgetDdaySelect")
     var selectedDDays: [DDayEntity]?
     
     init() {
@@ -222,6 +222,8 @@ struct SmallWidgetView: View {
     let scheduleCount: Int
     let schedules: [Schedule]
     let displayType: WidgetDisplayType
+    @Dependency(\.imageProvider) var imageProvider
+    @Dependency(\.localeService) var localeService
     
     var body: some View {
         VStack {
@@ -229,7 +231,7 @@ struct SmallWidgetView: View {
             
             HStack(alignment: .center) {
                 Spacer()
-                Image(uiImage: ResourcesAsset.Assets.dIcon.image)
+                Image(uiImage: imageProvider.image(asset: .dIcon))
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 16, height: 16)
@@ -237,7 +239,7 @@ struct SmallWidgetView: View {
                 if displayType != .ddayOnly {
                     Spacer()
                     HStack {
-                        Text("widget_todaySchedules".localized())
+                        Text(localeService.localized(forKey: .widgetTodaySchedules))
                             .minimumScaleFactor(0.001)
                             .lineLimit(1)
                             .font(.system(size: 16))
@@ -300,6 +302,8 @@ struct MediumWidgetView: View {
     let scheduleCount: Int
     let schedules: [Schedule]
     let displayType: WidgetDisplayType
+    @Dependency(\.imageProvider) var imageProvider
+    @Dependency(\.localeService) var localeService
     
     var body: some View {
         VStack {
@@ -307,14 +311,14 @@ struct MediumWidgetView: View {
             
             HStack(alignment: .center) {
                 Spacer()
-                Image(uiImage: ResourcesAsset.Assets.dIcon.image)
+                Image(uiImage: imageProvider.image(asset: .dIcon))
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 16, height: 16)
                 
                 if displayType != .ddayOnly {
                     Spacer()
-                    Text("widget_todaySchedules".localized())
+                    Text(localeService.localized(forKey: .widgetTodaySchedules))
                         .minimumScaleFactor(0.001)
                         .lineLimit(1)
                         .font(.system(size: 16))
@@ -375,6 +379,8 @@ struct LargeWidgetView: View {
     let scheduleCount: Int
     let schedules: [Schedule]
     let displayType: WidgetDisplayType
+    @Dependency(\.imageProvider) var imageProvider
+    @Dependency(\.localeService) var localeService
     
     var body: some View {
         VStack {
@@ -382,14 +388,14 @@ struct LargeWidgetView: View {
             
             HStack(alignment: .center) {
                 Spacer()
-                Image(uiImage: ResourcesAsset.Assets.dIcon.image)
+                Image(uiImage: imageProvider.image(asset: .dIcon))
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 30, height: 30)
                 
                 if displayType != .ddayOnly {
                     Spacer()
-                    Text("widget_todaySchedules".localized())
+                    Text(localeService.localized(forKey: .widgetTodaySchedules))
                         .minimumScaleFactor(0.001)
                         .lineLimit(1)
                         .font(.system(size: 30))
@@ -443,13 +449,14 @@ struct LargeWidgetView: View {
 
 struct CircularWidgetView: View {
     let scheduleCount: Int
+    @Dependency(\.localeService) var localeService
     
     var body: some View {
         VStack {
             //            Image(uiImage: ResourcesAsset.Assets.dIcon.image)
             //                .resizable()
             //                .aspectRatio(contentMode: .fit)
-            Text("widget_schedulesForCircularWidgetView".localized())
+            Text(localeService.localized(forKey: .widgetSchedulesForCircularWidgetView))
             HStack {
                 Text("\(scheduleCount)")
                     .minimumScaleFactor(0.001)
@@ -483,10 +490,11 @@ struct RectangularWidgetView: View {
 
 struct InlineWidgetView: View {
     let scheduleCount: Int
+    @Dependency(\.localeService) var localeService
     
     var body: some View {
         VStack {
-            Text("widget_todaySchedules".localized()+" \(scheduleCount)")
+            Text(localeService.localized(forKey: .widgetTodaySchedules)+" \(scheduleCount)")
                 .minimumScaleFactor(0.001)
         }
     }
@@ -513,8 +521,8 @@ struct MMDWidget: Widget {
             MMDWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
-        .configurationDisplayName("widget_title")
-        .description("widget_selectWidget")
+        .configurationDisplayName("widgetTitle")
+        .description("widgetSelectWidget")
         .supportedFamilies(supportedFamilies)
     }
 }

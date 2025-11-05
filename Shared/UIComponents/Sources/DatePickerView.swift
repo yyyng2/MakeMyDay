@@ -1,18 +1,22 @@
 import SwiftUI
-import Utilities
-import Resources
 
 public struct DatePickerView: View {
     @Binding var date: Date
     let confirmHandler: (Date) -> Void
     let cancelHandler: () -> Void
     var showTime: Bool
+    var cancelButtonString: String
+    var confirmButtonString: String
+    var backgroundColor: Color
     
-    public init(date: Binding<Date>, showTime: Bool, confirmHandler: @escaping (Date) -> Void, cancelHandler: @escaping () -> Void) {
+    public init(date: Binding<Date>, showTime: Bool, confirmHandler: @escaping (Date) -> Void, cancelHandler: @escaping () -> Void, cancelButtonString: String, confirmButtonString: String, backgroundColor: Color) {
         self._date = date
         self.showTime = showTime
         self.confirmHandler = confirmHandler
         self.cancelHandler = cancelHandler
+        self.cancelButtonString = cancelButtonString
+        self.confirmButtonString = confirmButtonString
+        self.backgroundColor = backgroundColor
     }
     
     public var body: some View {
@@ -32,7 +36,7 @@ public struct DatePickerView: View {
                     Button(action: {
                         cancelHandler()
                     }, label: {
-                        Text("common_cancel".localized())
+                        Text(cancelButtonString)
                             .frame(maxWidth: 150, maxHeight: 44)
                             .frame(height: 44)
                             .overlay(
@@ -44,7 +48,7 @@ public struct DatePickerView: View {
                     Button(action: {
                         confirmHandler(date)
                     }, label: {
-                        Text("common_confirm".localized())
+                        Text(confirmButtonString)
                             .frame(maxWidth: 150, maxHeight: 44)
                             .frame(height: 44)
                             .overlay(
@@ -56,7 +60,7 @@ public struct DatePickerView: View {
                 .padding(.top, 10)
             }
             .padding()
-            .background(Color(ResourcesAsset.Assets.baseForeground.color))
+            .background(backgroundColor)
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)

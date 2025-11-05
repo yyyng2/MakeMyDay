@@ -4,12 +4,13 @@ import HomeFeature
 import ScheduleFeature
 import DDayFeature
 import SettingsFeature
-import Resources
 import ComposableArchitecture
 
 public struct MainTabBarView: View {
     public let store: StoreOf<MainTabBarReducer>
     @Dependency(\.appStorageRepository) var storage
+    @Dependency(\.colorProvider) var colorProvider
+    @Dependency(\.imageProvider) var imageProvider
     public let bannerView: any UIViewRepresentable
     @State public var adSize: CGSize = CGSize(width: 360, height: 60)
     @State private var bannerAdHeight: Double = 60
@@ -34,7 +35,7 @@ public struct MainTabBarView: View {
                         }
                         .tag(MainTabBarReducer.Tab.home)
                         .tabItem {
-                            Image(uiImage: store.selectedTab == .home ? ResourcesAsset.Assets.homeTabSelect.image : ResourcesAsset.Assets.homeTabUnselect.image)
+                            Image(uiImage: store.selectedTab == .home ? imageProvider.image(asset: .homeTabSelect) : imageProvider.image(asset: .homeTabUnselect))
                             Text("Home")
                         }
                         
@@ -45,7 +46,7 @@ public struct MainTabBarView: View {
                         }
                         .tag(MainTabBarReducer.Tab.schedule)
                         .tabItem {
-                            Image(uiImage: store.selectedTab == .schedule ? ResourcesAsset.Assets.scheduleTabSelect.image : ResourcesAsset.Assets.scheduleTabUnselect.image)
+                            Image(uiImage: store.selectedTab == .schedule ? imageProvider.image(asset: .scheduleTabSelect) : imageProvider.image(asset: .scheduleTabUnselect))
                             Text("Schedule")
                         }
                         
@@ -54,7 +55,7 @@ public struct MainTabBarView: View {
                         }
                         .tag(MainTabBarReducer.Tab.dday)
                         .tabItem {
-                            Image(uiImage: store.selectedTab == .dday ? ResourcesAsset.Assets.dDayTabSelect.image : ResourcesAsset.Assets.dDayTabUnselect.image)
+                            Image(uiImage: store.selectedTab == .dday ? imageProvider.image(asset: .dDayTabSelect) : imageProvider.image(asset: .dDayTabUnselect))
                             Text("D-Day")
                         }
                         
@@ -63,11 +64,11 @@ public struct MainTabBarView: View {
                         }
                         .tag(MainTabBarReducer.Tab.settings)
                         .tabItem {
-                            Image(uiImage: store.selectedTab == .settings ? ResourcesAsset.Assets.settingsTabSelect.image : ResourcesAsset.Assets.settingsTabUnselect.image)
+                            Image(uiImage: store.selectedTab == .settings ? imageProvider.image(asset: .settingsTabSelect) : imageProvider.image(asset: .settingsTabUnselect))
                             Text("Settings")
                         }
                     }
-                    .tint(ResourcesAsset.Assets.baseFontColor.swiftUIColor)
+                    .tint(colorProvider.color(asset: .baseFontColor))
                     .onAppear {
                         adSize.width = geometry.size.width
                         bannerAdHeight = calculatedHeight

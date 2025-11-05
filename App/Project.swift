@@ -9,7 +9,7 @@ private let project = Project(
     ),
     settings: .settings(
         base: [
-            "SWIFT_EMIT_LOC_STRINGS": "YES",
+//            "SWIFT_EMIT_LOC_STRINGS": "YES",
             "OTHER_LDFLAGS": "$(inherited) -ObjC" 
         ],
         configurations: [

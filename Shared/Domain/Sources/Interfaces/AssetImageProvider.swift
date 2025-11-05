@@ -6,4 +6,8 @@
 //  Copyright © 2025 MakeMyDay. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
+
+public protocol AssetImageProvider {
+    func image(asset: AssetImage) -> UIImage
+}

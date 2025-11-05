@@ -8,13 +8,15 @@
 
 import SwiftUI
 import Utilities
-import Resources
 import ComposableArchitecture
 
 public struct SettingsThemeView: View {
     @Bindable
     public var store: StoreOf<SettingsThemeReducer>
     @Dependency(\.appStorageRepository) var storage
+    @Dependency(\.localeService) var localeService
+    @Dependency(\.colorProvider) var colorProvider
+    @Dependency(\.imageProvider) var imageProvider
     @State private var bannerAdHeight: Double = 60
     
     public init(store: StoreOf<SettingsThemeReducer>) {
@@ -25,7 +27,7 @@ public struct SettingsThemeView: View {
     public var body: some View {
         ZStack {
             Color(.clear)
-            Image(uiImage: ResourcesAsset.Assets.baseBackground.image)
+            Image(uiImage: imageProvider.image(asset: .baseBackground))
                 .resizable()
                 .ignoresSafeArea(.all)
             
@@ -39,7 +41,7 @@ public struct SettingsThemeView: View {
                     } label: {
                         Image(systemName: "chevron.left")
                         Text("Settings")
-                            .foregroundStyle(Color(ResourcesAsset.Assets.baseFontColor.color))
+                            .foregroundStyle(colorProvider.color(asset: .baseFontColor))
                     }
                     .padding(.leading, 20)
                     
@@ -48,8 +50,8 @@ public struct SettingsThemeView: View {
                     Button {
                         store.send(.saveButtonTapped)
                     } label: {
-                        Text("common_save".localized())
-                            .foregroundStyle(store.hasChanges ? Color(ResourcesAsset.Assets.baseFontColor.color) : .gray)
+                        Text(localeService.localized(forKey: .commonSave))
+                            .foregroundStyle(store.hasChanges ? colorProvider.color(asset: .baseFontColor) : .gray)
                     }
                     .padding(.trailing, 20)
                     .disabled(!store.hasChanges)
@@ -58,8 +60,8 @@ public struct SettingsThemeView: View {
                 
                 GeometryReader { geometry in
                     VStack {
-                        Text("settings_theme_themeTitle".localized())
-                            .foregroundStyle(Color(ResourcesAsset.Assets.baseFontColor.color))
+                        Text(localeService.localized(forKey: .settingsThemeTitle))
+                            .foregroundStyle(colorProvider.color(asset: .baseFontColor))
                             .font(.title2)
                             .fontWeight(.semibold)
                             .padding(.bottom, 40)
@@ -72,12 +74,12 @@ public struct SettingsThemeView: View {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
                                             .stroke(
-                                                store.isLightTheme ? Color(ResourcesAsset.Assets.baseFontColor.color) : Color.gray.opacity(0.3),
+                                                store.isLightTheme ? colorProvider.color(asset: .baseFontColor) : Color.gray.opacity(0.3),
                                                 lineWidth: store.isLightTheme ? 3 : 1
                                             )
                                             .frame(width: geometry.size.width * 0.35, height: geometry.size.height * 0.4)
                                         
-                                        Image(uiImage: ResourcesAsset.Assets.themeColor.image)
+                                        Image(uiImage: imageProvider.image(asset: .themeColor))
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: geometry.size.width * 0.33, height: geometry.size.height * 0.38)
@@ -99,12 +101,12 @@ public struct SettingsThemeView: View {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
                                             .stroke(
-                                                !store.isLightTheme ? Color(ResourcesAsset.Assets.baseFontColor.color) : Color.gray.opacity(0.3),
+                                                !store.isLightTheme ? colorProvider.color(asset: .baseFontColor) : Color.gray.opacity(0.3),
                                                 lineWidth: !store.isLightTheme ? 3 : 1
                                             )
                                             .frame(width: geometry.size.width * 0.35, height: geometry.size.height * 0.4)
 
-                                        Image(uiImage: ResourcesAsset.Assets.themeBlack.image)
+                                        Image(uiImage: imageProvider.image(asset: .themeBlack))
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: geometry.size.width * 0.33, height: geometry.size.height * 0.38)

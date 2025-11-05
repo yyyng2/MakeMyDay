@@ -2,7 +2,7 @@ import SwiftUI
 import Domain
 import UIComponents
 import Utilities
-import Resources
+import ComposableArchitecture
 
 public struct ScheduleEditView: View {
     @State private var title: String
@@ -11,6 +11,8 @@ public struct ScheduleEditView: View {
     @State private var showInCalendar: Bool
     @State private var showDatePicker: Bool = false
     @FocusState private var isTitleFocused: Bool
+    @Dependency(\.localeService) var localeService
+    @Dependency(\.colorProvider) var colorProvider
     
     private let schedule: Schedule
     private let onSave: (Schedule) -> Void
@@ -34,8 +36,8 @@ public struct ScheduleEditView: View {
     public var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("common_infomation".localized())) {
-                    TextField("common_title".localized(), text: $title)
+                Section(header: Text(localeService.localized(forKey: .commonInfomation))) {
+                    TextField(localeService.localized(forKey: .commonTitle), text: $title)
                         .focused($isTitleFocused)
                     
                     Button(action: {
@@ -44,7 +46,7 @@ public struct ScheduleEditView: View {
                         }
                     }) {
                         HStack {
-                            Text("schedule_date".localized())
+                            Text(localeService.localized(forKey: .scheduleDate))
                             Spacer()
                             VStack(alignment: .trailing) {
                                 Text(date.formattedYyyyMmDd())
@@ -57,21 +59,21 @@ public struct ScheduleEditView: View {
                     }
                 }
                 
-                Section(header: Text("common_options".localized())) {
-                    Toggle("schedule_repeatOption".localized(), isOn: $isWeeklyRepeat)
+                Section(header: Text(localeService.localized(forKey: .commonOptions))) {
+                    Toggle(localeService.localized(forKey: .scheduleRepeatOption), isOn: $isWeeklyRepeat)
                         .toggleStyle(SwitchToggleStyle(tint: .mint))
-                    Toggle("schedule_calendarOption".localized(), isOn: $showInCalendar)
+                    Toggle(localeService.localized(forKey: .scheduleCalendarOption), isOn: $showInCalendar)
                         .toggleStyle(SwitchToggleStyle(tint: .mint))
                 }
                 
                 Section {
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("schedule_unit".localized() + " " + "common_preview".localized())
+                        Text(localeService.localized(forKey: .scheduleUnit) + " " + localeService.localized(forKey: .commonPreview))
                             .font(.headline)
                         
                         HStack {
                             VStack(alignment: .leading, spacing: 4) {
-                                Text(title.isEmpty ? "common_titlePlaceholder".localized() : title)
+                                Text(title.isEmpty ? localeService.localized(forKey: .commonTitlePlaceholder) : title)
                                     .font(.title3)
                                     .fontWeight(.semibold)
                                     .foregroundColor(title.isEmpty ? .secondary : .primary)
@@ -91,7 +93,7 @@ public struct ScheduleEditView: View {
                                         Circle()
                                             .fill(showInCalendar ? Color.red : Color.gray.opacity(0.3))
                                             .frame(width: 8, height: 8)
-                                        Text("schedule_calendarOption".localized())
+                                        Text(localeService.localized(forKey: .scheduleCalendarOption))
                                             .font(.caption2)
                                             .foregroundColor(.secondary)
                                     }
@@ -99,7 +101,7 @@ public struct ScheduleEditView: View {
                                 
                                 HStack {
                                     if isWeeklyRepeat {
-                                        Label("schedule_repeatOption".localized(), systemImage: "repeat")
+                                        Label(localeService.localized(forKey: .scheduleRepeatOption), systemImage: "repeat")
                                             .font(.caption2)
                                             .foregroundColor(.orange)
                                             .padding(.horizontal, 6)
@@ -109,7 +111,7 @@ public struct ScheduleEditView: View {
                                     }
                                     
                                     if showInCalendar {
-                                        Label("schedule_calendarOption".localized(), systemImage: "calendar.badge.plus")
+                                        Label(localeService.localized(forKey: .scheduleCalendarOption), systemImage: "calendar.badge.plus")
                                             .font(.caption2)
                                             .foregroundColor(.green)
                                             .padding(.horizontal, 6)
@@ -138,17 +140,17 @@ public struct ScheduleEditView: View {
                     isTitleFocused = false
                 }
             })
-            .navigationTitle(schedule.title == "" ? "\("schedule_unit".localized()) \("common_add".localized())" : "\("schedule_unit".localized()) \("common_edit".localized())")
+            .navigationTitle(schedule.title == "" ? "\(localeService.localized(forKey: .scheduleUnit)) \(localeService.localized(forKey: .commonAdd))" : "\(localeService.localized(forKey: .scheduleUnit)) \(localeService.localized(forKey: .commonEdit))")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("common_cancel".localized()) {
+                    Button(localeService.localized(forKey: .commonCancel)) {
                         onCancel()
                     }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("common_save".localized()) {
+                    Button(localeService.localized(forKey: .commonSave)) {
                         let updatedSchedule = Schedule(
                             id: schedule.id,
                             title: title,
@@ -175,7 +177,10 @@ public struct ScheduleEditView: View {
                             withAnimation(.easeInOut(duration: 0.5)) {
                                 showDatePicker = false
                             }
-                        }
+                        },
+                        cancelButtonString: localeService.localized(forKey: .commonCancel),
+                        confirmButtonString: localeService.localized(forKey: .commonConfirm),
+                        backgroundColor: colorProvider.color(asset: .baseForeground),
                     )
                     .padding()
                 }

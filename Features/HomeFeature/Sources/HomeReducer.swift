@@ -1,7 +1,6 @@
 import SwiftUI
 import Core
 import Domain
-import Resources
 import Utilities
 import ComposableArchitecture
 
@@ -9,7 +8,7 @@ import ComposableArchitecture
 public struct HomeReducer {
     @ObservableState
     public struct State: Equatable {
-        public var currentImage: UIImage = ResourcesAsset.Assets.dIcon.image
+        public var currentImage: UIImage = UIImage()
         public var isUsingCustomImage: Bool = false
         public var userNickname: String = "D"
         public var welcomeMessage: String = "Welcome! :D"
@@ -43,6 +42,9 @@ public struct HomeReducer {
     
     @Dependency(\.userDefaultsClient) var userDefaultsClient
     @Dependency(\.appStorageRepository) var storage
+    @Dependency(\.localeService) var localeService
+    @Dependency(\.colorProvider) var colorProvider
+    @Dependency(\.imageProvider) var imageProvider
     @Dependency(\.scheduleRepository) var scheduleRepository
     @Dependency(\.ddayRepository) var ddayRepository
 //    @Dependency(\.locationService) var locationService
@@ -67,11 +69,11 @@ public struct HomeReducer {
                     state.currentImage = savedImage
                     state.isUsingCustomImage = true
                 } else {
-                    state.currentImage = ResourcesAsset.Assets.dIcon.image
+                    state.currentImage = imageProvider.image(asset: .dIcon)
                     state.isUsingCustomImage = false
                 }
                 
-                let welcomeMessages = ["home_welcome_nice".localized(), "home_welcome_wonderful".localized(), "home_welcome_lovely".localized()]
+                let welcomeMessages = [localeService.localized(forKey: .homeWelcomeNice), localeService.localized(forKey: .homeWelcomeWonderful), localeService.localized(forKey: .homeWelcomeLovely)]
                 state.welcomeMessage = welcomeMessages.randomElement() ?? "Welcome! :D"
                 
                 return .run { [scheduleRepository, ddayRepository] send in

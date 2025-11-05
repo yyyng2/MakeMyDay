@@ -8,13 +8,19 @@
 
 import Foundation
 import Domain
-import Utilities
+import Resources
 
 public final class LocaleServiceImpl: LocaleService {
     public init() {}
     
     public func localized(forKey key: LocaleKey) -> String {
-        return key.rawValue.localized()
+        return NSLocalizedString(
+            key.rawValue,
+            tableName: nil,
+            bundle: ResourcesResources.bundle,
+            value: key.rawValue,
+            comment: ""
+        )
     }
     
     public func getKeyByRawValue(rawValue: String) -> LocaleKey? {

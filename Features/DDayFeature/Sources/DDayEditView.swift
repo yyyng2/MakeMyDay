@@ -2,7 +2,7 @@ import SwiftUI
 import Domain
 import UIComponents
 import Utilities
-import Resources
+import ComposableArchitecture
 
 public struct DDayEditView: View {
     @State private var title: String
@@ -11,6 +11,8 @@ public struct DDayEditView: View {
     @State private var dayPlus: Bool
     @State private var showDatePicker: Bool = false
     @FocusState private var isTitleFocused: Bool
+    @Dependency(\.localeService) var localeService
+    @Dependency(\.colorProvider) var colorProvider
     
     private let dday: DDay
     private let onSave: (DDay) -> Void
@@ -34,8 +36,8 @@ public struct DDayEditView: View {
     public var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("common_infomation".localized())) {
-                    TextField("common_title".localized(), text: $title)
+                Section(header: Text(localeService.localized(forKey: .commonInfomation))) {
+                    TextField(localeService.localized(forKey: .commonTitle), text: $title)
                         .focused($isTitleFocused)
                     
                     Button(action: {
@@ -44,7 +46,7 @@ public struct DDayEditView: View {
                         }
                     }) {
                         HStack {
-                            Text("common_date".localized())
+                            Text(localeService.localized(forKey: .commonDate))
                             Spacer()
                             Text(date.formattedYyyyMmDd())
                                 .foregroundColor(.secondary)
@@ -52,24 +54,24 @@ public struct DDayEditView: View {
                     }
                 }
                 
-                Section(header: Text("common_options".localized())) {
-                    Toggle("dday_isAnniversary".localized() + "dday_isAnniversaryInfomation".localized(), isOn: $isAnniversary)
+                Section(header: Text(localeService.localized(forKey: .commonOptions))) {
+                    Toggle(localeService.localized(forKey: .ddayIsAnniversary) + localeService.localized(forKey: .ddayIsAnniversaryInfomation), isOn: $isAnniversary)
                         .toggleStyle(SwitchToggleStyle(tint: .mint))
                     
                     if !isAnniversary {
-                        Toggle("dday_countingDayOne".localized(), isOn: $dayPlus)
+                        Toggle(localeService.localized(forKey: .ddayCountingDayOne), isOn: $dayPlus)
                             .toggleStyle(SwitchToggleStyle(tint: .mint))
                     }
                 }
                 
                 Section {
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("D-Day" + "common_preview".localized())
+                        Text("D-Day" + localeService.localized(forKey: .commonPreview))
                             .font(.headline)
                         
                         HStack {
                             VStack(alignment: .leading, spacing: 8) {
-                                Text(title.isEmpty ? "common_titlePlaceholder".localized() : title)
+                                Text(title.isEmpty ? localeService.localized(forKey: .commonTitlePlaceholder) : title)
                                     .font(.title3)
                                     .fontWeight(.semibold)
                                     .foregroundColor(title.isEmpty ? .secondary : .primary)
@@ -92,7 +94,7 @@ public struct DDayEditView: View {
                                     
                                     ZStack {
                                         Circle()
-                                            .stroke(Color(ResourcesAsset.Assets.accentColor.color).opacity(0.3), lineWidth: 3)
+                                            .stroke(colorProvider.color(asset: .AccentColor).opacity(0.3), lineWidth: 3)
                                             .frame(width: 70, height: 70)
                                         
                                         VStack(spacing: 2) {
@@ -111,13 +113,13 @@ public struct DDayEditView: View {
                                                     .fontWeight(.bold)
                                             }
                                         }
-                                        .foregroundColor(Color(ResourcesAsset.Assets.accentColor.color))
+                                        .foregroundColor(colorProvider.color(asset: .AccentColor))
                                     }
                                 }
                                 
                                 HStack(spacing: 8) {
                                     if isAnniversary {
-                                        Label("dday_isAnniversary".localized(), systemImage: "repeat.circle.fill")
+                                        Label(localeService.localized(forKey: .ddayIsAnniversary), systemImage: "repeat.circle.fill")
                                             .font(.caption2)
                                             .foregroundColor(.green)
                                             .padding(.horizontal, 6)
@@ -158,17 +160,17 @@ public struct DDayEditView: View {
                     isTitleFocused = false
                 }
             })
-            .navigationTitle(dday.title == "" ? "D-Day " + "common_add".localized() : "D-Day " + "common_edit".localized())
+            .navigationTitle(dday.title == "" ? "D-Day " + localeService.localized(forKey: .commonAdd) : "D-Day " + localeService.localized(forKey: .commonEdit))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("common_cancel".localized()) {
+                    Button(localeService.localized(forKey: .commonCancel)) {
                         onCancel()
                     }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("common_save".localized()) {
+                    Button(localeService.localized(forKey: .commonSave)) {
                         let updatedDDay = DDay(
                             id: dday.id,
                             title: title,
@@ -195,7 +197,10 @@ public struct DDayEditView: View {
                             withAnimation(.easeInOut(duration: 0.5)) {
                                 showDatePicker = false
                             }
-                        }
+                        },
+                        cancelButtonString: localeService.localized(forKey: .commonCancel),
+                        confirmButtonString: localeService.localized(forKey: .commonConfirm),
+                        backgroundColor: colorProvider.color(asset: .baseForeground),
                     )
                     .padding()
                 }

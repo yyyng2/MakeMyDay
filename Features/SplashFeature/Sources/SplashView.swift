@@ -1,11 +1,12 @@
 import SwiftUI
-import Domain
-import Resources
 import Utilities
 import ComposableArchitecture
 
 public struct SplashView: View {
     let store: StoreOf<SplashReducer>
+    @Dependency(\.localeService) var localeService
+    @Dependency(\.colorProvider) var colorProvider
+    @Dependency(\.imageProvider) var imageProvider
     let onFinishSplash: () -> Void
     
     public init(store: StoreOf<SplashReducer>, onFinishSplash: @escaping () -> Void) {
@@ -16,10 +17,10 @@ public struct SplashView: View {
     public var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             ZStack {
-                ResourcesAsset.Assets.baseForeground.swiftUIColor.ignoresSafeArea()
+                colorProvider.color(asset: .baseForeground).ignoresSafeArea()
                 
                 VStack {
-                    Image(uiImage: ResourcesAsset.Assets.splashIcon.image)
+                    Image(uiImage: imageProvider.image(asset: .splashIcon))
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 200, height: 200)
@@ -27,24 +28,24 @@ public struct SplashView: View {
                         .opacity(viewStore.isCheckingVersion ? 1 : 0)
                     
                     Text("Make My Day")
-                        .foregroundStyle(ResourcesAsset.Assets.accentColor.swiftUIColor)
+                        .foregroundStyle(colorProvider.color(asset: .AccentColor))
                         .opacity(viewStore.isCheckingVersion ? 1 : 0)
                 }
                 .animation(.easeInOut(duration: 0.5), value: viewStore.isCheckingVersion)
             }
-            .alert("splash_update_title".localized(), isPresented: viewStore.binding(
+            .alert(localeService.localized(forKey: .splashUpdateTitle), isPresented: viewStore.binding(
                 get: \.showUpdateAlert,
                 send: { _ in .cancelUpdateTapped }
             )) {
-                Button("splash_update_confirm".localized()) {
+                Button(localeService.localized(forKey: .splashUpdateConfirm)) {
                     viewStore.send(.updateButtonTapped)
                 }
                 
-                Button("splash_update_cancel".localized(), role: .cancel) {
+                Button(localeService.localized(forKey: .splashUpdateCancel), role: .cancel) {
                     viewStore.send(.cancelUpdateTapped)
                 }
             } message: {
-                Text("splash_update_info".localized())
+                Text(localeService.localized(forKey: .splashUpdateInfo))
             }
             .onAppear {
                 viewStore.send(.onAppear)

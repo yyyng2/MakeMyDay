@@ -10,7 +10,6 @@ private let project = Project.makeModule(
         .project(target: "Domain", path: .relativeToRoot("Shared/Domain")),
         .project(target: "UIComponents", path: .relativeToRoot("Shared/UIComponents")),
         .project(target: "Utilities", path: .relativeToRoot("Shared/Utilities")),
-        .project(target: "Resources", path: .relativeToRoot("Shared/Resources")),
         .external(name: "ComposableArchitecture")
     ],
     needTest: false

@@ -2,13 +2,15 @@ import SwiftUI
 import Domain
 import UIComponents
 import Utilities
-import Resources
 import ComposableArchitecture
 
 public struct ScheduleView: View {
     @Bindable
     var store: StoreOf<ScheduleReducer>
     @Dependency(\.appStorageRepository) var storage
+    @Dependency(\.localeService) var localeService
+    @Dependency(\.colorProvider) var colorProvider
+    @Dependency(\.imageProvider) var imageProvider
     @State private var bannerAdHeight: Double = 60
     
     public init(store: StoreOf<ScheduleReducer>) {
@@ -50,10 +52,13 @@ public struct ScheduleView: View {
                                 },
                                 onNextYear: {
                                     store.send(.nextYear)
-                                }
+                                },
+                                calendarWeekdays: store.calendarWeekdays,
+                                baseForegroundColor: colorProvider.color(asset: .baseForeground),
+                                baseFontColor: colorProvider.color(asset: .baseFontColor)
                             )
                             //                            .frame(height: (geometry.size.height - bannerAdHeight) / 2)
-                            .background(Color(ResourcesAsset.Assets.baseForeground.swiftUIColor))
+                            .background(colorProvider.color(asset: .baseForeground))
                             .clipShape(.rect(cornerRadius: 10))
                             .padding(.horizontal, 10)
                             
@@ -86,7 +91,7 @@ public struct ScheduleView: View {
                                                 store.send(.editScheduleTapped(nil))
                                             } label: {
                                                 VStack(alignment: .center) {
-                                                    Text("schedule_empty".localized())
+                                                    Text(localeService.localized(forKey: .scheduleEmpty))
                                                         .font(.headline)
                                                         .lineLimit(1)
                                                     
@@ -103,7 +108,7 @@ public struct ScheduleView: View {
                                                 .frame(height: 50)
                                                 .frame(maxWidth: .infinity)
                                                 .background(
-                                                    Color(ResourcesAsset.Assets.baseForeground.swiftUIColor)
+                                                    colorProvider.color(asset: .baseForeground)
                                                 )
                                                 .clipShape(.rect(cornerRadius: 10))
                                             }
@@ -130,7 +135,7 @@ public struct ScheduleView: View {
                                                                         .font(.caption)
                                                                         .lineLimit(1)
                                                                     if item.isWeeklyRepeat {
-                                                                        Text("schedule_weekOption".localized())
+                                                                        Text(localeService.localized(forKey: .scheduleWeekOption))
                                                                             .foregroundStyle(.orange)
                                                                             .font(.caption2)
                                                                             .padding(.horizontal, 4)
@@ -141,14 +146,14 @@ public struct ScheduleView: View {
                                                             }
                                                             .frame(width: geometry.size.width - 40, height: 50)
                                                             .background(
-                                                                Color(ResourcesAsset.Assets.baseForeground.swiftUIColor)
+                                                                colorProvider.color(asset: .baseForeground)
                                                             )
                                                             .clipShape(.rect(cornerRadius: 10))
                                                             .contextMenu {
                                                                 Button {
                                                                     store.send(.deleteSchedule(item))
                                                                 } label: {
-                                                                    Label("common_delete".localized(), systemImage: "trash.circle")
+                                                                    Label(localeService.localized(forKey: .commonDelete), systemImage: "trash.circle")
                                                                         .tint(.red)
                                                                 }
                                                             }
@@ -181,7 +186,7 @@ public struct ScheduleView: View {
                         }
                     }
                     .background {
-                        Image(uiImage: ResourcesAsset.Assets.baseBackground.image)
+                        Image(uiImage: imageProvider.image(asset: .baseBackground))
                             .resizable()
                             .ignoresSafeArea()
                     }
@@ -202,6 +207,9 @@ public struct ScheduleView: View {
                             if store.isSearchPresented {
                                 SearchPopupView(
                                     searchText: $store.searchText.sending(\.searchTextChanged),
+                                    scheduleFindTitleString: localeService.localized(forKey: .scheduleFindTitle),
+                                    scheduleWeekOptionString: localeService.localized(forKey: .scheduleWeekOption),
+                                    baseForegroundColor: colorProvider.color(asset: .baseForeground),
                                     searchResults: store.searchResults,
                                     onResultSelected: { schedule in
                                         store.send(.searchResultSelected(schedule))
@@ -221,11 +229,17 @@ public struct ScheduleView: View {
                         FloatingButtonView(
                             buttonAction: { store.send(.searchButtonTapped) },
                             buttonImageName: "magnifyingglass",
+                            buttonImgaeTintColor: colorProvider.color(asset: .baseFontColor),
+                            buttonBackgroundColor: colorProvider.color(asset: .baseForeground),
+                            buttonBorderColor: colorProvider.color(asset: .baseBorder),
                             buttonBottomPadding: 90
                         )
                         
                         FloatingButtonView(
-                            buttonAction: { store.send(.editScheduleTapped(nil)) }
+                            buttonAction: { store.send(.editScheduleTapped(nil)) },
+                            buttonImgaeTintColor: colorProvider.color(asset: .baseFontColor),
+                            buttonBackgroundColor: colorProvider.color(asset: .baseForeground),
+                            buttonBorderColor: colorProvider.color(asset: .baseBorder)
                         )
                     }
                 )
@@ -255,9 +269,30 @@ public struct ScheduleView: View {
 
 public struct SearchPopupView: View {
     @Binding var searchText: String
+    let scheduleFindTitleString: String
+    let scheduleWeekOptionString: String
+    let baseForegroundColor: Color
     let searchResults: [Schedule]
     let onResultSelected: (Schedule) -> Void
     let onDismiss: () -> Void
+    
+    public init(
+        searchText: Binding<String>,
+        scheduleFindTitleString: String,
+        scheduleWeekOptionString: String,
+        baseForegroundColor: Color,
+        searchResults: [Schedule],
+        onResultSelected: @escaping (Schedule) -> Void,
+        onDismiss: @escaping () -> Void,
+    ) {
+        self._searchText = searchText
+        self.scheduleFindTitleString = scheduleFindTitleString
+        self.scheduleWeekOptionString = scheduleWeekOptionString
+        self.baseForegroundColor = baseForegroundColor
+        self.searchResults = searchResults
+        self.onResultSelected = onResultSelected
+        self.onDismiss = onDismiss
+    }
     
     public var body: some View {
         VStack(spacing: 0) {
@@ -265,7 +300,7 @@ public struct SearchPopupView: View {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.gray)
                 
-                TextField("schedule_findTitle".localized(), text: $searchText)
+                TextField(scheduleFindTitleString, text: $searchText)
                     .textFieldStyle(PlainTextFieldStyle())
                 
                 if !searchText.isEmpty {
@@ -276,7 +311,7 @@ public struct SearchPopupView: View {
                 }
             }
             .padding()
-            .background(Color(ResourcesAsset.Assets.baseForeground.swiftUIColor))
+            .background(baseForegroundColor)
             
             Divider()
             
@@ -297,7 +332,7 @@ public struct SearchPopupView: View {
                                         .font(.caption)
                                         .lineLimit(1)
                                     if schedule.isWeeklyRepeat {
-                                        Text("schedule_weekOption".localized())
+                                        Text(scheduleWeekOptionString)
                                             .foregroundStyle(.orange)
                                             .font(.caption2)
                                             .padding(.horizontal, 4)
@@ -307,7 +342,7 @@ public struct SearchPopupView: View {
                                 }
                             }
                             .frame(maxWidth: .infinity, minHeight: 50)
-                            .background(Color(ResourcesAsset.Assets.baseForeground.swiftUIColor))
+                            .background(baseForegroundColor)
                             .clipShape(.rect(cornerRadius: 10))
                         }
                         .buttonStyle(PlainButtonStyle())

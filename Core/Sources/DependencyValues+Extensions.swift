@@ -30,6 +30,21 @@ extension DependencyValues {
         set { self[AppStorageKeyRepositoryKey.self] = newValue }
     }
     
+    public var localeService: LocaleService {
+        get { self[LocaleServiceKey.self] }
+        set { self[LocaleServiceKey.self] = newValue }
+    }
+    
+    public var imageProvider: AssetImageProvider {
+        get { self[ImageProviderKey.self] }
+        set { self[ImageProviderKey.self] = newValue }
+    }
+
+    public var colorProvider: AssetColorProvider {
+        get { self[ColorProviderKey.self] }
+        set { self[ColorProviderKey.self] = newValue }
+    }
+    
 //    public var weatherService: WeatherServiceProtocol {
 //        get { self[WeatherServiceKey.self] }
 //        set { self[WeatherServiceKey.self] = newValue }
@@ -73,6 +88,24 @@ private enum AppVersionServiceKey: DependencyKey {
     static let liveValue: AppVersionService = AppVersionServiceImpl()
     
     static let testValue: AppVersionService = MockAppVersionServiceImpl()
+}
+
+public enum LocaleServiceKey: DependencyKey {
+    public static let liveValue: LocaleService = LocaleServiceImpl()
+    
+    public static let testValue: LocaleService = MockLocaleServiceImpl()
+}
+
+public enum ImageProviderKey: DependencyKey {
+    public static let liveValue: AssetImageProvider = AssetImageProviderImpl()
+    
+    public static let testValue: AssetImageProvider = MockAssetImageProviderImpl()
+}
+
+public enum ColorProviderKey: DependencyKey {
+    public static let liveValue: AssetColorProvider = AssetColorProviderImpl()
+    
+    public static let testValue: AssetColorProvider = MockAssetColorProviderImpl()
 }
 
 //private enum WeatherServiceKey: DependencyKey {

@@ -1,12 +1,14 @@
 import SwiftUI
 import Utilities
-import Resources
 import ComposableArchitecture
 
 public struct SettingsView: View {
     @Bindable
     var store: StoreOf<SettingsReducer>
     @Dependency(\.appStorageRepository) var storage
+    @Dependency(\.localeService) var localeService
+    @Dependency(\.colorProvider) var colorProvider
+    @Dependency(\.imageProvider) var imageProvider
     @State private var bannerAdHeight: Double = 60
     
     public init(store: StoreOf<SettingsReducer>) {
@@ -33,12 +35,20 @@ public struct SettingsView: View {
                                     store.send(.pushProfile)
                                 case .theme:
                                     store.send(.pushTheme)
-                                    //                                case .openSource:
-                                    //                                    store.send(.pushOpenSource)
                                 }
                             } label: {
-                                Text(menuItem.rawValue.localized())
-                                    .foregroundStyle(ResourcesAsset.Assets.baseFontColor.swiftUIColor)
+                                switch menuItem {
+                                case .appInfo:
+                                    Text(localeService.localized(forKey: .settingsMenuAppInfo))
+                                        .foregroundStyle(colorProvider.color(asset: .baseFontColor))
+                                case .profile:
+                                    Text(localeService.localized(forKey: .settingsMenuProfile))
+                                        .foregroundStyle(colorProvider.color(asset: .baseFontColor))
+                                case .theme:
+                                    Text(localeService.localized(forKey: .settingsMenuTheme))
+                                        .foregroundStyle(colorProvider.color(asset: .baseFontColor))
+                                }
+                               
                             }
                         }
                     }
@@ -66,7 +76,7 @@ public struct SettingsView: View {
             .presentationBackground(.clear)
             .backgroundStyle(.clear)
             .background {
-                Image(uiImage: ResourcesAsset.Assets.baseBackground.image)
+                Image(uiImage: imageProvider.image(asset: .baseBackground))
                     .resizable()
                     .ignoresSafeArea()
             }

@@ -1,6 +1,5 @@
 import SwiftUI
 import Core
-import Data
 import Domain
 import SplashFeature
 import MainTabBarFeature

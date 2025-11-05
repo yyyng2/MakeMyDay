@@ -18,6 +18,8 @@ public struct ScheduleReducer {
         public var searchText: String = ""
         public var searchResults: [Schedule] = []
         
+        public var calendarWeekdays: [String] = []
+        
         public init(
             schedules: [Schedule] = [],
             isLoading: Bool = false,
@@ -62,6 +64,7 @@ public struct ScheduleReducer {
     
     @Dependency(\.scheduleRepository) var scheduleRepository
     @Dependency(\.appStorageRepository) var storage
+    @Dependency(\.localeService) var localeService
     
     public init() {}
     
@@ -70,6 +73,15 @@ public struct ScheduleReducer {
             switch action {
             case .onAppear:
                 state.isLoading = true
+                state.calendarWeekdays = [
+                    localeService.localized(forKey: .calendarSunday),
+                    localeService.localized(forKey: .calendarMonday),
+                    localeService.localized(forKey: .calendarTuesday),
+                    localeService.localized(forKey: .calendarWednesday),
+                    localeService.localized(forKey: .calendarThursday),
+                    localeService.localized(forKey: .calendarFriday),
+                    localeService.localized(forKey: .calendarSaturday)
+                ]
                 
                 return .run { [scheduleRepository] send in
                     await MainActor.run {

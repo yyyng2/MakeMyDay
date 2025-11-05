@@ -9,13 +9,15 @@
 import SwiftUI
 import PhotosUI
 import Utilities
-import Resources
 import ComposableArchitecture
 
 public struct SettingsProfileView: View {
     @Bindable
     public var store: StoreOf<SettingsProfileReducer>
     @Dependency(\.appStorageRepository) var storage
+    @Dependency(\.localeService) var localeService
+    @Dependency(\.colorProvider) var colorProvider
+    @Dependency(\.imageProvider) var imageProvider
     @State private var bannerAdHeight: Double = 60
     
     public init(store: StoreOf<SettingsProfileReducer>) {
@@ -26,7 +28,7 @@ public struct SettingsProfileView: View {
     public var body: some View {
         ZStack {
             Color(.clear)
-            Image(uiImage: ResourcesAsset.Assets.baseBackground.image)
+            Image(uiImage: imageProvider.image(asset: .baseBackground))
                 .resizable()
                 .ignoresSafeArea(.all)
             
@@ -40,7 +42,7 @@ public struct SettingsProfileView: View {
                     } label: {
                         Image(systemName: "chevron.left")
                         Text("Settings")
-                            .foregroundStyle(Color(ResourcesAsset.Assets.baseFontColor.color))
+                            .foregroundStyle(colorProvider.color(asset: .baseFontColor))
                     }
                     .padding(.leading, 20)
                     
@@ -49,8 +51,8 @@ public struct SettingsProfileView: View {
                     Button {
                         store.send(.saveButtonTapped)
                     } label: {
-                        Text("common_save".localized())
-                            .foregroundStyle(store.hasChanges ? Color(ResourcesAsset.Assets.baseFontColor.color) : .gray)
+                        Text(localeService.localized(forKey: .commonSave))
+                            .foregroundStyle(store.hasChanges ? colorProvider.color(asset: .baseFontColor) : .gray)
                     }
                     .padding(.trailing, 20)
                     .disabled(!store.hasChanges)
@@ -59,8 +61,8 @@ public struct SettingsProfileView: View {
                 
                 GeometryReader { geometry in
                     VStack(spacing: 30) {
-                        Text("settings_profile_image".localized())
-                            .foregroundStyle(Color(ResourcesAsset.Assets.baseFontColor.color))
+                        Text(localeService.localized(forKey: .settingsProfileImage))
+                            .foregroundStyle(colorProvider.color(asset: .baseFontColor))
                             .font(.title2)
                             .fontWeight(.semibold)
                         
@@ -69,7 +71,7 @@ public struct SettingsProfileView: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 150, height: 150)
                             .clipShape(Circle())
-                            .overlay(Circle().stroke(Color(ResourcesAsset.Assets.baseFontColor.color), lineWidth: 2))
+                            .overlay(Circle().stroke(colorProvider.color(asset: .baseFontColor), lineWidth: 1))
                         
                         VStack(spacing: 16) {
                             TextField(store.previousNickname, text: Binding(
@@ -82,28 +84,28 @@ public struct SettingsProfileView: View {
                             Button {
                                 store.send(.loadImageButtonTapped)
                             } label: {
-                                Text("settings_profile_load".localized())
+                                Text(localeService.localized(forKey: .settingsProfileLoad))
                                     .foregroundStyle(.white)
                                     .frame(width: 200, height: 44)
                                     .background(.mint)
                                     .cornerRadius(10)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color(ResourcesAsset.Assets.baseFontColor.color), lineWidth: 1)
+                                            .stroke(colorProvider.color(asset: .baseFontColor), lineWidth: 1)
                                     )
                             }
                             
                             Button {
                                 store.send(.resetButtonTapped)
                             } label: {
-                                Text("settings_profile_reset".localized())
-                                    .foregroundStyle(Color(ResourcesAsset.Assets.baseFontColor.color))
+                                Text(localeService.localized(forKey: .settingsProfileReset))
+                                    .foregroundStyle(colorProvider.color(asset: .baseFontColor))
                                     .frame(width: 200, height: 44)
                                     .background(.red)
                                     .cornerRadius(10)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color(ResourcesAsset.Assets.baseFontColor.color), lineWidth: 1)
+                                            .stroke(colorProvider.color(asset: .baseFontColor), lineWidth: 1)
                                     )
                             }
                         }

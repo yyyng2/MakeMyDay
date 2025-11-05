@@ -9,7 +9,6 @@
 import SwiftUI
 import PhotosUI
 import Domain
-import Resources
 import Utilities
 import ComposableArchitecture
 
@@ -17,7 +16,7 @@ import ComposableArchitecture
 public struct SettingsProfileReducer {
     @ObservableState
     public struct State: Equatable {
-        public var currentImage: UIImage = ResourcesAsset.Assets.dIcon.image
+        public var currentImage: UIImage = UIImage()
         public var hasChanges: Bool = false
         public var showImagePicker: Bool = false
         public var selectedPhoto: PhotosPickerItem? = nil
@@ -43,6 +42,7 @@ public struct SettingsProfileReducer {
     @Dependency(\.dismiss) var dismiss
     @Dependency(\.userDefaultsClient) var userDefaultsClient
     @Dependency(\.appStorageRepository) var storage
+    @Dependency(\.imageProvider) var imageProvider
     
     public init() {}
     
@@ -76,7 +76,7 @@ public struct SettingsProfileReducer {
                 return .none
                 
             case .resetButtonTapped:
-                state.currentImage = ResourcesAsset.Assets.dIcon.image
+                state.currentImage = imageProvider.image(asset: .dIcon)
                 state.isUsingCustomImage = false
                 state.nickname = "D"
                 state.hasChanges = true
@@ -88,10 +88,6 @@ public struct SettingsProfileReducer {
                 
                 return .run { send in
                     do {
-//                        if let data = try await photo.loadTransferable(type: Data.self),
-//                           let uiImage = UIImage(data: data) {
-//                            await send(.imageLoaded(uiImage))
-//                        }
                         if let data = try await photo.loadTransferable(type: Data.self) {
                             if let originalImage = UIImage(data: data) {
                                 let resizedImage = originalImage.resizedWithAspectRatio(maxSize: 100)
@@ -135,7 +131,7 @@ public struct SettingsProfileReducer {
                     state.currentImage = savedImage
                     state.isUsingCustomImage = true
                 } else {
-                    state.currentImage = ResourcesAsset.Assets.dIcon.image
+                    state.currentImage = imageProvider.image(asset: .dIcon)
                     state.isUsingCustomImage = false
                 }
                 return .none

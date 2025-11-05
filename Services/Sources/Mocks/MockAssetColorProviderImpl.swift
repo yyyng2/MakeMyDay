@@ -6,4 +6,19 @@
 //  Copyright © 2025 MakeMyDay. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
+import Domain
+
+public final class MockAssetColorProviderImpl: AssetColorProvider {
+    public var stubbedColors: [AssetColor: Color] = [:]
+    
+    public init() {}
+
+    public func color(asset: AssetColor) -> Color {
+        if let stubbedColor = stubbedColors[asset] {
+            return stubbedColor
+        }
+        
+        return Color.white
+    }
+}

@@ -7,10 +7,17 @@
 //
 
 import SwiftUI
-import Resources
 
 public struct HoverRoundedRectangleView: View {
-    public init () {}
+    public var backgroundColor: Color
+    public var borderColor: Color
+    public init (
+        backgroundColor: Color,
+        borderColor: Color
+    ) {
+        self.backgroundColor = backgroundColor
+        self.borderColor = borderColor
+    }
     public var body: some View {
         if #available(iOS 26.0, *) {
             RoundedRectangle(cornerRadius: 10)
@@ -18,8 +25,10 @@ public struct HoverRoundedRectangleView: View {
                 .frame(width: 50, height: 50)
         } else {
             RoundedRectangle(cornerRadius: 10)
-                .fill(ResourcesAsset.Assets.baseForeground.swiftUIColor)
-                .strokeBorder(ResourcesAsset.Assets.baseBorder.swiftUIColor, lineWidth: 1)
+//                .fill(ResourcesAsset.Assets.baseForeground.swiftUIColor)
+                .fill(backgroundColor)
+                .strokeBorder(borderColor, lineWidth: 1)
+//                .strokeBorder(ResourcesAsset.Assets.baseBorder.swiftUIColor, lineWidth: 1)
                 .frame(width: 50, height: 50)
         }
     }

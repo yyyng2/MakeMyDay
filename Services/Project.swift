@@ -7,6 +7,7 @@ private let project = Project.makeModule(
     sources: ["Sources/**"],
     dependencies: [
         .project(target: "Domain", path: .relativeToRoot("Shared/Domain")),
+        .project(target: "Resources", path: .relativeToRoot("Shared/Resources")),
     ],
     needTest: false
 )

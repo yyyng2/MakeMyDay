@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Resources
 import UIComponents
 import ComposableArchitecture
 
@@ -15,6 +14,7 @@ public struct SettingsAppInfoView: View {
     @Bindable
     public var store: StoreOf<SettingsAppInfoReducer>
     @Dependency(\.appStorageRepository) var storage
+    @Dependency(\.imageProvider) var imageProvider
     @State private var bannerAdHeight: Double = 60
     
     public init(store: StoreOf<SettingsAppInfoReducer>) {
@@ -25,7 +25,7 @@ public struct SettingsAppInfoView: View {
     public var body: some View {
         ZStack {
             Color(.clear)
-            Image(uiImage: ResourcesAsset.Assets.baseBackground.image)
+            Image(uiImage: imageProvider.image(asset: .baseBackground))
                 .resizable()
                 .ignoresSafeArea(.all)
             
@@ -45,7 +45,7 @@ public struct SettingsAppInfoView: View {
                 }
                 .frame(height: 200)
                 
-                Image(uiImage: ResourcesAsset.Assets.dIcon.image)
+                Image(uiImage: imageProvider.image(asset: .dIcon))
                     .resizable()
                     .scaledToFit()
                     .frame(height: 200)

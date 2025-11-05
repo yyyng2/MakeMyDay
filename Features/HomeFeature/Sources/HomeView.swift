@@ -1,15 +1,16 @@
 import SwiftUI
-import Data
 import Domain
 import UIComponents
 import Utilities
-import Resources
 import ComposableArchitecture
 
 public struct HomeView: View {
     @Bindable
     var store: StoreOf<HomeReducer>
     @Dependency(\.appStorageRepository) var storage
+    @Dependency(\.localeService) var localeService
+    @Dependency(\.colorProvider) var colorProvider
+    @Dependency(\.imageProvider) var imageProvider
     @State private var bannerAdHeight: Double = 60
     @FocusState private var isTextFieldFocused: Bool
     @State private var scrollProxy: ScrollViewProxy?
@@ -39,6 +40,8 @@ public struct HomeView: View {
                                             message: store.welcomeMessage,
                                             messageType: .systemMessage,
                                             item: nil,
+                                            backgroundColor: colorProvider.color(asset: .baseForeground),
+                                            circleStrokeColor: colorProvider.color(asset: .baseFontColor),
                                             store: store
                                         )
                                         
@@ -46,9 +49,11 @@ public struct HomeView: View {
                                             ChatBubbleView(
                                                 profileImage: store.currentImage,
                                                 userNickname: store.userNickname,
-                                                message: "home_schedule_exist".localized(),
+                                                message: localeService.localized(forKey: .homeScheduleExist),
                                                 messageType: .systemMessage,
                                                 item: nil,
+                                                backgroundColor: colorProvider.color(asset: .baseForeground),
+                                                circleStrokeColor: colorProvider.color(asset: .baseFontColor),
                                                 store: store
                                             )
                                             
@@ -58,7 +63,10 @@ public struct HomeView: View {
                                                     userNickname: store.userNickname,
                                                     message: "",
                                                     messageType: .schedule,
+                                                    scheduleWeekOptionString: localeService.localized(forKey: .scheduleWeekOption),
                                                     item: schedule,
+                                                    backgroundColor: colorProvider.color(asset: .baseForeground),
+                                                    circleStrokeColor: colorProvider.color(asset: .baseFontColor),
                                                     store: store
                                                 )
                                             }
@@ -66,9 +74,11 @@ public struct HomeView: View {
                                             ChatBubbleView(
                                                 profileImage: store.currentImage,
                                                 userNickname: store.userNickname,
-                                                message: "home_schedule_none".localized(),
+                                                message: localeService.localized(forKey: .homeScheduleNone),
                                                 messageType: .systemMessage,
                                                 item: nil,
+                                                backgroundColor: colorProvider.color(asset: .baseForeground),
+                                                circleStrokeColor: colorProvider.color(asset: .baseFontColor),
                                                 store: store
                                             )
                                         }
@@ -77,9 +87,11 @@ public struct HomeView: View {
                                             ChatBubbleView(
                                                 profileImage: store.currentImage,
                                                 userNickname: store.userNickname,
-                                                message: "home_dday_exist".localized(),
+                                                message: localeService.localized(forKey: .homeDdayExist),
                                                 messageType: .systemMessage,
                                                 item: nil,
+                                                backgroundColor: colorProvider.color(asset: .baseForeground),
+                                                circleStrokeColor: colorProvider.color(asset: .baseFontColor),
                                                 store: store
                                             )
                                             
@@ -90,6 +102,8 @@ public struct HomeView: View {
                                                     message: "",
                                                     messageType: .dday,
                                                     item: dday,
+                                                    backgroundColor: colorProvider.color(asset: .baseForeground),
+                                                    circleStrokeColor: colorProvider.color(asset: .baseFontColor),
                                                     store: store
                                                 )
                                             }
@@ -97,9 +111,11 @@ public struct HomeView: View {
                                             ChatBubbleView(
                                                 profileImage: store.currentImage,
                                                 userNickname: store.userNickname,
-                                                message: "home_dday_none".localized(),
+                                                message: localeService.localized(forKey: .homeDdayNone),
                                                 messageType: .systemMessage,
                                                 item: nil,
+                                                backgroundColor: colorProvider.color(asset: .baseForeground),
+                                                circleStrokeColor: colorProvider.color(asset: .baseFontColor),
                                                 store: store
                                             )
                                         }
@@ -111,6 +127,8 @@ public struct HomeView: View {
                                                 message: "지금 날씨 어때?",
                                                 messageType: .userMessage,
                                                 item: nil,
+                                                backgroundColor: colorProvider.color(asset: .baseForeground),
+                                                circleStrokeColor: colorProvider.color(asset: .baseFontColor),
                                                 store: store
                                             )
                                             
@@ -120,6 +138,8 @@ public struct HomeView: View {
                                                 message: "오늘의 날씨를 알려드릴게요.",
                                                 messageType: .systemMessage,
                                                 item: nil,
+                                                backgroundColor: colorProvider.color(asset: .baseForeground),
+                                                circleStrokeColor: colorProvider.color(asset: .baseFontColor),
                                                 store: store
                                             )
                                             
@@ -130,6 +150,8 @@ public struct HomeView: View {
                                                     message: "최저 \(Int(weather.minTemp))°C, 최고 \(Int(weather.maxTemp))°C",
                                                     messageType: .weather,
                                                     item: nil,
+                                                    backgroundColor: colorProvider.color(asset: .baseForeground),
+                                                    circleStrokeColor: colorProvider.color(asset: .baseFontColor),
                                                     store: store
                                                 )
                                                 
@@ -139,6 +161,8 @@ public struct HomeView: View {
                                                     message: "오늘 하루 \(weather.condition) 날씨가 예상됩니다.",
                                                     messageType: .weather,
                                                     item: nil,
+                                                    backgroundColor: colorProvider.color(asset: .baseForeground),
+                                                    circleStrokeColor: colorProvider.color(asset: .baseFontColor),
                                                     store: store
                                                 )
                                             }
@@ -151,6 +175,8 @@ public struct HomeView: View {
                                                 message: message.text,
                                                 messageType: message.isUser ? .userMessage : .systemMessage,
                                                 item: nil,
+                                                backgroundColor: colorProvider.color(asset: .baseForeground),
+                                                circleStrokeColor: colorProvider.color(asset: .baseFontColor),
                                                 store: store
                                             )
                                         }
@@ -180,7 +206,7 @@ public struct HomeView: View {
                         }
                     }
                     .background {
-                        Image(uiImage: ResourcesAsset.Assets.baseBackground.image)
+                        Image(uiImage: imageProvider.image(asset: .baseBackground))
                             .resizable()
                             .ignoresSafeArea()
                     }
@@ -300,20 +326,29 @@ struct ChatBubbleView: View {
     let userNickname: String
     let message: String
     let messageType: MessageType
+    let scheduleWeekOptionString: String
     let item: Any?
+    let backgroundColor: Color
+    let circleStrokeColor: Color
     @State private var store: StoreOf<HomeReducer>
     
     init(profileImage: UIImage?,
          userNickname: String,
          message: String,
          messageType: MessageType,
+         scheduleWeekOptionString: String = "",
          item: Any? = nil,
+         backgroundColor: Color,
+         circleStrokeColor: Color,
          store: StoreOf<HomeReducer>) {
         self.profileImage = profileImage
         self.userNickname = userNickname
         self.message = message
         self.messageType = messageType
+        self.scheduleWeekOptionString = scheduleWeekOptionString
         self.item = item
+        self.backgroundColor = backgroundColor
+        self.circleStrokeColor = circleStrokeColor
         self._store = State(initialValue: store)
     }
     
@@ -323,16 +358,14 @@ struct ChatBubbleView: View {
         case .userMessage, .systemMessage:
             Text(message)
                 .padding(12)
-                .background(
-                    Color(ResourcesAsset.Assets.baseForeground.swiftUIColor)
-                )
+                .background(backgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: 15))
                 .frame(maxWidth: 250, alignment: messageType == .userMessage ? .trailing : .leading)
             
         case .weather:
             Text(message)
                 .padding(12)
-                .background(Color(ResourcesAsset.Assets.baseForeground.swiftUIColor))
+                .background(backgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: 15))
                 .frame(maxWidth: 250, alignment: .leading)
             
@@ -351,7 +384,7 @@ struct ChatBubbleView: View {
                             .font(.caption)
                             .lineLimit(1)
                         if schedule.isWeeklyRepeat {
-                            Text("schedule_weekOption".localized())
+                            Text(scheduleWeekOptionString)
                                 .foregroundStyle(.orange)
                                 .font(.caption2)
                                 .padding(.horizontal, 4)
@@ -362,7 +395,7 @@ struct ChatBubbleView: View {
                 }
                 .padding(12)
                 .frame(maxWidth: 250)
-                .background(Color(ResourcesAsset.Assets.baseForeground.swiftUIColor))
+                .background(backgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: 15))
             }
             
@@ -388,7 +421,7 @@ struct ChatBubbleView: View {
                 }
                 .padding(12)
                 .frame(maxWidth: 250)
-                .background(Color(ResourcesAsset.Assets.baseForeground.swiftUIColor))
+                .background(backgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: 15))
             }
         }
@@ -405,7 +438,7 @@ struct ChatBubbleView: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 45, height: 45)
                             .clipShape(Circle())
-                            .overlay(Circle().stroke(Color(ResourcesAsset.Assets.baseFontColor.color), lineWidth: 2))
+                            .overlay(Circle().stroke(circleStrokeColor, lineWidth: 1))
                         
                         Text(userNickname)
                             .font(.caption)
@@ -428,8 +461,6 @@ struct ChatBubbleView: View {
                 Spacer()
                 messageContent
             }
-            
-            
         }
     }
 }

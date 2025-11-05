@@ -7,20 +7,28 @@
 //
 
 import SwiftUI
-import Resources
 
 public struct FloatingButtonView: View {
     public var buttonAction: () -> ()
     public var buttonImageName: String
+    public var buttonImgaeTintColor: Color
+    public var buttonBackgroundColor: Color
+    public var buttonBorderColor: Color
     public var buttonBottomPadding: CGFloat
     
     public init(
         buttonAction: @escaping () -> Void,
         buttonImageName: String = "square.and.pencil",
+        buttonImgaeTintColor: Color,
+        buttonBackgroundColor: Color,
+        buttonBorderColor: Color,
         buttonBottomPadding: CGFloat = 12
     ) {
         self.buttonAction = buttonAction
         self.buttonImageName = buttonImageName
+        self.buttonImgaeTintColor = buttonImgaeTintColor
+        self.buttonBackgroundColor = buttonBackgroundColor
+        self.buttonBorderColor = buttonBorderColor
         self.buttonBottomPadding = buttonBottomPadding
     }
     
@@ -36,9 +44,12 @@ public struct FloatingButtonView: View {
                         },
                         label: {
                             ZStack {
-                                HoverRoundedRectangleView()
+                                HoverRoundedRectangleView(
+                                    backgroundColor: buttonBackgroundColor,
+                                    borderColor: buttonBorderColor
+                                )
                                 Image(systemName: buttonImageName)
-                                    .tint(Color(ResourcesAsset.Assets.baseFontColor.color))
+                                    .tint(buttonImgaeTintColor)
                             }
                         }
                     )
@@ -50,9 +61,12 @@ public struct FloatingButtonView: View {
                         },
                         label: {
                             ZStack {
-                                HoverRoundedRectangleView()
+                                HoverRoundedRectangleView(
+                                    backgroundColor: buttonBackgroundColor,
+                                    borderColor: buttonBorderColor
+                                )
                                 Image(systemName: buttonImageName)
-                                    .tint(Color(ResourcesAsset.Assets.baseFontColor.color))
+                                    .tint(buttonImgaeTintColor)
                             }
                         }
                     )

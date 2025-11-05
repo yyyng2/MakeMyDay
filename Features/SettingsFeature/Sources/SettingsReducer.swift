@@ -3,10 +3,10 @@ import ComposableArchitecture
 
 @Reducer
 public struct SettingsReducer {
-    public enum MenuItem: String, CaseIterable {
-        case appInfo = "settings_menu_appInfo"
-        case profile = "settings_menu_profile"
-        case theme = "settings_menu_theme"
+    public enum MenuItem: CaseIterable {
+        case appInfo
+        case profile
+        case theme
     }
     
     @Reducer

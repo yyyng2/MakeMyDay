@@ -1,7 +1,6 @@
 import SwiftUI
 import Domain
 import Utilities
-import Resources
 
 public struct CalendarView: View {
     public let currentDate: Date
@@ -12,6 +11,9 @@ public struct CalendarView: View {
     public let onNextMonth: () -> Void
     public let onPreviousYear: () -> Void
     public let onNextYear: () -> Void
+    public let calendarWeekdays: [String]
+    public let baseForegroundColor: Color
+    public let baseFontColor: Color
     
     public let calendar = Calendar.current
     public let dateFormatter: DateFormatter = {
@@ -30,7 +32,10 @@ public struct CalendarView: View {
         onPreviousMonth: @escaping () -> Void,
         onNextMonth: @escaping () -> Void,
         onPreviousYear: @escaping () -> Void,
-        onNextYear: @escaping () -> Void
+        onNextYear: @escaping () -> Void,
+        calendarWeekdays: [String],
+        baseForegroundColor: Color,
+        baseFontColor: Color
     ) {
         self.currentDate = currentDate
         self.selectedDate = selectedDate
@@ -40,6 +45,9 @@ public struct CalendarView: View {
         self.onNextMonth = onNextMonth
         self.onPreviousYear = onPreviousYear
         self.onNextYear = onNextYear
+        self.calendarWeekdays = calendarWeekdays
+        self.baseForegroundColor = baseForegroundColor
+        self.baseFontColor = baseFontColor
     }
     
     public var body: some View {
@@ -80,7 +88,7 @@ public struct CalendarView: View {
             .padding(.horizontal)
             
             HStack {
-                ForEach(Array(["calendar_sunday".localized(), "calendar_monday".localized(), "calendar_tuesday".localized(), "calendar_wednesday".localized(), "calendar_thursday".localized(), "calendar_friday".localized(), "calendar_saturday".localized()].enumerated()), id: \.offset) { index, day in
+                ForEach(Array(calendarWeekdays.enumerated()), id: \.offset) { index, day in
                     Text(day)
                         .font(.caption)
                         .fontWeight(.medium)
@@ -97,7 +105,7 @@ public struct CalendarView: View {
                                 .font(.system(size: 16))
                                 .fontWeight(calendar.isDate(date, inSameDayAs: selectedDate) ? .bold : .regular)
                                 .foregroundColor(
-                                    calendar.isDate(date, inSameDayAs: selectedDate) ? Color(ResourcesAsset.Assets.baseForeground.color) :
+                                    calendar.isDate(date, inSameDayAs: selectedDate) ? baseForegroundColor :
                                     calendar.isDate(date, equalTo: currentDate, toGranularity: .month) ? .primary : .secondary
                                 )
                                 .frame(width: 30, height: 30)
@@ -130,7 +138,7 @@ public struct CalendarView: View {
             }) {
                 Image(systemName: isWeekMode ? "chevron.down" : "chevron.up")
                     .font(.headline)
-                    .foregroundColor(Color(ResourcesAsset.Assets.baseFontColor.color))
+                    .foregroundColor(baseFontColor)
                     .frame(maxWidth: .infinity)
                     .contentShape(Rectangle())
             }

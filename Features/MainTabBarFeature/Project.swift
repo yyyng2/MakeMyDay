@@ -12,7 +12,6 @@ private let project = Project.makeModule(
         .project(target: "ScheduleFeature", path: .relativeToRoot("Features/ScheduleFeature")),
         .project(target: "DDayFeature", path: .relativeToRoot("Features/DDayFeature")),
         .project(target: "SettingsFeature", path: .relativeToRoot("Features/SettingsFeature")),
-        .project(target: "Resources", path: .relativeToRoot("Shared/Resources")),
         .external(name: "ComposableArchitecture"),
     ],
     needTest: false
