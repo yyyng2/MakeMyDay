@@ -56,15 +56,15 @@ public struct HomeReducer {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                let isCustom = userDefaultsClient.getBool(UserDefaultsKey.isUsingCustomImage)
-                var nickname = userDefaultsClient.getString(UserDefaultsKey.userNickname)
+                let isCustom = userDefaultsClient.getBool(.isUsingCustomImage)
+                var nickname = userDefaultsClient.getString(.userNickname)
                 if nickname == "" {
                     nickname = "D"
                 }
                 state.userNickname = nickname
                 
                 if isCustom,
-                   let imageData = userDefaultsClient.getData(UserDefaultsKey.userProfileImage),
+                   let imageData = userDefaultsClient.getData(.userProfileImage),
                    let savedImage = UIImage(data: imageData) {
                     state.currentImage = savedImage
                     state.isUsingCustomImage = true

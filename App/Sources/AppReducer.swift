@@ -1,6 +1,5 @@
 import SwiftUI
 import Core
-import Domain
 import SplashFeature
 import MainTabBarFeature
 import ComposableArchitecture
@@ -57,7 +56,7 @@ struct AppReducer {
                 return .none
                 
             case .onAppear:
-                state.isLightTheme = userDefaultsClient.getBool(UserDefaultsKey.isLightTheme)
+                state.isLightTheme = userDefaultsClient.getBool(.isLightTheme)
                 
                 let scenes = UIApplication.shared.connectedScenes
                 let windowScene = scenes.first as? UIWindowScene

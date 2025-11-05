@@ -129,7 +129,6 @@ private let project = Project(
                 .project(target: "SplashFeature", path: .relativeToRoot("Features/SplashFeature")),
                 .project(target: "MainTabBarFeature", path: .relativeToRoot("Features/MainTabBarFeature")),
                 .project(target: "Core", path: .relativeToRoot("Core")),
-                .project(target: "Domain", path: .relativeToRoot("Shared/Domain")),
                 .external(name: "ComposableArchitecture"),
                 .external(name: "GoogleMobileAds"),
                 .external(name: "FirebaseAnalytics"),

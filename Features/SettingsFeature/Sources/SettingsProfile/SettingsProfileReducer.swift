@@ -8,7 +8,6 @@
 
 import SwiftUI
 import PhotosUI
-import Domain
 import Utilities
 import ComposableArchitecture
 
@@ -55,15 +54,15 @@ public struct SettingsProfileReducer {
                 }
                 
             case .saveButtonTapped:
-                userDefaultsClient.setBool(UserDefaultsKey.isUsingCustomImage, state.isUsingCustomImage)
-                userDefaultsClient.setString(UserDefaultsKey.userNickname, state.nickname)
+                userDefaultsClient.setBool(.isUsingCustomImage, state.isUsingCustomImage)
+                userDefaultsClient.setString(.userNickname, state.nickname)
                 
                 if state.isUsingCustomImage {
                     if let imageData = state.currentImage.pngData() {
-                        userDefaultsClient.setData(UserDefaultsKey.userProfileImage, imageData)
+                        userDefaultsClient.setData(.userProfileImage, imageData)
                     }
                 } else {
-                    userDefaultsClient.setData(UserDefaultsKey.userProfileImage, nil)
+                    userDefaultsClient.setData(.userProfileImage, nil)
                 }
                 
                 state.hasChanges = false
@@ -117,8 +116,8 @@ public struct SettingsProfileReducer {
                 return .none
                 
             case .onAppear:
-                let isCustom = userDefaultsClient.getBool(UserDefaultsKey.isUsingCustomImage)
-                var savedNickname = userDefaultsClient.getString(UserDefaultsKey.userNickname)
+                let isCustom = userDefaultsClient.getBool(.isUsingCustomImage)
+                var savedNickname = userDefaultsClient.getString(.userNickname)
                 if savedNickname == "" {
                     savedNickname = "D"
                 }
@@ -126,7 +125,7 @@ public struct SettingsProfileReducer {
                 state.previousNickname = savedNickname
                 
                 if isCustom,
-                   let imageData = userDefaultsClient.getData(UserDefaultsKey.userProfileImage),
+                   let imageData = userDefaultsClient.getData(.userProfileImage),
                    let savedImage = UIImage(data: imageData) {
                     state.currentImage = savedImage
                     state.isUsingCustomImage = true

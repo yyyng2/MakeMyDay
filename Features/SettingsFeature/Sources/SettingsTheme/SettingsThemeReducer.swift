@@ -8,7 +8,6 @@
 
 import SwiftUI
 import Core
-import Domain
 import ComposableArchitecture
 
 @Reducer
@@ -43,7 +42,7 @@ public struct SettingsThemeReducer {
                 }
                 
             case .saveButtonTapped:
-                userDefaultsClient.setBool(UserDefaultsKey.isLightTheme, state.isLightTheme)
+                userDefaultsClient.setBool(.isLightTheme, state.isLightTheme)
                 
                 let scenes = UIApplication.shared.connectedScenes
                 let windowScene = scenes.first as? UIWindowScene
@@ -63,7 +62,7 @@ public struct SettingsThemeReducer {
                 return .none
                 
             case .onAppear:
-                state.isLightTheme = userDefaultsClient.getBool(UserDefaultsKey.isLightTheme)
+                state.isLightTheme = userDefaultsClient.getBool(.isLightTheme)
                 
                 let scenes = UIApplication.shared.connectedScenes
                 let windowScene = scenes.first as? UIWindowScene

@@ -8,7 +8,6 @@
 
 import SwiftUI
 import Core
-import Domain
 import MessageUI
 import ComposableArchitecture
 
