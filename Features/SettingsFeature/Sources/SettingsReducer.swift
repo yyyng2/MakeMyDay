@@ -7,15 +7,13 @@ public struct SettingsReducer {
         case appInfo = "settings_menu_appInfo"
         case profile = "settings_menu_profile"
         case theme = "settings_menu_theme"
-//        case openSource = "오픈소스"
     }
     
-    @Reducer(state: .equatable)
+    @Reducer
     public enum Path {
         case appInfo(SettingsAppInfoReducer)
         case profile(SettingsProfileReducer)
         case theme(SettingsThemeReducer)
-        //         case openSource(OpenSourceReducer)
     }
     
     @ObservableState
@@ -33,7 +31,6 @@ public struct SettingsReducer {
     
     public enum Action {
         case path(StackActionOf<Path>)
-//        case path(StackAction<Path.State, Path.Action>)
         case appInfo(SettingsAppInfoReducer.Action)
         case profile(SettingsProfileReducer.Action)
         case theme(SettingsThemeReducer.Action)
@@ -41,7 +38,6 @@ public struct SettingsReducer {
         case pushAppInfo
         case pushProfile
         case pushTheme
-//              case pushOpenSource
     }
     
     @Dependency(\.appStorageRepository) var storage
@@ -49,18 +45,6 @@ public struct SettingsReducer {
     public init() {}
     
     public var body: some ReducerOf<Self> {
-        Scope(state: \.appInfo, action: \.appInfo) {
-            SettingsAppInfoReducer()
-        }
-        
-        Scope(state: \.profile, action: \.profile) {
-            SettingsProfileReducer()
-        }
-        
-        Scope(state: \.theme, action: \.theme) {
-            SettingsThemeReducer()
-        }
-        
         Reduce { state, action in
             switch action {
             case let .path(.element(id, action)):
@@ -85,12 +69,7 @@ public struct SettingsReducer {
                 }
             case .onAppear:
                 return .none
-            case .appInfo(_):
-                //                state.path.append(state.appInfo)
-                return .none
-            case .profile(_):
-                return .none
-            case .theme(_):
+            case .appInfo(_), .profile(_), .theme(_):
                 return .none
             case .pushAppInfo:
                 state.path.append(.appInfo(state.appInfo))
@@ -101,12 +80,12 @@ public struct SettingsReducer {
             case .pushTheme:
                 state.path.append(.theme(state.theme))
                 return .none
-            case .path(.popFrom(id: _)):
-                return .none
-            case .path(.push(id: _, state: _)):
+            case .path(.popFrom(id: _)), .path(.push(id: _, state: _)):
                 return .none
             }
         }
         .forEach(\.path, action: \.path)
     }
 }
+
+extension SettingsReducer.Path.State: Equatable { }
