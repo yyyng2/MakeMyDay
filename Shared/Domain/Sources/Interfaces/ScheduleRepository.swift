@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 @MainActor
-public protocol ScheduleRepository {
+public protocol ScheduleRepository: Sendable {
     func fetchAllSchedules() throws -> [Schedule]
     func fetchSchedules(forDate date: Date) throws -> [Schedule]
     func searchSchedules(byTitle title: String) throws -> [Schedule]

@@ -156,10 +156,11 @@ private let project = Project(
             resources: ["WidgetFeature/Resources/**"],
             entitlements: .file(path: "Signing/WidgetFeature.entitlements"),
             dependencies: [
+                .project(target: "Core", path: .relativeToRoot("Core")),
                 .project(target: "Domain", path: .relativeToRoot("Shared/Domain")),
-                .project(target: "Data", path: .relativeToRoot("Shared/Data")),
                 .project(target: "Utilities", path: .relativeToRoot("Shared/Utilities")),
                 .project(target: "Resources", path: .relativeToRoot("Shared/Resources")),
+                .external(name: "ComposableArchitecture"),
             ],
             settings: .settings(
                 base: [:],

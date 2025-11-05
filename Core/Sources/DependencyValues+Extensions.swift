@@ -52,21 +52,21 @@ private let sharedModelContainer = ModelContainerClientImpl.create(schemas: [
 ])
 
 @MainActor
-private enum ScheduleRepositoryKey: @preconcurrency DependencyKey {
-    static var liveValue: ScheduleRepository = {
+public enum ScheduleRepositoryKey: @preconcurrency DependencyKey {
+    public static var liveValue: ScheduleRepository = {
         return ScheduleRepositoryImpl(modelContainer: sharedModelContainer)
     }()
     
-    static let testValue: ScheduleRepository = MockScheduleRepositoryImpl()
+    public static let testValue: ScheduleRepository = MockScheduleRepositoryImpl()
 }
 
 @MainActor
-private enum DDayRepositoryKey: @preconcurrency DependencyKey {
-    static let liveValue: DDayRepository = {
+public enum DDayRepositoryKey: @preconcurrency DependencyKey {
+    public static let liveValue: DDayRepository = {
         return DDayRepositoryImpl(modelContainer: sharedModelContainer)
     }()
     
-    static let testValue: DDayRepository = MockDDayRepositoryImpl()
+    public static let testValue: DDayRepository = MockDDayRepositoryImpl()
 }
 
 private enum AppVersionServiceKey: DependencyKey {

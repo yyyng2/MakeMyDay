@@ -9,10 +9,11 @@
 import SwiftUI
 import WidgetKit
 import AppIntents
+import Core
 import Domain
-import Data
 import Utilities
 import Resources
+import ComposableArchitecture
 
 enum WidgetDisplayType: String, AppEnum {
     case ddayWithSchedule = "widget_ddayWithSchedule"
@@ -42,9 +43,8 @@ struct DDayEntity: AppEntity {
 
 struct DDayQuery: EntityQuery {
     func entities(for identifiers: [String]) async throws -> [DDayEntity] {
-        let modelContainer = ModelContainerClientImpl.create(schemas: [DDay.self, Schedule.self])
-        let repository = await DDayRepositoryImpl(modelContainer: modelContainer)
-        let allDDays = try await repository.fetchAllDDays()
+        let ddayRepository = await DDayRepositoryKey.liveValue
+        let allDDays = try await ddayRepository.fetchAllDDays()
         
         return allDDays
             .filter { identifiers.contains($0.id.uuidString) }
@@ -52,10 +52,8 @@ struct DDayQuery: EntityQuery {
     }
     
     func suggestedEntities() async throws -> [DDayEntity] {
-        let modelContainer = ModelContainerClientImpl.create(schemas: [DDay.self, Schedule.self])
-        let repository = await DDayRepositoryImpl(modelContainer: modelContainer)
-        let allDDays = try await repository.fetchAllDDays()
-        
+        let ddayRepository = await DDayRepositoryKey.liveValue
+        let allDDays = try await ddayRepository.fetchAllDDays()
         return allDDays.map { DDayEntity(id: $0.id.uuidString, title: $0.title) }
     }
 }
@@ -65,7 +63,7 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
     static var description = IntentDescription("widget_displayContents")
     
     @Parameter(title: "widget_displayType")
-    var displayType: WidgetDisplayType
+    var displayType: WidgetDisplayType?
     
     @Parameter(title: "widget_ddaySelect")
     var selectedDDays: [DDayEntity]?
@@ -74,7 +72,7 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
         self.displayType = .ddayWithSchedule
     }
     
-    init(displayType: WidgetDisplayType, selectedDDays: [DDayEntity]?) {
+    init(displayType: WidgetDisplayType?, selectedDDays: [DDayEntity]?) {
         self.displayType = displayType
         self.selectedDDays = selectedDDays
     }
@@ -104,15 +102,8 @@ struct MMDWidgetEntryView : View {
     var entry: Provider.Entry
     @Environment(\.widgetFamily) private var widgetFamily
     
-    let modelContainer = ModelContainerClientImpl.create(schemas: [DDay.self, Schedule.self])
-    
-    var ddayRepository: DDayRepository {
-        DDayRepositoryImpl(modelContainer: modelContainer)
-    }
-    
-    var scheduleRepository: ScheduleRepository {
-        ScheduleRepositoryImpl(modelContainer: modelContainer)
-    }
+    @Dependency(\.ddayRepository) var ddayRepository
+    @Dependency(\.scheduleRepository) var scheduleRepository
     
     var ddays: [DDay] {
         let allDDays = (try? ddayRepository.fetchAllDDays()) ?? []
@@ -188,7 +179,7 @@ struct MMDWidgetEntryView : View {
     }
     
     var body: some View {
-        let displayType = entry.configuration.displayType
+        let displayType = entry.configuration.displayType ?? WidgetDisplayType.ddayWithSchedule
         
         switch widgetFamily {
         case .systemSmall:
@@ -212,7 +203,6 @@ struct MMDWidgetEntryView : View {
                 schedules: todaySchedules,
                 displayType: displayType
             )
-            //        case .systemExtraLarge:
             
         case .accessoryCircular:
             CircularWidgetView(scheduleCount: todayScheduleCount)
