@@ -9,10 +9,10 @@
 import Foundation
 
 public enum DDaySortType: String, CaseIterable {
-    case titleAsc = "dday_sort_titleAsc"
-    case titleDesc = "dday_sort_titleDesc"
-    case dateAsc = "dday_sort_dateAsc"
-    case dateDesc = "dday_sort_dateDesc"
-    case ddayAsc = "dday_sort_ddayAsc"
-    case ddayDesc = "dday_sort_ddayDesc"
+    case titleAsc = "ddaySortTitleAsc"
+    case titleDesc = "ddaySortTitleDesc"
+    case dateAsc = "ddaySortDateAsc"
+    case dateDesc = "ddaySortDateDesc"
+    case ddayAsc = "ddaySortDdayAsc"
+    case ddayDesc = "ddaySortDdayDesc"
 }
